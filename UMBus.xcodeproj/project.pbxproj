@@ -16,14 +16,13 @@
 		ABEDEB07184BD90D00B82E59 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = ABEDEB05184BD90D00B82E59 /* InfoPlist.strings */; };
 		ABEDEB09184BD90D00B82E59 /* UMBusTests.m in Sources */ = {isa = PBXBuildFile; fileRef = ABEDEB08184BD90D00B82E59 /* UMBusTests.m */; };
 		ABEDEB29184BDA1B00B82E59 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ABEDEB14184BDA1B00B82E59 /* Images.xcassets */; };
-		ABEDEB2A184BDA1B00B82E59 /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABEDEB16184BDA1B00B82E59 /* Main_iPad.storyboard */; };
 		ABEDEB2B184BDA1B00B82E59 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABEDEB17184BDA1B00B82E59 /* Main_iPhone.storyboard */; };
 		ABEDEB2C184BDA1B00B82E59 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = ABEDEB19184BDA1B00B82E59 /* InfoPlist.strings */; };
 		ABEDEB2D184BDA1B00B82E59 /* UMBus-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ABEDEB1B184BDA1B00B82E59 /* UMBus-Info.plist */; };
 		ABEDEB2E184BDA1B00B82E59 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = ABEDEB20184BDA1B00B82E59 /* AppDelegate.m */; };
 		ABEDEB2F184BDA1B00B82E59 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = ABEDEB21184BDA1B00B82E59 /* main.m */; };
-		ABEDEB30184BDA1B00B82E59 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABEDEB26184BDA1B00B82E59 /* FirstViewController.m */; };
-		ABEDEB31184BDA1B00B82E59 /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABEDEB28184BDA1B00B82E59 /* SecondViewController.m */; };
+		ABEDEB34184BDB2E00B82E59 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABEDEB33184BDB2D00B82E59 /* MapViewController.m */; };
+		ABEDEB36184BDC0A00B82E59 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABEDEB35184BDC0A00B82E59 /* MapKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,7 +46,6 @@
 		ABEDEB06184BD90D00B82E59 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		ABEDEB08184BD90D00B82E59 /* UMBusTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UMBusTests.m; sourceTree = "<group>"; };
 		ABEDEB14184BDA1B00B82E59 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		ABEDEB16184BDA1B00B82E59 /* Main_iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main_iPad.storyboard; sourceTree = "<group>"; };
 		ABEDEB17184BDA1B00B82E59 /* Main_iPhone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main_iPhone.storyboard; sourceTree = "<group>"; };
 		ABEDEB1A184BDA1B00B82E59 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		ABEDEB1B184BDA1B00B82E59 /* UMBus-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "UMBus-Info.plist"; sourceTree = "<group>"; };
@@ -55,10 +53,9 @@
 		ABEDEB20184BDA1B00B82E59 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		ABEDEB21184BDA1B00B82E59 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		ABEDEB22184BDA1B00B82E59 /* UMBus-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UMBus-Prefix.pch"; sourceTree = "<group>"; };
-		ABEDEB25184BDA1B00B82E59 /* FirstViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
-		ABEDEB26184BDA1B00B82E59 /* FirstViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
-		ABEDEB27184BDA1B00B82E59 /* SecondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
-		ABEDEB28184BDA1B00B82E59 /* SecondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
+		ABEDEB32184BDB2D00B82E59 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
+		ABEDEB33184BDB2D00B82E59 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
+		ABEDEB35184BDC0A00B82E59 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +63,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ABEDEB36184BDC0A00B82E59 /* MapKit.framework in Frameworks */,
 				ABEDEADA184BD90D00B82E59 /* CoreGraphics.framework in Frameworks */,
 				ABEDEADC184BD90D00B82E59 /* UIKit.framework in Frameworks */,
 				ABEDEAD8184BD90D00B82E59 /* Foundation.framework in Frameworks */,
@@ -108,6 +106,7 @@
 		ABEDEAD6184BD90D00B82E59 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				ABEDEB35184BDC0A00B82E59 /* MapKit.framework */,
 				ABEDEAD7184BD90D00B82E59 /* Foundation.framework */,
 				ABEDEAD9184BD90D00B82E59 /* CoreGraphics.framework */,
 				ABEDEADB184BD90D00B82E59 /* UIKit.framework */,
@@ -156,7 +155,6 @@
 		ABEDEB15184BDA1B00B82E59 /* Interfaces */ = {
 			isa = PBXGroup;
 			children = (
-				ABEDEB16184BDA1B00B82E59 /* Main_iPad.storyboard */,
 				ABEDEB17184BDA1B00B82E59 /* Main_iPhone.storyboard */,
 			);
 			path = Interfaces;
@@ -174,6 +172,7 @@
 		ABEDEB1C184BDA1B00B82E59 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				ABEDEB37184BDE9200B82E59 /* Networking */,
 				ABEDEB1D184BDA1B00B82E59 /* Misc */,
 				ABEDEB23184BDA1B00B82E59 /* Models */,
 				ABEDEB24184BDA1B00B82E59 /* View Controllers */,
@@ -211,12 +210,17 @@
 		ABEDEB24184BDA1B00B82E59 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				ABEDEB25184BDA1B00B82E59 /* FirstViewController.h */,
-				ABEDEB26184BDA1B00B82E59 /* FirstViewController.m */,
-				ABEDEB27184BDA1B00B82E59 /* SecondViewController.h */,
-				ABEDEB28184BDA1B00B82E59 /* SecondViewController.m */,
+				ABEDEB32184BDB2D00B82E59 /* MapViewController.h */,
+				ABEDEB33184BDB2D00B82E59 /* MapViewController.m */,
 			);
 			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		ABEDEB37184BDE9200B82E59 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Networking;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -298,7 +302,6 @@
 				ABEDEB29184BDA1B00B82E59 /* Images.xcassets in Resources */,
 				ABEDEB2D184BDA1B00B82E59 /* UMBus-Info.plist in Resources */,
 				ABEDEB2C184BDA1B00B82E59 /* InfoPlist.strings in Resources */,
-				ABEDEB2A184BDA1B00B82E59 /* Main_iPad.storyboard in Resources */,
 				ABEDEB2B184BDA1B00B82E59 /* Main_iPhone.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -318,9 +321,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ABEDEB31184BDA1B00B82E59 /* SecondViewController.m in Sources */,
+				ABEDEB34184BDB2E00B82E59 /* MapViewController.m in Sources */,
 				ABEDEB2F184BDA1B00B82E59 /* main.m in Sources */,
-				ABEDEB30184BDA1B00B82E59 /* FirstViewController.m in Sources */,
 				ABEDEB2E184BDA1B00B82E59 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -443,8 +445,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "UMBus/UMBus-Prefix.pch";
-				INFOPLIST_FILE = "UMBus/UMBus-Info.plist";
+				GCC_PREFIX_HEADER = "UMBus/Source/Misc/UMBus-Prefix.pch";
+				INFOPLIST_FILE = "$(SRCROOT)/UMBus/Resources/Misc/UMBus-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -456,8 +458,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "UMBus/UMBus-Prefix.pch";
-				INFOPLIST_FILE = "UMBus/UMBus-Info.plist";
+				GCC_PREFIX_HEADER = "UMBus/Source/Misc/UMBus-Prefix.pch";
+				INFOPLIST_FILE = "$(SRCROOT)/UMBus/Resources/Misc/UMBus-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

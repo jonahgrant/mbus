@@ -1,5 +1,5 @@
 //
-//  FirstViewController.h
+//  MapViewController.h
 //  UMBus
 //
 //  Created by Jonah Grant on 12/1/13.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FirstViewController : UIViewController
+@interface MapViewController : UIViewController
 
 @end
