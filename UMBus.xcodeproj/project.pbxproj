@@ -1,0 +1,541 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		ABEDEAD8184BD90D00B82E59 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABEDEAD7184BD90D00B82E59 /* Foundation.framework */; };
+		ABEDEADA184BD90D00B82E59 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABEDEAD9184BD90D00B82E59 /* CoreGraphics.framework */; };
+		ABEDEADC184BD90D00B82E59 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABEDEADB184BD90D00B82E59 /* UIKit.framework */; };
+		ABEDEAFD184BD90D00B82E59 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABEDEAFC184BD90D00B82E59 /* XCTest.framework */; };
+		ABEDEAFE184BD90D00B82E59 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABEDEAD7184BD90D00B82E59 /* Foundation.framework */; };
+		ABEDEAFF184BD90D00B82E59 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABEDEADB184BD90D00B82E59 /* UIKit.framework */; };
+		ABEDEB07184BD90D00B82E59 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = ABEDEB05184BD90D00B82E59 /* InfoPlist.strings */; };
+		ABEDEB09184BD90D00B82E59 /* UMBusTests.m in Sources */ = {isa = PBXBuildFile; fileRef = ABEDEB08184BD90D00B82E59 /* UMBusTests.m */; };
+		ABEDEB29184BDA1B00B82E59 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ABEDEB14184BDA1B00B82E59 /* Images.xcassets */; };
+		ABEDEB2A184BDA1B00B82E59 /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABEDEB16184BDA1B00B82E59 /* Main_iPad.storyboard */; };
+		ABEDEB2B184BDA1B00B82E59 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABEDEB17184BDA1B00B82E59 /* Main_iPhone.storyboard */; };
+		ABEDEB2C184BDA1B00B82E59 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = ABEDEB19184BDA1B00B82E59 /* InfoPlist.strings */; };
+		ABEDEB2D184BDA1B00B82E59 /* UMBus-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ABEDEB1B184BDA1B00B82E59 /* UMBus-Info.plist */; };
+		ABEDEB2E184BDA1B00B82E59 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = ABEDEB20184BDA1B00B82E59 /* AppDelegate.m */; };
+		ABEDEB2F184BDA1B00B82E59 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = ABEDEB21184BDA1B00B82E59 /* main.m */; };
+		ABEDEB30184BDA1B00B82E59 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABEDEB26184BDA1B00B82E59 /* FirstViewController.m */; };
+		ABEDEB31184BDA1B00B82E59 /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABEDEB28184BDA1B00B82E59 /* SecondViewController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		ABEDEB00184BD90D00B82E59 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = ABEDEACC184BD90D00B82E59 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = ABEDEAD3184BD90D00B82E59;
+			remoteInfo = UMBus;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		ABEDEAD4184BD90D00B82E59 /* UMBus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UMBus.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		ABEDEAD7184BD90D00B82E59 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		ABEDEAD9184BD90D00B82E59 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		ABEDEADB184BD90D00B82E59 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		ABEDEAFB184BD90D00B82E59 /* UMBusTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UMBusTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		ABEDEAFC184BD90D00B82E59 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		ABEDEB04184BD90D00B82E59 /* UMBusTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "UMBusTests-Info.plist"; sourceTree = "<group>"; };
+		ABEDEB06184BD90D00B82E59 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		ABEDEB08184BD90D00B82E59 /* UMBusTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UMBusTests.m; sourceTree = "<group>"; };
+		ABEDEB14184BDA1B00B82E59 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		ABEDEB16184BDA1B00B82E59 /* Main_iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main_iPad.storyboard; sourceTree = "<group>"; };
+		ABEDEB17184BDA1B00B82E59 /* Main_iPhone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main_iPhone.storyboard; sourceTree = "<group>"; };
+		ABEDEB1A184BDA1B00B82E59 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		ABEDEB1B184BDA1B00B82E59 /* UMBus-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "UMBus-Info.plist"; sourceTree = "<group>"; };
+		ABEDEB1F184BDA1B00B82E59 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		ABEDEB20184BDA1B00B82E59 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		ABEDEB21184BDA1B00B82E59 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		ABEDEB22184BDA1B00B82E59 /* UMBus-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UMBus-Prefix.pch"; sourceTree = "<group>"; };
+		ABEDEB25184BDA1B00B82E59 /* FirstViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
+		ABEDEB26184BDA1B00B82E59 /* FirstViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
+		ABEDEB27184BDA1B00B82E59 /* SecondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
+		ABEDEB28184BDA1B00B82E59 /* SecondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		ABEDEAD1184BD90D00B82E59 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ABEDEADA184BD90D00B82E59 /* CoreGraphics.framework in Frameworks */,
+				ABEDEADC184BD90D00B82E59 /* UIKit.framework in Frameworks */,
+				ABEDEAD8184BD90D00B82E59 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ABEDEAF8184BD90D00B82E59 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ABEDEAFD184BD90D00B82E59 /* XCTest.framework in Frameworks */,
+				ABEDEAFF184BD90D00B82E59 /* UIKit.framework in Frameworks */,
+				ABEDEAFE184BD90D00B82E59 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		ABEDEACB184BD90D00B82E59 = {
+			isa = PBXGroup;
+			children = (
+				ABEDEB1C184BDA1B00B82E59 /* Source */,
+				ABEDEB12184BDA1B00B82E59 /* Resources */,
+				ABEDEB02184BD90D00B82E59 /* UMBusTests */,
+				ABEDEAD6184BD90D00B82E59 /* Frameworks */,
+				ABEDEAD5184BD90D00B82E59 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		ABEDEAD5184BD90D00B82E59 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				ABEDEAD4184BD90D00B82E59 /* UMBus.app */,
+				ABEDEAFB184BD90D00B82E59 /* UMBusTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		ABEDEAD6184BD90D00B82E59 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				ABEDEAD7184BD90D00B82E59 /* Foundation.framework */,
+				ABEDEAD9184BD90D00B82E59 /* CoreGraphics.framework */,
+				ABEDEADB184BD90D00B82E59 /* UIKit.framework */,
+				ABEDEAFC184BD90D00B82E59 /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		ABEDEB02184BD90D00B82E59 /* UMBusTests */ = {
+			isa = PBXGroup;
+			children = (
+				ABEDEB08184BD90D00B82E59 /* UMBusTests.m */,
+				ABEDEB03184BD90D00B82E59 /* Supporting Files */,
+			);
+			path = UMBusTests;
+			sourceTree = "<group>";
+		};
+		ABEDEB03184BD90D00B82E59 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				ABEDEB04184BD90D00B82E59 /* UMBusTests-Info.plist */,
+				ABEDEB05184BD90D00B82E59 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		ABEDEB12184BDA1B00B82E59 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				ABEDEB13184BDA1B00B82E59 /* Images */,
+				ABEDEB15184BDA1B00B82E59 /* Interfaces */,
+				ABEDEB18184BDA1B00B82E59 /* Misc */,
+			);
+			name = Resources;
+			path = UMBus/Resources;
+			sourceTree = "<group>";
+		};
+		ABEDEB13184BDA1B00B82E59 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				ABEDEB14184BDA1B00B82E59 /* Images.xcassets */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
+		ABEDEB15184BDA1B00B82E59 /* Interfaces */ = {
+			isa = PBXGroup;
+			children = (
+				ABEDEB16184BDA1B00B82E59 /* Main_iPad.storyboard */,
+				ABEDEB17184BDA1B00B82E59 /* Main_iPhone.storyboard */,
+			);
+			path = Interfaces;
+			sourceTree = "<group>";
+		};
+		ABEDEB18184BDA1B00B82E59 /* Misc */ = {
+			isa = PBXGroup;
+			children = (
+				ABEDEB19184BDA1B00B82E59 /* InfoPlist.strings */,
+				ABEDEB1B184BDA1B00B82E59 /* UMBus-Info.plist */,
+			);
+			path = Misc;
+			sourceTree = "<group>";
+		};
+		ABEDEB1C184BDA1B00B82E59 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				ABEDEB1D184BDA1B00B82E59 /* Misc */,
+				ABEDEB23184BDA1B00B82E59 /* Models */,
+				ABEDEB24184BDA1B00B82E59 /* View Controllers */,
+			);
+			name = Source;
+			path = UMBus/Source;
+			sourceTree = "<group>";
+		};
+		ABEDEB1D184BDA1B00B82E59 /* Misc */ = {
+			isa = PBXGroup;
+			children = (
+				ABEDEB1E184BDA1B00B82E59 /* App Delegate */,
+				ABEDEB21184BDA1B00B82E59 /* main.m */,
+				ABEDEB22184BDA1B00B82E59 /* UMBus-Prefix.pch */,
+			);
+			path = Misc;
+			sourceTree = "<group>";
+		};
+		ABEDEB1E184BDA1B00B82E59 /* App Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				ABEDEB1F184BDA1B00B82E59 /* AppDelegate.h */,
+				ABEDEB20184BDA1B00B82E59 /* AppDelegate.m */,
+			);
+			path = "App Delegate";
+			sourceTree = "<group>";
+		};
+		ABEDEB23184BDA1B00B82E59 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		ABEDEB24184BDA1B00B82E59 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				ABEDEB25184BDA1B00B82E59 /* FirstViewController.h */,
+				ABEDEB26184BDA1B00B82E59 /* FirstViewController.m */,
+				ABEDEB27184BDA1B00B82E59 /* SecondViewController.h */,
+				ABEDEB28184BDA1B00B82E59 /* SecondViewController.m */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		ABEDEAD3184BD90D00B82E59 /* UMBus */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = ABEDEB0C184BD90D00B82E59 /* Build configuration list for PBXNativeTarget "UMBus" */;
+			buildPhases = (
+				ABEDEAD0184BD90D00B82E59 /* Sources */,
+				ABEDEAD1184BD90D00B82E59 /* Frameworks */,
+				ABEDEAD2184BD90D00B82E59 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = UMBus;
+			productName = UMBus;
+			productReference = ABEDEAD4184BD90D00B82E59 /* UMBus.app */;
+			productType = "com.apple.product-type.application";
+		};
+		ABEDEAFA184BD90D00B82E59 /* UMBusTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = ABEDEB0F184BD90D00B82E59 /* Build configuration list for PBXNativeTarget "UMBusTests" */;
+			buildPhases = (
+				ABEDEAF7184BD90D00B82E59 /* Sources */,
+				ABEDEAF8184BD90D00B82E59 /* Frameworks */,
+				ABEDEAF9184BD90D00B82E59 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				ABEDEB01184BD90D00B82E59 /* PBXTargetDependency */,
+			);
+			name = UMBusTests;
+			productName = UMBusTests;
+			productReference = ABEDEAFB184BD90D00B82E59 /* UMBusTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		ABEDEACC184BD90D00B82E59 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = "Jonah Grant";
+				TargetAttributes = {
+					ABEDEAFA184BD90D00B82E59 = {
+						TestTargetID = ABEDEAD3184BD90D00B82E59;
+					};
+				};
+			};
+			buildConfigurationList = ABEDEACF184BD90D00B82E59 /* Build configuration list for PBXProject "UMBus" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = ABEDEACB184BD90D00B82E59;
+			productRefGroup = ABEDEAD5184BD90D00B82E59 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				ABEDEAD3184BD90D00B82E59 /* UMBus */,
+				ABEDEAFA184BD90D00B82E59 /* UMBusTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		ABEDEAD2184BD90D00B82E59 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ABEDEB29184BDA1B00B82E59 /* Images.xcassets in Resources */,
+				ABEDEB2D184BDA1B00B82E59 /* UMBus-Info.plist in Resources */,
+				ABEDEB2C184BDA1B00B82E59 /* InfoPlist.strings in Resources */,
+				ABEDEB2A184BDA1B00B82E59 /* Main_iPad.storyboard in Resources */,
+				ABEDEB2B184BDA1B00B82E59 /* Main_iPhone.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ABEDEAF9184BD90D00B82E59 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ABEDEB07184BD90D00B82E59 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		ABEDEAD0184BD90D00B82E59 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ABEDEB31184BDA1B00B82E59 /* SecondViewController.m in Sources */,
+				ABEDEB2F184BDA1B00B82E59 /* main.m in Sources */,
+				ABEDEB30184BDA1B00B82E59 /* FirstViewController.m in Sources */,
+				ABEDEB2E184BDA1B00B82E59 /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ABEDEAF7184BD90D00B82E59 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ABEDEB09184BD90D00B82E59 /* UMBusTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		ABEDEB01184BD90D00B82E59 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = ABEDEAD3184BD90D00B82E59 /* UMBus */;
+			targetProxy = ABEDEB00184BD90D00B82E59 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		ABEDEB05184BD90D00B82E59 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				ABEDEB06184BD90D00B82E59 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		ABEDEB19184BDA1B00B82E59 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				ABEDEB1A184BDA1B00B82E59 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		ABEDEB0A184BD90D00B82E59 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		ABEDEB0B184BD90D00B82E59 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		ABEDEB0D184BD90D00B82E59 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "UMBus/UMBus-Prefix.pch";
+				INFOPLIST_FILE = "UMBus/UMBus-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		ABEDEB0E184BD90D00B82E59 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "UMBus/UMBus-Prefix.pch";
+				INFOPLIST_FILE = "UMBus/UMBus-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		ABEDEB10184BD90D00B82E59 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/UMBus.app/UMBus";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "UMBus/UMBus-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "UMBusTests/UMBusTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		ABEDEB11184BD90D00B82E59 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/UMBus.app/UMBus";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "UMBus/UMBus-Prefix.pch";
+				INFOPLIST_FILE = "UMBusTests/UMBusTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		ABEDEACF184BD90D00B82E59 /* Build configuration list for PBXProject "UMBus" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ABEDEB0A184BD90D00B82E59 /* Debug */,
+				ABEDEB0B184BD90D00B82E59 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		ABEDEB0C184BD90D00B82E59 /* Build configuration list for PBXNativeTarget "UMBus" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ABEDEB0D184BD90D00B82E59 /* Debug */,
+				ABEDEB0E184BD90D00B82E59 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		ABEDEB0F184BD90D00B82E59 /* Build configuration list for PBXNativeTarget "UMBusTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ABEDEB10184BD90D00B82E59 /* Debug */,
+				ABEDEB11184BD90D00B82E59 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = ABEDEACC184BD90D00B82E59 /* Project object */;
+}
