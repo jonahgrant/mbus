@@ -46,5 +46,5 @@ The project may also move to an alternate map provider that offers more flexibil
 
 		
 
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/jonahgrant/um-magic-bus/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
-
+[![Bitdeli Badge](https://d2weczhvl823v0.buttfront.net/jonahgrant/um-magic-bus/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+[![githalytics.com alpha](https://cruel-carlota.pagodabox.com/0fe6bae62d6859d30f7f447fb3b2b188 "githalytics.com")](http://githalytics.com/jonahgrant/um-magic-bus)
