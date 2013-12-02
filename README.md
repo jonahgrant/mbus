@@ -8,13 +8,6 @@ Additionally, this project runs using [ReactiveCocoa](https://github.com/blog/11
 
 NOTE: their API is in pre-release, so some endpoints are incomplete, nonexistent, or supply faulty data.
 
-# To do
-The project currently only shows buses, bus stops, and announcements.  In the future, when the APIs are in place, it will show full routes and estimated time of arrival at each stop.
-
-![Live bus](https://dl.dropboxusercontent.com/u/2177718/Screen%20Shot%202013-12-01%20at%2010.45.55%20PM.png "Live bus")
-![Bus stop](https://dl.dropboxusercontent.com/u/2177718/Screen%20Shot%202013-12-01%20at%2010.45.47%20PM.png "Bus stop")
-![Announcement](https://dl.dropboxusercontent.com/u/2177718/Screen%20Shot%202013-12-01%20at%2010.45.44%20PM.png "Announcement")
-
 # Setup
 
 If you don't already have [CocoaPods](http://cocoapods.org/), install it.
@@ -41,4 +34,12 @@ Run the project
 		Run
 		
 		
+# To do
+The project currently only shows buses, bus stops, and announcements.  In the future, when the APIs are in place, it will show full routes and estimated time of arrival at each stop.
+
+# Interface
+![Live bus](https://dl.dropboxusercontent.com/u/2177718/Screen%20Shot%202013-12-01%20at%2010.45.55%20PM.png "Live bus")
+![Bus stop](https://dl.dropboxusercontent.com/u/2177718/Screen%20Shot%202013-12-01%20at%2010.45.47%20PM.png "Bus stop")
+![Announcement](https://dl.dropboxusercontent.com/u/2177718/Screen%20Shot%202013-12-01%20at%2010.45.44%20PM.png "Announcement")
+
 		
