@@ -33,7 +33,6 @@
 		ABEDEB2B184BDA1B00B82E59 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABEDEB17184BDA1B00B82E59 /* Main_iPhone.storyboard */; };
 		ABEDEB2C184BDA1B00B82E59 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = ABEDEB19184BDA1B00B82E59 /* InfoPlist.strings */; };
 		ABEDEB36184BDC0A00B82E59 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABEDEB35184BDC0A00B82E59 /* MapKit.framework */; };
-		ABEDEB3A184BE0D500B82E59 /* Data.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = ABEDEB38184BE0D500B82E59 /* Data.xcdatamodeld */; };
 		ABEDEB93184C103B00B82E59 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = ABEDEB7F184C103B00B82E59 /* AppDelegate.m */; };
 		ABEDEB94184C103B00B82E59 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = ABEDEB80184C103B00B82E59 /* main.m */; };
 		ABEDEB97184C103B00B82E59 /* Bus.m in Sources */ = {isa = PBXBuildFile; fileRef = ABEDEB89184C103B00B82E59 /* Bus.m */; };
@@ -92,7 +91,6 @@
 		ABEDEB1A184BDA1B00B82E59 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		ABEDEB1B184BDA1B00B82E59 /* UMBus-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "UMBus-Info.plist"; sourceTree = "<group>"; };
 		ABEDEB35184BDC0A00B82E59 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
-		ABEDEB39184BE0D500B82E59 /* Data.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Data.xcdatamodel; sourceTree = "<group>"; };
 		ABEDEB7E184C103B00B82E59 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		ABEDEB7F184C103B00B82E59 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		ABEDEB80184C103B00B82E59 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -261,7 +259,6 @@
 			children = (
 				ABEDEB19184BDA1B00B82E59 /* InfoPlist.strings */,
 				ABEDEB1B184BDA1B00B82E59 /* UMBus-Info.plist */,
-				ABEDEB38184BE0D500B82E59 /* Data.xcdatamodeld */,
 			);
 			path = Misc;
 			sourceTree = "<group>";
@@ -526,7 +523,6 @@
 				ABEDEB98184C103B00B82E59 /* UMNetworkingSession.m in Sources */,
 				ABEDEBC4184C3CCF00B82E59 /* Announcement.m in Sources */,
 				ABEDEBCA184C3F4600B82E59 /* AnnouncementCellModel.m in Sources */,
-				ABEDEB3A184BE0D500B82E59 /* Data.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -766,19 +762,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		ABEDEB38184BE0D500B82E59 /* Data.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				ABEDEB39184BE0D500B82E59 /* Data.xcdatamodel */,
-			);
-			currentVersion = ABEDEB39184BE0D500B82E59 /* Data.xcdatamodel */;
-			path = Data.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = ABEDEACC184BD90D00B82E59 /* Project object */;
 }

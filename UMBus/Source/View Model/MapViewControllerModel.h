@@ -12,7 +12,7 @@
 
 @property (nonatomic) BOOL continuouslyUpdate;
 @property (strong, nonatomic) NSArray *buses, *stops;
-@property (strong, nonatomic) NSDictionary *busAnnotations, *updatedBusAnnotations, *stopAnnotations;
+@property (strong, nonatomic) NSDictionary *busAnnotations, *stopAnnotations;
 
 - (void)fetchBuses;
 - (void)fetchStops;

@@ -26,6 +26,7 @@
     }
     return self;
 }
+
 - (instancetype)initWithCoordinate:(CLLocationCoordinate2D)coordinate heading:(CGFloat)heading {
     if (self = [super init]) {
         _coordinate = coordinate;
