@@ -49,7 +49,6 @@
 }
 
 - (void)fetchBuses {
-    NSLog(@"fetch");
     NSMutableArray *mutableArray = [NSMutableArray array];
     [self.session fetchBusLocationsWithSuccessBlock:^(NSArray *buses) {
         for (Bus *bus in buses) {
