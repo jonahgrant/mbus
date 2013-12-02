@@ -12,7 +12,6 @@
 @interface BusAnnotation ()
 
 @property (nonatomic) CLLocationCoordinate2D coordinate;
-@property (nonatomic, strong) Bus *bus;
 
 @end
 
@@ -21,6 +20,7 @@
 - (instancetype)initWithBus:(Bus *)bus {
     if (self = [super init]) {
         _bus = bus;
+        _id = bus.id;
         _coordinate = CLLocationCoordinate2DMake([bus.latitude doubleValue], [bus.longitude doubleValue]);
         _heading = [bus.heading floatValue];
     }
@@ -42,5 +42,6 @@
 - (NSString *)subtitle {
     return [NSString stringWithFormat:@"Route #%@", _bus.route];
 }
+
 
 @end

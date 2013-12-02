@@ -21,6 +21,7 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		AB2C4C24184D1F0C001E2EA2 /* StreetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB2C4C23184D1F0C001E2EA2 /* StreetViewController.m */; };
 		ABEDEAD8184BD90D00B82E59 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABEDEAD7184BD90D00B82E59 /* Foundation.framework */; };
 		ABEDEADA184BD90D00B82E59 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABEDEAD9184BD90D00B82E59 /* CoreGraphics.framework */; };
 		ABEDEADC184BD90D00B82E59 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABEDEADB184BD90D00B82E59 /* UIKit.framework */; };
@@ -77,6 +78,8 @@
 /* Begin PBXFileReference section */
 		50576764A2E345BF9F69305F /* libPods-UMBus.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-UMBus.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A3F6F18FC78B47FB969ACFE4 /* Pods-UMBus.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UMBus.xcconfig"; path = "Pods/Pods-UMBus.xcconfig"; sourceTree = "<group>"; };
+		AB2C4C22184D1F0C001E2EA2 /* StreetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StreetViewController.h; sourceTree = "<group>"; };
+		AB2C4C23184D1F0C001E2EA2 /* StreetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StreetViewController.m; sourceTree = "<group>"; };
 		ABEDEAD4184BD90D00B82E59 /* UMBus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UMBus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABEDEAD7184BD90D00B82E59 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		ABEDEAD9184BD90D00B82E59 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -330,6 +333,8 @@
 				ABEDEB91184C103B00B82E59 /* MapViewController.m */,
 				ABEDEBBC184C3BE900B82E59 /* AnnoucementsViewController.h */,
 				ABEDEBBD184C3BE900B82E59 /* AnnoucementsViewController.m */,
+				AB2C4C22184D1F0C001E2EA2 /* StreetViewController.h */,
+				AB2C4C23184D1F0C001E2EA2 /* StreetViewController.m */,
 				ABEDEBC5184C3F3800B82E59 /* AnnouncementCell.h */,
 				ABEDEBC6184C3F3800B82E59 /* AnnouncementCell.m */,
 			);
@@ -515,6 +520,7 @@
 				ABEDEB97184C103B00B82E59 /* Bus.m in Sources */,
 				ABEDEB93184C103B00B82E59 /* AppDelegate.m in Sources */,
 				ABEDEB9A184C103B00B82E59 /* MapViewController.m in Sources */,
+				AB2C4C24184D1F0C001E2EA2 /* StreetViewController.m in Sources */,
 				ABEDEB94184C103B00B82E59 /* main.m in Sources */,
 				ABEDEBC7184C3F3800B82E59 /* AnnouncementCell.m in Sources */,
 				ABEDEBB5184C336C00B82E59 /* Stop.m in Sources */,

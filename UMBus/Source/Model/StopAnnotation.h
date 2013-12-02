@@ -12,6 +12,9 @@
 
 @interface StopAnnotation : NSObject <MKAnnotation>
 
+@property (strong, nonatomic) Stop *stop;
+@property (strong, nonatomic) NSString *id;
+
 - (instancetype)initWithStop:(Stop *)stop;
 
 @end

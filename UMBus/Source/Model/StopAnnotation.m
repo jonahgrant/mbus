@@ -11,7 +11,6 @@
 
 @interface StopAnnotation ()
 
-@property (strong, nonatomic) Stop *stop;
 @property (nonatomic) CLLocationCoordinate2D coordinate;
 
 @end

@@ -12,7 +12,9 @@
 
 @interface BusAnnotation : NSObject <MKAnnotation>
 
+@property (strong, nonatomic) Bus *bus;
 @property (nonatomic) CGFloat heading;
+@property (strong, nonatomic) NSString *id;
 
 - (instancetype)initWithBus:(Bus *)bus;
 

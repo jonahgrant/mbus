@@ -13,6 +13,7 @@
 #import "BusAnnotation.h"
 #import "Stop.h"
 #import "StopAnnotation.h"
+#import "StreetViewController.h"
 
 @interface MapViewController () <MKMapViewDelegate>
 
@@ -66,34 +67,15 @@
     [_mapView setRegion:region animated:YES];
 }
 
-/*- (void)updateImageForAnnotation:(BusAnnotation *)annotation {
-    MKAnnotationView *annotationView = [self.mapView viewForAnnotation:annotation];
-    [annotationView setImage:[self busImageForHeading:annotation.heading]];
+- (void)detailInformationForStopAnnotation:(StopAnnotation *)annotation {
+    StreetViewController *streetViewController = [[StreetViewController alloc] initWithCoordinate:annotation.coordinate];
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:streetViewController];
+    [self presentViewController:navigationController animated:YES completion:NULL];
 }
 
-- (UIImage *)busImageForHeading:(CGFloat)heading {
-    int intHeading = floorf(heading);
-    
-    if (45 > intHeading && intHeading >= 0) {
-        return [UIImage imageNamed:@"bus0"];
-    } else if (90 > intHeading && intHeading >= 45) {
-        return [UIImage imageNamed:@"bus45"];
-    } else if (135 > intHeading && intHeading >= 90) {
-        return [UIImage imageNamed:@"bus90"];
-    } else if (180 > intHeading && intHeading >= 135) {
-        return [UIImage imageNamed:@"bus135"];
-    } else if (225 > intHeading && intHeading >= 180) {
-        return [UIImage imageNamed:@"bus180"];
-    } else if (270 > intHeading && intHeading >= 225) {
-        return [UIImage imageNamed:@"bus225"];
-    } else if (315 > intHeading && intHeading >= 270) {
-        return [UIImage imageNamed:@"bus270"];
-    } else if (360 > intHeading && intHeading >= 315) {
-        return [UIImage imageNamed:@"bus315"];
-    }
-    
-    return [UIImage imageNamed:@"bus0"];
-}*/
+- (void)detailInformationForBusAnnotation:(BusAnnotation *)annotation {
+    NSLog(@"Detail bus info");
+}
 
 #pragma mark MKMapView delegate methods
 
@@ -103,7 +85,7 @@
 
     BusAnnotation *busAnnotation = (BusAnnotation *)annotation;
 
-    MKPinAnnotationView *pinView = [[MKPinAnnotationView alloc] initWithAnnotation:busAnnotation reuseIdentifier:@"Identifier"];
+    MKPinAnnotationView *pinView = [[MKPinAnnotationView alloc] initWithAnnotation:busAnnotation reuseIdentifier:[NSString stringWithFormat:@"%@", busAnnotation.id]];
     pinView.canShowCallout = YES;
     
     if ([annotation class] == [BusAnnotation class]) {
@@ -112,9 +94,19 @@
         pinView.pinColor = MKPinAnnotationColorGreen;
     }
     
-    //pinView.image = [self busImageForHeading:busAnnotation.heading];
-    
     return pinView;
 }
+
+- (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view {
+    NSObject<MKAnnotation> *annotation = view.annotation;
+    if ([annotation class] == [BusAnnotation class]) {
+        BusAnnotation *busAnnotation = (BusAnnotation *)annotation;
+        [self detailInformationForBusAnnotation:busAnnotation];
+    } else if ([annotation class] == [StopAnnotation class]){
+        StopAnnotation *stopAnnotation = (StopAnnotation *)annotation;
+        [self detailInformationForStopAnnotation:stopAnnotation];
+    }
+}
+
 
 @end
