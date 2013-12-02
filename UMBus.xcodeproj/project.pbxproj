@@ -53,6 +53,15 @@
 		ABEDEBB2184C266D00B82E59 /* bus315.png in Resources */ = {isa = PBXBuildFile; fileRef = ABEDEBAA184C266D00B82E59 /* bus315.png */; };
 		ABEDEBB5184C336C00B82E59 /* Stop.m in Sources */ = {isa = PBXBuildFile; fileRef = ABEDEBB4184C336C00B82E59 /* Stop.m */; };
 		ABEDEBB8184C350400B82E59 /* StopAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = ABEDEBB7184C350400B82E59 /* StopAnnotation.m */; };
+		ABEDEBBE184C3BE900B82E59 /* AnnoucementsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABEDEBBD184C3BE900B82E59 /* AnnoucementsViewController.m */; };
+		ABEDEBC1184C3CA000B82E59 /* AnnouncementsViewControllerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ABEDEBC0184C3CA000B82E59 /* AnnouncementsViewControllerModel.m */; };
+		ABEDEBC4184C3CCF00B82E59 /* Announcement.m in Sources */ = {isa = PBXBuildFile; fileRef = ABEDEBC3184C3CCF00B82E59 /* Announcement.m */; };
+		ABEDEBC7184C3F3800B82E59 /* AnnouncementCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ABEDEBC6184C3F3800B82E59 /* AnnouncementCell.m */; };
+		ABEDEBCA184C3F4600B82E59 /* AnnouncementCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ABEDEBC9184C3F4600B82E59 /* AnnouncementCellModel.m */; };
+		ABEDEBD3184C42ED00B82E59 /* bus-tab.png in Resources */ = {isa = PBXBuildFile; fileRef = ABEDEBD1184C42ED00B82E59 /* bus-tab.png */; };
+		ABEDEBD4184C42ED00B82E59 /* bus-tab@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABEDEBD2184C42ED00B82E59 /* bus-tab@2x.png */; };
+		ABEDEBD7184C434A00B82E59 /* info-tab.png in Resources */ = {isa = PBXBuildFile; fileRef = ABEDEBD5184C434A00B82E59 /* info-tab.png */; };
+		ABEDEBD8184C434A00B82E59 /* info-tab@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABEDEBD6184C434A00B82E59 /* info-tab@2x.png */; };
 		CD61BCAC7D65417C8043BB2B /* libPods-UMBus.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 50576764A2E345BF9F69305F /* libPods-UMBus.a */; };
 /* End PBXBuildFile section */
 
@@ -113,6 +122,20 @@
 		ABEDEBB4184C336C00B82E59 /* Stop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Stop.m; sourceTree = "<group>"; };
 		ABEDEBB6184C350400B82E59 /* StopAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StopAnnotation.h; sourceTree = "<group>"; };
 		ABEDEBB7184C350400B82E59 /* StopAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StopAnnotation.m; sourceTree = "<group>"; };
+		ABEDEBBC184C3BE900B82E59 /* AnnoucementsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnnoucementsViewController.h; sourceTree = "<group>"; };
+		ABEDEBBD184C3BE900B82E59 /* AnnoucementsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnnoucementsViewController.m; sourceTree = "<group>"; };
+		ABEDEBBF184C3CA000B82E59 /* AnnouncementsViewControllerModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnnouncementsViewControllerModel.h; sourceTree = "<group>"; };
+		ABEDEBC0184C3CA000B82E59 /* AnnouncementsViewControllerModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnnouncementsViewControllerModel.m; sourceTree = "<group>"; };
+		ABEDEBC2184C3CCF00B82E59 /* Announcement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Announcement.h; sourceTree = "<group>"; };
+		ABEDEBC3184C3CCF00B82E59 /* Announcement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Announcement.m; sourceTree = "<group>"; };
+		ABEDEBC5184C3F3800B82E59 /* AnnouncementCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnnouncementCell.h; sourceTree = "<group>"; };
+		ABEDEBC6184C3F3800B82E59 /* AnnouncementCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnnouncementCell.m; sourceTree = "<group>"; };
+		ABEDEBC8184C3F4600B82E59 /* AnnouncementCellModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnnouncementCellModel.h; sourceTree = "<group>"; };
+		ABEDEBC9184C3F4600B82E59 /* AnnouncementCellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnnouncementCellModel.m; sourceTree = "<group>"; };
+		ABEDEBD1184C42ED00B82E59 /* bus-tab.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bus-tab.png"; sourceTree = "<group>"; };
+		ABEDEBD2184C42ED00B82E59 /* bus-tab@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bus-tab@2x.png"; sourceTree = "<group>"; };
+		ABEDEBD5184C434A00B82E59 /* info-tab.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "info-tab.png"; sourceTree = "<group>"; };
+		ABEDEBD6184C434A00B82E59 /* info-tab@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "info-tab@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -207,6 +230,10 @@
 		ABEDEB13184BDA1B00B82E59 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				ABEDEBD1184C42ED00B82E59 /* bus-tab.png */,
+				ABEDEBD2184C42ED00B82E59 /* bus-tab@2x.png */,
+				ABEDEBD5184C434A00B82E59 /* info-tab.png */,
+				ABEDEBD6184C434A00B82E59 /* info-tab@2x.png */,
 				ABEDEBA3184C266D00B82E59 /* bus_90.png */,
 				ABEDEBA4184C266D00B82E59 /* bus0.png */,
 				ABEDEBA5184C266D00B82E59 /* bus45.png */,
@@ -278,6 +305,8 @@
 				ABEDEB89184C103B00B82E59 /* Bus.m */,
 				ABEDEBB3184C336C00B82E59 /* Stop.h */,
 				ABEDEBB4184C336C00B82E59 /* Stop.m */,
+				ABEDEBC2184C3CCF00B82E59 /* Announcement.h */,
+				ABEDEBC3184C3CCF00B82E59 /* Announcement.m */,
 				ABEDEB9E184C139100B82E59 /* BusAnnotation.h */,
 				ABEDEB9F184C139100B82E59 /* BusAnnotation.m */,
 				ABEDEBB6184C350400B82E59 /* StopAnnotation.h */,
@@ -302,6 +331,10 @@
 			children = (
 				ABEDEB90184C103B00B82E59 /* MapViewController.h */,
 				ABEDEB91184C103B00B82E59 /* MapViewController.m */,
+				ABEDEBBC184C3BE900B82E59 /* AnnoucementsViewController.h */,
+				ABEDEBBD184C3BE900B82E59 /* AnnoucementsViewController.m */,
+				ABEDEBC5184C3F3800B82E59 /* AnnouncementCell.h */,
+				ABEDEBC6184C3F3800B82E59 /* AnnouncementCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -311,6 +344,10 @@
 			children = (
 				ABEDEB9B184C105200B82E59 /* MapViewControllerModel.h */,
 				ABEDEB9C184C105200B82E59 /* MapViewControllerModel.m */,
+				ABEDEBBF184C3CA000B82E59 /* AnnouncementsViewControllerModel.h */,
+				ABEDEBC0184C3CA000B82E59 /* AnnouncementsViewControllerModel.m */,
+				ABEDEBC8184C3F4600B82E59 /* AnnouncementCellModel.h */,
+				ABEDEBC9184C3F4600B82E59 /* AnnouncementCellModel.m */,
 			);
 			path = "View Model";
 			sourceTree = "<group>";
@@ -398,13 +435,17 @@
 				ABEDEBA2184C1CA400B82E59 /* Bus.png in Resources */,
 				ABEDEBAB184C266D00B82E59 /* bus_90.png in Resources */,
 				ABEDEB29184BDA1B00B82E59 /* Images.xcassets in Resources */,
+				ABEDEBD7184C434A00B82E59 /* info-tab.png in Resources */,
+				ABEDEBD4184C42ED00B82E59 /* bus-tab@2x.png in Resources */,
 				ABEDEB2C184BDA1B00B82E59 /* InfoPlist.strings in Resources */,
 				ABEDEBAF184C266D00B82E59 /* bus180.png in Resources */,
 				ABEDEBB0184C266D00B82E59 /* bus225.png in Resources */,
 				ABEDEBB1184C266D00B82E59 /* bus270.png in Resources */,
 				ABEDEBB2184C266D00B82E59 /* bus315.png in Resources */,
 				ABEDEBAD184C266D00B82E59 /* bus45.png in Resources */,
+				ABEDEBD8184C434A00B82E59 /* info-tab@2x.png in Resources */,
 				ABEDEB2B184BDA1B00B82E59 /* Main_iPhone.storyboard in Resources */,
+				ABEDEBD3184C42ED00B82E59 /* bus-tab.png in Resources */,
 				ABEDEBAC184C266D00B82E59 /* bus0.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -472,14 +513,19 @@
 			files = (
 				ABEDEB9D184C105200B82E59 /* MapViewControllerModel.m in Sources */,
 				ABEDEBB8184C350400B82E59 /* StopAnnotation.m in Sources */,
+				ABEDEBC1184C3CA000B82E59 /* AnnouncementsViewControllerModel.m in Sources */,
+				ABEDEBBE184C3BE900B82E59 /* AnnoucementsViewController.m in Sources */,
 				ABEDEB97184C103B00B82E59 /* Bus.m in Sources */,
 				ABEDEB93184C103B00B82E59 /* AppDelegate.m in Sources */,
 				ABEDEB9A184C103B00B82E59 /* MapViewController.m in Sources */,
 				ABEDEB94184C103B00B82E59 /* main.m in Sources */,
+				ABEDEBC7184C3F3800B82E59 /* AnnouncementCell.m in Sources */,
 				ABEDEBB5184C336C00B82E59 /* Stop.m in Sources */,
 				ABEDEB99184C103B00B82E59 /* UMResponseSerializer.m in Sources */,
 				ABEDEBA0184C139100B82E59 /* BusAnnotation.m in Sources */,
 				ABEDEB98184C103B00B82E59 /* BusSession.m in Sources */,
+				ABEDEBC4184C3CCF00B82E59 /* Announcement.m in Sources */,
+				ABEDEBCA184C3F4600B82E59 /* AnnouncementCellModel.m in Sources */,
 				ABEDEB3A184BE0D500B82E59 /* Data.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

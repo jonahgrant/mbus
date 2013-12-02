@@ -11,6 +11,7 @@
 #import "UMResponseSerializer.h"
 #import "Bus.h"
 #import "Stop.h"
+#import "Announcement.h"
 
 #define HandlerBlock(b) ((b) ? (^(AFHTTPRequestOperation *_, id x){ (b)(x); }) : NULL)
 
@@ -55,6 +56,14 @@
                success:HandlerBlock(success)
                failure:HandlerBlock(error)]
      setResponseSerializer:[Stop um_arrayResponseSerializer]];
+}
+
+- (void)fetchAnnouncementsWithSuccessBlock:(void(^)(NSArray *))success errorBlock:(UMErrorBlock)error {
+    [[self.manager GET:[self rootURLWithPath:@"/announcements"]
+            parameters:nil
+               success:HandlerBlock(success)
+               failure:HandlerBlock(error)]
+     setResponseSerializer:[Announcement um_arrayResponseSerializer]];
 }
 
 @end

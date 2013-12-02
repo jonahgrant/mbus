@@ -15,5 +15,6 @@ typedef void (^UMErrorBlock)(NSError *error);
 
 - (void)fetchBusLocationsWithSuccessBlock:(void(^)(NSArray *))success errorBlock:(UMErrorBlock)error;
 - (void)fetchStopsWithSuccessBlock:(void(^)(NSArray *))success errorBlock:(UMErrorBlock)error;
+- (void)fetchAnnouncementsWithSuccessBlock:(void(^)(NSArray *))success errorBlock:(UMErrorBlock)error;
 
 @end
