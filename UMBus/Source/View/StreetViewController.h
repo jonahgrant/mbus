@@ -6,10 +6,10 @@
 //  Copyright (c) 2013 Jonah Grant. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import <MapKit/MapKit.h>
 
 @interface StreetViewController : UIViewController
 
-- (instancetype)initWithCoordinate:(CLLocationCoordinate2D)coordinate;
+- (instancetype)initWithAnnotation:(NSObject<MKAnnotation> *)annotation;
 
 @end

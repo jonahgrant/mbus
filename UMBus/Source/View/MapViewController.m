@@ -67,8 +67,12 @@
     [_mapView setRegion:region animated:YES];
 }
 
+- (void)displayTray {
+    
+}
+
 - (void)detailInformationForStopAnnotation:(StopAnnotation *)annotation {
-    StreetViewController *streetViewController = [[StreetViewController alloc] initWithCoordinate:annotation.coordinate];
+    StreetViewController *streetViewController = [[StreetViewController alloc] initWithAnnotation:annotation];
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:streetViewController];
     [self presentViewController:navigationController animated:YES completion:NULL];
 }
@@ -92,12 +96,14 @@
         pinView.pinColor = MKPinAnnotationColorRed;
     } else if ([annotation class] == [StopAnnotation class]) {
         pinView.pinColor = MKPinAnnotationColorGreen;
+        pinView.canShowCallout = YES;
+        pinView.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
     }
     
     return pinView;
 }
 
-- (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view {
+- (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control {
     NSObject<MKAnnotation> *annotation = view.annotation;
     if ([annotation class] == [BusAnnotation class]) {
         BusAnnotation *busAnnotation = (BusAnnotation *)annotation;
@@ -107,6 +113,18 @@
         [self detailInformationForStopAnnotation:stopAnnotation];
     }
 }
+
+/*
+- (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view {
+    NSObject<MKAnnotation> *annotation = view.annotation;
+    if ([annotation class] == [BusAnnotation class]) {
+        BusAnnotation *busAnnotation = (BusAnnotation *)annotation;
+        [self detailInformationForBusAnnotation:busAnnotation];
+    } else if ([annotation class] == [StopAnnotation class]){
+        StopAnnotation *stopAnnotation = (StopAnnotation *)annotation;
+        //[self detailInformationForStopAnnotation:stopAnnotation];
+    }
+}*/
 
 
 @end
