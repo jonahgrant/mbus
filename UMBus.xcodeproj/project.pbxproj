@@ -22,6 +22,8 @@
 
 /* Begin PBXBuildFile section */
 		AB2C4C24184D1F0C001E2EA2 /* StreetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB2C4C23184D1F0C001E2EA2 /* StreetViewController.m */; };
+		AB2C4C27184D49A5001E2EA2 /* street-view-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = AB2C4C25184D49A5001E2EA2 /* street-view-icon.png */; };
+		AB2C4C28184D49A5001E2EA2 /* street-view-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AB2C4C26184D49A5001E2EA2 /* street-view-icon@2x.png */; };
 		ABEDEAD8184BD90D00B82E59 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABEDEAD7184BD90D00B82E59 /* Foundation.framework */; };
 		ABEDEADA184BD90D00B82E59 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABEDEAD9184BD90D00B82E59 /* CoreGraphics.framework */; };
 		ABEDEADC184BD90D00B82E59 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABEDEADB184BD90D00B82E59 /* UIKit.framework */; };
@@ -80,6 +82,8 @@
 		A3F6F18FC78B47FB969ACFE4 /* Pods-UMBus.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UMBus.xcconfig"; path = "Pods/Pods-UMBus.xcconfig"; sourceTree = "<group>"; };
 		AB2C4C22184D1F0C001E2EA2 /* StreetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StreetViewController.h; sourceTree = "<group>"; };
 		AB2C4C23184D1F0C001E2EA2 /* StreetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StreetViewController.m; sourceTree = "<group>"; };
+		AB2C4C25184D49A5001E2EA2 /* street-view-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "street-view-icon.png"; sourceTree = "<group>"; };
+		AB2C4C26184D49A5001E2EA2 /* street-view-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "street-view-icon@2x.png"; sourceTree = "<group>"; };
 		ABEDEAD4184BD90D00B82E59 /* UMBus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UMBus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABEDEAD7184BD90D00B82E59 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		ABEDEAD9184BD90D00B82E59 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -231,6 +235,8 @@
 		ABEDEB13184BDA1B00B82E59 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				AB2C4C25184D49A5001E2EA2 /* street-view-icon.png */,
+				AB2C4C26184D49A5001E2EA2 /* street-view-icon@2x.png */,
 				ABEDEBD1184C42ED00B82E59 /* bus-tab.png */,
 				ABEDEBD2184C42ED00B82E59 /* bus-tab@2x.png */,
 				ABEDEBD5184C434A00B82E59 /* info-tab.png */,
@@ -440,11 +446,13 @@
 				ABEDEBD7184C434A00B82E59 /* info-tab.png in Resources */,
 				ABEDEBD4184C42ED00B82E59 /* bus-tab@2x.png in Resources */,
 				ABEDEB2C184BDA1B00B82E59 /* InfoPlist.strings in Resources */,
+				AB2C4C27184D49A5001E2EA2 /* street-view-icon.png in Resources */,
 				ABEDEBAF184C266D00B82E59 /* bus180.png in Resources */,
 				ABEDEBB0184C266D00B82E59 /* bus225.png in Resources */,
 				ABEDEBB1184C266D00B82E59 /* bus270.png in Resources */,
 				ABEDEBB2184C266D00B82E59 /* bus315.png in Resources */,
 				ABEDEBAD184C266D00B82E59 /* bus45.png in Resources */,
+				AB2C4C28184D49A5001E2EA2 /* street-view-icon@2x.png in Resources */,
 				ABEDEBD8184C434A00B82E59 /* info-tab@2x.png in Resources */,
 				ABEDEB2B184BDA1B00B82E59 /* Main_iPhone.storyboard in Resources */,
 				ABEDEBD3184C42ED00B82E59 /* bus-tab.png in Resources */,

@@ -77,7 +77,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yx4-nW-c4e" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="539" y="266"/>
+            <point key="canvasLocation" x="600" y="274"/>
         </scene>
         <!--Map View Controller - First-->
         <scene sceneID="W3I-pn-N6e">
@@ -105,11 +105,20 @@
                     <navigationItem key="navigationItem" id="UQW-H0-950"/>
                     <connections>
                         <outlet property="mapView" destination="cZK-wI-bZt" id="iZM-Yl-Ev2"/>
+                        <outlet property="streetViewBarButtonItem" destination="Ynm-cZ-za5" id="6Rd-lV-cjW"/>
+                        <outlet property="toolTray" destination="K1I-zo-UiL" id="Ik1-nP-6mA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qh2-T1-AhA" sceneMemberID="firstResponder"/>
+                <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="K1I-zo-UiL">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                    <items>
+                        <barButtonItem title="Street View" id="Ynm-cZ-za5"/>
+                    </items>
+                </toolbar>
             </objects>
-            <point key="canvasLocation" x="600" y="-445"/>
+            <point key="canvasLocation" x="600" y="-409"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Vex-rW-GRa">

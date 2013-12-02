@@ -18,6 +18,8 @@
 @interface MapViewController () <MKMapViewDelegate>
 
 @property (strong, nonatomic) IBOutlet MKMapView *mapView;
+@property (strong, nonatomic) IBOutlet UIToolbar *toolTray;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *streetViewBarButtonItem;
 
 @end
 
@@ -35,12 +37,17 @@
     [self.model fetchBuses];
     [self.model fetchStops];
     
+    [_streetViewBarButtonItem setAction:@selector(displayStreetView)];
+    
+    [self.toolTray setItems:@[_streetViewBarButtonItem]];
+    self.toolTray.frame = CGRectMake(0, self.view.frame.size.height + 44, self.view.frame.size.width, 44);
+    [self.view insertSubview:self.toolTray aboveSubview:self.mapView];
+    
     [RACObserve(self, model.busAnnotations) subscribeNext:^(NSDictionary *annotations) {
         if (annotations) {
             for (Bus *bus in self.model.buses) {
                 BusAnnotation *annotation = [annotations objectForKey:bus.id];
                 [self.mapView addAnnotation:annotation];
-                //[self updateImageForAnnotation:annotation];
             }
         }
     }];
@@ -68,13 +75,33 @@
 }
 
 - (void)displayTray {
-    
+    [UIView animateWithDuration:0.5
+                     animations:^ {
+                         self.toolTray.frame = CGRectMake(0,
+                                                          self.view.frame.size.height - self.tabBarController.tabBar.frame.size.height - self.toolTray.frame.size.height,
+                                                          self.toolTray.frame.size.width,
+                                                          self.toolTray.frame.size.height);
+                     } completion:NULL];
+}
+
+- (void)dismissTray {
+    [UIView animateWithDuration:0.5
+                     animations:^ {
+                         self.toolTray.frame = CGRectMake(0,
+                                                          self.view.frame.size.height - self.tabBarController.tabBar.frame.size.height + self.toolTray.frame.size.height,
+                                                          self.toolTray.frame.size.width,
+                                                          self.toolTray.frame.size.height);
+                     } completion:NULL];
+}
+
+- (void)displayStreetView {
+    StreetViewController *streetViewController = [[StreetViewController alloc] initWithAnnotation:self.mapView.selectedAnnotations.firstObject];
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:streetViewController];
+    [self presentViewController:navigationController animated:YES completion:NULL];
 }
 
 - (void)detailInformationForStopAnnotation:(StopAnnotation *)annotation {
-    StreetViewController *streetViewController = [[StreetViewController alloc] initWithAnnotation:annotation];
-    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:streetViewController];
-    [self presentViewController:navigationController animated:YES completion:NULL];
+    [self displayTray];
 }
 
 - (void)detailInformationForBusAnnotation:(BusAnnotation *)annotation {
@@ -96,14 +123,16 @@
         pinView.pinColor = MKPinAnnotationColorRed;
     } else if ([annotation class] == [StopAnnotation class]) {
         pinView.pinColor = MKPinAnnotationColorGreen;
-        pinView.canShowCallout = YES;
-        pinView.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
     }
     
     return pinView;
 }
 
-- (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control {
+- (void)mapView:(MKMapView *)mapView didDeselectAnnotationView:(MKAnnotationView *)view {
+    [self dismissTray];
+}
+
+- (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view {
     NSObject<MKAnnotation> *annotation = view.annotation;
     if ([annotation class] == [BusAnnotation class]) {
         BusAnnotation *busAnnotation = (BusAnnotation *)annotation;
@@ -113,18 +142,5 @@
         [self detailInformationForStopAnnotation:stopAnnotation];
     }
 }
-
-/*
-- (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view {
-    NSObject<MKAnnotation> *annotation = view.annotation;
-    if ([annotation class] == [BusAnnotation class]) {
-        BusAnnotation *busAnnotation = (BusAnnotation *)annotation;
-        [self detailInformationForBusAnnotation:busAnnotation];
-    } else if ([annotation class] == [StopAnnotation class]){
-        StopAnnotation *stopAnnotation = (StopAnnotation *)annotation;
-        //[self detailInformationForStopAnnotation:stopAnnotation];
-    }
-}*/
-
 
 @end
