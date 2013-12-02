@@ -45,3 +45,6 @@ The project may also move to an alternate map provider that offers more flexibil
 ![Announcement](https://dl.dropboxusercontent.com/u/2177718/Screen%20Shot%202013-12-01%20at%2010.45.44%20PM.png "Announcement")
 
 		
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/jonahgrant/um-magic-bus/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
