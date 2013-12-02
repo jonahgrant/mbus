@@ -14,5 +14,6 @@ typedef void (^UMErrorBlock)(NSError *error);
 @interface BusSession : NSObject
 
 - (void)fetchBusLocationsWithSuccessBlock:(void(^)(NSArray *))success errorBlock:(UMErrorBlock)error;
+- (void)fetchStopsWithSuccessBlock:(void(^)(NSArray *))success errorBlock:(UMErrorBlock)error;
 
 @end

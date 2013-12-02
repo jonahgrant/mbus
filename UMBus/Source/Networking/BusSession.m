@@ -10,6 +10,7 @@
 #import "AFHTTPRequestOperationManager.h"
 #import "UMResponseSerializer.h"
 #import "Bus.h"
+#import "Stop.h"
 
 #define HandlerBlock(b) ((b) ? (^(AFHTTPRequestOperation *_, id x){ (b)(x); }) : NULL)
 
@@ -46,6 +47,14 @@
                success:HandlerBlock(success)
                failure:HandlerBlock(error)]
      setResponseSerializer:[Bus um_arrayResponseSerializer]];
+}
+
+- (void)fetchStopsWithSuccessBlock:(void(^)(NSArray *))success errorBlock:(UMErrorBlock)error {
+    [[self.manager GET:[self rootURLWithPath:@"/stops"]
+            parameters:nil
+               success:HandlerBlock(success)
+               failure:HandlerBlock(error)]
+     setResponseSerializer:[Stop um_arrayResponseSerializer]];
 }
 
 @end

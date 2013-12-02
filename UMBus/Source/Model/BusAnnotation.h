@@ -8,10 +8,12 @@
 
 #import <MapKit/MapKit.h>
 
+@class Bus;
+
 @interface BusAnnotation : NSObject <MKAnnotation>
 
 @property (nonatomic) CGFloat heading;
 
-- (instancetype)initWithCoordinate:(CLLocationCoordinate2D)coordinate heading:(CGFloat)heading;
+- (instancetype)initWithBus:(Bus *)bus;
 
 @end

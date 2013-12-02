@@ -11,9 +11,10 @@
 @interface MapViewControllerModel : NSObject
 
 @property (nonatomic) BOOL continuouslyUpdate;
-@property (strong, nonatomic) NSArray *buses;
-@property (strong, nonatomic) NSDictionary *annotations, *updatedAnnotations;
+@property (strong, nonatomic) NSArray *buses, *stops;
+@property (strong, nonatomic) NSDictionary *busAnnotations, *updatedBusAnnotations, *stopAnnotations;
 
 - (void)fetchBuses;
+- (void)fetchStops;
 
 @end

@@ -42,6 +42,17 @@
 		ABEDEB9A184C103B00B82E59 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABEDEB91184C103B00B82E59 /* MapViewController.m */; };
 		ABEDEB9D184C105200B82E59 /* MapViewControllerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ABEDEB9C184C105200B82E59 /* MapViewControllerModel.m */; };
 		ABEDEBA0184C139100B82E59 /* BusAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = ABEDEB9F184C139100B82E59 /* BusAnnotation.m */; };
+		ABEDEBA2184C1CA400B82E59 /* Bus.png in Resources */ = {isa = PBXBuildFile; fileRef = ABEDEBA1184C1CA400B82E59 /* Bus.png */; };
+		ABEDEBAB184C266D00B82E59 /* bus_90.png in Resources */ = {isa = PBXBuildFile; fileRef = ABEDEBA3184C266D00B82E59 /* bus_90.png */; };
+		ABEDEBAC184C266D00B82E59 /* bus0.png in Resources */ = {isa = PBXBuildFile; fileRef = ABEDEBA4184C266D00B82E59 /* bus0.png */; };
+		ABEDEBAD184C266D00B82E59 /* bus45.png in Resources */ = {isa = PBXBuildFile; fileRef = ABEDEBA5184C266D00B82E59 /* bus45.png */; };
+		ABEDEBAE184C266D00B82E59 /* bus135.png in Resources */ = {isa = PBXBuildFile; fileRef = ABEDEBA6184C266D00B82E59 /* bus135.png */; };
+		ABEDEBAF184C266D00B82E59 /* bus180.png in Resources */ = {isa = PBXBuildFile; fileRef = ABEDEBA7184C266D00B82E59 /* bus180.png */; };
+		ABEDEBB0184C266D00B82E59 /* bus225.png in Resources */ = {isa = PBXBuildFile; fileRef = ABEDEBA8184C266D00B82E59 /* bus225.png */; };
+		ABEDEBB1184C266D00B82E59 /* bus270.png in Resources */ = {isa = PBXBuildFile; fileRef = ABEDEBA9184C266D00B82E59 /* bus270.png */; };
+		ABEDEBB2184C266D00B82E59 /* bus315.png in Resources */ = {isa = PBXBuildFile; fileRef = ABEDEBAA184C266D00B82E59 /* bus315.png */; };
+		ABEDEBB5184C336C00B82E59 /* Stop.m in Sources */ = {isa = PBXBuildFile; fileRef = ABEDEBB4184C336C00B82E59 /* Stop.m */; };
+		ABEDEBB8184C350400B82E59 /* StopAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = ABEDEBB7184C350400B82E59 /* StopAnnotation.m */; };
 		CD61BCAC7D65417C8043BB2B /* libPods-UMBus.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 50576764A2E345BF9F69305F /* libPods-UMBus.a */; };
 /* End PBXBuildFile section */
 
@@ -89,6 +100,19 @@
 		ABEDEB9C184C105200B82E59 /* MapViewControllerModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewControllerModel.m; sourceTree = "<group>"; };
 		ABEDEB9E184C139100B82E59 /* BusAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusAnnotation.h; sourceTree = "<group>"; };
 		ABEDEB9F184C139100B82E59 /* BusAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusAnnotation.m; sourceTree = "<group>"; };
+		ABEDEBA1184C1CA400B82E59 /* Bus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Bus.png; sourceTree = "<group>"; };
+		ABEDEBA3184C266D00B82E59 /* bus_90.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bus_90.png; sourceTree = "<group>"; };
+		ABEDEBA4184C266D00B82E59 /* bus0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bus0.png; sourceTree = "<group>"; };
+		ABEDEBA5184C266D00B82E59 /* bus45.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bus45.png; sourceTree = "<group>"; };
+		ABEDEBA6184C266D00B82E59 /* bus135.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bus135.png; sourceTree = "<group>"; };
+		ABEDEBA7184C266D00B82E59 /* bus180.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bus180.png; sourceTree = "<group>"; };
+		ABEDEBA8184C266D00B82E59 /* bus225.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bus225.png; sourceTree = "<group>"; };
+		ABEDEBA9184C266D00B82E59 /* bus270.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bus270.png; sourceTree = "<group>"; };
+		ABEDEBAA184C266D00B82E59 /* bus315.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bus315.png; sourceTree = "<group>"; };
+		ABEDEBB3184C336C00B82E59 /* Stop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Stop.h; sourceTree = "<group>"; };
+		ABEDEBB4184C336C00B82E59 /* Stop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Stop.m; sourceTree = "<group>"; };
+		ABEDEBB6184C350400B82E59 /* StopAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StopAnnotation.h; sourceTree = "<group>"; };
+		ABEDEBB7184C350400B82E59 /* StopAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StopAnnotation.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,6 +207,15 @@
 		ABEDEB13184BDA1B00B82E59 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				ABEDEBA3184C266D00B82E59 /* bus_90.png */,
+				ABEDEBA4184C266D00B82E59 /* bus0.png */,
+				ABEDEBA5184C266D00B82E59 /* bus45.png */,
+				ABEDEBA6184C266D00B82E59 /* bus135.png */,
+				ABEDEBA7184C266D00B82E59 /* bus180.png */,
+				ABEDEBA8184C266D00B82E59 /* bus225.png */,
+				ABEDEBA9184C266D00B82E59 /* bus270.png */,
+				ABEDEBAA184C266D00B82E59 /* bus315.png */,
+				ABEDEBA1184C1CA400B82E59 /* Bus.png */,
 				ABEDEB14184BDA1B00B82E59 /* Images.xcassets */,
 			);
 			path = Images;
@@ -243,8 +276,12 @@
 			children = (
 				ABEDEB88184C103B00B82E59 /* Bus.h */,
 				ABEDEB89184C103B00B82E59 /* Bus.m */,
+				ABEDEBB3184C336C00B82E59 /* Stop.h */,
+				ABEDEBB4184C336C00B82E59 /* Stop.m */,
 				ABEDEB9E184C139100B82E59 /* BusAnnotation.h */,
 				ABEDEB9F184C139100B82E59 /* BusAnnotation.m */,
+				ABEDEBB6184C350400B82E59 /* StopAnnotation.h */,
+				ABEDEBB7184C350400B82E59 /* StopAnnotation.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -357,9 +394,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ABEDEBAE184C266D00B82E59 /* bus135.png in Resources */,
+				ABEDEBA2184C1CA400B82E59 /* Bus.png in Resources */,
+				ABEDEBAB184C266D00B82E59 /* bus_90.png in Resources */,
 				ABEDEB29184BDA1B00B82E59 /* Images.xcassets in Resources */,
 				ABEDEB2C184BDA1B00B82E59 /* InfoPlist.strings in Resources */,
+				ABEDEBAF184C266D00B82E59 /* bus180.png in Resources */,
+				ABEDEBB0184C266D00B82E59 /* bus225.png in Resources */,
+				ABEDEBB1184C266D00B82E59 /* bus270.png in Resources */,
+				ABEDEBB2184C266D00B82E59 /* bus315.png in Resources */,
+				ABEDEBAD184C266D00B82E59 /* bus45.png in Resources */,
 				ABEDEB2B184BDA1B00B82E59 /* Main_iPhone.storyboard in Resources */,
+				ABEDEBAC184C266D00B82E59 /* bus0.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -425,10 +471,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				ABEDEB9D184C105200B82E59 /* MapViewControllerModel.m in Sources */,
+				ABEDEBB8184C350400B82E59 /* StopAnnotation.m in Sources */,
 				ABEDEB97184C103B00B82E59 /* Bus.m in Sources */,
 				ABEDEB93184C103B00B82E59 /* AppDelegate.m in Sources */,
 				ABEDEB9A184C103B00B82E59 /* MapViewController.m in Sources */,
 				ABEDEB94184C103B00B82E59 /* main.m in Sources */,
+				ABEDEBB5184C336C00B82E59 /* Stop.m in Sources */,
 				ABEDEB99184C103B00B82E59 /* UMResponseSerializer.m in Sources */,
 				ABEDEBA0184C139100B82E59 /* BusAnnotation.m in Sources */,
 				ABEDEB98184C103B00B82E59 /* BusSession.m in Sources */,
