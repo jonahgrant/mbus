@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Mogenerator.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>5</integer>
+		</dict>
 		<key>UMBus.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -18,6 +23,16 @@
 			<true/>
 		</dict>
 		<key>ABEDEAFA184BD90D00B82E59</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>ABEDEB3E184BE64700B82E59</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>ABEDEB42184BE67700B82E59</key>
 		<dict>
 			<key>primary</key>
 			<true/>

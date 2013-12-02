@@ -6,6 +6,20 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		ABEDEB42184BE67700B82E59 /* Mogenerator */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = ABEDEB43184BE67800B82E59 /* Build configuration list for PBXAggregateTarget "Mogenerator" */;
+			buildPhases = (
+				ABEDEB46184BE69100B82E59 /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = Mogenerator;
+			productName = Mogenerator;
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		ABEDEAD8184BD90D00B82E59 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABEDEAD7184BD90D00B82E59 /* Foundation.framework */; };
 		ABEDEADA184BD90D00B82E59 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABEDEAD9184BD90D00B82E59 /* CoreGraphics.framework */; };
@@ -18,11 +32,17 @@
 		ABEDEB29184BDA1B00B82E59 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ABEDEB14184BDA1B00B82E59 /* Images.xcassets */; };
 		ABEDEB2B184BDA1B00B82E59 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABEDEB17184BDA1B00B82E59 /* Main_iPhone.storyboard */; };
 		ABEDEB2C184BDA1B00B82E59 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = ABEDEB19184BDA1B00B82E59 /* InfoPlist.strings */; };
-		ABEDEB2D184BDA1B00B82E59 /* UMBus-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ABEDEB1B184BDA1B00B82E59 /* UMBus-Info.plist */; };
-		ABEDEB2E184BDA1B00B82E59 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = ABEDEB20184BDA1B00B82E59 /* AppDelegate.m */; };
-		ABEDEB2F184BDA1B00B82E59 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = ABEDEB21184BDA1B00B82E59 /* main.m */; };
-		ABEDEB34184BDB2E00B82E59 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABEDEB33184BDB2D00B82E59 /* MapViewController.m */; };
 		ABEDEB36184BDC0A00B82E59 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABEDEB35184BDC0A00B82E59 /* MapKit.framework */; };
+		ABEDEB3A184BE0D500B82E59 /* Data.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = ABEDEB38184BE0D500B82E59 /* Data.xcdatamodeld */; };
+		ABEDEB93184C103B00B82E59 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = ABEDEB7F184C103B00B82E59 /* AppDelegate.m */; };
+		ABEDEB94184C103B00B82E59 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = ABEDEB80184C103B00B82E59 /* main.m */; };
+		ABEDEB97184C103B00B82E59 /* Bus.m in Sources */ = {isa = PBXBuildFile; fileRef = ABEDEB89184C103B00B82E59 /* Bus.m */; };
+		ABEDEB98184C103B00B82E59 /* BusSession.m in Sources */ = {isa = PBXBuildFile; fileRef = ABEDEB8C184C103B00B82E59 /* BusSession.m */; };
+		ABEDEB99184C103B00B82E59 /* UMResponseSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = ABEDEB8E184C103B00B82E59 /* UMResponseSerializer.m */; };
+		ABEDEB9A184C103B00B82E59 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABEDEB91184C103B00B82E59 /* MapViewController.m */; };
+		ABEDEB9D184C105200B82E59 /* MapViewControllerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ABEDEB9C184C105200B82E59 /* MapViewControllerModel.m */; };
+		ABEDEBA0184C139100B82E59 /* BusAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = ABEDEB9F184C139100B82E59 /* BusAnnotation.m */; };
+		CD61BCAC7D65417C8043BB2B /* libPods-UMBus.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 50576764A2E345BF9F69305F /* libPods-UMBus.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +56,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		50576764A2E345BF9F69305F /* libPods-UMBus.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-UMBus.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A3F6F18FC78B47FB969ACFE4 /* Pods-UMBus.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UMBus.xcconfig"; path = "Pods/Pods-UMBus.xcconfig"; sourceTree = "<group>"; };
 		ABEDEAD4184BD90D00B82E59 /* UMBus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UMBus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABEDEAD7184BD90D00B82E59 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		ABEDEAD9184BD90D00B82E59 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -49,13 +71,24 @@
 		ABEDEB17184BDA1B00B82E59 /* Main_iPhone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main_iPhone.storyboard; sourceTree = "<group>"; };
 		ABEDEB1A184BDA1B00B82E59 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		ABEDEB1B184BDA1B00B82E59 /* UMBus-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "UMBus-Info.plist"; sourceTree = "<group>"; };
-		ABEDEB1F184BDA1B00B82E59 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		ABEDEB20184BDA1B00B82E59 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		ABEDEB21184BDA1B00B82E59 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		ABEDEB22184BDA1B00B82E59 /* UMBus-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UMBus-Prefix.pch"; sourceTree = "<group>"; };
-		ABEDEB32184BDB2D00B82E59 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
-		ABEDEB33184BDB2D00B82E59 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		ABEDEB35184BDC0A00B82E59 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		ABEDEB39184BE0D500B82E59 /* Data.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Data.xcdatamodel; sourceTree = "<group>"; };
+		ABEDEB7E184C103B00B82E59 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		ABEDEB7F184C103B00B82E59 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		ABEDEB80184C103B00B82E59 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		ABEDEB81184C103B00B82E59 /* UMBus-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UMBus-Prefix.pch"; sourceTree = "<group>"; };
+		ABEDEB88184C103B00B82E59 /* Bus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bus.h; sourceTree = "<group>"; };
+		ABEDEB89184C103B00B82E59 /* Bus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Bus.m; sourceTree = "<group>"; };
+		ABEDEB8B184C103B00B82E59 /* BusSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusSession.h; sourceTree = "<group>"; };
+		ABEDEB8C184C103B00B82E59 /* BusSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusSession.m; sourceTree = "<group>"; };
+		ABEDEB8D184C103B00B82E59 /* UMResponseSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMResponseSerializer.h; sourceTree = "<group>"; };
+		ABEDEB8E184C103B00B82E59 /* UMResponseSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UMResponseSerializer.m; sourceTree = "<group>"; };
+		ABEDEB90184C103B00B82E59 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
+		ABEDEB91184C103B00B82E59 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
+		ABEDEB9B184C105200B82E59 /* MapViewControllerModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewControllerModel.h; sourceTree = "<group>"; };
+		ABEDEB9C184C105200B82E59 /* MapViewControllerModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewControllerModel.m; sourceTree = "<group>"; };
+		ABEDEB9E184C139100B82E59 /* BusAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusAnnotation.h; sourceTree = "<group>"; };
+		ABEDEB9F184C139100B82E59 /* BusAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusAnnotation.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +100,7 @@
 				ABEDEADA184BD90D00B82E59 /* CoreGraphics.framework in Frameworks */,
 				ABEDEADC184BD90D00B82E59 /* UIKit.framework in Frameworks */,
 				ABEDEAD8184BD90D00B82E59 /* Foundation.framework in Frameworks */,
+				CD61BCAC7D65417C8043BB2B /* libPods-UMBus.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -86,11 +120,12 @@
 		ABEDEACB184BD90D00B82E59 = {
 			isa = PBXGroup;
 			children = (
-				ABEDEB1C184BDA1B00B82E59 /* Source */,
+				ABEDEB7B184C103B00B82E59 /* Source */,
 				ABEDEB12184BDA1B00B82E59 /* Resources */,
 				ABEDEB02184BD90D00B82E59 /* UMBusTests */,
 				ABEDEAD6184BD90D00B82E59 /* Frameworks */,
 				ABEDEAD5184BD90D00B82E59 /* Products */,
+				A3F6F18FC78B47FB969ACFE4 /* Pods-UMBus.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -111,6 +146,7 @@
 				ABEDEAD9184BD90D00B82E59 /* CoreGraphics.framework */,
 				ABEDEADB184BD90D00B82E59 /* UIKit.framework */,
 				ABEDEAFC184BD90D00B82E59 /* XCTest.framework */,
+				50576764A2E345BF9F69305F /* libPods-UMBus.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -165,62 +201,81 @@
 			children = (
 				ABEDEB19184BDA1B00B82E59 /* InfoPlist.strings */,
 				ABEDEB1B184BDA1B00B82E59 /* UMBus-Info.plist */,
+				ABEDEB38184BE0D500B82E59 /* Data.xcdatamodeld */,
 			);
 			path = Misc;
 			sourceTree = "<group>";
 		};
-		ABEDEB1C184BDA1B00B82E59 /* Source */ = {
+		ABEDEB7B184C103B00B82E59 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				ABEDEB37184BDE9200B82E59 /* Networking */,
-				ABEDEB1D184BDA1B00B82E59 /* Misc */,
-				ABEDEB23184BDA1B00B82E59 /* Models */,
-				ABEDEB24184BDA1B00B82E59 /* View Controllers */,
+				ABEDEB7C184C103B00B82E59 /* Misc */,
+				ABEDEB82184C103B00B82E59 /* Model */,
+				ABEDEB8A184C103B00B82E59 /* Networking */,
+				ABEDEB8F184C103B00B82E59 /* View */,
+				ABEDEB92184C103B00B82E59 /* View Model */,
 			);
 			name = Source;
 			path = UMBus/Source;
 			sourceTree = "<group>";
 		};
-		ABEDEB1D184BDA1B00B82E59 /* Misc */ = {
+		ABEDEB7C184C103B00B82E59 /* Misc */ = {
 			isa = PBXGroup;
 			children = (
-				ABEDEB1E184BDA1B00B82E59 /* App Delegate */,
-				ABEDEB21184BDA1B00B82E59 /* main.m */,
-				ABEDEB22184BDA1B00B82E59 /* UMBus-Prefix.pch */,
+				ABEDEB7D184C103B00B82E59 /* App Delegate */,
+				ABEDEB80184C103B00B82E59 /* main.m */,
+				ABEDEB81184C103B00B82E59 /* UMBus-Prefix.pch */,
 			);
 			path = Misc;
 			sourceTree = "<group>";
 		};
-		ABEDEB1E184BDA1B00B82E59 /* App Delegate */ = {
+		ABEDEB7D184C103B00B82E59 /* App Delegate */ = {
 			isa = PBXGroup;
 			children = (
-				ABEDEB1F184BDA1B00B82E59 /* AppDelegate.h */,
-				ABEDEB20184BDA1B00B82E59 /* AppDelegate.m */,
+				ABEDEB7E184C103B00B82E59 /* AppDelegate.h */,
+				ABEDEB7F184C103B00B82E59 /* AppDelegate.m */,
 			);
 			path = "App Delegate";
 			sourceTree = "<group>";
 		};
-		ABEDEB23184BDA1B00B82E59 /* Models */ = {
+		ABEDEB82184C103B00B82E59 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				ABEDEB88184C103B00B82E59 /* Bus.h */,
+				ABEDEB89184C103B00B82E59 /* Bus.m */,
+				ABEDEB9E184C139100B82E59 /* BusAnnotation.h */,
+				ABEDEB9F184C139100B82E59 /* BusAnnotation.m */,
 			);
-			path = Models;
+			path = Model;
 			sourceTree = "<group>";
 		};
-		ABEDEB24184BDA1B00B82E59 /* View Controllers */ = {
+		ABEDEB8A184C103B00B82E59 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
-				ABEDEB32184BDB2D00B82E59 /* MapViewController.h */,
-				ABEDEB33184BDB2D00B82E59 /* MapViewController.m */,
-			);
-			path = "View Controllers";
-			sourceTree = "<group>";
-		};
-		ABEDEB37184BDE9200B82E59 /* Networking */ = {
-			isa = PBXGroup;
-			children = (
+				ABEDEB8B184C103B00B82E59 /* BusSession.h */,
+				ABEDEB8C184C103B00B82E59 /* BusSession.m */,
+				ABEDEB8D184C103B00B82E59 /* UMResponseSerializer.h */,
+				ABEDEB8E184C103B00B82E59 /* UMResponseSerializer.m */,
 			);
 			path = Networking;
+			sourceTree = "<group>";
+		};
+		ABEDEB8F184C103B00B82E59 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				ABEDEB90184C103B00B82E59 /* MapViewController.h */,
+				ABEDEB91184C103B00B82E59 /* MapViewController.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		ABEDEB92184C103B00B82E59 /* View Model */ = {
+			isa = PBXGroup;
+			children = (
+				ABEDEB9B184C105200B82E59 /* MapViewControllerModel.h */,
+				ABEDEB9C184C105200B82E59 /* MapViewControllerModel.m */,
+			);
+			path = "View Model";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -230,9 +285,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = ABEDEB0C184BD90D00B82E59 /* Build configuration list for PBXNativeTarget "UMBus" */;
 			buildPhases = (
+				BFE161954AD44ED5AD996A15 /* Check Pods Manifest.lock */,
 				ABEDEAD0184BD90D00B82E59 /* Sources */,
 				ABEDEAD1184BD90D00B82E59 /* Frameworks */,
 				ABEDEAD2184BD90D00B82E59 /* Resources */,
+				8074FC74948949289C6CA55A /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -290,6 +347,7 @@
 			targets = (
 				ABEDEAD3184BD90D00B82E59 /* UMBus */,
 				ABEDEAFA184BD90D00B82E59 /* UMBusTests */,
+				ABEDEB42184BE67700B82E59 /* Mogenerator */,
 			);
 		};
 /* End PBXProject section */
@@ -300,7 +358,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				ABEDEB29184BDA1B00B82E59 /* Images.xcassets in Resources */,
-				ABEDEB2D184BDA1B00B82E59 /* UMBus-Info.plist in Resources */,
 				ABEDEB2C184BDA1B00B82E59 /* InfoPlist.strings in Resources */,
 				ABEDEB2B184BDA1B00B82E59 /* Main_iPhone.storyboard in Resources */,
 			);
@@ -316,14 +373,66 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		8074FC74948949289C6CA55A /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-UMBus-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		ABEDEB46184BE69100B82E59 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "mogenerator -m UMBus/Resources/Misc/Data.xcdatamodeld/Data.xcdatamodel -O $PROJECT_DIR/$PROJECT_NAME/Source/Models --machine-dir $PROJECT_DIR/$PROJECT_NAME/Source/Models/Generated --template-var arc=true\n";
+		};
+		BFE161954AD44ED5AD996A15 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		ABEDEAD0184BD90D00B82E59 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ABEDEB34184BDB2E00B82E59 /* MapViewController.m in Sources */,
-				ABEDEB2F184BDA1B00B82E59 /* main.m in Sources */,
-				ABEDEB2E184BDA1B00B82E59 /* AppDelegate.m in Sources */,
+				ABEDEB9D184C105200B82E59 /* MapViewControllerModel.m in Sources */,
+				ABEDEB97184C103B00B82E59 /* Bus.m in Sources */,
+				ABEDEB93184C103B00B82E59 /* AppDelegate.m in Sources */,
+				ABEDEB9A184C103B00B82E59 /* MapViewController.m in Sources */,
+				ABEDEB94184C103B00B82E59 /* main.m in Sources */,
+				ABEDEB99184C103B00B82E59 /* UMResponseSerializer.m in Sources */,
+				ABEDEBA0184C139100B82E59 /* BusAnnotation.m in Sources */,
+				ABEDEB98184C103B00B82E59 /* BusSession.m in Sources */,
+				ABEDEB3A184BE0D500B82E59 /* Data.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -441,6 +550,7 @@
 		};
 		ABEDEB0D184BD90D00B82E59 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A3F6F18FC78B47FB969ACFE4 /* Pods-UMBus.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -454,6 +564,7 @@
 		};
 		ABEDEB0E184BD90D00B82E59 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A3F6F18FC78B47FB969ACFE4 /* Pods-UMBus.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -507,6 +618,20 @@
 			};
 			name = Release;
 		};
+		ABEDEB44184BE67800B82E59 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		ABEDEB45184BE67800B82E59 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -537,7 +662,29 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		ABEDEB43184BE67800B82E59 /* Build configuration list for PBXAggregateTarget "Mogenerator" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ABEDEB44184BE67800B82E59 /* Debug */,
+				ABEDEB45184BE67800B82E59 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		ABEDEB38184BE0D500B82E59 /* Data.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				ABEDEB39184BE0D500B82E59 /* Data.xcdatamodel */,
+			);
+			currentVersion = ABEDEB39184BE0D500B82E59 /* Data.xcdatamodel */;
+			path = Data.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = ABEDEACC184BD90D00B82E59 /* Project object */;
 }
