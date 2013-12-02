@@ -1,12 +1,19 @@
 # Magic Bus
 
-The University of Michigan has an awesome [bus tracking system](http://mbus.pts.umich.edu/) for students.  This is an implementation of that for iOS 7 (and up).
+The University of Michigan has an awesome [live bus tracking system](http://mbus.pts.umich.edu/) for students.  This is an implementation of that for iOS 7 (and up).
 
 This project runs on the [MVVM](http://en.wikipedia.org/wiki/Model_View_ViewModel) architecture, allowing abstraction of data-heavy code that would typically live in the view controller.  Because of this, we can test that data-heavy code where we couldn't easily before.
 
 Additionally, this project runs using [ReactiveCocoa](https://github.com/blog/1107-reactivecocoa-for-a-better-world).  ReactiveCocoa allows us to, among other things, manage constantly updating values with an abstracted version of KVO.  For example, this is used in ```MapViewController``` to track updating values of an NSDictionary named ```annotations``` that represents a dictionary of ```MKAnnotations```, each of which corresponding with the current location of a University of Michigan bus.  When the dictionary's value is changed, the annotations are re-plotted.
 
 NOTE: their API is in pre-release, so some endpoints are incomplete, nonexistent, or supply faulty data.
+
+![Live bus](https://dl.dropboxusercontent.com/u/2177718/Screen%20Shot%202013-12-01%20at%2010.45.55%20PM.png "Live bus")
+![Bus stop](https://dl.dropboxusercontent.com/u/2177718/Screen%20Shot%202013-12-01%20at%2010.45.47%20PM.png "Bus stop")
+![Announcement](https://dl.dropboxusercontent.com/u/2177718/Screen%20Shot%202013-12-01%20at%2010.45.44%20PM.png "Announcement")
+
+# To do
+The project currently only shows buses, bus stops, and announcements.  In the future, when the APIs are in place, it will show full routes and estimated time of arrival at each stop.
 
 # Setup
 
@@ -32,4 +39,6 @@ Run the project
 		
 		Select 'UMBus' target
 		Run
+		
+		
 		
