@@ -37,6 +37,8 @@ Run the project
 # To do
 The project currently only shows buses, bus stops, and announcements.  In the future, when the APIs are in place, it will show full routes and estimated time of arrival at each stop.
 
+The project may also move to an alternate map provider that offers more flexibility in terms of scalability, performance (specifically when handling large amounts of polylines and annotations).
+
 # Interface
 ![Live bus](https://dl.dropboxusercontent.com/u/2177718/Screen%20Shot%202013-12-01%20at%2010.45.55%20PM.png "Live bus")
 ![Bus stop](https://dl.dropboxusercontent.com/u/2177718/Screen%20Shot%202013-12-01%20at%2010.45.47%20PM.png "Bus stop")
