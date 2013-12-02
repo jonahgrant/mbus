@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "ACDDF669245E4151A1E2D6F6"
+               BlueprintIdentifier = "26DA0685BD734AF984A121F7"
                BuildableName = "libPods-UMBus-ReactiveCocoa.a"
                BlueprintName = "Pods-UMBus-ReactiveCocoa"
                ReferencedContainer = "container:Pods.xcodeproj">

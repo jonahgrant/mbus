@@ -9,6 +9,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-UMBus-Google-Maps-iOS-SDK.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-UMBus-Mantle.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -27,22 +32,27 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>4413DCAD153B473F97D2C189</key>
+		<key>1F8DE763862940829871C650</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>536D2BC7D9E941A6AE21443A</key>
+		<key>26DA0685BD734AF984A121F7</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>ACDDF669245E4151A1E2D6F6</key>
+		<key>839AC0CCD08C404EB57DB363</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>FA8F4F7DA5384860BE50FC54</key>
+		<key>A5103612648B40DFAB466723</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D49F4A10516F4B9B8CB7D55E</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -1,0 +1,2 @@
+PODS_UMBUS_GOOGLE_MAPS_IOS_SDK_FRAMEWORK_SEARCH_PATHS = "$(PODS_ROOT)/Google-Maps-iOS-SDK"
+PODS_UMBUS_GOOGLE_MAPS_IOS_SDK_OTHER_LDFLAGS = -lc++ -licucore -lz -framework AVFoundation -framework CoreData -framework CoreGraphics -framework CoreLocation -framework CoreText -framework GLKit -framework GoogleMaps -framework ImageIO -framework OpenGLES -framework QuartzCore -framework SystemConfiguration
