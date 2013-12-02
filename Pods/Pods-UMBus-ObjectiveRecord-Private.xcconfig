@@ -1,5 +1,0 @@
-#include "Pods-UMBus-ObjectiveRecord.xcconfig"
-GCC_PREPROCESSOR_DEFINITIONS = COCOAPODS=1
-HEADER_SEARCH_PATHS = "${PODS_ROOT}/BuildHeaders" "${PODS_ROOT}/BuildHeaders/ObjectiveRecord" "${PODS_ROOT}/Headers" "${PODS_ROOT}/Headers/AFNetworking" "${PODS_ROOT}/Headers/Mantle" "${PODS_ROOT}/Headers/ObjectiveRecord" "${PODS_ROOT}/Headers/ObjectiveSugar"
-OTHER_LDFLAGS = -ObjC ${PODS_UMBUS_OBJECTIVERECORD_OTHER_LDFLAGS}
-PODS_ROOT = ${SRCROOT}
