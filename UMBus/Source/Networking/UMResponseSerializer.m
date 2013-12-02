@@ -9,7 +9,7 @@
 #import "UMResponseSerializer.h"
 #import "Mantle.h"
 
-NSString * const LTCResponseSerializerErrorDomain = @"LTCResponseSerializerErrorDomain";
+NSString * const UMResponseSerializerErrorDomain = @"UMResponseSerializerErrorDomain";
 
 @interface UMResponseSerializer ()
 
@@ -44,7 +44,7 @@ NSString * const LTCResponseSerializerErrorDomain = @"LTCResponseSerializerError
         return responseObjects;
     } else {
         if (error) {
-            *error = [NSError errorWithDomain:LTCResponseSerializerErrorDomain
+            *error = [NSError errorWithDomain:UMResponseSerializerErrorDomain
                                          code:NSURLErrorBadServerResponse
                                      userInfo:nil];
         }
@@ -59,7 +59,7 @@ NSString * const LTCResponseSerializerErrorDomain = @"LTCResponseSerializerError
                                       error:error];
     } else {
         if (error) {
-            *error = [NSError errorWithDomain:LTCResponseSerializerErrorDomain
+            *error = [NSError errorWithDomain:UMResponseSerializerErrorDomain
                                          code:NSURLErrorBadServerResponse
                                      userInfo:nil];
         }
@@ -72,7 +72,7 @@ NSString * const LTCResponseSerializerErrorDomain = @"LTCResponseSerializerError
         return nil;
     } else {
         if (error) {
-            *error = [NSError errorWithDomain:LTCResponseSerializerErrorDomain
+            *error = [NSError errorWithDomain:UMResponseSerializerErrorDomain
                                          code:NSURLErrorBadServerResponse
                                      userInfo:nil];
         }

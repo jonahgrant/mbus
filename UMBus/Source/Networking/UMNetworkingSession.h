@@ -1,5 +1,5 @@
 //
-//  BusSession.h
+//  UMNetworkingSession.h
 //  UMBus
 //
 //  Created by Jonah Grant on 12/1/13.
@@ -11,7 +11,7 @@
 
 typedef void (^UMErrorBlock)(NSError *error);
 
-@interface BusSession : NSObject
+@interface UMNetworkingSession : NSObject
 
 - (void)fetchBusLocationsWithSuccessBlock:(void(^)(NSArray *))success errorBlock:(UMErrorBlock)error;
 - (void)fetchStopsWithSuccessBlock:(void(^)(NSArray *))success errorBlock:(UMErrorBlock)error;

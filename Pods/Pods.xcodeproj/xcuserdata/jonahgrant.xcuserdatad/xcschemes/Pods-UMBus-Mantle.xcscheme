@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "4C85CFB5E79743AE81496092"
+               BlueprintIdentifier = "4413DCAD153B473F97D2C189"
                BuildableName = "libPods-UMBus-Mantle.a"
                BlueprintName = "Pods-UMBus-Mantle"
                ReferencedContainer = "container:Pods.xcodeproj">

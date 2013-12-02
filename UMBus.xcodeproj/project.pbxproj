@@ -37,7 +37,7 @@
 		ABEDEB93184C103B00B82E59 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = ABEDEB7F184C103B00B82E59 /* AppDelegate.m */; };
 		ABEDEB94184C103B00B82E59 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = ABEDEB80184C103B00B82E59 /* main.m */; };
 		ABEDEB97184C103B00B82E59 /* Bus.m in Sources */ = {isa = PBXBuildFile; fileRef = ABEDEB89184C103B00B82E59 /* Bus.m */; };
-		ABEDEB98184C103B00B82E59 /* BusSession.m in Sources */ = {isa = PBXBuildFile; fileRef = ABEDEB8C184C103B00B82E59 /* BusSession.m */; };
+		ABEDEB98184C103B00B82E59 /* UMNetworkingSession.m in Sources */ = {isa = PBXBuildFile; fileRef = ABEDEB8C184C103B00B82E59 /* UMNetworkingSession.m */; };
 		ABEDEB99184C103B00B82E59 /* UMResponseSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = ABEDEB8E184C103B00B82E59 /* UMResponseSerializer.m */; };
 		ABEDEB9A184C103B00B82E59 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABEDEB91184C103B00B82E59 /* MapViewController.m */; };
 		ABEDEB9D184C105200B82E59 /* MapViewControllerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ABEDEB9C184C105200B82E59 /* MapViewControllerModel.m */; };
@@ -99,8 +99,8 @@
 		ABEDEB81184C103B00B82E59 /* UMBus-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UMBus-Prefix.pch"; sourceTree = "<group>"; };
 		ABEDEB88184C103B00B82E59 /* Bus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bus.h; sourceTree = "<group>"; };
 		ABEDEB89184C103B00B82E59 /* Bus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Bus.m; sourceTree = "<group>"; };
-		ABEDEB8B184C103B00B82E59 /* BusSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusSession.h; sourceTree = "<group>"; };
-		ABEDEB8C184C103B00B82E59 /* BusSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusSession.m; sourceTree = "<group>"; };
+		ABEDEB8B184C103B00B82E59 /* UMNetworkingSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMNetworkingSession.h; sourceTree = "<group>"; };
+		ABEDEB8C184C103B00B82E59 /* UMNetworkingSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UMNetworkingSession.m; sourceTree = "<group>"; };
 		ABEDEB8D184C103B00B82E59 /* UMResponseSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMResponseSerializer.h; sourceTree = "<group>"; };
 		ABEDEB8E184C103B00B82E59 /* UMResponseSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UMResponseSerializer.m; sourceTree = "<group>"; };
 		ABEDEB90184C103B00B82E59 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
@@ -318,8 +318,8 @@
 		ABEDEB8A184C103B00B82E59 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
-				ABEDEB8B184C103B00B82E59 /* BusSession.h */,
-				ABEDEB8C184C103B00B82E59 /* BusSession.m */,
+				ABEDEB8B184C103B00B82E59 /* UMNetworkingSession.h */,
+				ABEDEB8C184C103B00B82E59 /* UMNetworkingSession.m */,
 				ABEDEB8D184C103B00B82E59 /* UMResponseSerializer.h */,
 				ABEDEB8E184C103B00B82E59 /* UMResponseSerializer.m */,
 			);
@@ -523,7 +523,7 @@
 				ABEDEBB5184C336C00B82E59 /* Stop.m in Sources */,
 				ABEDEB99184C103B00B82E59 /* UMResponseSerializer.m in Sources */,
 				ABEDEBA0184C139100B82E59 /* BusAnnotation.m in Sources */,
-				ABEDEB98184C103B00B82E59 /* BusSession.m in Sources */,
+				ABEDEB98184C103B00B82E59 /* UMNetworkingSession.m in Sources */,
 				ABEDEBC4184C3CCF00B82E59 /* Announcement.m in Sources */,
 				ABEDEBCA184C3F4600B82E59 /* AnnouncementCellModel.m in Sources */,
 				ABEDEB3A184BE0D500B82E59 /* Data.xcdatamodeld in Sources */,

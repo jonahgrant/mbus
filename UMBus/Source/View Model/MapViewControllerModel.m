@@ -7,7 +7,7 @@
 //
 
 #import "MapViewControllerModel.h"
-#import "BusSession.h"
+#import "UMNetworkingSession.h"
 #import "Bus.h"
 #import "BusAnnotation.h"
 #import "Stop.h"
@@ -15,7 +15,7 @@
 
 @interface MapViewControllerModel ()
 
-@property (strong, nonatomic) BusSession *session;
+@property (strong, nonatomic) UMNetworkingSession *session;
 
 @end
 
@@ -23,7 +23,7 @@
 
 - (instancetype)init {
     if (self = [super init]) {
-        self.session = [[BusSession alloc] init];
+        self.session = [[UMNetworkingSession alloc] init];
         [self manageBusAnnotations];
         [self manageStopAnnotations];
     }

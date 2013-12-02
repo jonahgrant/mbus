@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>D5C4586C-AA15-43D4-8E9C-F98F53436F26</string>
+	<key>IDESourceControlProjectName</key>
+	<string>UMBus</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>8E63E0EF-AB2F-444E-B92F-CA5C2526A147</key>
+		<string>ssh://github.com/jonahgrant/um-magic-bus.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>UMBus.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>8E63E0EF-AB2F-444E-B92F-CA5C2526A147</key>
+		<string>..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>ssh://github.com/jonahgrant/um-magic-bus.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>8E63E0EF-AB2F-444E-B92F-CA5C2526A147</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>8E63E0EF-AB2F-444E-B92F-CA5C2526A147</string>
+			<key>IDESourceControlWCCName</key>
+			<string>um-magic-bus</string>
+		</dict>
+	</array>
+</dict>
+</plist>

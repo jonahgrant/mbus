@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 Jonah Grant. All rights reserved.
 //
 
-#import "BusSession.h"
+#import "UMNetworkingSession.h"
 #import "AFHTTPRequestOperationManager.h"
 #import "UMResponseSerializer.h"
 #import "Bus.h"
@@ -15,7 +15,7 @@
 
 #define HandlerBlock(b) ((b) ? (^(AFHTTPRequestOperation *_, id x){ (b)(x); }) : NULL)
 
-@interface BusSession ()
+@interface UMNetworkingSession ()
 
 @property (nonatomic, readonly) AFHTTPRequestOperationManager *manager;
 
@@ -23,7 +23,7 @@
 
 @end
 
-@implementation BusSession
+@implementation UMNetworkingSession
 
 - (instancetype)init {
     if (self = [super init]) {

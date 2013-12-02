@@ -7,11 +7,11 @@
 //
 
 #import "AnnouncementsViewControllerModel.h"
-#import "BusSession.h"
+#import "UMNetworkingSession.h"
 
 @interface AnnouncementsViewControllerModel ()
 
-@property (strong, nonatomic) BusSession *session;
+@property (strong, nonatomic) UMNetworkingSession *session;
 
 @end
 
@@ -19,7 +19,7 @@
 
 - (instancetype)init {
     if (self = [super init]) {
-        _session = [[BusSession alloc] init];
+        _session = [[UMNetworkingSession alloc] init];
     }
     return self;
 }
