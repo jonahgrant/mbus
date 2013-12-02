@@ -20,11 +20,11 @@
             </objects>
             <point key="canvasLocation" x="147" y="-409"/>
         </scene>
-        <!--Navigation Controller - Announcements-->
+        <!--Navigation Controller-->
         <scene sceneID="SKj-1J-JOX">
             <objects>
                 <navigationController definesPresentationContext="YES" id="Xu9-jd-6ji" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Announcements" image="info-tab.png" id="x0R-yt-cfr"/>
+                    <tabBarItem key="tabBarItem" title="" id="x0R-yt-cfr"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="FZG-Eb-jw3">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -36,7 +36,7 @@
             </objects>
             <point key="canvasLocation" x="152" y="274"/>
         </scene>
-        <!--Annoucements View Controller-->
+        <!--Annoucements View Controller - Announcements-->
         <scene sceneID="xUU-TO-JiX">
             <objects>
                 <tableViewController id="bsQ-mP-Esn" customClass="AnnoucementsViewController" sceneMemberID="viewController">
@@ -71,6 +71,7 @@
                             <outlet property="delegate" destination="bsQ-mP-Esn" id="riR-lf-wcO"/>
                         </connections>
                     </tableView>
+                    <tabBarItem key="tabBarItem" title="Announcements" image="info-tab.png" id="m6q-ez-PFE"/>
                     <navigationItem key="navigationItem" id="WLk-eR-ygV"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>

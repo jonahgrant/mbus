@@ -23,12 +23,21 @@
 
     self.title = @"Announcements";
     
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
+    
     _model = [[AnnouncementsViewControllerModel alloc] init];
-    [_model fetchAnnouncements];
+    [self refresh];
     
     [RACObserve(self, model.announcements) subscribeNext:^(NSArray *announcements) {
+        if (announcements.count > 0) self.tabBarItem.badgeValue = [NSString stringWithFormat:@"%i", announcements.count];
+        [self.refreshControl endRefreshing];
         [self.tableView reloadData];
     }];
+}
+
+- (void)refresh {
+    [_model fetchAnnouncements];
 }
 
 #pragma mark - Table view data source
