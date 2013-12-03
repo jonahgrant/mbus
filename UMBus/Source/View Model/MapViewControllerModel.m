@@ -41,7 +41,7 @@
         // update bus locations continuously
         [self fetchBuses];
     } errorBlock:^(NSError *error) {
-        NSLog(@"Error: %@", error.localizedDescription);
+        NSLog(@"-fetchBusLocationsWithSuccessBlock error: %@", error.localizedDescription);
     }];
 }
 
@@ -69,7 +69,7 @@
     [self.session fetchStopsWithSuccessBlock:^(NSArray *stops) {
         self.stops = stops;
     } errorBlock:^(NSError *error) {
-        NSLog(@"Error: %@", error.localizedDescription);
+        NSLog(@"-fetchStopsWithSuccessBlock error: %@", error.localizedDescription);
     }];
 }
 

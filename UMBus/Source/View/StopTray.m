@@ -18,6 +18,7 @@
 
 @interface StopTray ()
 
+@property (nonatomic, copy) NSString *timeUntilNextBus;
 @property (strong, nonatomic) UIButton *streetViewButton, *directionsButton, *shareButton;
 @property (strong, nonatomic) TTTAttributedLabel *titleLabel, *subtitleLabel;
 
@@ -69,6 +70,8 @@
             [self updateTitleLabelText];
         }];
         
+        RAC(self, timeUntilNextBus) = RACObserve(self, model.timeToClosestBus.rac_sequence);
+        
         _streetViewButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
         [_streetViewButton setTitle:@"Street View" forState:UIControlStateNormal];
         _streetViewButton.frame = CGRectMake(10, 60, 90, 30);
@@ -110,7 +113,8 @@
     if (_model.stopAnnotation.stop.humanName) {
         NSString *text;
         NSString *stopName = _model.stopAnnotation.stop.humanName;
-        NSString *eta = _model.timeToClosestBus;
+        NSString *eta = _timeUntilNextBus;
+        NSLog(@"%@", _timeUntilNextBus);
         
         if (_model.timeToClosestBus) {
             text = [NSString stringWithFormat:@"%@ (next bus ~%@ away)", stopName, eta];

@@ -76,7 +76,7 @@
 
 - (void)fetchClosestBusETA {
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-    
+
     CLLocation *busStopLocation = [[CLLocation alloc] initWithLatitude:_stopAnnotation.coordinate.latitude longitude:_stopAnnotation.coordinate.longitude];
     CLLocation *busLocation = [[CLLocation alloc] initWithLatitude:[self.closestBus.latitude doubleValue] longitude:[self.closestBus.longitude doubleValue]];
     
