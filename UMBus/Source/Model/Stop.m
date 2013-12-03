@@ -6,6 +6,7 @@
 //  Copyright (c) 2013 Jonah Grant. All rights reserved.
 //
 
+#import <MapKit/MapKit.h>
 #import "Stop.h"
 #import "UMNetworkingSession.h"
 #import "Route.h"
@@ -26,6 +27,7 @@
     return self;
 }
 
+
 - (void)fetchBusesServicingStop {
     NSMutableArray *routesArray = [NSMutableArray array];
     NSMutableArray *busArray = [NSMutableArray array];
@@ -33,23 +35,24 @@
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
     [_networkingSession fetchRoutesWithSuccessBlock:^(NSArray *routes) {
         for (Route *route in routes) {
-            if ([route.stops containsObject:self.id]) {
-                [routesArray addObject:route];
-            }
+            if ([route.stops containsObject:self.id]) [routesArray addObject:route];
         }
         
         [_networkingSession fetchBusLocationsWithSuccessBlock:^(NSArray *buses) {
             for (Bus *bus in buses) {
                 for (Route *route in routesArray) {
-                    if ([bus.route isEqualToString:route.id]) {
-                        [busArray addObject:bus];
-                    }
+                    if ([bus.route isEqualToString:route.id]) [busArray addObject:bus];
                 }
             }
-            [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+            
             self.busesServicingStop = [NSArray arrayWithArray:busArray];
-        } errorBlock:NULL];
-    } errorBlock:NULL];
+            [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+        } errorBlock:^(NSError *error) {
+            [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+        }];
+    } errorBlock:^(NSError *error) {
+        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+    }];
 }
 
 - (void)fetchRoutesServicingStop {
@@ -57,13 +60,14 @@
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
     [_networkingSession fetchRoutesWithSuccessBlock:^(NSArray *routes) {
         for (Route *route in routes) {
-            if ([route.stops containsObject:self.id]) {
-                [routesArray addObject:route];
-            }
+            if ([route.stops containsObject:self.id]) [routesArray addObject:route];
         }
-        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+        
         self.routesServicingStop = [NSArray arrayWithArray:routesArray];
-    } errorBlock:NULL];
+        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+    } errorBlock:^(NSError *error) {
+        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+    }];
 }
 
 #pragma mark MTLJSONSerializing

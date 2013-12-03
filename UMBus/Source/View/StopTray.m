@@ -29,12 +29,6 @@
     if (self = [super initWithFrame:CGRectMake(0, 0, 320, 100)]) {
         _model = [[StopTrayModel alloc] init];
         
-        [RACObserve(self, model.eta) subscribeNext:^(NSString *eta) {
-            if (eta) {
-                [self updateTitleLabelText];
-            }
-        }];
-        
         _titleLabel = [[TTTAttributedLabel alloc] initWithFrame:CGRectMake(10, 10, 310, 16)];
         _titleLabel.font = [UIFont systemFontOfSize:14];
         _titleLabel.textColor = [UIColor darkGrayColor];
@@ -50,17 +44,29 @@
         [self addSubview:_subtitleLabel];
         
         [RACObserve(self, model.stopAnnotation) subscribeNext:^(StopAnnotation *stopAnnotation) {
+            [self reset];
+
             if (stopAnnotation) {
-                [_model fetchETA];
+                [self updateTitleLabelText];
                 [_model.stopAnnotation.stop fetchBusesServicingStop];
-                [self reset];
             }
         }];
         
         [RACObserve(self, model.stopAnnotation.stop.busesServicingStop) subscribeNext:^(NSArray *buses) {
             if (buses) {
                 [self updateSubtitleLabelText];
+                [_model fetchClosestBus];
             }
+        }];
+        
+        [RACObserve(self, model.closestBus) subscribeNext:^(Bus *bus) {
+            if (bus) {
+                [_model fetchClosestBusETA];
+            }
+        }];
+        
+        [RACObserve(self, model.timeToClosestBus) subscribeNext:^(NSString *time) {
+            [self updateTitleLabelText];
         }];
         
         _streetViewButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
@@ -95,44 +101,56 @@
 }
 
 - (void)reset {
-    [self updateTitleLabelText];
+    [_model reset];
+    [_titleLabel setText:nil];
     [_subtitleLabel setText:nil];
 }
 
 - (void)updateTitleLabelText {
-    NSString *text;
-    NSString *stopName = _model.stopAnnotation.stop.humanName;
-    NSString *eta;
-    if (self.model.eta) {
-        text = [NSString stringWithFormat:@"%@ (%@ away)", _model.stopAnnotation.stop.humanName, _model.eta];
-        eta = _model.eta;
-    } else {
-        text = _model.stopAnnotation.stop.humanName;
-    }
-    
-    [_titleLabel setText:text afterInheritingLabelAttributesAndConfiguringWithBlock:^NSMutableAttributedString *(NSMutableAttributedString *mutableAttributedString) {
-        NSRange boldRange = [[mutableAttributedString string] rangeOfString:stopName options:NSCaseInsensitiveSearch];
-        UIFont *boldSystemFont = [UIFont boldSystemFontOfSize:14];
-        CTFontRef boldFont = CTFontCreateWithName((__bridge CFStringRef)boldSystemFont.fontName, boldSystemFont.pointSize, NULL);
-        [mutableAttributedString addAttribute:(NSString *)kCTFontAttributeName value:(__bridge id)(boldFont) range:boldRange];
-        CFRelease(boldFont);
+    if (_model.stopAnnotation.stop.humanName) {
+        NSString *text;
+        NSString *stopName = _model.stopAnnotation.stop.humanName;
+        NSString *eta = _model.timeToClosestBus;
         
-        if (eta) {
-            UIFont *italicSystemFont = [UIFont italicSystemFontOfSize:12];
-            CTFontRef italicFont = CTFontCreateWithName((__bridge CFStringRef)italicSystemFont.fontName, italicSystemFont.pointSize, NULL);
-
-            NSRange strikeRange = [[mutableAttributedString string] rangeOfString:eta options:NSCaseInsensitiveSearch];
-            [mutableAttributedString addAttribute:(NSString *)kCTFontAttributeName value:(__bridge id)(italicFont) range:strikeRange];
-            CFRelease(italicFont);
+        if (_model.timeToClosestBus) {
+            text = [NSString stringWithFormat:@"%@ (next bus ~%@ away)", stopName, eta];
+        } else {
+            text = _model.stopAnnotation.stop.humanName;
         }
         
-        return mutableAttributedString;
-    }];
+        [_titleLabel setText:text afterInheritingLabelAttributesAndConfiguringWithBlock:^NSMutableAttributedString *(NSMutableAttributedString *mutableAttributedString) {
+            NSRange boldRange = [[mutableAttributedString string] rangeOfString:stopName options:NSCaseInsensitiveSearch];
+            UIFont *boldSystemFont = [UIFont boldSystemFontOfSize:14];
+            CTFontRef boldFont = CTFontCreateWithName((__bridge CFStringRef)boldSystemFont.fontName, boldSystemFont.pointSize, NULL);
+            [mutableAttributedString addAttribute:(NSString *)kCTFontAttributeName value:(__bridge id)(boldFont) range:boldRange];
+            CFRelease(boldFont);
+            
+            if (eta) {
+                UIFont *italicSystemFont = [UIFont italicSystemFontOfSize:12];
+                CTFontRef italicFont = CTFontCreateWithName((__bridge CFStringRef)italicSystemFont.fontName, italicSystemFont.pointSize, NULL);
+                
+                NSRange strikeRange = [[mutableAttributedString string] rangeOfString:eta options:NSCaseInsensitiveSearch];
+                [mutableAttributedString addAttribute:(NSString *)kCTFontAttributeName value:(__bridge id)(italicFont) range:strikeRange];
+                CFRelease(italicFont);
+            }
+            
+            return mutableAttributedString;
+        }];
+    }
 }
 
 - (void)updateSubtitleLabelText {
     NSString *busCount = [NSString stringWithFormat:@"%i", self.model.stopAnnotation.stop.busesServicingStop.count];
-    NSString *text = [busCount stringByAppendingString:@" buses servicing this stop"];
+    
+    NSString *text;
+    if (self.model.stopAnnotation.stop.busesServicingStop.count == 0) {
+        text = [NSString stringWithFormat:@"%@ buses servicing this route", busCount];
+    } else if (self.model.stopAnnotation.stop.busesServicingStop.count == 1) {
+        text = [NSString stringWithFormat:@"%@ bus servicing this route", busCount];
+    } else {
+        text = [NSString stringWithFormat:@"%@ buses servicing this route", busCount];
+    }
+    
     [_subtitleLabel setText:text afterInheritingLabelAttributesAndConfiguringWithBlock:^NSMutableAttributedString *(NSMutableAttributedString *mutableAttributedString) {
         NSRange boldRange = [[mutableAttributedString string] rangeOfString:busCount options:NSCaseInsensitiveSearch];
         UIFont *boldSystemFont = [UIFont boldSystemFontOfSize:14];

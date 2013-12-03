@@ -8,13 +8,17 @@
 
 #import <Foundation/Foundation.h>
 
-@class StopAnnotation;
+@class StopAnnotation, Bus;
 
 @interface StopTrayModel : NSObject
 
 @property (strong, nonatomic) StopAnnotation *stopAnnotation;
-@property (nonatomic) NSString *eta;
+@property (nonatomic) NSString *distanceToClosestBus, *timeToClosestBus;
+@property (strong, nonatomic) Bus *closestBus;
 
-- (void)fetchETA;
+- (void)reset;
+
+- (void)fetchClosestBus;
+- (void)fetchClosestBusETA;
 
 @end
