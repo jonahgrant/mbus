@@ -14,4 +14,6 @@
 
 @property (strong, nonatomic) MapViewControllerModel *model;
 
+- (void)displayStreetViewForAnnotation:(NSObject<MKAnnotation> *)annotation;
+
 @end

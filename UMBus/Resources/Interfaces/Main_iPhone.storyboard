@@ -105,15 +105,9 @@
                     <navigationItem key="navigationItem" id="UQW-H0-950"/>
                     <connections>
                         <outlet property="mapView" destination="cZK-wI-bZt" id="iZM-Yl-Ev2"/>
-                        <outlet property="toolTray" destination="K1I-zo-UiL" id="Ik1-nP-6mA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qh2-T1-AhA" sceneMemberID="firstResponder"/>
-                <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="K1I-zo-UiL">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                    <items/>
-                </toolbar>
             </objects>
             <point key="canvasLocation" x="600" y="-409"/>
         </scene>
