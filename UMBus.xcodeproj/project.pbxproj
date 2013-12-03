@@ -23,10 +23,10 @@
 /* Begin PBXBuildFile section */
 		AB155C90184D68A400BF1A09 /* StopTray.m in Sources */ = {isa = PBXBuildFile; fileRef = AB155C8F184D68A400BF1A09 /* StopTray.m */; };
 		AB155C93184D68B500BF1A09 /* StopTrayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AB155C92184D68B500BF1A09 /* StopTrayModel.m */; };
+		AB155C98184D8A1000BF1A09 /* Route.m in Sources */ = {isa = PBXBuildFile; fileRef = AB155C97184D8A1000BF1A09 /* Route.m */; };
 		AB2C4C24184D1F0C001E2EA2 /* StreetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB2C4C23184D1F0C001E2EA2 /* StreetViewController.m */; };
 		AB2C4C27184D49A5001E2EA2 /* street-view-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = AB2C4C25184D49A5001E2EA2 /* street-view-icon.png */; };
 		AB2C4C28184D49A5001E2EA2 /* street-view-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AB2C4C26184D49A5001E2EA2 /* street-view-icon@2x.png */; };
-		AB2C4C2F184D57EB001E2EA2 /* HMRectBackgroundLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = AB2C4C2E184D57EB001E2EA2 /* HMRectBackgroundLabel.m */; };
 		ABEDEAD8184BD90D00B82E59 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABEDEAD7184BD90D00B82E59 /* Foundation.framework */; };
 		ABEDEADA184BD90D00B82E59 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABEDEAD9184BD90D00B82E59 /* CoreGraphics.framework */; };
 		ABEDEADC184BD90D00B82E59 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABEDEADB184BD90D00B82E59 /* UIKit.framework */; };
@@ -87,13 +87,13 @@
 		AB155C8F184D68A400BF1A09 /* StopTray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StopTray.m; sourceTree = "<group>"; };
 		AB155C91184D68B500BF1A09 /* StopTrayModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StopTrayModel.h; sourceTree = "<group>"; };
 		AB155C92184D68B500BF1A09 /* StopTrayModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StopTrayModel.m; sourceTree = "<group>"; };
+		AB155C96184D8A1000BF1A09 /* Route.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Route.h; sourceTree = "<group>"; };
+		AB155C97184D8A1000BF1A09 /* Route.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Route.m; sourceTree = "<group>"; };
 		AB2C4C22184D1F0C001E2EA2 /* StreetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StreetViewController.h; sourceTree = "<group>"; };
 		AB2C4C23184D1F0C001E2EA2 /* StreetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StreetViewController.m; sourceTree = "<group>"; };
 		AB2C4C25184D49A5001E2EA2 /* street-view-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "street-view-icon.png"; sourceTree = "<group>"; };
 		AB2C4C26184D49A5001E2EA2 /* street-view-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "street-view-icon@2x.png"; sourceTree = "<group>"; };
 		AB2C4C29184D5516001E2EA2 /* AnnArbor.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = AnnArbor.gpx; sourceTree = "<group>"; };
-		AB2C4C2D184D57EB001E2EA2 /* HMRectBackgroundLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMRectBackgroundLabel.h; sourceTree = "<group>"; };
-		AB2C4C2E184D57EB001E2EA2 /* HMRectBackgroundLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMRectBackgroundLabel.m; sourceTree = "<group>"; };
 		ABEDEAD4184BD90D00B82E59 /* UMBus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UMBus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABEDEAD7184BD90D00B82E59 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		ABEDEAD9184BD90D00B82E59 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -322,6 +322,8 @@
 				ABEDEB89184C103B00B82E59 /* Bus.m */,
 				ABEDEBB3184C336C00B82E59 /* Stop.h */,
 				ABEDEBB4184C336C00B82E59 /* Stop.m */,
+				AB155C96184D8A1000BF1A09 /* Route.h */,
+				AB155C97184D8A1000BF1A09 /* Route.m */,
 				ABEDEBC2184C3CCF00B82E59 /* Announcement.h */,
 				ABEDEBC3184C3CCF00B82E59 /* Announcement.m */,
 				ABEDEB9E184C139100B82E59 /* BusAnnotation.h */,
@@ -354,8 +356,6 @@
 				AB2C4C23184D1F0C001E2EA2 /* StreetViewController.m */,
 				ABEDEBC5184C3F3800B82E59 /* AnnouncementCell.h */,
 				ABEDEBC6184C3F3800B82E59 /* AnnouncementCell.m */,
-				AB2C4C2D184D57EB001E2EA2 /* HMRectBackgroundLabel.h */,
-				AB2C4C2E184D57EB001E2EA2 /* HMRectBackgroundLabel.m */,
 				AB155C8E184D68A400BF1A09 /* StopTray.h */,
 				AB155C8F184D68A400BF1A09 /* StopTray.m */,
 			);
@@ -539,13 +539,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				ABEDEB9D184C105200B82E59 /* MapViewControllerModel.m in Sources */,
+				AB155C98184D8A1000BF1A09 /* Route.m in Sources */,
 				ABEDEBB8184C350400B82E59 /* StopAnnotation.m in Sources */,
 				ABEDEBC1184C3CA000B82E59 /* AnnouncementsViewControllerModel.m in Sources */,
 				ABEDEBBE184C3BE900B82E59 /* AnnoucementsViewController.m in Sources */,
 				AB155C93184D68B500BF1A09 /* StopTrayModel.m in Sources */,
 				ABEDEB97184C103B00B82E59 /* Bus.m in Sources */,
 				ABEDEB93184C103B00B82E59 /* AppDelegate.m in Sources */,
-				AB2C4C2F184D57EB001E2EA2 /* HMRectBackgroundLabel.m in Sources */,
 				ABEDEB9A184C103B00B82E59 /* MapViewController.m in Sources */,
 				AB2C4C24184D1F0C001E2EA2 /* StreetViewController.m in Sources */,
 				ABEDEB94184C103B00B82E59 /* main.m in Sources */,

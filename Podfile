@@ -5,4 +5,5 @@ target "UMBus" do
     pod 'AFNetworking', '~> 2.0.3'
     pod 'ReactiveCocoa', '~> 2.1'
     pod 'Google-Maps-iOS-SDK', '~> 1.6.0'
+    pod 'TTTAttributedLabel', '~> 1.7.5'
 end

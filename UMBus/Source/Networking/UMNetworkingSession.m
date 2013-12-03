@@ -12,6 +12,7 @@
 #import "Bus.h"
 #import "Stop.h"
 #import "Announcement.h"
+#import "Route.h"
 
 #define HandlerBlock(b) ((b) ? (^(AFHTTPRequestOperation *_, id x){ (b)(x); }) : NULL)
 
@@ -64,6 +65,14 @@
                success:HandlerBlock(success)
                failure:HandlerBlock(error)]
      setResponseSerializer:[Announcement um_arrayResponseSerializer]];
+}
+
+- (void)fetchRoutesWithSuccessBlock:(void(^)(NSArray *))sucess errorBlock:(UMErrorBlock)error {
+    [[self.manager GET:[self rootURLWithPath:@"/routes"]
+            parameters:nil
+               success:HandlerBlock(sucess)
+               failure:HandlerBlock(error)]
+     setResponseSerializer:[Route um_arrayResponseSerializer]];
 }
 
 @end
