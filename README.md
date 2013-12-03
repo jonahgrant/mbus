@@ -22,7 +22,8 @@ The API for bus arrival times hasn't been released yet, so this project circumve
 * Run ```-calculateETAWithCompletionHandler:``` to receive an expected travel time in the form of an ```NSTimeInterval``` object
 * Format the expected travel time object into a readable ```HH:mm:ss``` string
 
-There is a lot of room for error in this approximation. It is calculating estimated time of arrival based on the assumption that the bus is going straight to the bus stop, on the most convenient route, without making any other stops.  Hence, it is an approximation.  Additionally, it does not auto-update off of a timer.  This would be very CPU heavy, take up a lot of memory, and eat bandwidth.
+There is a lot of room for error in this approximation. It is calculating estimated time of arrival based on the assumption that the bus is going straight to the bus stop, on the most convenient route, without making any other stops.  Hence, it is an approximation.  A good way to improve approximation would be to find the stop that the bus is closest to, then calculate how long it will take for the bus to drive to each stop before arriving at the desired one. 
+  Additionally, it does not auto-update off of a timer.  This would be very CPU heavy, take up a lot of memory, and eat bandwidth.
 
 # Setup
 
