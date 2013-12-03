@@ -54,8 +54,8 @@ The project currently only shows buses, bus stops, and announcements.  In the fu
 The project may also move to an alternate map provider that offers more flexibility in terms of scalability, performance (specifically when handling large amounts of polylines and annotations).
 
 # Interface
-![Live bus](https://dl.dropboxusercontent.com/u/2177718/image_1.png "Live bus")
-![Bus stop](https://dl.dropboxusercontent.com/u/2177718/image.png "Bus stop")
+![Live bus](https://dl.dropboxusercontent.com/u/2177718/Screen%20Shot%202013-12-03%20at%2012.30.09%20AM.png "Live bus")
+![Bus stop](https://dl.dropboxusercontent.com/u/2177718/Screen%20Shot%202013-12-03%20at%2012.30.28%20AM.png "Bus stop")
 ![Street view](https://dl.dropboxusercontent.com/u/2177718/Screen%20Shot%202013-12-02%20at%206.31.20%20PM.png "Street view")
 ![Announcement](https://dl.dropboxusercontent.com/u/2177718/Screen%20Shot%202013-12-01%20at%2010.45.44%20PM.png "Announcement")
 
