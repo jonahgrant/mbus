@@ -13,6 +13,7 @@
 @property (nonatomic) BOOL continuouslyUpdate;
 @property (strong, nonatomic) NSArray *buses, *stops;
 @property (strong, nonatomic) NSDictionary *busAnnotations, *stopAnnotations;
+@property (strong, nonatomic) UIBarButtonItem *streetViewBarButtonItem, *directionsBarButtonItem;
 
 - (void)fetchBuses;
 - (void)fetchStops;

@@ -26,6 +26,9 @@
         self.session = [[UMNetworkingSession alloc] init];
         [self manageBusAnnotations];
         [self manageStopAnnotations];
+        
+        _streetViewBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Street View" style:UIBarButtonItemStylePlain target:nil action:nil];
+        _directionsBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Directions" style:UIBarButtonItemStylePlain target:nil action:nil];
     }
     return self;
 }

@@ -24,6 +24,7 @@
 		AB2C4C24184D1F0C001E2EA2 /* StreetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB2C4C23184D1F0C001E2EA2 /* StreetViewController.m */; };
 		AB2C4C27184D49A5001E2EA2 /* street-view-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = AB2C4C25184D49A5001E2EA2 /* street-view-icon.png */; };
 		AB2C4C28184D49A5001E2EA2 /* street-view-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AB2C4C26184D49A5001E2EA2 /* street-view-icon@2x.png */; };
+		AB2C4C2F184D57EB001E2EA2 /* HMRectBackgroundLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = AB2C4C2E184D57EB001E2EA2 /* HMRectBackgroundLabel.m */; };
 		ABEDEAD8184BD90D00B82E59 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABEDEAD7184BD90D00B82E59 /* Foundation.framework */; };
 		ABEDEADA184BD90D00B82E59 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABEDEAD9184BD90D00B82E59 /* CoreGraphics.framework */; };
 		ABEDEADC184BD90D00B82E59 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABEDEADB184BD90D00B82E59 /* UIKit.framework */; };
@@ -84,6 +85,9 @@
 		AB2C4C23184D1F0C001E2EA2 /* StreetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StreetViewController.m; sourceTree = "<group>"; };
 		AB2C4C25184D49A5001E2EA2 /* street-view-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "street-view-icon.png"; sourceTree = "<group>"; };
 		AB2C4C26184D49A5001E2EA2 /* street-view-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "street-view-icon@2x.png"; sourceTree = "<group>"; };
+		AB2C4C29184D5516001E2EA2 /* AnnArbor.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = AnnArbor.gpx; sourceTree = "<group>"; };
+		AB2C4C2D184D57EB001E2EA2 /* HMRectBackgroundLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMRectBackgroundLabel.h; sourceTree = "<group>"; };
+		AB2C4C2E184D57EB001E2EA2 /* HMRectBackgroundLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMRectBackgroundLabel.m; sourceTree = "<group>"; };
 		ABEDEAD4184BD90D00B82E59 /* UMBus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UMBus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABEDEAD7184BD90D00B82E59 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		ABEDEAD9184BD90D00B82E59 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -268,6 +272,7 @@
 			children = (
 				ABEDEB19184BDA1B00B82E59 /* InfoPlist.strings */,
 				ABEDEB1B184BDA1B00B82E59 /* UMBus-Info.plist */,
+				AB2C4C29184D5516001E2EA2 /* AnnArbor.gpx */,
 			);
 			path = Misc;
 			sourceTree = "<group>";
@@ -343,6 +348,8 @@
 				AB2C4C23184D1F0C001E2EA2 /* StreetViewController.m */,
 				ABEDEBC5184C3F3800B82E59 /* AnnouncementCell.h */,
 				ABEDEBC6184C3F3800B82E59 /* AnnouncementCell.m */,
+				AB2C4C2D184D57EB001E2EA2 /* HMRectBackgroundLabel.h */,
+				AB2C4C2E184D57EB001E2EA2 /* HMRectBackgroundLabel.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -527,6 +534,7 @@
 				ABEDEBBE184C3BE900B82E59 /* AnnoucementsViewController.m in Sources */,
 				ABEDEB97184C103B00B82E59 /* Bus.m in Sources */,
 				ABEDEB93184C103B00B82E59 /* AppDelegate.m in Sources */,
+				AB2C4C2F184D57EB001E2EA2 /* HMRectBackgroundLabel.m in Sources */,
 				ABEDEB9A184C103B00B82E59 /* MapViewController.m in Sources */,
 				AB2C4C24184D1F0C001E2EA2 /* StreetViewController.m in Sources */,
 				ABEDEB94184C103B00B82E59 /* main.m in Sources */,
