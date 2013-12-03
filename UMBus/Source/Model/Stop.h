@@ -11,5 +11,9 @@
 @interface Stop : MTLModel <MTLJSONSerializing>
 
 @property (nonatomic, copy) NSString *id, *uniqueName, *humanName, *additionalName, *latitude, *longitude, *heading;
+@property (strong, nonatomic) NSArray *busesServicingStop, *routesServicingStop;
+
+- (void)fetchBusesServicingStop;
+- (void)fetchRoutesServicingStop;
 
 @end

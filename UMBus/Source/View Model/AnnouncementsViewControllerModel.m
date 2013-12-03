@@ -25,9 +25,13 @@
 }
 
 - (void)fetchAnnouncements {
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
     [_session fetchAnnouncementsWithSuccessBlock:^(NSArray *announcements) {
+        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
         self.announcements = announcements;
-    } errorBlock:NULL];
+    } errorBlock:^(NSError *error) {
+        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+    }];
 }
 
 @end

@@ -14,11 +14,12 @@
 #import "TTTAttributedLabel.h"
 #import "StopAnnotation.h"
 #import "Stop.h"
+#import "Bus.h"
 
 @interface StopTray ()
 
 @property (strong, nonatomic) UIButton *streetViewButton, *directionsButton, *shareButton;
-@property (strong, nonatomic) TTTAttributedLabel *titleLabel;
+@property (strong, nonatomic) TTTAttributedLabel *titleLabel, *subtitleLabel;
 
 @end
 
@@ -27,12 +28,10 @@
 - (instancetype)init {
     if (self = [super initWithFrame:CGRectMake(0, 0, 320, 100)]) {
         _model = [[StopTrayModel alloc] init];
-        [_model fetchETA];
         
         [RACObserve(self, model.eta) subscribeNext:^(NSString *eta) {
             if (eta) {
                 [self updateTitleLabelText];
-                NSLog(@"New ETA: %@", eta);
             }
         }];
         
@@ -40,12 +39,27 @@
         _titleLabel.font = [UIFont systemFontOfSize:14];
         _titleLabel.textColor = [UIColor darkGrayColor];
         _titleLabel.numberOfLines = 0;
+        _titleLabel.adjustsFontSizeToFitWidth = YES;
         [self addSubview:_titleLabel];
+        
+        _subtitleLabel = [[TTTAttributedLabel alloc] initWithFrame:CGRectMake(10, 30, 310, 16)];
+        _subtitleLabel.font = [UIFont systemFontOfSize:14];
+        _subtitleLabel.textColor = [UIColor darkGrayColor];
+        _subtitleLabel.numberOfLines = 0;
+        _subtitleLabel.adjustsFontSizeToFitWidth = YES;
+        [self addSubview:_subtitleLabel];
         
         [RACObserve(self, model.stopAnnotation) subscribeNext:^(StopAnnotation *stopAnnotation) {
             if (stopAnnotation) {
                 [_model fetchETA];
-                [self updateTitleLabelText];
+                [_model.stopAnnotation.stop fetchBusesServicingStop];
+                [self reset];
+            }
+        }];
+        
+        [RACObserve(self, model.stopAnnotation.stop.busesServicingStop) subscribeNext:^(NSArray *buses) {
+            if (buses) {
+                [self updateSubtitleLabelText];
             }
         }];
         
@@ -80,6 +94,11 @@
     return self;
 }
 
+- (void)reset {
+    [self updateTitleLabelText];
+    [_subtitleLabel setText:nil];
+}
+
 - (void)updateTitleLabelText {
     NSString *text;
     NSString *stopName = _model.stopAnnotation.stop.humanName;
@@ -106,6 +125,20 @@
             [mutableAttributedString addAttribute:(NSString *)kCTFontAttributeName value:(__bridge id)(italicFont) range:strikeRange];
             CFRelease(italicFont);
         }
+        
+        return mutableAttributedString;
+    }];
+}
+
+- (void)updateSubtitleLabelText {
+    NSString *busCount = [NSString stringWithFormat:@"%i", self.model.stopAnnotation.stop.busesServicingStop.count];
+    NSString *text = [busCount stringByAppendingString:@" buses servicing this stop"];
+    [_subtitleLabel setText:text afterInheritingLabelAttributesAndConfiguringWithBlock:^NSMutableAttributedString *(NSMutableAttributedString *mutableAttributedString) {
+        NSRange boldRange = [[mutableAttributedString string] rangeOfString:busCount options:NSCaseInsensitiveSearch];
+        UIFont *boldSystemFont = [UIFont boldSystemFontOfSize:14];
+        CTFontRef boldFont = CTFontCreateWithName((__bridge CFStringRef)boldSystemFont.fontName, boldSystemFont.pointSize, NULL);
+        [mutableAttributedString addAttribute:(NSString *)kCTFontAttributeName value:(__bridge id)(boldFont) range:boldRange];
+        CFRelease(boldFont);
         
         return mutableAttributedString;
     }];

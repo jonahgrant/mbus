@@ -9,10 +9,29 @@
 #import <MapKit/MapKit.h>
 #import "StopTrayModel.h"
 #import "StopAnnotation.h"
+#import "UMNetworkingSession.h"
+#import "Route.h"
+#import "Stop.h"
+#import "Bus.h"
+
+@interface StopTrayModel ()
+
+@property (strong, nonatomic) UMNetworkingSession *networkingSession;
+
+@end
 
 @implementation StopTrayModel
 
+- (instancetype)init {
+    if (self = [super init]) {
+        _networkingSession = [[UMNetworkingSession alloc] init];
+    }
+    return self;
+}
+
 - (void)fetchETA {
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+
     CLLocation *destinationLocation = [[CLLocation alloc] initWithLatitude:_stopAnnotation.coordinate.latitude longitude:_stopAnnotation.coordinate.longitude];
 
     CLGeocoder *geocoder = [[CLGeocoder alloc] init];
@@ -44,6 +63,8 @@
                                    
                                    _eta = timeToDestination;
                                }
+                               
+                               [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
                            }];
                        }
                    }];
