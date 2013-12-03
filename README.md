@@ -10,15 +10,15 @@ NOTE: [their API](https://github.com/magic-bus/api-documentation/) is in pre-rel
 
 ## Approximating bus arrival time
 The API for bus arrival times hasn't been released yet, so this project circumvents that by approximating it.  It's a crazy hack.  It does so by doing the following: 
-* Receive a subclass of ```MKAnnotation``` containing a ```Stop``` object (which then contains a coordinates) from user as a result of selecting a bus stop
+* Receive a subclass of ```MKAnnotation``` containing a ```Stop``` object (which then contains a ```CLLocationCoordinate2D```) from user as a result of selecting a bus stop
 * Fetch all routes currently running
 * Run a loop through all routes returned and save the routes containing the id for the received Stop object
 * Fetch all buses currently running
 * Run a loop through all received buses and save the buses that are servicing one of the routes saved above
 * Use ```-sortedArrayUsingComparator:``` to order all saved buses in order by distance relative to the ```Stop``` object
 * Pull the first object (which represents the closest bus) in the sorted array
-* Reverse geocode the ```Stop``` coordinate to receive an ```MKPlacemark```
-* Create an instance of ```MKDirectionsRequest``` with it's source being the ```Stop``` coordinate and it's destination being the coordinate of the closest bus
+* Reverse geocode the ```Stop```'s ```CLLocationCoordinate2D``` to receive an ```MKPlacemark```
+* Create an instance of ```MKDirectionsRequest``` with it's source being the ```Stop```'s ```CLLocationCoordinate2D``` and it's destination being the coordinate of the closest bus
 * Run ```-calculateETAWithCompletionHandler:``` to receive an expected travel time in the form of an ```NSTimeInterval``` object
 * Format the expected travel time object into a readable HH:mm:ss string
 
