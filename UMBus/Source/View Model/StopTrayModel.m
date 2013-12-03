@@ -97,18 +97,8 @@
                                    NSInteger travelTime = (NSInteger)response.expectedTravelTime;
                                    NSInteger seconds = travelTime % 60;
                                    NSInteger minutes = (travelTime / 60) % 60;
-                                   NSInteger hours = (travelTime / 3600);
-                                   
-                                   NSString *timeToDestination;
-                                   if (hours > 0) {
-                                       timeToDestination = [NSString stringWithFormat:@"%02i:%02i:%02i", hours, minutes, seconds];
-                                   } else if (minutes > 0) {
-                                       timeToDestination = [NSString stringWithFormat:@"%02i:%02i", minutes, seconds];
-                                   } else {
-                                       timeToDestination = [NSString stringWithFormat:@"%02i", seconds];
-                                   }
-                                   
-                                   self.timeToClosestBus = timeToDestination;
+                                  
+                                   self.timeToClosestBus = [NSString stringWithFormat:@"%02li:%02i", (long)minutes, seconds];
                                }
                                
                                [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
