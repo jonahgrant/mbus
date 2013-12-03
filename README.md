@@ -6,7 +6,21 @@ This project runs on the [MVVM](http://en.wikipedia.org/wiki/Model_View_ViewMode
 
 Additionally, this project runs using [ReactiveCocoa](https://github.com/blog/1107-reactivecocoa-for-a-better-world).  ReactiveCocoa allows us to, among other things, manage constantly updating values with an abstracted version of KVO.  For example, this is used in ```MapViewController``` to track updating values of an NSDictionary named ```annotations``` that represents a dictionary of ```MKAnnotations```, each of which corresponding with the current location of a University of Michigan bus.  When the dictionary's value is changed, the annotations are re-plotted.
 
-NOTE: their API is in pre-release, so some endpoints are incomplete, nonexistent, or supply faulty data.
+NOTE: [their API](https://github.com/magic-bus/api-documentation/) is in pre-release, so some endpoints are incomplete, nonexistent, or supply faulty data.
+
+## Approximating bus arrival time
+The API for bus arrival times hasn't been released yet, so this project circumvents that by approximating it.  It's a crazy hack.  It does so by doing the following: 
+* Receive a subclass of ```MKAnnotation``` containing a ```Stop``` object (which then contains a coordinates) from user as a result of selecting a bus stop
+* Fetch all routes currently running
+* Run a loop through all routes returned and save the routes containing the id for the received Stop object
+* Fetch all buses currently running
+* Run a loop through all received buses and save the buses that are servicing one of the routes saved above
+* Use ```-sortedArrayUsingComparator:``` to order all saved buses in order by distance relative to the ```Stop``` object
+* Pull the first object (which represents the closest bus) in the sorted array
+* Reverse geocode the ```Stop``` coordinate to receive an ```MKPlacemark```
+* Create an instance of ```MKDirectionsRequest``` with it's source being the ```Stop``` coordinate and it's destination being the coordinate of the closest bus
+* Run ```-calculateETAWithCompletionHandler:``` to receive an expected travel time in the form of an ```NSTimeInterval``` object
+* Format the expected travel time object into a readable HH:mm:ss string
 
 # Setup
 
@@ -40,8 +54,8 @@ The project currently only shows buses, bus stops, and announcements.  In the fu
 The project may also move to an alternate map provider that offers more flexibility in terms of scalability, performance (specifically when handling large amounts of polylines and annotations).
 
 # Interface
-![Live bus](https://dl.dropboxusercontent.com/u/2177718/Screen%20Shot%202013-12-02%20at%206.31.38%20PM.png "Live bus")
-![Bus stop](https://dl.dropboxusercontent.com/u/2177718/Screen%20Shot%202013-12-02%20at%206.31.29%20PM.png "Bus stop")
+![Live bus](https://dl.dropboxusercontent.com/u/2177718/image_1.png "Live bus")
+![Bus stop](https://dl.dropboxusercontent.com/u/2177718/image.png "Bus stop")
 ![Street view](https://dl.dropboxusercontent.com/u/2177718/Screen%20Shot%202013-12-02%20at%206.31.20%20PM.png "Street view")
 ![Announcement](https://dl.dropboxusercontent.com/u/2177718/Screen%20Shot%202013-12-01%20at%2010.45.44%20PM.png "Announcement")
 
