@@ -20,7 +20,7 @@ The API for bus arrival times hasn't been released yet, so this project circumve
 * Reverse geocode the ```Stop```'s ```CLLocationCoordinate2D``` to receive an ```MKPlacemark```
 * Create an instance of ```MKDirectionsRequest``` with it's source being the ```Stop```'s ```CLLocationCoordinate2D``` and it's destination being the coordinate of the closest bus
 * Run ```-calculateETAWithCompletionHandler:``` to receive an expected travel time in the form of an ```NSTimeInterval``` object
-* Format the expected travel time object into a readable HH:mm:ss string
+* Format the expected travel time object into a readable ```HH:mm:ss``` string
 
 # Setup
 
