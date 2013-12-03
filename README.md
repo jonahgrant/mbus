@@ -12,7 +12,7 @@ NOTE: [their API](https://github.com/magic-bus/api-documentation/) is in pre-rel
 The API for bus arrival times hasn't been released yet, so this project circumvents that by approximating it.  It's a crazy hack.  It does so by doing the following: 
 * Receive a subclass of ```MKAnnotation``` containing a ```Stop``` object (which then contains a ```CLLocationCoordinate2D```) from user as a result of selecting a bus stop
 * Fetch all routes currently running
-* Run a loop through all routes returned and save the routes containing the id for the received Stop object
+* Run a loop through all routes returned and save the routes containing the id for the received ```Stop``` object
 * Fetch all buses currently running
 * Run a loop through all received buses and save the buses that are servicing one of the routes saved above
 * Use ```-sortedArrayUsingComparator:``` to order all saved buses in order by distance relative to the ```Stop``` object
@@ -20,7 +20,7 @@ The API for bus arrival times hasn't been released yet, so this project circumve
 * Reverse geocode the ```Stop```'s ```CLLocationCoordinate2D``` to receive an ```MKPlacemark```
 * Create an instance of ```MKDirectionsRequest``` with it's source being the ```Stop```'s ```CLLocationCoordinate2D``` and it's destination being the coordinate of the closest bus
 * Run ```-calculateETAWithCompletionHandler:``` to receive an expected travel time in the form of an ```NSTimeInterval``` object
-* Format the expected travel time object into a readable ```HH:mm:ss``` string
+* Format the expected travel time object into a readable ```mm:ss``` string
 
 There is a lot of room for error in this approximation. It is calculating estimated time of arrival based on the assumption that the bus is going straight to the bus stop, on the most convenient route, without making any other stops.  Hence, it is an approximation.  A good way to improve approximation would be to find the stop that the bus is closest to, then calculate how long it will take for the bus to drive to each stop before arriving at the desired one. 
   Additionally, it does not auto-update off of a timer.  This would be very CPU heavy, take up a lot of memory, and eat bandwidth.
@@ -57,8 +57,8 @@ The project currently only shows buses, bus stops, and announcements.  In the fu
 The project may also move to an alternate map provider that offers more flexibility in terms of scalability, performance (specifically when handling large amounts of polylines and annotations).
 
 # Interface
-![Live bus](https://dl.dropboxusercontent.com/u/2177718/Screen%20Shot%202013-12-03%20at%2012.30.09%20AM.png "Live bus")
 ![Bus stop](https://dl.dropboxusercontent.com/u/2177718/Screen%20Shot%202013-12-03%20at%2012.30.28%20AM.png "Bus stop")
+![Live bus](https://dl.dropboxusercontent.com/u/2177718/Screen%20Shot%202013-12-03%20at%2012.30.09%20AM.png "Live bus")
 ![Street view](https://dl.dropboxusercontent.com/u/2177718/Screen%20Shot%202013-12-02%20at%206.31.20%20PM.png "Street view")
 ![Announcement](https://dl.dropboxusercontent.com/u/2177718/Screen%20Shot%202013-12-01%20at%2010.45.44%20PM.png "Announcement")
 
