@@ -70,7 +70,7 @@
             [self updateTitleLabelText];
         }];
         
-        RAC(self, timeUntilNextBus) = RACObserve(self, model.timeToClosestBus.rac_sequence);
+        RAC(self, timeUntilNextBus) = RACObserve(self, model.timeToClosestBus);
         
         _streetViewButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
         [_streetViewButton setTitle:@"Street View" forState:UIControlStateNormal];
