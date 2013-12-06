@@ -49,10 +49,11 @@
 
             if (stopAnnotation) {
                 [self updateTitleLabelText];
-                [_model.stopAnnotation.stop fetchBusesServicingStop];
+                //[_model.stopAnnotation.stop fetchBusesServicingStop];
             }
         }];
         
+        /*
         [RACObserve(self, model.stopAnnotation.stop.busesServicingStop) subscribeNext:^(NSArray *buses) {
             if (buses) {
                 [self updateSubtitleLabelText];
@@ -64,7 +65,7 @@
             if (bus) {
                 [_model fetchClosestBusETA];
             }
-        }];
+        }];*/
         
         [RACObserve(self, model.timeToClosestBus) subscribeNext:^(NSString *time) {
             [self updateTitleLabelText];
@@ -144,6 +145,7 @@
 }
 
 - (void)updateSubtitleLabelText {
+    /*
     NSString *busCount = [NSString stringWithFormat:@"%i", self.model.stopAnnotation.stop.busesServicingStop.count];
     
     NSString *text;
@@ -163,7 +165,7 @@
         CFRelease(boldFont);
         
         return mutableAttributedString;
-    }];
+    }];*/
 }
 
 - (void)displayStreetView {

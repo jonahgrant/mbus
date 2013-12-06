@@ -40,7 +40,7 @@
 }
 
 - (NSString *)subtitle {
-    return [NSString stringWithFormat:@"Route #%@", _bus.route];
+    return [NSString stringWithFormat:@"%@ (#%@)", _bus.routeName, _bus.routeID];
 }
 
 

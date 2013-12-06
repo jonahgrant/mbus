@@ -23,7 +23,6 @@
 /* Begin PBXBuildFile section */
 		AB155C90184D68A400BF1A09 /* StopTray.m in Sources */ = {isa = PBXBuildFile; fileRef = AB155C8F184D68A400BF1A09 /* StopTray.m */; };
 		AB155C93184D68B500BF1A09 /* StopTrayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AB155C92184D68B500BF1A09 /* StopTrayModel.m */; };
-		AB155C98184D8A1000BF1A09 /* Route.m in Sources */ = {isa = PBXBuildFile; fileRef = AB155C97184D8A1000BF1A09 /* Route.m */; };
 		AB2C4C24184D1F0C001E2EA2 /* StreetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB2C4C23184D1F0C001E2EA2 /* StreetViewController.m */; };
 		AB2C4C27184D49A5001E2EA2 /* street-view-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = AB2C4C25184D49A5001E2EA2 /* street-view-icon.png */; };
 		AB2C4C28184D49A5001E2EA2 /* street-view-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AB2C4C26184D49A5001E2EA2 /* street-view-icon@2x.png */; };
@@ -41,9 +40,6 @@
 		ABEDEB36184BDC0A00B82E59 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABEDEB35184BDC0A00B82E59 /* MapKit.framework */; };
 		ABEDEB93184C103B00B82E59 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = ABEDEB7F184C103B00B82E59 /* AppDelegate.m */; };
 		ABEDEB94184C103B00B82E59 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = ABEDEB80184C103B00B82E59 /* main.m */; };
-		ABEDEB97184C103B00B82E59 /* Bus.m in Sources */ = {isa = PBXBuildFile; fileRef = ABEDEB89184C103B00B82E59 /* Bus.m */; };
-		ABEDEB98184C103B00B82E59 /* UMNetworkingSession.m in Sources */ = {isa = PBXBuildFile; fileRef = ABEDEB8C184C103B00B82E59 /* UMNetworkingSession.m */; };
-		ABEDEB99184C103B00B82E59 /* UMResponseSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = ABEDEB8E184C103B00B82E59 /* UMResponseSerializer.m */; };
 		ABEDEB9A184C103B00B82E59 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABEDEB91184C103B00B82E59 /* MapViewController.m */; };
 		ABEDEB9D184C105200B82E59 /* MapViewControllerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ABEDEB9C184C105200B82E59 /* MapViewControllerModel.m */; };
 		ABEDEBA0184C139100B82E59 /* BusAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = ABEDEB9F184C139100B82E59 /* BusAnnotation.m */; };
@@ -56,11 +52,9 @@
 		ABEDEBB0184C266D00B82E59 /* bus225.png in Resources */ = {isa = PBXBuildFile; fileRef = ABEDEBA8184C266D00B82E59 /* bus225.png */; };
 		ABEDEBB1184C266D00B82E59 /* bus270.png in Resources */ = {isa = PBXBuildFile; fileRef = ABEDEBA9184C266D00B82E59 /* bus270.png */; };
 		ABEDEBB2184C266D00B82E59 /* bus315.png in Resources */ = {isa = PBXBuildFile; fileRef = ABEDEBAA184C266D00B82E59 /* bus315.png */; };
-		ABEDEBB5184C336C00B82E59 /* Stop.m in Sources */ = {isa = PBXBuildFile; fileRef = ABEDEBB4184C336C00B82E59 /* Stop.m */; };
 		ABEDEBB8184C350400B82E59 /* StopAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = ABEDEBB7184C350400B82E59 /* StopAnnotation.m */; };
 		ABEDEBBE184C3BE900B82E59 /* AnnoucementsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABEDEBBD184C3BE900B82E59 /* AnnoucementsViewController.m */; };
 		ABEDEBC1184C3CA000B82E59 /* AnnouncementsViewControllerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ABEDEBC0184C3CA000B82E59 /* AnnouncementsViewControllerModel.m */; };
-		ABEDEBC4184C3CCF00B82E59 /* Announcement.m in Sources */ = {isa = PBXBuildFile; fileRef = ABEDEBC3184C3CCF00B82E59 /* Announcement.m */; };
 		ABEDEBC7184C3F3800B82E59 /* AnnouncementCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ABEDEBC6184C3F3800B82E59 /* AnnouncementCell.m */; };
 		ABEDEBCA184C3F4600B82E59 /* AnnouncementCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ABEDEBC9184C3F4600B82E59 /* AnnouncementCellModel.m */; };
 		ABEDEBD3184C42ED00B82E59 /* bus-tab.png in Resources */ = {isa = PBXBuildFile; fileRef = ABEDEBD1184C42ED00B82E59 /* bus-tab.png */; };
@@ -87,8 +81,6 @@
 		AB155C8F184D68A400BF1A09 /* StopTray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StopTray.m; sourceTree = "<group>"; };
 		AB155C91184D68B500BF1A09 /* StopTrayModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StopTrayModel.h; sourceTree = "<group>"; };
 		AB155C92184D68B500BF1A09 /* StopTrayModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StopTrayModel.m; sourceTree = "<group>"; };
-		AB155C96184D8A1000BF1A09 /* Route.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Route.h; sourceTree = "<group>"; };
-		AB155C97184D8A1000BF1A09 /* Route.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Route.m; sourceTree = "<group>"; };
 		AB2C4C22184D1F0C001E2EA2 /* StreetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StreetViewController.h; sourceTree = "<group>"; };
 		AB2C4C23184D1F0C001E2EA2 /* StreetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StreetViewController.m; sourceTree = "<group>"; };
 		AB2C4C25184D49A5001E2EA2 /* street-view-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "street-view-icon.png"; sourceTree = "<group>"; };
@@ -112,12 +104,6 @@
 		ABEDEB7F184C103B00B82E59 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		ABEDEB80184C103B00B82E59 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		ABEDEB81184C103B00B82E59 /* UMBus-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UMBus-Prefix.pch"; sourceTree = "<group>"; };
-		ABEDEB88184C103B00B82E59 /* Bus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bus.h; sourceTree = "<group>"; };
-		ABEDEB89184C103B00B82E59 /* Bus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Bus.m; sourceTree = "<group>"; };
-		ABEDEB8B184C103B00B82E59 /* UMNetworkingSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMNetworkingSession.h; sourceTree = "<group>"; };
-		ABEDEB8C184C103B00B82E59 /* UMNetworkingSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UMNetworkingSession.m; sourceTree = "<group>"; };
-		ABEDEB8D184C103B00B82E59 /* UMResponseSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMResponseSerializer.h; sourceTree = "<group>"; };
-		ABEDEB8E184C103B00B82E59 /* UMResponseSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UMResponseSerializer.m; sourceTree = "<group>"; };
 		ABEDEB90184C103B00B82E59 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
 		ABEDEB91184C103B00B82E59 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		ABEDEB9B184C105200B82E59 /* MapViewControllerModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewControllerModel.h; sourceTree = "<group>"; };
@@ -133,16 +119,12 @@
 		ABEDEBA8184C266D00B82E59 /* bus225.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bus225.png; sourceTree = "<group>"; };
 		ABEDEBA9184C266D00B82E59 /* bus270.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bus270.png; sourceTree = "<group>"; };
 		ABEDEBAA184C266D00B82E59 /* bus315.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bus315.png; sourceTree = "<group>"; };
-		ABEDEBB3184C336C00B82E59 /* Stop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Stop.h; sourceTree = "<group>"; };
-		ABEDEBB4184C336C00B82E59 /* Stop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Stop.m; sourceTree = "<group>"; };
 		ABEDEBB6184C350400B82E59 /* StopAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StopAnnotation.h; sourceTree = "<group>"; };
 		ABEDEBB7184C350400B82E59 /* StopAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StopAnnotation.m; sourceTree = "<group>"; };
 		ABEDEBBC184C3BE900B82E59 /* AnnoucementsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnnoucementsViewController.h; sourceTree = "<group>"; };
 		ABEDEBBD184C3BE900B82E59 /* AnnoucementsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnnoucementsViewController.m; sourceTree = "<group>"; };
 		ABEDEBBF184C3CA000B82E59 /* AnnouncementsViewControllerModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnnouncementsViewControllerModel.h; sourceTree = "<group>"; };
 		ABEDEBC0184C3CA000B82E59 /* AnnouncementsViewControllerModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnnouncementsViewControllerModel.m; sourceTree = "<group>"; };
-		ABEDEBC2184C3CCF00B82E59 /* Announcement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Announcement.h; sourceTree = "<group>"; };
-		ABEDEBC3184C3CCF00B82E59 /* Announcement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Announcement.m; sourceTree = "<group>"; };
 		ABEDEBC5184C3F3800B82E59 /* AnnouncementCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnnouncementCell.h; sourceTree = "<group>"; };
 		ABEDEBC6184C3F3800B82E59 /* AnnouncementCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnnouncementCell.m; sourceTree = "<group>"; };
 		ABEDEBC8184C3F4600B82E59 /* AnnouncementCellModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnnouncementCellModel.h; sourceTree = "<group>"; };
@@ -288,7 +270,6 @@
 			children = (
 				ABEDEB7C184C103B00B82E59 /* Misc */,
 				ABEDEB82184C103B00B82E59 /* Model */,
-				ABEDEB8A184C103B00B82E59 /* Networking */,
 				ABEDEB8F184C103B00B82E59 /* View */,
 				ABEDEB92184C103B00B82E59 /* View Model */,
 			);
@@ -318,31 +299,12 @@
 		ABEDEB82184C103B00B82E59 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				ABEDEB88184C103B00B82E59 /* Bus.h */,
-				ABEDEB89184C103B00B82E59 /* Bus.m */,
-				ABEDEBB3184C336C00B82E59 /* Stop.h */,
-				ABEDEBB4184C336C00B82E59 /* Stop.m */,
-				AB155C96184D8A1000BF1A09 /* Route.h */,
-				AB155C97184D8A1000BF1A09 /* Route.m */,
-				ABEDEBC2184C3CCF00B82E59 /* Announcement.h */,
-				ABEDEBC3184C3CCF00B82E59 /* Announcement.m */,
 				ABEDEB9E184C139100B82E59 /* BusAnnotation.h */,
 				ABEDEB9F184C139100B82E59 /* BusAnnotation.m */,
 				ABEDEBB6184C350400B82E59 /* StopAnnotation.h */,
 				ABEDEBB7184C350400B82E59 /* StopAnnotation.m */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		ABEDEB8A184C103B00B82E59 /* Networking */ = {
-			isa = PBXGroup;
-			children = (
-				ABEDEB8B184C103B00B82E59 /* UMNetworkingSession.h */,
-				ABEDEB8C184C103B00B82E59 /* UMNetworkingSession.m */,
-				ABEDEB8D184C103B00B82E59 /* UMResponseSerializer.h */,
-				ABEDEB8E184C103B00B82E59 /* UMResponseSerializer.m */,
-			);
-			path = Networking;
 			sourceTree = "<group>";
 		};
 		ABEDEB8F184C103B00B82E59 /* View */ = {
@@ -539,23 +501,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				ABEDEB9D184C105200B82E59 /* MapViewControllerModel.m in Sources */,
-				AB155C98184D8A1000BF1A09 /* Route.m in Sources */,
 				ABEDEBB8184C350400B82E59 /* StopAnnotation.m in Sources */,
 				ABEDEBC1184C3CA000B82E59 /* AnnouncementsViewControllerModel.m in Sources */,
 				ABEDEBBE184C3BE900B82E59 /* AnnoucementsViewController.m in Sources */,
 				AB155C93184D68B500BF1A09 /* StopTrayModel.m in Sources */,
-				ABEDEB97184C103B00B82E59 /* Bus.m in Sources */,
 				ABEDEB93184C103B00B82E59 /* AppDelegate.m in Sources */,
 				ABEDEB9A184C103B00B82E59 /* MapViewController.m in Sources */,
 				AB2C4C24184D1F0C001E2EA2 /* StreetViewController.m in Sources */,
 				ABEDEB94184C103B00B82E59 /* main.m in Sources */,
 				ABEDEBC7184C3F3800B82E59 /* AnnouncementCell.m in Sources */,
 				AB155C90184D68A400BF1A09 /* StopTray.m in Sources */,
-				ABEDEBB5184C336C00B82E59 /* Stop.m in Sources */,
-				ABEDEB99184C103B00B82E59 /* UMResponseSerializer.m in Sources */,
 				ABEDEBA0184C139100B82E59 /* BusAnnotation.m in Sources */,
-				ABEDEB98184C103B00B82E59 /* UMNetworkingSession.m in Sources */,
-				ABEDEBC4184C3CCF00B82E59 /* Announcement.m in Sources */,
 				ABEDEBCA184C3F4600B82E59 /* AnnouncementCellModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
