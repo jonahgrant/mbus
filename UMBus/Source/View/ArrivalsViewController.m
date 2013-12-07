@@ -62,21 +62,55 @@
 #pragma UITableView data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.model.stopsSortedByTimeOfArrival.count;
+    switch (section) {
+        case 0:
+            return 1;
+            break;
+        case 1:
+            return self.model.stopsSortedByTimeOfArrival.count;
+        default:
+            break;
+    }
+    
+    return 0;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    switch (section) {
+        case 0:
+            return @"Route information";
+        case 1:
+            return @"Stops";
+            break;
+        default:
+            break;
+    }
+    
+    return nil;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    ArrivalCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+    if (indexPath.section == 0) {
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+        return cell;
+    }
     
-    ArrivalStop *stop = self.model.stopsSortedByTimeOfArrival[indexPath.row];
-    ArrivalCellModel *arrivalCellModel = [[ArrivalCellModel alloc] initWithStop:stop];
-    cell.model = arrivalCellModel;
+    if (indexPath.section == 1) {
+        ArrivalCell *cell = [tableView dequeueReusableCellWithIdentifier:@"StopCell" forIndexPath:indexPath];
+        
+        ArrivalStop *stop = self.model.stopsSortedByTimeOfArrival[indexPath.row];
+        ArrivalCellModel *arrivalCellModel = [[ArrivalCellModel alloc] initWithStop:stop];
+        cell.model = arrivalCellModel;
+        
+        return cell;
+    }
     
-    return cell;
+    return nil;
 }
+
 
 @end
