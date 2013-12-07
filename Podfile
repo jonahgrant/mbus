@@ -7,5 +7,7 @@ target "UMBus" do
     pod 'Google-Maps-iOS-SDK', '~> 1.6.0'
     pod 'TTTAttributedLabel', '~> 1.7.5'
     pod 'FormatterKit', '~> 1.3.1'
-    pod 'Fare', '~> 1.0.2'
+    pod 'Fare', 
+  :git => 'git@github.com:jonahgrant/fare.git', 
+        :branch => 'master'
 end
