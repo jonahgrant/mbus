@@ -14,10 +14,11 @@
 #import "ArrivalCellModel.h"
 #import "HexColor.h"
 #import "DataStore.h"
+#import "RouteMapViewController.h"
 
 @interface ArrivalsViewController () <UITableViewDataSource, UITableViewDelegate>
 
-@property (strong, nonatomic) NSArray *stops;
+@property (strong, nonatomic) NSArray *stops, *informationCells;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) UIRefreshControl *refreshControl;
 
@@ -35,6 +36,8 @@
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
     [self.tableView addSubview:self.refreshControl];
+    
+    self.informationCells = @[@"Map"];
     
     [RACObserve(self.model, stopsSortedByTimeOfArrival) subscribeNext:^(NSArray *stops) {
         if (stops) {
@@ -68,7 +71,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     switch (section) {
         case 0:
-            return 1;
+            return self.informationCells.count;
             break;
         case 1:
             return self.model.stopsSortedByTimeOfArrival.count;
@@ -93,9 +96,24 @@
     return nil;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    switch (indexPath.section) {
+        case 0:
+            return 50;
+            break;
+        case 1:
+            return 120;
+        default:
+            break;
+    }
+    
+    return 0;
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+        cell.textLabel.text = self.informationCells[indexPath.row];
         return cell;
     }
     
@@ -112,5 +130,23 @@
     return nil;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.section == 0) {
+        [self performSegueWithIdentifier:UMSegueRouteMap sender:self];
+    }
+    
+    if (indexPath.section == 1) {
+        
+    }
+}
+
+#pragma UIStoryboard
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:UMSegueRouteMap]) {
+        RouteMapViewController *routeMap = (RouteMapViewController *)segue.destinationViewController;
+        routeMap.arrival = self.model.arrival;
+    }
+}
 
 @end

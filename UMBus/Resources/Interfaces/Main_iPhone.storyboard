@@ -173,11 +173,11 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="64" id="sJu-mC-Ub1">
-                                        <rect key="frame" x="0.0" y="245" width="320" height="64"/>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="50" id="sJu-mC-Ub1">
+                                        <rect key="frame" x="0.0" y="245" width="320" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sJu-mC-Ub1" id="59W-Vk-RmH">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -193,11 +193,43 @@
                     <navigationItem key="navigationItem" id="C5c-c6-3Lf"/>
                     <connections>
                         <outlet property="tableView" destination="bME-bH-eES" id="eup-te-vyn"/>
+                        <segue destination="Xvd-mh-W0a" kind="push" identifier="UMSegueRouteMap" id="mQR-Dg-JFD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZkA-En-kfn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1134" y="-770"/>
+        </scene>
+        <!--Route Map View Controller-->
+        <scene sceneID="GPJ-jr-T79">
+            <objects>
+                <viewController id="Xvd-mh-W0a" customClass="RouteMapViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="eSD-kE-KpI"/>
+                        <viewControllerLayoutGuide type="bottom" id="tP4-OC-03A"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="3v4-Yy-2nD">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="aNv-gO-PBk">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <connections>
+                                    <outlet property="delegate" destination="Xvd-mh-W0a" id="kd7-d6-4rv"/>
+                                </connections>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="jlh-w6-4Kw"/>
+                    <connections>
+                        <outlet property="mapView" destination="aNv-gO-PBk" id="xDm-rG-Uce"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IHm-ag-dYz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1574" y="-770"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Vex-rW-GRa">
