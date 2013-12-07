@@ -10,6 +10,8 @@
 #import "ArrivalsViewControllerModel.h"
 #import "Arrival.h"
 #import "ArrivalStop.h"
+#import "ArrivalCell.h"
+#import "ArrivalCellModel.h"
 #import "HexColor.h"
 #import "DataStore.h"
 
@@ -60,23 +62,19 @@
 #pragma UITableView data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return self.model.stopsSortedByTimeOfArrival.count;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return 1;
 }
 
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.model.stopsSortedByTimeOfArrival.count;
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+    ArrivalCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     
-    ArrivalStop *stop = self.model.stopsSortedByTimeOfArrival[indexPath.section];
-    cell.textLabel.text = stop.name;
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"Bus 1 arriving in %@. Bus 2 arriving in %@.",
-                                 [self.model mmssForTimeInterval:stop.timeOfArrival],
-                                 [self.model mmssForTimeInterval:stop.timeOfArrival2]];
-    cell.textLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:17];
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    ArrivalStop *stop = self.model.stopsSortedByTimeOfArrival[indexPath.row];
+    ArrivalCellModel *arrivalCellModel = [[ArrivalCellModel alloc] initWithStop:stop];
+    cell.model = arrivalCellModel;
     
     return cell;
 }

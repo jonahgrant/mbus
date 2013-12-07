@@ -7,14 +7,24 @@
 //
 
 #import "ArrivalCellModel.h"
+#import "ArrivalStop.h"
 
 @implementation ArrivalCellModel
 
-- (instancetype)initWithArrival:(Arrival *)arrival {
+- (instancetype)initWithStop:(ArrivalStop *)stop {
     if (self = [super init]) {
-        self.arrival = arrival;
+        self.stop = stop;
     }
     return self;
+}
+
+- (NSString *)abbreviatedArrivalTime {
+    int minutes = ((NSInteger)self.stop.timeOfArrival / 60) % 60;
+    if (minutes == 00) {
+        return @"Arr";
+    }
+    
+    return [NSString stringWithFormat:@"%02im", minutes];
 }
 
 @end

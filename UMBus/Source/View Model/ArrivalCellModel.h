@@ -8,12 +8,14 @@
 
 #import <Foundation/Foundation.h>
 
-@class Arrival;
+@class ArrivalStop;
 
 @interface ArrivalCellModel : NSObject
 
-@property (strong, nonatomic) Arrival *arrival;
+@property (strong, nonatomic) ArrivalStop *stop;
 
-- (instancetype)initWithArrival:(Arrival *)arrival;
+- (instancetype)initWithStop:(ArrivalStop *)stop;
+
+- (NSString *)abbreviatedArrivalTime;
 
 @end

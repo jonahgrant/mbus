@@ -19,5 +19,7 @@
 - (void)fetchArrivals;
 
 - (Arrival *)arrivalForID:(NSString *)arrivalID;
+- (NSArray *)arrivalStopsForStopID:(NSString *)stopID;
+- (NSArray *)allArrivalStops;
 
 @end
