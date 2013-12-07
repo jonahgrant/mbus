@@ -44,7 +44,12 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self.tableView deselectRowAtIndexPath:[[self.tableView indexPathsForSelectedRows] firstObject] animated:YES];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
     [self.navigationController.navigationBar setTintColor:nil];
+    [self.tabBarController.tabBar setTintColor:nil];
 }
 
 - (void)fetchData {

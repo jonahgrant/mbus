@@ -33,8 +33,6 @@
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
     [self.tableView addSubview:self.refreshControl];
-
-    [self.navigationController.navigationBar setTintColor:[UIColor colorWithHexString:self.arrival.busRouteColor]];
     
     [RACObserve(self.model, stopsSortedByTimeOfArrival) subscribeNext:^(NSArray *stops) {
         if (stops) {
@@ -48,6 +46,11 @@
             [self.model setArrival:[[DataStore sharedManager] arrivalForID:self.arrival.id]];
         }
     }];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [self.navigationController.navigationBar setTintColor:[UIColor colorWithHexString:self.arrival.busRouteColor]];
+    [self.tabBarController.tabBar setTintColor:[UIColor colorWithHexString:self.arrival.busRouteColor]];
 }
 
 - (void)refresh {
@@ -69,8 +72,9 @@
     
     ArrivalStop *stop = self.model.stopsSortedByTimeOfArrival[indexPath.section];
     cell.textLabel.text = stop.name;
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"Arriving in %02i:%02i minutes", ((NSInteger)stop.timeOfArrival / 60) % 60, (NSInteger)stop.timeOfArrival % 60];
-    
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"Bus 1 arriving in %@. Bus 2 arriving in %@.",
+                                 [self.model mmssForTimeInterval:stop.timeOfArrival],
+                                 [self.model mmssForTimeInterval:stop.timeOfArrival2]];
     cell.textLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:17];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
