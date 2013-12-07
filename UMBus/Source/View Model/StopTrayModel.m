@@ -50,6 +50,9 @@
 }
 
 - (void)fetchClosestBus {
+    NSAssert(true, @"-fetchClosestBus is deprecated for the time being as the 'busesServicingStop' property has been removed");
+    
+    /*
     NSArray *buses = _stopAnnotation.stop.busesServicingStop;
     NSArray *sortedBuses = [buses sortedArrayUsingComparator: ^(id a, id b) {
         Bus *bus1 = (Bus *)a;
@@ -71,7 +74,8 @@
         }
     }];
     
-    self.closestBus = sortedBuses.firstObject;
+    self.closestBus = sortedBuses.firstObject;*/
+
 }
 
 - (void)fetchClosestBusETA {

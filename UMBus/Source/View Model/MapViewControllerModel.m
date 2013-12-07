@@ -35,7 +35,7 @@
 }
 
 - (void)fetchBuses {
-    [self.session fetchBusLocationsWithSuccessBlock:^(NSArray *buses) {
+    [self.session fetchBusesWithSuccessBlock:^(NSArray *buses) {
         self.buses = buses;
         
         // update bus locations continuously
