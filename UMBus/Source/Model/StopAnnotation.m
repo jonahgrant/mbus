@@ -29,17 +29,4 @@
     return _stop.name2;
 }
 
-- (NSString *)subtitle {
-    return [self abbreviatedArrivalTime];
-}
-
-- (NSString *)abbreviatedArrivalTime {
-    int minutes = ((NSInteger)self.stop.timeOfArrival / 60) % 60;
-    if (minutes == 00) {
-        return @"Arriving now";
-    }
-    
-    return [NSString stringWithFormat:@"Arriving in %02im", minutes];
-}
-
 @end

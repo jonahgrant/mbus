@@ -124,15 +124,19 @@
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
     if ([annotation isKindOfClass:[MKUserLocation class]]) return nil;
     
+    UIColor *routeColor = [UIColor colorWithHexString:self.model.arrival.busRouteColor];
     if ([annotation class] == [BusAnnotation class]) {
         SVPulsingAnnotationView *pin = [[SVPulsingAnnotationView alloc] initWithAnnotation:(BusAnnotation *)annotation reuseIdentifier:@"BusPin"];
-        pin.annotationColor = [UIColor colorWithRed:0.678431 green:0 blue:0 alpha:1];
+        pin.annotationColor = [UIColor colorWithRed:(1-CGColorGetComponents(routeColor.CGColor)[0])
+                                              green:(1-CGColorGetComponents(routeColor.CGColor)[1])
+                                               blue:(1-CGColorGetComponents(routeColor.CGColor)[2])
+                                              alpha:CGColorGetAlpha(routeColor.CGColor)];
         
         return pin;
     } else if ([annotation class] == [StopAnnotation class] ) {
         CircleAnnotationView *pin = [[CircleAnnotationView alloc] initWithAnnotation:(StopAnnotation *)annotation
                                                                          reuseIdentifier:@"Pin"
-                                                                                   color:[UIColor colorWithHexString:self.model.arrival.busRouteColor]
+                                                                                   color:routeColor
                                                                             outlineColor:[UIColor whiteColor]];
         pin.canShowCallout = YES;
         return pin;
