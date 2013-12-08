@@ -8,7 +8,9 @@
 
 #import "RouteMapViewControllerModel.h"
 #import "UMNetworkingSession.h"
+#import "DataStore.h"
 #import "Arrival.h"
+#import "Bus.h"
 
 @interface RouteMapViewControllerModel ()
 
@@ -23,6 +25,13 @@
         _networkingSession = [[UMNetworkingSession alloc] init];
         
         self.arrival = arrival;
+        
+        [RACObserve([DataStore sharedManager], busesForRoutesDictionary) subscribeNext:^(NSArray *buses) {
+            if (buses) {
+                NSLog(@"search for bus");
+                self.bus = [[DataStore sharedManager] busOperatingRouteID:self.arrival.id];
+            }
+        }];
     }
     return self;
 }
@@ -32,6 +41,10 @@
                                  withSuccessBlock:^(NSArray *array) {
                                      self.traceRoutes = array;
                                  } errorBlock:NULL];
+}
+
+- (void)fetchBus {
+    [[DataStore sharedManager] fetchBuses];
 }
 
 @end

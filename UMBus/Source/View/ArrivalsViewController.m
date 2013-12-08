@@ -38,7 +38,7 @@
     [self.tableView addSubview:self.refreshControl];
     
     self.informationCells = @[@"Map"];
-    
+        
     [RACObserve(self.model, stopsSortedByTimeOfArrival) subscribeNext:^(NSArray *stops) {
         if (stops) {
             [self.tableView reloadData];
@@ -54,6 +54,9 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    [self.tableView deselectRowAtIndexPath:[[self.tableView indexPathsForSelectedRows] firstObject] animated:YES];
     [self.navigationController.navigationBar setTintColor:[UIColor colorWithHexString:self.arrival.busRouteColor]];
     [self.tabBarController.tabBar setTintColor:[UIColor colorWithHexString:self.arrival.busRouteColor]];
 }
@@ -102,7 +105,7 @@
             return 50;
             break;
         case 1:
-            return 120;
+            return 100;
         default:
             break;
     }
@@ -114,6 +117,8 @@
     if (indexPath.section == 0) {
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
         cell.textLabel.text = self.informationCells[indexPath.row];
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        
         return cell;
     }
     

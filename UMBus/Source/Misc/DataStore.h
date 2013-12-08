@@ -8,17 +8,21 @@
 
 #import <Foundation/Foundation.h>
 
-@class Arrival, ArrivalStop;
+@class Arrival, ArrivalStop, Bus;
 
 @interface DataStore : NSObject
 
-@property (strong, nonatomic, readonly) NSArray *arrivals;
+@property (strong, nonatomic, readonly) NSArray *arrivals, *buses;
+@property (strong, nonatomic, readonly) NSDictionary *arrivalsDictionary, *busesForRoutesDictionary;
 
 + (instancetype)sharedManager;
 
 - (void)fetchArrivals;
+- (void)fetchBuses;
 
 - (Arrival *)arrivalForID:(NSString *)arrivalID;
+- (Bus *)busOperatingRouteID:(NSString *)routeID;
+
 - (NSArray *)arrivalStopsForStopID:(NSString *)stopID;
 - (NSArray *)allArrivalStops;
 

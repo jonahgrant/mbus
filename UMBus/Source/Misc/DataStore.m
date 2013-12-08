@@ -10,11 +10,13 @@
 #import "UMNetworkingSession.h"
 #import "Arrival.h"
 #import "ArrivalStop.h"
+#import "Bus.h"
 
 @interface DataStore ()
 
 @property (strong, nonatomic) UMNetworkingSession *networkingSession;
-@property (strong, nonatomic, readwrite) NSArray *arrivals;
+@property (strong, nonatomic, readwrite) NSArray *arrivals, *buses;
+@property (strong, nonatomic, readwrite) NSDictionary *arrivalsDictionary, *busesForRoutesDictionary;
 
 @end
 
@@ -45,8 +47,28 @@
 #pragma Fetch
 
 - (void)fetchArrivals {
-    [self.networkingSession fetchArrivalsWithSuccessBlock:^(NSArray *array) {
-        self.arrivals = array;
+    [self.networkingSession fetchArrivalsWithSuccessBlock:^(NSArray *arrivals) {
+        self.arrivals = arrivals;
+        
+        NSMutableDictionary *mutableDictionary = [NSMutableDictionary dictionary];
+        for (Arrival *arrival in arrivals) {
+            [mutableDictionary addEntriesFromDictionary:@{arrival.id: arrival}];
+        }
+        self.arrivalsDictionary = mutableDictionary;
+    } errorBlock:^(NSError *error) {
+        [self handleError:error];
+    }];
+}
+
+- (void)fetchBuses {
+    [self.networkingSession fetchBusesWithSuccessBlock:^(NSArray *buses) {
+        self.buses = buses;
+        
+        NSMutableDictionary *mutableDictionary = [NSMutableDictionary dictionary];
+        for (Bus *bus in buses) {
+            [mutableDictionary addEntriesFromDictionary:@{bus.routeID: bus}];
+        }
+        self.busesForRoutesDictionary = mutableDictionary;
     } errorBlock:^(NSError *error) {
         [self handleError:error];
     }];
@@ -55,13 +77,11 @@
 #pragma 
 
 - (Arrival *)arrivalForID:(NSString *)arrivalID {
-    for (Arrival *arrival in self.arrivals) {
-        if ([arrival.id isEqualToString:arrivalID]) {
-            return arrival;
-        }
-    }
-    
-    return 0;
+    return [self.arrivalsDictionary objectForKey:arrivalID];
+}
+
+- (Bus *)busOperatingRouteID:(NSString *)routeID {
+    return [self.busesForRoutesDictionary objectForKey:routeID];
 }
 
 - (NSArray *)arrivalStopsForStopID:(NSString *)stopID {
@@ -73,7 +93,7 @@
     NSMutableArray *mutableArray = [NSMutableArray array];
     for (Arrival *arrival in self.arrivals) {
         for (ArrivalStop *stop in arrival.stops) {
-            if (stop.id1 == stopID) {
+            if ([stop.id1 isEqualToString:stopID]) {
                 [mutableArray addObject:stop];
             }
         }

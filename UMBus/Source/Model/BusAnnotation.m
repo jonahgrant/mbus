@@ -19,10 +19,7 @@
 
 - (instancetype)initWithBus:(Bus *)bus {
     if (self = [super init]) {
-        _bus = bus;
-        _id = bus.id;
-        _coordinate = CLLocationCoordinate2DMake([bus.latitude doubleValue], [bus.longitude doubleValue]);
-        _heading = [bus.heading floatValue];
+        [self setBus:bus];
     }
     return self;
 }
@@ -35,13 +32,15 @@
     return self;
 }
 
+- (void)setBus:(Bus *)bus {
+    _bus = bus;
+    _id = bus.id;
+    _coordinate = CLLocationCoordinate2DMake([bus.latitude doubleValue], [bus.longitude doubleValue]);
+    _heading = [bus.heading floatValue];
+}
+
 - (NSString *)title {
-    return _bus.routeName;
+    return @"Bus";
 }
-
-- (NSString *)subtitle {
-    return [NSString stringWithFormat:@"%@ (#%@)", _bus.routeName, _bus.routeID];
-}
-
 
 @end
