@@ -55,9 +55,11 @@
         }
     }];
     
-    [RACObserve(self.model, busAnnotation) subscribeNext:^(BusAnnotation *busAnnotation) {
-        if (busAnnotation) {
-            [self.mapView addAnnotation:busAnnotation];
+    [RACObserve(self.model, busAnnotations) subscribeNext:^(NSDictionary *busAnnotations) {
+        if (busAnnotations) {
+            for (id key in busAnnotations) {
+                [self.mapView addAnnotation:(BusAnnotation *)[busAnnotations objectForKey:key]];
+            }
         }
     }];
 }

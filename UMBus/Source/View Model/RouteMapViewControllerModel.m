@@ -17,7 +17,7 @@
 
 @property (strong, nonatomic) UMNetworkingSession *networkingSession;
 @property (nonatomic) BOOL continueBusUpdating;
-@property (strong, nonatomic) NSDictionary *busDictionary;
+@property (strong, nonatomic) NSArray *buses;
 
 @end
 
@@ -28,20 +28,11 @@
         _networkingSession = [[UMNetworkingSession alloc] init];
         
         self.arrival = arrival;
-        
-        self.busDictionary = [NSDictionary dictionary];
-        
+                
         [RACObserve([DataStore sharedManager], buses) subscribeNext:^(NSArray *buses) {
             if (buses) {
-                for (Bus *bus in buses) {
-                    if ([bus.routeID isEqualToString:self.arrival.id]) {
-                        if (self.busAnnotation) {
-                            [self.busAnnotation setCoordinate:CLLocationCoordinate2DMake([bus.latitude doubleValue], [bus.longitude doubleValue])];
-                        } else {
-                            self.busAnnotation = [[BusAnnotation alloc] initWithBus:bus];
-                        }
-                    }
-                }
+                self.buses = buses;
+                [self manageBusAnnotations];
                 
                 if (self.continueBusUpdating) {
                     [self fetchBuses];
@@ -50,6 +41,27 @@
         }];
     }
     return self;
+}
+
+- (void)manageBusAnnotations {
+    [RACObserve(self, buses) subscribeNext:^(NSArray *buses) {
+        if (buses) {
+            NSMutableDictionary *mutableAnnotations = [NSMutableDictionary dictionaryWithDictionary:self.busAnnotations];
+            for (Bus *bus in buses) {
+                if ([bus.routeID isEqualToString:self.arrival.id]) {
+                    if ([self.busAnnotations objectForKey:bus.id]) {
+                        // update
+                        [(BusAnnotation *)[mutableAnnotations objectForKey:bus.id] setCoordinate:CLLocationCoordinate2DMake([bus.latitude doubleValue], [bus.longitude doubleValue])];
+                    } else {
+                        // add
+                        BusAnnotation *annotation = [[BusAnnotation alloc] initWithBus:bus];
+                        [mutableAnnotations addEntriesFromDictionary:@{bus.id : annotation}];
+                    }
+                }
+            }
+            self.busAnnotations = mutableAnnotations;
+        }
+    }];
 }
 
 - (void)fetchTraceRoute {

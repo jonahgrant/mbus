@@ -13,7 +13,7 @@
 @interface RouteMapViewControllerModel : NSObject
 
 @property (strong, nonatomic) Arrival *arrival;
-@property (strong, nonatomic) BusAnnotation *busAnnotation;
+@property (strong, nonatomic) NSDictionary *busAnnotations;
 @property (strong, nonatomic) NSArray *traceRoutes;
 
 - (instancetype)initWithArrival:(Arrival *)arrival;
