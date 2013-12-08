@@ -27,7 +27,7 @@
 @implementation StopTray
 
 - (instancetype)initWithTintColor:(UIColor *)color {
-    if (self = [super initWithFrame:CGRectMake(0, 0, 320, 100)]) {
+    if (self = [super initWithFrame:CGRectMake(0, 0, 320, 50)]) {
         _model = [[StopTrayModel alloc] init];
         
         _titleLabel = [[TTTAttributedLabel alloc] initWithFrame:CGRectMake(10, 10, 310, 16)];
@@ -47,7 +47,7 @@
         _streetViewButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
         [_streetViewButton setTitle:@"Street View" forState:UIControlStateNormal];
         _streetViewButton.tintColor = color;
-        _streetViewButton.frame = CGRectMake(10, 60, 90, 30);
+        _streetViewButton.frame = CGRectMake(10, 10, 90, 30);
         _streetViewButton.layer.cornerRadius = 3;
         _streetViewButton.layer.borderWidth = 1;
         _streetViewButton.layer.borderColor = color.CGColor;
@@ -57,7 +57,7 @@
         _directionsButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
         [_directionsButton setTitle:@"Directions" forState:UIControlStateNormal];
         _directionsButton.tintColor = color;
-        _directionsButton.frame = CGRectMake(115, 60, 90, 30);
+        _directionsButton.frame = CGRectMake(115, 10, 90, 30);
         _directionsButton.layer.cornerRadius = 3;
         _directionsButton.layer.borderWidth = 1;
         _directionsButton.layer.borderColor = color.CGColor;
@@ -67,7 +67,7 @@
         _shareButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
         [_shareButton setTitle:@"Share" forState:UIControlStateNormal];
         _shareButton.tintColor = color;
-        _shareButton.frame = CGRectMake(220, 60, 90, 30);
+        _shareButton.frame = CGRectMake(220, 10, 90, 30);
         _shareButton.layer.cornerRadius = 3;
         _shareButton.layer.borderWidth = 1;
         _shareButton.layer.borderColor = color.CGColor;

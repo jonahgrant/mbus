@@ -41,12 +41,7 @@
 }
 
 - (void)handleError:(NSError *)error {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
-                                                    message:error.localizedDescription
-                                                   delegate:nil
-                                          cancelButtonTitle:nil
-                                          otherButtonTitles:@"Dismiss", nil];
-    [alert show];
+    NSLog(@"Error: %@", error.localizedDescription);
 }
 
 #pragma Fetch
@@ -54,7 +49,7 @@
 - (void)fetchArrivals {
     [self.networkingSession fetchArrivalsWithSuccessBlock:^(NSArray *arrivals) {
         self.arrivals = arrivals;
-        
+
         NSMutableDictionary *mutableDictionary = [NSMutableDictionary dictionary];
         for (Arrival *arrival in arrivals) {
             [mutableDictionary addEntriesFromDictionary:@{arrival.id: arrival}];

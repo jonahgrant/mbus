@@ -47,10 +47,18 @@
     
     [RACObserve([DataStore sharedManager], arrivals) subscribeNext:^(NSArray *arrivals) {
         if (arrivals) {
+            NSLog(@"end refreshing");
+
             [self.refreshControl endRefreshing];
             [self.model setArrival:[[DataStore sharedManager] arrivalForID:self.arrival.id]];
         }
     }];
+    
+    [NSTimer timerWithTimeInterval:[(ArrivalStop *)self.model.arrival.stops[0] timeOfArrival]
+                            target:self
+                          selector:@selector(refresh)
+                          userInfo:nil
+                           repeats:YES];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -62,6 +70,7 @@
 }
 
 - (void)refresh {
+    NSLog(@"refreshing");
     [[DataStore sharedManager] fetchArrivals];
 }
 

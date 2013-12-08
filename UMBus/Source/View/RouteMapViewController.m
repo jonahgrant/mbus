@@ -76,6 +76,16 @@
     [self zoom];
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [self.model beginBusFetching];
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    [self.model endBusFetching];
+}
+
 - (void)drawRouteWithLocations:(NSArray *)locations {
     CLLocationCoordinate2D coordinates[locations.count];
     
