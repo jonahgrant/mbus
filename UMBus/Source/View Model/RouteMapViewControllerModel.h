@@ -8,17 +8,19 @@
 
 #import <Foundation/Foundation.h>
 
-@class Arrival, Bus;
+@class Arrival, BusAnnotation;
 
 @interface RouteMapViewControllerModel : NSObject
 
 @property (strong, nonatomic) Arrival *arrival;
-@property (strong, nonatomic) Bus *bus;
+@property (strong, nonatomic) BusAnnotation *busAnnotation;
 @property (strong, nonatomic) NSArray *traceRoutes;
 
 - (instancetype)initWithArrival:(Arrival *)arrival;
 
 - (void)fetchTraceRoute;
-- (void)fetchBus;
+
+- (void)beginBusFetching;
+- (void)endBusFetching;
 
 @end

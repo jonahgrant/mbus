@@ -11,10 +11,13 @@
 #import "DataStore.h"
 #import "Arrival.h"
 #import "Bus.h"
+#import "BusAnnotation.h"
 
 @interface RouteMapViewControllerModel ()
 
 @property (strong, nonatomic) UMNetworkingSession *networkingSession;
+@property (nonatomic) BOOL continueBusUpdating;
+@property (strong, nonatomic) NSDictionary *busDictionary;
 
 @end
 
@@ -26,9 +29,23 @@
         
         self.arrival = arrival;
         
-        [RACObserve([DataStore sharedManager], busesForRoutesDictionary) subscribeNext:^(NSDictionary *busDictionary) {
-            if (busDictionary) {
-                self.bus = [busDictionary objectForKey:self.arrival.id];
+        self.busDictionary = [NSDictionary dictionary];
+        
+        [RACObserve([DataStore sharedManager], buses) subscribeNext:^(NSArray *buses) {
+            if (buses) {
+                for (Bus *bus in buses) {
+                    if ([bus.routeID isEqualToString:self.arrival.id]) {
+                        if (self.busAnnotation) {
+                            [self.busAnnotation setCoordinate:CLLocationCoordinate2DMake([bus.latitude doubleValue], [bus.longitude doubleValue])];
+                        } else {
+                            self.busAnnotation = [[BusAnnotation alloc] initWithBus:bus];
+                        }
+                    }
+                }
+                
+                if (self.continueBusUpdating) {
+                    [self fetchBuses];
+                }
             }
         }];
     }
@@ -42,8 +59,17 @@
                                  } errorBlock:NULL];
 }
 
-- (void)fetchBus {
+- (void)fetchBuses {
     [[DataStore sharedManager] fetchBuses];
+}
+
+- (void)beginBusFetching {
+    self.continueBusUpdating = YES;
+    [self fetchBuses];
+}
+
+- (void)endBusFetching {
+    self.continueBusUpdating = NO;
 }
 
 @end

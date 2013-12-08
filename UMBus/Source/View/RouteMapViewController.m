@@ -31,7 +31,7 @@
     
     self.model = [[RouteMapViewControllerModel alloc] initWithArrival:self.arrival];
     [self.model fetchTraceRoute];
-    [self.model fetchBus];
+    [self.model beginBusFetching];
     
     self.busAnnotation = [[BusAnnotation alloc] init];
     [self.mapView addAnnotation:self.busAnnotation];
@@ -55,11 +55,9 @@
         }
     }];
     
-    [RACObserve(self.model, bus) subscribeNext:^(Bus *bus) {
-        if (bus) {
-            self.busAnnotation.bus = bus;
-            [self.model fetchBus];
-            NSLog(@"got bus");
+    [RACObserve(self.model, busAnnotation) subscribeNext:^(BusAnnotation *busAnnotation) {
+        if (busAnnotation) {
+            [self.mapView addAnnotation:busAnnotation];
         }
     }];
 }
