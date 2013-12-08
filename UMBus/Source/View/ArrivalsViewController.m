@@ -47,8 +47,6 @@
     
     [RACObserve([DataStore sharedManager], arrivals) subscribeNext:^(NSArray *arrivals) {
         if (arrivals) {
-            NSLog(@"end refreshing");
-
             [self.refreshControl endRefreshing];
             [self.model setArrival:[[DataStore sharedManager] arrivalForID:self.arrival.id]];
         }
@@ -70,7 +68,6 @@
 }
 
 - (void)refresh {
-    NSLog(@"refreshing");
     [[DataStore sharedManager] fetchArrivals];
 }
 
