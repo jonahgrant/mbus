@@ -26,6 +26,12 @@
     return self;
 }
 
+- (NSString *)timeOfArrivalForTimeInterval:(NSTimeInterval)interval {
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"hh:mm a"];
+    NSDate *date = [NSDate dateWithTimeIntervalSinceNow:interval];
+    return [dateFormatter stringFromDate:date];
+}
 
 - (void)drawRect:(CGRect)rect {
     [super drawRect:rect];
@@ -36,11 +42,16 @@
     
     NSString *routeName = self.model.stop.name2;
     NSString *routeTimeOfArrival = [self.model abbreviatedArrivalTime];
+    NSString *eta = [@"Arriving at " stringByAppendingString:[self timeOfArrivalForTimeInterval:self.model.stop.timeOfArrival]];
+    NSString *eta2 = [@"Second bus arriving at " stringByAppendingString:[self timeOfArrivalForTimeInterval:self.model.stop.timeOfArrival2]];
     
     UIColor *busRouteColor = [UIColor colorWithRed:0.576660 green:0.576660 blue:0.576660 alpha:1.0000];
     
     NSDictionary *routeNameDictionary = @{ NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue-Light" size:17],
                                            NSForegroundColorAttributeName: [UIColor blackColor]};
+    
+    NSDictionary *etaDirectory = @{ NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue-Light" size:12],
+                                           NSForegroundColorAttributeName: [UIColor lightGrayColor]};
     
     NSDictionary *arrivalTimeDictionary = @{ NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue-Bold" size:12],
                                              NSForegroundColorAttributeName: [UIColor whiteColor]};
@@ -49,6 +60,16 @@
                                                       options:NSStringDrawingUsesLineFragmentOrigin
                                                    attributes:routeNameDictionary
                                                       context:nil].size.height;
+    
+    CGFloat etaHeight = [eta boundingRectWithSize:CGSizeMake(rect.size.width - 50, MAXFLOAT)
+                                          options:NSStringDrawingUsesLineFragmentOrigin
+                                       attributes:etaDirectory
+                                          context:nil].size.height;
+    
+    CGFloat eta2Height = [eta2 boundingRectWithSize:CGSizeMake(rect.size.width - 50, MAXFLOAT)
+                                          options:NSStringDrawingUsesLineFragmentOrigin
+                                       attributes:etaDirectory
+                                          context:nil].size.height;
     
     CGRect circleRect = CGRectMake(10,
                                    x - 10,
@@ -59,22 +80,28 @@
                                                                        options:NSStringDrawingUsesLineFragmentOrigin
                                                                     attributes:arrivalTimeDictionary
                                                                        context:nil];
+    
     CGRect routeNameRect = CGRectMake(60,
                                       x,
                                       rect.size.width - 60,
                                       routeNameHeight);
+    
+    CGRect etaRect = CGRectMake(60, x + routeNameHeight, rect.size.width - 60, etaHeight);
+    CGRect eta2Rect = CGRectMake(60, etaRect.origin.y + etaHeight, rect.size.width - 60, eta2Height);
     
     CGRect arrivalTimeRect = CGRectMake(circleRect.origin.x + ((circleRect.size.width - routeTimeOfArrivalRect.size.width) / 2),
                                         circleRect.origin.y + (circleRect.size.height - (routeTimeOfArrivalRect.size.height * 2)),
                                         routeTimeOfArrivalRect.size.width,
                                         routeTimeOfArrivalRect.size.height);
     
-    // Stop name
+    // Stop name and eta
     [routeName drawInRect:routeNameRect withAttributes:routeNameDictionary];
+    [eta drawInRect:etaRect withAttributes:etaDirectory];
+    [eta2 drawInRect:eta2Rect withAttributes:etaDirectory];
 
     // Vertical line
     CGContextSetStrokeColorWithColor(context, [UIColor colorWithRed:0.811630 green:0.811630 blue:0.811630 alpha:1.0000].CGColor);
-    CGContextSetLineWidth(context, 10.0);
+    CGContextSetLineWidth(context, 8.0);
     
     CGContextBeginPath(context);
     CGContextMoveToPoint(context, 30, 0);
@@ -88,6 +115,10 @@
     // Arrival time circle
     CGContextSetFillColorWithColor(context, busRouteColor.CGColor);
     CGContextFillEllipseInRect(context, circleRect);
+    
+    CGContextSetLineWidth(context, 3.0f);
+    CGContextSetStrokeColorWithColor(context, [UIColor colorWithRed:0.811630 green:0.811630 blue:0.811630 alpha:1.0000].CGColor);
+    CGContextStrokeEllipseInRect(context, circleRect);
     
     [routeTimeOfArrival drawInRect:arrivalTimeRect withAttributes:arrivalTimeDictionary];
 }
