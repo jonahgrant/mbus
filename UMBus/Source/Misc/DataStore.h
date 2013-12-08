@@ -12,13 +12,14 @@
 
 @interface DataStore : NSObject
 
-@property (strong, nonatomic, readonly) NSArray *arrivals, *buses;
+@property (strong, nonatomic, readonly) NSArray *arrivals, *buses, *stops;
 @property (strong, nonatomic, readonly) NSDictionary *arrivalsDictionary, *busesForRoutesDictionary;
 
 + (instancetype)sharedManager;
 
 - (void)fetchArrivals;
 - (void)fetchBuses;
+- (void)fetchStops;
 
 - (Arrival *)arrivalForID:(NSString *)arrivalID;
 - (Bus *)busOperatingRouteID:(NSString *)routeID;

@@ -11,13 +11,15 @@
 #import "DataStore.h"
 #import "Arrival.h"
 #import "Bus.h"
+#import "ArrivalStop.h"
 #import "BusAnnotation.h"
+#import "StopAnnotation.h"
 
 @interface RouteMapViewControllerModel ()
 
 @property (strong, nonatomic) UMNetworkingSession *networkingSession;
 @property (nonatomic) BOOL continueBusUpdating;
-@property (strong, nonatomic) NSArray *buses;
+@property (strong, nonatomic) NSArray *buses, *stops;
 
 @end
 
@@ -28,40 +30,47 @@
         _networkingSession = [[UMNetworkingSession alloc] init];
         
         self.arrival = arrival;
+        
+        self.stopAnnotations = [NSDictionary dictionary];
+        self.busAnnotations = [NSDictionary dictionary];
                 
         [RACObserve([DataStore sharedManager], buses) subscribeNext:^(NSArray *buses) {
             if (buses) {
-                self.buses = buses;
-                [self manageBusAnnotations];
+                NSMutableDictionary *mutableAnnotations = [NSMutableDictionary dictionaryWithDictionary:self.busAnnotations];
+                for (Bus *bus in buses) {
+                    if ([bus.routeID isEqualToString:self.arrival.id]) {
+                        if ([self.busAnnotations objectForKey:bus.id]) {
+                            [(BusAnnotation *)[mutableAnnotations objectForKey:bus.id] setCoordinate:CLLocationCoordinate2DMake([bus.latitude doubleValue], [bus.longitude doubleValue])];
+                        } else {
+                            BusAnnotation *annotation = [[BusAnnotation alloc] initWithBus:bus];
+                            [mutableAnnotations addEntriesFromDictionary:@{bus.id : annotation}];
+                        }
+                    }
+                }
+                self.busAnnotations = mutableAnnotations;
                 
                 if (self.continueBusUpdating) {
                     [self fetchBuses];
                 }
             }
         }];
-    }
-    return self;
-}
-
-- (void)manageBusAnnotations {
-    [RACObserve(self, buses) subscribeNext:^(NSArray *buses) {
-        if (buses) {
-            NSMutableDictionary *mutableAnnotations = [NSMutableDictionary dictionaryWithDictionary:self.busAnnotations];
-            for (Bus *bus in buses) {
-                if ([bus.routeID isEqualToString:self.arrival.id]) {
-                    if ([self.busAnnotations objectForKey:bus.id]) {
-                        // update
-                        [(BusAnnotation *)[mutableAnnotations objectForKey:bus.id] setCoordinate:CLLocationCoordinate2DMake([bus.latitude doubleValue], [bus.longitude doubleValue])];
+        
+        [RACObserve(self.arrival, stops) subscribeNext:^(NSArray *stops) {
+            if (stops) {
+                NSMutableDictionary *mutableAnnotations = [NSMutableDictionary dictionaryWithDictionary:self.stopAnnotations];
+                for (ArrivalStop *stop in stops) {
+                    if ([self.stopAnnotations objectForKey:self.arrival.id]) {
+                        [(StopAnnotation *)[mutableAnnotations objectForKey:stop.name] setCoordinate:CLLocationCoordinate2DMake([stop.latitude doubleValue], [stop.longitude doubleValue])];
                     } else {
-                        // add
-                        BusAnnotation *annotation = [[BusAnnotation alloc] initWithBus:bus];
-                        [mutableAnnotations addEntriesFromDictionary:@{bus.id : annotation}];
+                        StopAnnotation *annotation = [[StopAnnotation alloc] initWithArrivalStop:stop];
+                        [mutableAnnotations addEntriesFromDictionary:@{stop.name : annotation}];
                     }
                 }
+                self.stopAnnotations = mutableAnnotations;
             }
-            self.busAnnotations = mutableAnnotations;
-        }
-    }];
+        }];
+    }
+    return self;
 }
 
 - (void)fetchTraceRoute {

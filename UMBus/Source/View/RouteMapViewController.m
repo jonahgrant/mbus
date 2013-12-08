@@ -15,6 +15,9 @@
 #import "HexColor.h"
 #import "Bus.h"
 #import "BusAnnotation.h"
+#import "StopAnnotation.h"
+#import "CircleAnnotationView.h"
+#import "SVPulsingAnnotationView.h"
 
 @interface RouteMapViewController () <MKMapViewDelegate>
 
@@ -33,9 +36,6 @@
     [self.model fetchTraceRoute];
     [self.model beginBusFetching];
     
-    self.busAnnotation = [[BusAnnotation alloc] init];
-    [self.mapView addAnnotation:self.busAnnotation];
-
     self.title = @"Route";
     
     [RACObserve(self.model, traceRoutes) subscribeNext:^(NSArray *traceRoute) {
@@ -49,38 +49,23 @@
         }
     }];
     
-    [RACObserve(self.model, arrival.stops) subscribeNext:^(NSArray *stops) {
-        if (stops) {
-            [self addStops];
-        }
-    }];
-    
-    [RACObserve(self.model, busAnnotations) subscribeNext:^(NSDictionary *busAnnotations) {
-        if (busAnnotations) {
-            for (id key in busAnnotations) {
-                [self.mapView addAnnotation:(BusAnnotation *)[busAnnotations objectForKey:key]];
+    [RACObserve(self.model, busAnnotations) subscribeNext:^(NSDictionary *annotations) {
+        if (annotations) {
+            for (id key in annotations) {
+                [self.mapView addAnnotation:(BusAnnotation *)[annotations objectForKey:key]];
             }
         }
     }];
-}
-
-- (NSString *)arrivalSubtitleForTimeInterval:(NSTimeInterval)interval {
-    int minutes = ((NSInteger)interval / 60) % 60;
-    if (minutes == 00) {
-        return @"Arriving now";
-    }
     
-    return [NSString stringWithFormat:@"Arriving in %02im", minutes];
-}
-
-- (void)addStops {
-    for (ArrivalStop *stop in self.model.arrival.stops) {
-        MKPointAnnotation *annotation = [[MKPointAnnotation alloc] init];
-        annotation.coordinate = stop.coordinate;
-        annotation.title = stop.name2;
-        annotation.subtitle = [self arrivalSubtitleForTimeInterval:stop.timeOfArrival];
-        [self.mapView addAnnotation:annotation];
-    }
+    [RACObserve(self.model, stopAnnotations) subscribeNext:^(NSDictionary *annotations) {
+        if (annotations) {
+            for (id key in annotations) {
+                [self.mapView addAnnotation:(StopAnnotation *)[annotations objectForKey:key]];
+            }
+        }
+    }];
+    
+    [self zoom];
 }
 
 - (void)drawRouteWithLocations:(NSArray *)locations {
@@ -93,13 +78,37 @@
     
     self.polyline = [MKPolyline polylineWithCoordinates:coordinates count:locations.count];
     [self.mapView addOverlay:self.polyline];
-    [self zoomToPolyLineInMapView:self.mapView polyLine:self.polyline animated:NO];
+    [self zoom];
 }
 
-- (void)zoomToPolyLineInMapView:(MKMapView *)map polyLine:(MKPolyline *)polyLine animated:(BOOL)animated {
-    MKPolygon *polygon = [MKPolygon polygonWithPoints:polyLine.points count:polyLine.pointCount];
+- (void)zoom {
+    if (self.polyline) {
+        [self zoomToFitPolyline];
+    } else {
+        [self zoomToFitAnnotations];
+    }
+}
+
+- (void)zoomToFitPolyline {
+    MKPolygon *polygon = [MKPolygon polygonWithPoints:self.polyline.points count:self.polyline.pointCount];
     
-    [self.mapView setRegion:MKCoordinateRegionForMapRect([polygon boundingMapRect]) animated:animated];
+    [self.mapView setRegion:MKCoordinateRegionForMapRect([polygon boundingMapRect]) animated:NO];
+}
+
+- (void)zoomToFitAnnotations {
+    MKMapRect zoomRect = MKMapRectNull;
+    for (id<MKAnnotation> annotation in self.mapView.annotations) {
+        if (![annotation isKindOfClass:[MKUserLocation class]]) {
+            MKMapPoint annotationPoint = MKMapPointForCoordinate(annotation.coordinate);
+            MKMapRect pointRect = MKMapRectMake(annotationPoint.x, annotationPoint.y, 10, 10);
+            if (MKMapRectIsNull(zoomRect)) {
+                zoomRect = pointRect;
+            } else {
+                zoomRect = MKMapRectUnion(zoomRect, pointRect);
+            }
+        }
+    }
+    [self.mapView setVisibleMapRect:zoomRect animated:NO];
 }
 
 #pragma MKMapView
@@ -107,28 +116,29 @@
 - (MKOverlayView *)mapView:(MKMapView *)mapView viewForOverlay:(id <MKOverlay>)overlay {
     MKPolylineView *polylineView = [[MKPolylineView alloc] initWithPolyline:overlay];
     polylineView.strokeColor = [UIColor colorWithHexString:self.model.arrival.busRouteColor];
-    polylineView.lineWidth = 5.0;
+    polylineView.lineWidth = 10.0;
     
     return polylineView;
 }
 
-
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
-    // don't change the view for the pin that represents user's current location
     if ([annotation isKindOfClass:[MKUserLocation class]]) return nil;
     
-    BusAnnotation *busAnnotation = (BusAnnotation *)annotation;
-    
-    MKPinAnnotationView *pinView = [[MKPinAnnotationView alloc] initWithAnnotation:busAnnotation reuseIdentifier:@"Pin"];
-    pinView.canShowCallout = YES;
-    
     if ([annotation class] == [BusAnnotation class]) {
-        pinView.pinColor = MKPinAnnotationColorRed;
-    } else {
-        pinView.pinColor = MKPinAnnotationColorGreen;
+        SVPulsingAnnotationView *pin = [[SVPulsingAnnotationView alloc] initWithAnnotation:(BusAnnotation *)annotation reuseIdentifier:@"BusPin"];
+        pin.annotationColor = [UIColor colorWithRed:0.678431 green:0 blue:0 alpha:1];
+        
+        return pin;
+    } else if ([annotation class] == [StopAnnotation class] ) {
+        CircleAnnotationView *pin = [[CircleAnnotationView alloc] initWithAnnotation:(StopAnnotation *)annotation
+                                                                         reuseIdentifier:@"Pin"
+                                                                                   color:[UIColor colorWithHexString:self.model.arrival.busRouteColor]
+                                                                            outlineColor:[UIColor whiteColor]];
+        pin.canShowCallout = YES;
+        return pin;
     }
     
-    return pinView;
+    return nil;
 }
 
 @end

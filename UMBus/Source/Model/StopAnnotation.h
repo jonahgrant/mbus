@@ -8,13 +8,13 @@
 
 #import <MapKit/MapKit.h>
 
-@class Stop;
+@class ArrivalStop;
 
 @interface StopAnnotation : NSObject <MKAnnotation>
 
-@property (strong, nonatomic) Stop *stop;
+@property (strong, nonatomic) ArrivalStop *stop;
 @property (strong, nonatomic) NSString *id;
 
-- (instancetype)initWithStop:(Stop *)stop;
+- (instancetype)initWithArrivalStop:(ArrivalStop *)stop;
 
 @end
