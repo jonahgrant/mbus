@@ -31,6 +31,9 @@
 		AB7528141853DCC600DCA3CF /* RouteMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB7528131853DCC600DCA3CF /* RouteMapViewController.m */; };
 		AB7528171853DCD800DCA3CF /* RouteMapViewControllerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AB7528161853DCD800DCA3CF /* RouteMapViewControllerModel.m */; };
 		AB75281D1854464800DCA3CF /* CircleAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = AB75281C1854464800DCA3CF /* CircleAnnotationView.m */; };
+		AB7528201854538800DCA3CF /* StopTray.m in Sources */ = {isa = PBXBuildFile; fileRef = AB75281F1854538800DCA3CF /* StopTray.m */; };
+		AB7528231854539400DCA3CF /* StopTrayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AB7528221854539400DCA3CF /* StopTrayModel.m */; };
+		AB7528261854544D00DCA3CF /* StreetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB7528251854544D00DCA3CF /* StreetViewController.m */; };
 		ABE1AE4B1852FF230065C329 /* ArrivalCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = ABE1AE4A1852FF230065C329 /* ArrivalCellView.m */; };
 		ABE1AE5118530E3A0065C329 /* ArrivalRouteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ABE1AE5018530E3A0065C329 /* ArrivalRouteCell.m */; };
 		ABE1AE5418530E470065C329 /* ArrivalRouteCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = ABE1AE5318530E470065C329 /* ArrivalRouteCellView.m */; };
@@ -101,6 +104,12 @@
 		AB7528161853DCD800DCA3CF /* RouteMapViewControllerModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RouteMapViewControllerModel.m; sourceTree = "<group>"; };
 		AB75281B1854464800DCA3CF /* CircleAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleAnnotationView.h; sourceTree = "<group>"; };
 		AB75281C1854464800DCA3CF /* CircleAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleAnnotationView.m; sourceTree = "<group>"; };
+		AB75281E1854538800DCA3CF /* StopTray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StopTray.h; sourceTree = "<group>"; };
+		AB75281F1854538800DCA3CF /* StopTray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StopTray.m; sourceTree = "<group>"; };
+		AB7528211854539400DCA3CF /* StopTrayModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StopTrayModel.h; sourceTree = "<group>"; };
+		AB7528221854539400DCA3CF /* StopTrayModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StopTrayModel.m; sourceTree = "<group>"; };
+		AB7528241854544D00DCA3CF /* StreetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StreetViewController.h; sourceTree = "<group>"; };
+		AB7528251854544D00DCA3CF /* StreetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StreetViewController.m; sourceTree = "<group>"; };
 		ABE1AE491852FF230065C329 /* ArrivalCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArrivalCellView.h; sourceTree = "<group>"; };
 		ABE1AE4A1852FF230065C329 /* ArrivalCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArrivalCellView.m; sourceTree = "<group>"; };
 		ABE1AE4F18530E3A0065C329 /* ArrivalRouteCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArrivalRouteCell.h; sourceTree = "<group>"; };
@@ -357,8 +366,12 @@
 				ABE1AE5B185315B60065C329 /* ArrivalsViewController.m */,
 				AB7528121853DCC600DCA3CF /* RouteMapViewController.h */,
 				AB7528131853DCC600DCA3CF /* RouteMapViewController.m */,
+				AB7528241854544D00DCA3CF /* StreetViewController.h */,
+				AB7528251854544D00DCA3CF /* StreetViewController.m */,
 				AB75281B1854464800DCA3CF /* CircleAnnotationView.h */,
 				AB75281C1854464800DCA3CF /* CircleAnnotationView.m */,
+				AB75281E1854538800DCA3CF /* StopTray.h */,
+				AB75281F1854538800DCA3CF /* StopTray.m */,
 				ABE1AE5518530E4D0065C329 /* ArrivalRouteCell */,
 				ABE1AE5618530E550065C329 /* ArrivalCell */,
 			);
@@ -378,6 +391,8 @@
 				AB3006E01852F962007A4E29 /* ArrivalCellModel.m */,
 				ABE1AE5718530E670065C329 /* ArrivalRouteCellModel.h */,
 				ABE1AE5818530E670065C329 /* ArrivalRouteCellModel.m */,
+				AB7528211854539400DCA3CF /* StopTrayModel.h */,
+				AB7528221854539400DCA3CF /* StopTrayModel.m */,
 			);
 			path = "View Model";
 			sourceTree = "<group>";
@@ -547,16 +562,19 @@
 				AB3006DB1852F81A007A4E29 /* RoutesViewControllerModel.m in Sources */,
 				AB3006D81852F7FE007A4E29 /* RoutesViewController.m in Sources */,
 				AB75281D1854464800DCA3CF /* CircleAnnotationView.m in Sources */,
+				AB7528201854538800DCA3CF /* StopTray.m in Sources */,
 				AB3006DE1852F959007A4E29 /* ArrivalCell.m in Sources */,
 				ABEDEBB8184C350400B82E59 /* StopAnnotation.m in Sources */,
 				ABEDEB93184C103B00B82E59 /* AppDelegate.m in Sources */,
 				ABEDEB94184C103B00B82E59 /* main.m in Sources */,
+				AB7528231854539400DCA3CF /* StopTrayModel.m in Sources */,
 				AB7528171853DCD800DCA3CF /* RouteMapViewControllerModel.m in Sources */,
 				ABE1AE5918530E670065C329 /* ArrivalRouteCellModel.m in Sources */,
 				ABEDEBA0184C139100B82E59 /* BusAnnotation.m in Sources */,
 				ABE1AE5F185315C40065C329 /* ArrivalsViewControllerModel.m in Sources */,
 				ABE1AE5418530E470065C329 /* ArrivalRouteCellView.m in Sources */,
 				AB3006E11852F962007A4E29 /* ArrivalCellModel.m in Sources */,
+				AB7528261854544D00DCA3CF /* StreetViewController.m in Sources */,
 				ABE1AE4B1852FF230065C329 /* ArrivalCellView.m in Sources */,
 				ABE1AE5C185315B60065C329 /* ArrivalsViewController.m in Sources */,
 				AB3006E41852F9E4007A4E29 /* DataStore.m in Sources */,

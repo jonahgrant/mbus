@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 Jonah Grant. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import <MapKit/MapKit.h>
 
 @class RouteMapViewControllerModel, Arrival;
 
@@ -14,5 +14,7 @@
 
 @property (strong, nonatomic) Arrival *arrival;
 @property (strong, nonatomic) RouteMapViewControllerModel *model;
+
+- (void)displayStreetViewForAnnotation:(NSObject<MKAnnotation> *)annotation;
 
 @end

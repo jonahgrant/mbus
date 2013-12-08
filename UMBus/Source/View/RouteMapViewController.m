@@ -6,7 +6,6 @@
 //  Copyright (c) 2013 Jonah Grant. All rights reserved.
 //
 
-#import <MapKit/MapKit.h>
 #import "RouteMapViewController.h"
 #import "RouteMapViewControllerModel.h"
 #import "TraceRoute.h"
@@ -18,12 +17,16 @@
 #import "StopAnnotation.h"
 #import "CircleAnnotationView.h"
 #import "SVPulsingAnnotationView.h"
+#import "StopTray.h"
+#import "StopTrayModel.h"
+#import "StreetViewController.h"
 
 @interface RouteMapViewController () <MKMapViewDelegate>
 
 @property (strong, nonatomic) IBOutlet MKMapView *mapView;
 @property (strong, nonatomic) MKPolyline *polyline;
 @property (strong, nonatomic) BusAnnotation *busAnnotation;
+@property (strong, nonatomic) StopTray *stopTray;
 
 @end
 
@@ -37,6 +40,11 @@
     [self.model beginBusFetching];
     
     self.title = @"Route";
+    
+    _stopTray = [[StopTray alloc] initWithTintColor:[UIColor colorWithHexString:self.model.arrival.busRouteColor]];
+    _stopTray.frame = CGRectMake(0, self.view.frame.size.height + 44, _stopTray.frame.size.width, _stopTray.frame.size.height);
+    _stopTray.target = self;
+    [self.view insertSubview:_stopTray aboveSubview:self.mapView];
     
     [RACObserve(self.model, traceRoutes) subscribeNext:^(NSArray *traceRoute) {
         if (traceRoute) {
@@ -111,12 +119,51 @@
     [self.mapView setVisibleMapRect:zoomRect animated:NO];
 }
 
+- (void)displayStreetViewForAnnotation:(NSObject<MKAnnotation> *)annotation {
+    StreetViewController *streetViewController = [[StreetViewController alloc] initWithAnnotation:annotation];
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:streetViewController];
+    [self presentViewController:navigationController animated:YES completion:NULL];
+}
+
+- (void)displayTray {
+    [UIView animateWithDuration:0.5
+                     animations:^ {
+                         _stopTray.frame = CGRectMake(0,
+                                                      self.view.frame.size.height - self.tabBarController.tabBar.frame.size.height - _stopTray.frame.size.height,
+                                                      _stopTray.frame.size.width,
+                                                      _stopTray.frame.size.height);
+                     }];
+}
+
+- (void)dismissTray {
+    [UIView animateWithDuration:0.5
+                     animations:^ {
+                         _stopTray.frame = CGRectMake(0,
+                                                      self.view.frame.size.height - self.tabBarController.tabBar.frame.size.height + _stopTray.frame.size.height,
+                                                      _stopTray.frame.size.width,
+                                                      _stopTray.frame.size.height);
+                     } completion:NULL];
+}
+
+- (void)displayDirections {
+    // open Maps.app
+}
+
+- (void)detailInformationForStopAnnotation:(StopAnnotation *)annotation {
+    [self displayTray];
+}
+
+- (void)detailInformationForBusAnnotation:(BusAnnotation *)annotation {
+    // no detailing info for bus for now
+}
+
 #pragma MKMapView
 
 - (MKOverlayView *)mapView:(MKMapView *)mapView viewForOverlay:(id <MKOverlay>)overlay {
     MKPolylineView *polylineView = [[MKPolylineView alloc] initWithPolyline:overlay];
     polylineView.strokeColor = [UIColor colorWithHexString:self.model.arrival.busRouteColor];
     polylineView.lineWidth = 10.0;
+    polylineView.alpha = 0.8;
     
     return polylineView;
 }
@@ -143,6 +190,22 @@
     }
     
     return nil;
+}
+
+- (void)mapView:(MKMapView *)mapView didDeselectAnnotationView:(MKAnnotationView *)view {
+    [self dismissTray];
+}
+
+- (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view {
+    NSObject<MKAnnotation> *annotation = view.annotation;
+    if ([annotation class] == [BusAnnotation class]) {
+        BusAnnotation *busAnnotation = (BusAnnotation *)annotation;
+        [self detailInformationForBusAnnotation:busAnnotation];
+    } else if ([annotation class] == [StopAnnotation class]){
+        StopAnnotation *stopAnnotation = (StopAnnotation *)annotation;
+        _stopTray.model.stopAnnotation = stopAnnotation;
+        [self detailInformationForStopAnnotation:stopAnnotation];
+    }
 }
 
 @end
