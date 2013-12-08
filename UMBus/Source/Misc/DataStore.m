@@ -41,7 +41,12 @@
 }
 
 - (void)handleError:(NSError *)error {
-    NSLog(@"Error: %@", error.localizedDescription);
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                    message:error.localizedDescription
+                                                   delegate:nil
+                                          cancelButtonTitle:nil
+                                          otherButtonTitles:@"Dismiss", nil];
+    [alert show];
 }
 
 #pragma Fetch
