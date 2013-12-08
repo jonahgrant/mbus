@@ -26,10 +26,9 @@
         
         self.arrival = arrival;
         
-        [RACObserve([DataStore sharedManager], busesForRoutesDictionary) subscribeNext:^(NSArray *buses) {
-            if (buses) {
-                NSLog(@"search for bus");
-                self.bus = [[DataStore sharedManager] busOperatingRouteID:self.arrival.id];
+        [RACObserve([DataStore sharedManager], busesForRoutesDictionary) subscribeNext:^(NSDictionary *busDictionary) {
+            if (busDictionary) {
+                self.bus = [busDictionary objectForKey:self.arrival.id];
             }
         }];
     }
