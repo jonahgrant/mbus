@@ -8,6 +8,9 @@
 
 #import "BusAnnotation.h"
 #import "Bus.h"
+#import "DataStore.h"
+#import "Arrival.h"
+#import "HexColor.h"
 
 @interface BusAnnotation ()
 
@@ -19,10 +22,7 @@
 
 - (instancetype)initWithBus:(Bus *)bus {
     if (self = [super init]) {
-        _bus = bus;
-        _id = bus.id;
-        _coordinate = CLLocationCoordinate2DMake([bus.latitude doubleValue], [bus.longitude doubleValue]);
-        _heading = [bus.heading floatValue];
+        [self setBus:bus];
     }
     return self;
 }
@@ -35,13 +35,20 @@
     return self;
 }
 
+- (void)setBus:(Bus *)bus {
+    _bus = bus;
+    _id = bus.id;
+    _coordinate = CLLocationCoordinate2DMake([bus.latitude doubleValue], [bus.longitude doubleValue]);
+    _heading = [bus.heading floatValue];
+    _color = [UIColor colorWithHexString:[[DataStore sharedManager] arrivalForID:_bus.routeID].busRouteColor];
+}
+
 - (NSString *)title {
-    return _bus.routeName;
+    return @"Bus";
 }
 
 - (NSString *)subtitle {
-    return [NSString stringWithFormat:@"%@ (#%@)", _bus.routeName, _bus.routeID];
+    return [[DataStore sharedManager] arrivalForID:_bus.routeID].name;
 }
-
 
 @end

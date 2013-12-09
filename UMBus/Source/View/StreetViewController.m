@@ -34,17 +34,6 @@
     [super viewDidLoad];
     
     GMSPanoramaView *panoView = [GMSPanoramaView panoramaWithFrame:CGRectZero nearCoordinate:_coordinate];
-    
-    CLLocationDirection heading = 0;
-    if ([_annotation class] == [StopAnnotation class]) {
-        StopAnnotation *stopAnnotation = (StopAnnotation *)_annotation;
-        heading = [stopAnnotation.stop.heading doubleValue];
-    } else if ([_annotation class] == [BusAnnotation class]) {
-        BusAnnotation *busAnnotation = (BusAnnotation *)_annotation;
-        heading = [busAnnotation.bus.heading doubleValue];
-    }
-    
-    panoView.camera = [GMSPanoramaCamera cameraWithHeading:heading pitch:-10 zoom:1];
     self.view = panoView;
     
     UIBarButtonItem *closeBarButton = [[UIBarButtonItem alloc] initWithTitle:@"Dismiss" style:UIBarButtonItemStyleDone target:self action:@selector(dismiss)];

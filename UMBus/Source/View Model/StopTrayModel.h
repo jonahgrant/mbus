@@ -13,12 +13,5 @@
 @interface StopTrayModel : NSObject
 
 @property (strong, nonatomic) StopAnnotation *stopAnnotation;
-@property (nonatomic) NSString *distanceToClosestBus, *timeToClosestBus;
-@property (strong, nonatomic) Bus *closestBus;
-
-- (void)reset;
-
-- (void)fetchClosestBus;
-- (void)fetchClosestBusETA;
 
 @end

@@ -1,8 +1,8 @@
 //
-//  AnnoucementsViewController.h
+//  AnnouncementsViewController.h
 //  UMBus
 //
-//  Created by Jonah Grant on 12/1/13.
+//  Created by Jonah Grant on 12/8/13.
 //  Copyright (c) 2013 Jonah Grant. All rights reserved.
 //
 
@@ -10,7 +10,7 @@
 
 @class AnnouncementsViewControllerModel;
 
-@interface AnnoucementsViewController : UITableViewController
+@interface AnnouncementsViewController : UIViewController
 
 @property (strong, nonatomic) AnnouncementsViewControllerModel *model;
 

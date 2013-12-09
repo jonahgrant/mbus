@@ -2,7 +2,7 @@
 //  MapViewControllerModel.h
 //  UMBus
 //
-//  Created by Jonah Grant on 12/1/13.
+//  Created by Jonah Grant on 12/8/13.
 //  Copyright (c) 2013 Jonah Grant. All rights reserved.
 //
 
@@ -10,12 +10,11 @@
 
 @interface MapViewControllerModel : NSObject
 
-@property (nonatomic) BOOL continuouslyUpdate;
-@property (strong, nonatomic) NSArray *buses, *stops;
-@property (strong, nonatomic) NSDictionary *busAnnotations, *stopAnnotations;
-@property (strong, nonatomic) UIBarButtonItem *streetViewBarButtonItem, *directionsBarButtonItem;
+@property (nonatomic) BOOL continuouslyUpdating;
+@property (strong, nonatomic) NSArray *buses;
+@property (strong, nonatomic) NSDictionary *busAnnotations;
 
-- (void)fetchBuses;
-- (void)fetchStops;
+- (void)beginFetchingBuses;
+- (void)endFetchingBuses;
 
 @end

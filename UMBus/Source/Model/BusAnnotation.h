@@ -15,6 +15,7 @@
 @property (strong, nonatomic) Bus *bus;
 @property (nonatomic) CGFloat heading;
 @property (strong, nonatomic) NSString *id;
+@property (strong, nonatomic) UIColor *color;
 
 - (instancetype)initWithBus:(Bus *)bus;
 

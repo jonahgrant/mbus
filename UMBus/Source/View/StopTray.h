@@ -15,6 +15,6 @@
 @property (strong, nonatomic) StopTrayModel *model;
 @property (nonatomic) id target;
 
-- (instancetype)init;
+- (instancetype)initWithTintColor:(UIColor *)color;
 
 @end

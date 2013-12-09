@@ -21,11 +21,31 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		AB155C90184D68A400BF1A09 /* StopTray.m in Sources */ = {isa = PBXBuildFile; fileRef = AB155C8F184D68A400BF1A09 /* StopTray.m */; };
-		AB155C93184D68B500BF1A09 /* StopTrayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AB155C92184D68B500BF1A09 /* StopTrayModel.m */; };
-		AB2C4C24184D1F0C001E2EA2 /* StreetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB2C4C23184D1F0C001E2EA2 /* StreetViewController.m */; };
 		AB2C4C27184D49A5001E2EA2 /* street-view-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = AB2C4C25184D49A5001E2EA2 /* street-view-icon.png */; };
 		AB2C4C28184D49A5001E2EA2 /* street-view-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AB2C4C26184D49A5001E2EA2 /* street-view-icon@2x.png */; };
+		AB3006D81852F7FE007A4E29 /* RoutesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB3006D71852F7FE007A4E29 /* RoutesViewController.m */; };
+		AB3006DB1852F81A007A4E29 /* RoutesViewControllerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AB3006DA1852F81A007A4E29 /* RoutesViewControllerModel.m */; };
+		AB3006DE1852F959007A4E29 /* ArrivalCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AB3006DD1852F959007A4E29 /* ArrivalCell.m */; };
+		AB3006E11852F962007A4E29 /* ArrivalCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AB3006E01852F962007A4E29 /* ArrivalCellModel.m */; };
+		AB3006E41852F9E4007A4E29 /* DataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = AB3006E31852F9E4007A4E29 /* DataStore.m */; };
+		AB7528141853DCC600DCA3CF /* RouteMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB7528131853DCC600DCA3CF /* RouteMapViewController.m */; };
+		AB7528171853DCD800DCA3CF /* RouteMapViewControllerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AB7528161853DCD800DCA3CF /* RouteMapViewControllerModel.m */; };
+		AB75281D1854464800DCA3CF /* CircleAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = AB75281C1854464800DCA3CF /* CircleAnnotationView.m */; };
+		AB7528201854538800DCA3CF /* StopTray.m in Sources */ = {isa = PBXBuildFile; fileRef = AB75281F1854538800DCA3CF /* StopTray.m */; };
+		AB7528231854539400DCA3CF /* StopTrayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AB7528221854539400DCA3CF /* StopTrayModel.m */; };
+		AB7528261854544D00DCA3CF /* StreetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB7528251854544D00DCA3CF /* StreetViewController.m */; };
+		ABBCE9DA1855273600DEFA9E /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABBCE9D91855273600DEFA9E /* MapViewController.m */; };
+		ABBCE9DD1855273E00DEFA9E /* MapViewControllerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ABBCE9DC1855273E00DEFA9E /* MapViewControllerModel.m */; };
+		ABBCE9E01855573400DEFA9E /* map-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBCE9DE1855573400DEFA9E /* map-icon.png */; };
+		ABBCE9E11855573400DEFA9E /* map-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBCE9DF1855573400DEFA9E /* map-icon@2x.png */; };
+		ABBCE9E41855581E00DEFA9E /* AnnouncementsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABBCE9E31855581E00DEFA9E /* AnnouncementsViewController.m */; };
+		ABBCE9E7185558A100DEFA9E /* AnnouncementsViewControllerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ABBCE9E6185558A100DEFA9E /* AnnouncementsViewControllerModel.m */; };
+		ABE1AE4B1852FF230065C329 /* ArrivalCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = ABE1AE4A1852FF230065C329 /* ArrivalCellView.m */; };
+		ABE1AE5118530E3A0065C329 /* ArrivalRouteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ABE1AE5018530E3A0065C329 /* ArrivalRouteCell.m */; };
+		ABE1AE5418530E470065C329 /* ArrivalRouteCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = ABE1AE5318530E470065C329 /* ArrivalRouteCellView.m */; };
+		ABE1AE5918530E670065C329 /* ArrivalRouteCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ABE1AE5818530E670065C329 /* ArrivalRouteCellModel.m */; };
+		ABE1AE5C185315B60065C329 /* ArrivalsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABE1AE5B185315B60065C329 /* ArrivalsViewController.m */; };
+		ABE1AE5F185315C40065C329 /* ArrivalsViewControllerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ABE1AE5E185315C40065C329 /* ArrivalsViewControllerModel.m */; };
 		ABEDEAD8184BD90D00B82E59 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABEDEAD7184BD90D00B82E59 /* Foundation.framework */; };
 		ABEDEADA184BD90D00B82E59 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABEDEAD9184BD90D00B82E59 /* CoreGraphics.framework */; };
 		ABEDEADC184BD90D00B82E59 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABEDEADB184BD90D00B82E59 /* UIKit.framework */; };
@@ -40,8 +60,6 @@
 		ABEDEB36184BDC0A00B82E59 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABEDEB35184BDC0A00B82E59 /* MapKit.framework */; };
 		ABEDEB93184C103B00B82E59 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = ABEDEB7F184C103B00B82E59 /* AppDelegate.m */; };
 		ABEDEB94184C103B00B82E59 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = ABEDEB80184C103B00B82E59 /* main.m */; };
-		ABEDEB9A184C103B00B82E59 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABEDEB91184C103B00B82E59 /* MapViewController.m */; };
-		ABEDEB9D184C105200B82E59 /* MapViewControllerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ABEDEB9C184C105200B82E59 /* MapViewControllerModel.m */; };
 		ABEDEBA0184C139100B82E59 /* BusAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = ABEDEB9F184C139100B82E59 /* BusAnnotation.m */; };
 		ABEDEBA2184C1CA400B82E59 /* Bus.png in Resources */ = {isa = PBXBuildFile; fileRef = ABEDEBA1184C1CA400B82E59 /* Bus.png */; };
 		ABEDEBAB184C266D00B82E59 /* bus_90.png in Resources */ = {isa = PBXBuildFile; fileRef = ABEDEBA3184C266D00B82E59 /* bus_90.png */; };
@@ -53,10 +71,6 @@
 		ABEDEBB1184C266D00B82E59 /* bus270.png in Resources */ = {isa = PBXBuildFile; fileRef = ABEDEBA9184C266D00B82E59 /* bus270.png */; };
 		ABEDEBB2184C266D00B82E59 /* bus315.png in Resources */ = {isa = PBXBuildFile; fileRef = ABEDEBAA184C266D00B82E59 /* bus315.png */; };
 		ABEDEBB8184C350400B82E59 /* StopAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = ABEDEBB7184C350400B82E59 /* StopAnnotation.m */; };
-		ABEDEBBE184C3BE900B82E59 /* AnnoucementsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABEDEBBD184C3BE900B82E59 /* AnnoucementsViewController.m */; };
-		ABEDEBC1184C3CA000B82E59 /* AnnouncementsViewControllerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ABEDEBC0184C3CA000B82E59 /* AnnouncementsViewControllerModel.m */; };
-		ABEDEBC7184C3F3800B82E59 /* AnnouncementCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ABEDEBC6184C3F3800B82E59 /* AnnouncementCell.m */; };
-		ABEDEBCA184C3F4600B82E59 /* AnnouncementCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ABEDEBC9184C3F4600B82E59 /* AnnouncementCellModel.m */; };
 		ABEDEBD3184C42ED00B82E59 /* bus-tab.png in Resources */ = {isa = PBXBuildFile; fileRef = ABEDEBD1184C42ED00B82E59 /* bus-tab.png */; };
 		ABEDEBD4184C42ED00B82E59 /* bus-tab@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABEDEBD2184C42ED00B82E59 /* bus-tab@2x.png */; };
 		ABEDEBD7184C434A00B82E59 /* info-tab.png in Resources */ = {isa = PBXBuildFile; fileRef = ABEDEBD5184C434A00B82E59 /* info-tab.png */; };
@@ -77,15 +91,54 @@
 /* Begin PBXFileReference section */
 		50576764A2E345BF9F69305F /* libPods-UMBus.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-UMBus.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A3F6F18FC78B47FB969ACFE4 /* Pods-UMBus.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UMBus.xcconfig"; path = "Pods/Pods-UMBus.xcconfig"; sourceTree = "<group>"; };
-		AB155C8E184D68A400BF1A09 /* StopTray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StopTray.h; sourceTree = "<group>"; };
-		AB155C8F184D68A400BF1A09 /* StopTray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StopTray.m; sourceTree = "<group>"; };
-		AB155C91184D68B500BF1A09 /* StopTrayModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StopTrayModel.h; sourceTree = "<group>"; };
-		AB155C92184D68B500BF1A09 /* StopTrayModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StopTrayModel.m; sourceTree = "<group>"; };
-		AB2C4C22184D1F0C001E2EA2 /* StreetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StreetViewController.h; sourceTree = "<group>"; };
-		AB2C4C23184D1F0C001E2EA2 /* StreetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StreetViewController.m; sourceTree = "<group>"; };
 		AB2C4C25184D49A5001E2EA2 /* street-view-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "street-view-icon.png"; sourceTree = "<group>"; };
 		AB2C4C26184D49A5001E2EA2 /* street-view-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "street-view-icon@2x.png"; sourceTree = "<group>"; };
 		AB2C4C29184D5516001E2EA2 /* AnnArbor.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = AnnArbor.gpx; sourceTree = "<group>"; };
+		AB3006D61852F7FE007A4E29 /* RoutesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoutesViewController.h; sourceTree = "<group>"; };
+		AB3006D71852F7FE007A4E29 /* RoutesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoutesViewController.m; sourceTree = "<group>"; };
+		AB3006D91852F81A007A4E29 /* RoutesViewControllerModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoutesViewControllerModel.h; sourceTree = "<group>"; };
+		AB3006DA1852F81A007A4E29 /* RoutesViewControllerModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoutesViewControllerModel.m; sourceTree = "<group>"; };
+		AB3006DC1852F959007A4E29 /* ArrivalCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArrivalCell.h; sourceTree = "<group>"; };
+		AB3006DD1852F959007A4E29 /* ArrivalCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArrivalCell.m; sourceTree = "<group>"; };
+		AB3006DF1852F962007A4E29 /* ArrivalCellModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArrivalCellModel.h; sourceTree = "<group>"; };
+		AB3006E01852F962007A4E29 /* ArrivalCellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArrivalCellModel.m; sourceTree = "<group>"; };
+		AB3006E21852F9E4007A4E29 /* DataStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataStore.h; sourceTree = "<group>"; };
+		AB3006E31852F9E4007A4E29 /* DataStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataStore.m; sourceTree = "<group>"; };
+		AB7528121853DCC600DCA3CF /* RouteMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RouteMapViewController.h; sourceTree = "<group>"; };
+		AB7528131853DCC600DCA3CF /* RouteMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RouteMapViewController.m; sourceTree = "<group>"; };
+		AB7528151853DCD800DCA3CF /* RouteMapViewControllerModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RouteMapViewControllerModel.h; sourceTree = "<group>"; };
+		AB7528161853DCD800DCA3CF /* RouteMapViewControllerModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RouteMapViewControllerModel.m; sourceTree = "<group>"; };
+		AB75281B1854464800DCA3CF /* CircleAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleAnnotationView.h; sourceTree = "<group>"; };
+		AB75281C1854464800DCA3CF /* CircleAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleAnnotationView.m; sourceTree = "<group>"; };
+		AB75281E1854538800DCA3CF /* StopTray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StopTray.h; sourceTree = "<group>"; };
+		AB75281F1854538800DCA3CF /* StopTray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StopTray.m; sourceTree = "<group>"; };
+		AB7528211854539400DCA3CF /* StopTrayModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StopTrayModel.h; sourceTree = "<group>"; };
+		AB7528221854539400DCA3CF /* StopTrayModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StopTrayModel.m; sourceTree = "<group>"; };
+		AB7528241854544D00DCA3CF /* StreetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StreetViewController.h; sourceTree = "<group>"; };
+		AB7528251854544D00DCA3CF /* StreetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StreetViewController.m; sourceTree = "<group>"; };
+		ABBCE9D81855273600DEFA9E /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
+		ABBCE9D91855273600DEFA9E /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
+		ABBCE9DB1855273E00DEFA9E /* MapViewControllerModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewControllerModel.h; sourceTree = "<group>"; };
+		ABBCE9DC1855273E00DEFA9E /* MapViewControllerModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewControllerModel.m; sourceTree = "<group>"; };
+		ABBCE9DE1855573400DEFA9E /* map-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map-icon.png"; sourceTree = "<group>"; };
+		ABBCE9DF1855573400DEFA9E /* map-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map-icon@2x.png"; sourceTree = "<group>"; };
+		ABBCE9E21855581E00DEFA9E /* AnnouncementsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnnouncementsViewController.h; sourceTree = "<group>"; };
+		ABBCE9E31855581E00DEFA9E /* AnnouncementsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnnouncementsViewController.m; sourceTree = "<group>"; };
+		ABBCE9E5185558A100DEFA9E /* AnnouncementsViewControllerModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnnouncementsViewControllerModel.h; sourceTree = "<group>"; };
+		ABBCE9E6185558A100DEFA9E /* AnnouncementsViewControllerModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnnouncementsViewControllerModel.m; sourceTree = "<group>"; };
+		ABE1AE491852FF230065C329 /* ArrivalCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArrivalCellView.h; sourceTree = "<group>"; };
+		ABE1AE4A1852FF230065C329 /* ArrivalCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArrivalCellView.m; sourceTree = "<group>"; };
+		ABE1AE4F18530E3A0065C329 /* ArrivalRouteCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArrivalRouteCell.h; sourceTree = "<group>"; };
+		ABE1AE5018530E3A0065C329 /* ArrivalRouteCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArrivalRouteCell.m; sourceTree = "<group>"; };
+		ABE1AE5218530E470065C329 /* ArrivalRouteCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArrivalRouteCellView.h; sourceTree = "<group>"; };
+		ABE1AE5318530E470065C329 /* ArrivalRouteCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArrivalRouteCellView.m; sourceTree = "<group>"; };
+		ABE1AE5718530E670065C329 /* ArrivalRouteCellModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArrivalRouteCellModel.h; sourceTree = "<group>"; };
+		ABE1AE5818530E670065C329 /* ArrivalRouteCellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArrivalRouteCellModel.m; sourceTree = "<group>"; };
+		ABE1AE5A185315B60065C329 /* ArrivalsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArrivalsViewController.h; sourceTree = "<group>"; };
+		ABE1AE5B185315B60065C329 /* ArrivalsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArrivalsViewController.m; sourceTree = "<group>"; };
+		ABE1AE5D185315C40065C329 /* ArrivalsViewControllerModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArrivalsViewControllerModel.h; sourceTree = "<group>"; };
+		ABE1AE5E185315C40065C329 /* ArrivalsViewControllerModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArrivalsViewControllerModel.m; sourceTree = "<group>"; };
+		ABE1AE60185316540065C329 /* SegueIdentifiers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SegueIdentifiers.h; sourceTree = "<group>"; };
 		ABEDEAD4184BD90D00B82E59 /* UMBus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UMBus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABEDEAD7184BD90D00B82E59 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		ABEDEAD9184BD90D00B82E59 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -104,10 +157,6 @@
 		ABEDEB7F184C103B00B82E59 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		ABEDEB80184C103B00B82E59 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		ABEDEB81184C103B00B82E59 /* UMBus-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UMBus-Prefix.pch"; sourceTree = "<group>"; };
-		ABEDEB90184C103B00B82E59 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
-		ABEDEB91184C103B00B82E59 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
-		ABEDEB9B184C105200B82E59 /* MapViewControllerModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewControllerModel.h; sourceTree = "<group>"; };
-		ABEDEB9C184C105200B82E59 /* MapViewControllerModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewControllerModel.m; sourceTree = "<group>"; };
 		ABEDEB9E184C139100B82E59 /* BusAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusAnnotation.h; sourceTree = "<group>"; };
 		ABEDEB9F184C139100B82E59 /* BusAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusAnnotation.m; sourceTree = "<group>"; };
 		ABEDEBA1184C1CA400B82E59 /* Bus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Bus.png; sourceTree = "<group>"; };
@@ -121,14 +170,6 @@
 		ABEDEBAA184C266D00B82E59 /* bus315.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bus315.png; sourceTree = "<group>"; };
 		ABEDEBB6184C350400B82E59 /* StopAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StopAnnotation.h; sourceTree = "<group>"; };
 		ABEDEBB7184C350400B82E59 /* StopAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StopAnnotation.m; sourceTree = "<group>"; };
-		ABEDEBBC184C3BE900B82E59 /* AnnoucementsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnnoucementsViewController.h; sourceTree = "<group>"; };
-		ABEDEBBD184C3BE900B82E59 /* AnnoucementsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnnoucementsViewController.m; sourceTree = "<group>"; };
-		ABEDEBBF184C3CA000B82E59 /* AnnouncementsViewControllerModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnnouncementsViewControllerModel.h; sourceTree = "<group>"; };
-		ABEDEBC0184C3CA000B82E59 /* AnnouncementsViewControllerModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnnouncementsViewControllerModel.m; sourceTree = "<group>"; };
-		ABEDEBC5184C3F3800B82E59 /* AnnouncementCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnnouncementCell.h; sourceTree = "<group>"; };
-		ABEDEBC6184C3F3800B82E59 /* AnnouncementCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnnouncementCell.m; sourceTree = "<group>"; };
-		ABEDEBC8184C3F4600B82E59 /* AnnouncementCellModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnnouncementCellModel.h; sourceTree = "<group>"; };
-		ABEDEBC9184C3F4600B82E59 /* AnnouncementCellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnnouncementCellModel.m; sourceTree = "<group>"; };
 		ABEDEBD1184C42ED00B82E59 /* bus-tab.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bus-tab.png"; sourceTree = "<group>"; };
 		ABEDEBD2184C42ED00B82E59 /* bus-tab@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bus-tab@2x.png"; sourceTree = "<group>"; };
 		ABEDEBD5184C434A00B82E59 /* info-tab.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "info-tab.png"; sourceTree = "<group>"; };
@@ -161,6 +202,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		ABE1AE5518530E4D0065C329 /* ArrivalRouteCell */ = {
+			isa = PBXGroup;
+			children = (
+				ABE1AE4F18530E3A0065C329 /* ArrivalRouteCell.h */,
+				ABE1AE5018530E3A0065C329 /* ArrivalRouteCell.m */,
+				ABE1AE5218530E470065C329 /* ArrivalRouteCellView.h */,
+				ABE1AE5318530E470065C329 /* ArrivalRouteCellView.m */,
+			);
+			name = ArrivalRouteCell;
+			sourceTree = "<group>";
+		};
+		ABE1AE5618530E550065C329 /* ArrivalCell */ = {
+			isa = PBXGroup;
+			children = (
+				AB3006DC1852F959007A4E29 /* ArrivalCell.h */,
+				AB3006DD1852F959007A4E29 /* ArrivalCell.m */,
+				ABE1AE491852FF230065C329 /* ArrivalCellView.h */,
+				ABE1AE4A1852FF230065C329 /* ArrivalCellView.m */,
+			);
+			name = ArrivalCell;
+			sourceTree = "<group>";
+		};
 		ABEDEACB184BD90D00B82E59 = {
 			isa = PBXGroup;
 			children = (
@@ -227,6 +290,8 @@
 		ABEDEB13184BDA1B00B82E59 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				ABBCE9DE1855573400DEFA9E /* map-icon.png */,
+				ABBCE9DF1855573400DEFA9E /* map-icon@2x.png */,
 				AB2C4C25184D49A5001E2EA2 /* street-view-icon.png */,
 				AB2C4C26184D49A5001E2EA2 /* street-view-icon@2x.png */,
 				ABEDEBD1184C42ED00B82E59 /* bus-tab.png */,
@@ -283,6 +348,9 @@
 				ABEDEB7D184C103B00B82E59 /* App Delegate */,
 				ABEDEB80184C103B00B82E59 /* main.m */,
 				ABEDEB81184C103B00B82E59 /* UMBus-Prefix.pch */,
+				AB3006E21852F9E4007A4E29 /* DataStore.h */,
+				AB3006E31852F9E4007A4E29 /* DataStore.m */,
+				ABE1AE60185316540065C329 /* SegueIdentifiers.h */,
 			);
 			path = Misc;
 			sourceTree = "<group>";
@@ -310,16 +378,24 @@
 		ABEDEB8F184C103B00B82E59 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				ABEDEB90184C103B00B82E59 /* MapViewController.h */,
-				ABEDEB91184C103B00B82E59 /* MapViewController.m */,
-				ABEDEBBC184C3BE900B82E59 /* AnnoucementsViewController.h */,
-				ABEDEBBD184C3BE900B82E59 /* AnnoucementsViewController.m */,
-				AB2C4C22184D1F0C001E2EA2 /* StreetViewController.h */,
-				AB2C4C23184D1F0C001E2EA2 /* StreetViewController.m */,
-				ABEDEBC5184C3F3800B82E59 /* AnnouncementCell.h */,
-				ABEDEBC6184C3F3800B82E59 /* AnnouncementCell.m */,
-				AB155C8E184D68A400BF1A09 /* StopTray.h */,
-				AB155C8F184D68A400BF1A09 /* StopTray.m */,
+				AB3006D61852F7FE007A4E29 /* RoutesViewController.h */,
+				AB3006D71852F7FE007A4E29 /* RoutesViewController.m */,
+				ABE1AE5A185315B60065C329 /* ArrivalsViewController.h */,
+				ABE1AE5B185315B60065C329 /* ArrivalsViewController.m */,
+				AB7528121853DCC600DCA3CF /* RouteMapViewController.h */,
+				AB7528131853DCC600DCA3CF /* RouteMapViewController.m */,
+				AB7528241854544D00DCA3CF /* StreetViewController.h */,
+				AB7528251854544D00DCA3CF /* StreetViewController.m */,
+				ABBCE9D81855273600DEFA9E /* MapViewController.h */,
+				ABBCE9D91855273600DEFA9E /* MapViewController.m */,
+				ABBCE9E21855581E00DEFA9E /* AnnouncementsViewController.h */,
+				ABBCE9E31855581E00DEFA9E /* AnnouncementsViewController.m */,
+				AB75281B1854464800DCA3CF /* CircleAnnotationView.h */,
+				AB75281C1854464800DCA3CF /* CircleAnnotationView.m */,
+				AB75281E1854538800DCA3CF /* StopTray.h */,
+				AB75281F1854538800DCA3CF /* StopTray.m */,
+				ABE1AE5518530E4D0065C329 /* ArrivalRouteCell */,
+				ABE1AE5618530E550065C329 /* ArrivalCell */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -327,14 +403,22 @@
 		ABEDEB92184C103B00B82E59 /* View Model */ = {
 			isa = PBXGroup;
 			children = (
-				ABEDEB9B184C105200B82E59 /* MapViewControllerModel.h */,
-				ABEDEB9C184C105200B82E59 /* MapViewControllerModel.m */,
-				ABEDEBBF184C3CA000B82E59 /* AnnouncementsViewControllerModel.h */,
-				ABEDEBC0184C3CA000B82E59 /* AnnouncementsViewControllerModel.m */,
-				ABEDEBC8184C3F4600B82E59 /* AnnouncementCellModel.h */,
-				ABEDEBC9184C3F4600B82E59 /* AnnouncementCellModel.m */,
-				AB155C91184D68B500BF1A09 /* StopTrayModel.h */,
-				AB155C92184D68B500BF1A09 /* StopTrayModel.m */,
+				AB3006D91852F81A007A4E29 /* RoutesViewControllerModel.h */,
+				AB3006DA1852F81A007A4E29 /* RoutesViewControllerModel.m */,
+				ABE1AE5D185315C40065C329 /* ArrivalsViewControllerModel.h */,
+				ABE1AE5E185315C40065C329 /* ArrivalsViewControllerModel.m */,
+				AB7528151853DCD800DCA3CF /* RouteMapViewControllerModel.h */,
+				AB7528161853DCD800DCA3CF /* RouteMapViewControllerModel.m */,
+				ABBCE9DB1855273E00DEFA9E /* MapViewControllerModel.h */,
+				ABBCE9DC1855273E00DEFA9E /* MapViewControllerModel.m */,
+				ABBCE9E5185558A100DEFA9E /* AnnouncementsViewControllerModel.h */,
+				ABBCE9E6185558A100DEFA9E /* AnnouncementsViewControllerModel.m */,
+				AB3006DF1852F962007A4E29 /* ArrivalCellModel.h */,
+				AB3006E01852F962007A4E29 /* ArrivalCellModel.m */,
+				ABE1AE5718530E670065C329 /* ArrivalRouteCellModel.h */,
+				ABE1AE5818530E670065C329 /* ArrivalRouteCellModel.m */,
+				AB7528211854539400DCA3CF /* StopTrayModel.h */,
+				AB7528221854539400DCA3CF /* StopTrayModel.m */,
 			);
 			path = "View Model";
 			sourceTree = "<group>";
@@ -418,6 +502,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ABBCE9E11855573400DEFA9E /* map-icon@2x.png in Resources */,
 				ABEDEBAE184C266D00B82E59 /* bus135.png in Resources */,
 				ABEDEBA2184C1CA400B82E59 /* Bus.png in Resources */,
 				ABEDEBAB184C266D00B82E59 /* bus_90.png in Resources */,
@@ -436,6 +521,7 @@
 				ABEDEB2B184BDA1B00B82E59 /* Main_iPhone.storyboard in Resources */,
 				ABEDEBD3184C42ED00B82E59 /* bus-tab.png in Resources */,
 				ABEDEBAC184C266D00B82E59 /* bus0.png in Resources */,
+				ABBCE9E01855573400DEFA9E /* map-icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -500,19 +586,31 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ABEDEB9D184C105200B82E59 /* MapViewControllerModel.m in Sources */,
+				ABE1AE5118530E3A0065C329 /* ArrivalRouteCell.m in Sources */,
+				AB3006DB1852F81A007A4E29 /* RoutesViewControllerModel.m in Sources */,
+				AB3006D81852F7FE007A4E29 /* RoutesViewController.m in Sources */,
+				AB75281D1854464800DCA3CF /* CircleAnnotationView.m in Sources */,
+				AB7528201854538800DCA3CF /* StopTray.m in Sources */,
+				AB3006DE1852F959007A4E29 /* ArrivalCell.m in Sources */,
 				ABEDEBB8184C350400B82E59 /* StopAnnotation.m in Sources */,
-				ABEDEBC1184C3CA000B82E59 /* AnnouncementsViewControllerModel.m in Sources */,
-				ABEDEBBE184C3BE900B82E59 /* AnnoucementsViewController.m in Sources */,
-				AB155C93184D68B500BF1A09 /* StopTrayModel.m in Sources */,
 				ABEDEB93184C103B00B82E59 /* AppDelegate.m in Sources */,
-				ABEDEB9A184C103B00B82E59 /* MapViewController.m in Sources */,
-				AB2C4C24184D1F0C001E2EA2 /* StreetViewController.m in Sources */,
 				ABEDEB94184C103B00B82E59 /* main.m in Sources */,
-				ABEDEBC7184C3F3800B82E59 /* AnnouncementCell.m in Sources */,
-				AB155C90184D68A400BF1A09 /* StopTray.m in Sources */,
+				AB7528231854539400DCA3CF /* StopTrayModel.m in Sources */,
+				AB7528171853DCD800DCA3CF /* RouteMapViewControllerModel.m in Sources */,
+				ABBCE9DD1855273E00DEFA9E /* MapViewControllerModel.m in Sources */,
+				ABE1AE5918530E670065C329 /* ArrivalRouteCellModel.m in Sources */,
+				ABBCE9E41855581E00DEFA9E /* AnnouncementsViewController.m in Sources */,
 				ABEDEBA0184C139100B82E59 /* BusAnnotation.m in Sources */,
-				ABEDEBCA184C3F4600B82E59 /* AnnouncementCellModel.m in Sources */,
+				ABBCE9E7185558A100DEFA9E /* AnnouncementsViewControllerModel.m in Sources */,
+				ABE1AE5F185315C40065C329 /* ArrivalsViewControllerModel.m in Sources */,
+				ABE1AE5418530E470065C329 /* ArrivalRouteCellView.m in Sources */,
+				AB3006E11852F962007A4E29 /* ArrivalCellModel.m in Sources */,
+				AB7528261854544D00DCA3CF /* StreetViewController.m in Sources */,
+				ABE1AE4B1852FF230065C329 /* ArrivalCellView.m in Sources */,
+				ABE1AE5C185315B60065C329 /* ArrivalsViewController.m in Sources */,
+				AB3006E41852F9E4007A4E29 /* DataStore.m in Sources */,
+				AB7528141853DCC600DCA3CF /* RouteMapViewController.m in Sources */,
+				ABBCE9DA1855273600DEFA9E /* MapViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -638,6 +736,7 @@
 				GCC_PREFIX_HEADER = "UMBus/Source/Misc/UMBus-Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/UMBus/Resources/Misc/UMBus-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -652,6 +751,7 @@
 				GCC_PREFIX_HEADER = "UMBus/Source/Misc/UMBus-Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/UMBus/Resources/Misc/UMBus-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

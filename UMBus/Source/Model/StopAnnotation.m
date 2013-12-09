@@ -7,7 +7,7 @@
 //
 
 #import "StopAnnotation.h"
-#import "Stop.h"
+#import "ArrivalStop.h"
 
 @interface StopAnnotation ()
 
@@ -17,7 +17,7 @@
 
 @implementation StopAnnotation
 
-- (instancetype)initWithStop:(Stop *)stop {
+- (instancetype)initWithArrivalStop:(ArrivalStop *)stop {
     if (self = [super init]) {
         _coordinate = CLLocationCoordinate2DMake([stop.latitude doubleValue], [stop.longitude doubleValue]);
         _stop = stop;
@@ -26,7 +26,7 @@
 }
 
 - (NSString *)title {
-    return _stop.humanName;
+    return _stop.name2;
 }
 
 @end
