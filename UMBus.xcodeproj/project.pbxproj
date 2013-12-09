@@ -34,6 +34,10 @@
 		AB7528201854538800DCA3CF /* StopTray.m in Sources */ = {isa = PBXBuildFile; fileRef = AB75281F1854538800DCA3CF /* StopTray.m */; };
 		AB7528231854539400DCA3CF /* StopTrayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AB7528221854539400DCA3CF /* StopTrayModel.m */; };
 		AB7528261854544D00DCA3CF /* StreetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB7528251854544D00DCA3CF /* StreetViewController.m */; };
+		ABBCE9DA1855273600DEFA9E /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABBCE9D91855273600DEFA9E /* MapViewController.m */; };
+		ABBCE9DD1855273E00DEFA9E /* MapViewControllerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ABBCE9DC1855273E00DEFA9E /* MapViewControllerModel.m */; };
+		ABBCE9E01855573400DEFA9E /* map-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBCE9DE1855573400DEFA9E /* map-icon.png */; };
+		ABBCE9E11855573400DEFA9E /* map-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBCE9DF1855573400DEFA9E /* map-icon@2x.png */; };
 		ABE1AE4B1852FF230065C329 /* ArrivalCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = ABE1AE4A1852FF230065C329 /* ArrivalCellView.m */; };
 		ABE1AE5118530E3A0065C329 /* ArrivalRouteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ABE1AE5018530E3A0065C329 /* ArrivalRouteCell.m */; };
 		ABE1AE5418530E470065C329 /* ArrivalRouteCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = ABE1AE5318530E470065C329 /* ArrivalRouteCellView.m */; };
@@ -110,6 +114,12 @@
 		AB7528221854539400DCA3CF /* StopTrayModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StopTrayModel.m; sourceTree = "<group>"; };
 		AB7528241854544D00DCA3CF /* StreetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StreetViewController.h; sourceTree = "<group>"; };
 		AB7528251854544D00DCA3CF /* StreetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StreetViewController.m; sourceTree = "<group>"; };
+		ABBCE9D81855273600DEFA9E /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
+		ABBCE9D91855273600DEFA9E /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
+		ABBCE9DB1855273E00DEFA9E /* MapViewControllerModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewControllerModel.h; sourceTree = "<group>"; };
+		ABBCE9DC1855273E00DEFA9E /* MapViewControllerModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewControllerModel.m; sourceTree = "<group>"; };
+		ABBCE9DE1855573400DEFA9E /* map-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map-icon.png"; sourceTree = "<group>"; };
+		ABBCE9DF1855573400DEFA9E /* map-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map-icon@2x.png"; sourceTree = "<group>"; };
 		ABE1AE491852FF230065C329 /* ArrivalCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArrivalCellView.h; sourceTree = "<group>"; };
 		ABE1AE4A1852FF230065C329 /* ArrivalCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArrivalCellView.m; sourceTree = "<group>"; };
 		ABE1AE4F18530E3A0065C329 /* ArrivalRouteCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArrivalRouteCell.h; sourceTree = "<group>"; };
@@ -274,6 +284,8 @@
 		ABEDEB13184BDA1B00B82E59 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				ABBCE9DE1855573400DEFA9E /* map-icon.png */,
+				ABBCE9DF1855573400DEFA9E /* map-icon@2x.png */,
 				AB2C4C25184D49A5001E2EA2 /* street-view-icon.png */,
 				AB2C4C26184D49A5001E2EA2 /* street-view-icon@2x.png */,
 				ABEDEBD1184C42ED00B82E59 /* bus-tab.png */,
@@ -368,6 +380,8 @@
 				AB7528131853DCC600DCA3CF /* RouteMapViewController.m */,
 				AB7528241854544D00DCA3CF /* StreetViewController.h */,
 				AB7528251854544D00DCA3CF /* StreetViewController.m */,
+				ABBCE9D81855273600DEFA9E /* MapViewController.h */,
+				ABBCE9D91855273600DEFA9E /* MapViewController.m */,
 				AB75281B1854464800DCA3CF /* CircleAnnotationView.h */,
 				AB75281C1854464800DCA3CF /* CircleAnnotationView.m */,
 				AB75281E1854538800DCA3CF /* StopTray.h */,
@@ -387,6 +401,8 @@
 				ABE1AE5E185315C40065C329 /* ArrivalsViewControllerModel.m */,
 				AB7528151853DCD800DCA3CF /* RouteMapViewControllerModel.h */,
 				AB7528161853DCD800DCA3CF /* RouteMapViewControllerModel.m */,
+				ABBCE9DB1855273E00DEFA9E /* MapViewControllerModel.h */,
+				ABBCE9DC1855273E00DEFA9E /* MapViewControllerModel.m */,
 				AB3006DF1852F962007A4E29 /* ArrivalCellModel.h */,
 				AB3006E01852F962007A4E29 /* ArrivalCellModel.m */,
 				ABE1AE5718530E670065C329 /* ArrivalRouteCellModel.h */,
@@ -476,6 +492,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ABBCE9E11855573400DEFA9E /* map-icon@2x.png in Resources */,
 				ABEDEBAE184C266D00B82E59 /* bus135.png in Resources */,
 				ABEDEBA2184C1CA400B82E59 /* Bus.png in Resources */,
 				ABEDEBAB184C266D00B82E59 /* bus_90.png in Resources */,
@@ -494,6 +511,7 @@
 				ABEDEB2B184BDA1B00B82E59 /* Main_iPhone.storyboard in Resources */,
 				ABEDEBD3184C42ED00B82E59 /* bus-tab.png in Resources */,
 				ABEDEBAC184C266D00B82E59 /* bus0.png in Resources */,
+				ABBCE9E01855573400DEFA9E /* map-icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -569,6 +587,7 @@
 				ABEDEB94184C103B00B82E59 /* main.m in Sources */,
 				AB7528231854539400DCA3CF /* StopTrayModel.m in Sources */,
 				AB7528171853DCD800DCA3CF /* RouteMapViewControllerModel.m in Sources */,
+				ABBCE9DD1855273E00DEFA9E /* MapViewControllerModel.m in Sources */,
 				ABE1AE5918530E670065C329 /* ArrivalRouteCellModel.m in Sources */,
 				ABEDEBA0184C139100B82E59 /* BusAnnotation.m in Sources */,
 				ABE1AE5F185315C40065C329 /* ArrivalsViewControllerModel.m in Sources */,
@@ -579,6 +598,7 @@
 				ABE1AE5C185315B60065C329 /* ArrivalsViewController.m in Sources */,
 				AB3006E41852F9E4007A4E29 /* DataStore.m in Sources */,
 				AB7528141853DCC600DCA3CF /* RouteMapViewController.m in Sources */,
+				ABBCE9DA1855273600DEFA9E /* MapViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
