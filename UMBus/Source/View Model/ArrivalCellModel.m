@@ -18,8 +18,8 @@
     return self;
 }
 
-- (NSString *)abbreviatedArrivalTime {
-    int minutes = ((NSInteger)self.stop.timeOfArrival / 60) % 60;
+- (NSString *)abbreviatedArrivalTimeForTimeInterval:(NSTimeInterval)timeInterval {
+    int minutes = ((NSInteger)timeInterval / 60) % 60;
     if (minutes == 00) {
         return @"Arr";
     }

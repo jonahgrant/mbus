@@ -41,7 +41,18 @@
     CGFloat x = rect.size.height / 2;
     
     NSString *routeName = self.model.stop.name2;
-    NSString *routeTimeOfArrival = [self.model abbreviatedArrivalTime];
+    
+    NSTimeInterval toa;
+    if (self.model.stop.timeOfArrival >= self.model.stop.timeOfArrival2) {
+        NSLog(@"toa1: %f is greater than toa2: %f", self.model.stop.timeOfArrival, self.model.stop.timeOfArrival2);
+        toa = self.model.stop.timeOfArrival2;
+    } else {
+        NSLog(@"toa2: %f is greater than toa1: %f", self.model.stop.timeOfArrival2, self.model.stop.timeOfArrival);
+        toa = self.model.stop.timeOfArrival;
+    }
+    
+    NSString *routeTimeOfArrival = [self.model abbreviatedArrivalTimeForTimeInterval:toa];
+    
     NSString *eta = [@"Bus 1 arriving at " stringByAppendingString:[self timeOfArrivalForTimeInterval:self.model.stop.timeOfArrival]];
     
     NSDictionary *etaDirectory = @{ NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue-Light" size:12],

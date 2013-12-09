@@ -47,6 +47,7 @@
 #pragma Fetch
 
 - (void)fetchArrivals {
+    NSLog(@"-fetchArrivals");
     [self.networkingSession fetchArrivalsWithSuccessBlock:^(NSArray *arrivals) {
         self.arrivals = arrivals;
 

@@ -13,7 +13,6 @@
 @interface ArrivalsViewControllerModel : NSObject
 
 @property (strong, nonatomic) Arrival *arrival;
-@property (strong, nonatomic) NSArray *stopsSortedByTimeOfArrival;
 
 - (instancetype)initWithArrival:(Arrival *)arrival;
 

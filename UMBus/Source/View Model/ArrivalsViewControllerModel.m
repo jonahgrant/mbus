@@ -9,16 +9,19 @@
 #import "ArrivalsViewControllerModel.h"
 #import "Arrival.h"
 #import "ArrivalStop.h"
+#import "DataStore.h"
+
+@interface ArrivalsViewControllerModel ()
+
+@property (strong, nonatomic) NSArray *arrivals;
+
+@end
 
 @implementation ArrivalsViewControllerModel
 
 - (instancetype)initWithArrival:(Arrival *)arrival {
     if (self = [super init]) {
         self.arrival = arrival;
-        
-        [RACObserve(self, arrival) subscribeNext:^(Arrival *arrival) {
-            self.stopsSortedByTimeOfArrival = [self stopsOrderedByTimeOfArrivalWithStops:arrival.stops];
-        }];
     }
     return self;
 }

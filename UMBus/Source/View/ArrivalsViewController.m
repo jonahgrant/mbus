@@ -38,25 +38,17 @@
     [self.tableView addSubview:self.refreshControl];
     
     self.informationCells = @[@"Map"];
-        
-    [RACObserve(self.model, stopsSortedByTimeOfArrival) subscribeNext:^(NSArray *stops) {
-        if (stops) {
-            [self.tableView reloadData];
-        }
-    }];
     
     [RACObserve([DataStore sharedManager], arrivals) subscribeNext:^(NSArray *arrivals) {
         if (arrivals) {
             [self.refreshControl endRefreshing];
-            [self.model setArrival:[[DataStore sharedManager] arrivalForID:self.arrival.id]];
+            Arrival *a = [[DataStore sharedManager] arrivalForID:self.model.arrival.id];
+            
+            NSLog(@"Old 1:\n%@\nNew 1:\n%@", self.stops[0], a.stops[0]);
+            self.stops = a.stops;
+            [self.tableView reloadData];
         }
     }];
-    
-    [NSTimer timerWithTimeInterval:[(ArrivalStop *)self.model.arrival.stops[0] timeOfArrival]
-                            target:self
-                          selector:@selector(refresh)
-                          userInfo:nil
-                           repeats:YES];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -83,7 +75,8 @@
             return self.informationCells.count;
             break;
         case 1:
-            return self.model.stopsSortedByTimeOfArrival.count;
+            NSLog(@"reload data");
+            return self.stops.count;
         default:
             break;
     }
@@ -111,7 +104,7 @@
             return 50;
             break;
         case 1:
-            return 90;
+            return 100;
         default:
             break;
     }
@@ -131,7 +124,7 @@
     if (indexPath.section == 1) {
         ArrivalCell *cell = [tableView dequeueReusableCellWithIdentifier:@"StopCell" forIndexPath:indexPath];
         
-        ArrivalStop *stop = self.model.stopsSortedByTimeOfArrival[indexPath.row];
+        ArrivalStop *stop = self.stops[indexPath.row];
         ArrivalCellModel *arrivalCellModel = [[ArrivalCellModel alloc] initWithStop:stop];
         cell.model = arrivalCellModel;
         

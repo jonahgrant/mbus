@@ -16,6 +16,6 @@
 
 - (instancetype)initWithStop:(ArrivalStop *)stop;
 
-- (NSString *)abbreviatedArrivalTime;
+- (NSString *)abbreviatedArrivalTimeForTimeInterval:(NSTimeInterval)timeInterval;
 
 @end
