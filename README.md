@@ -57,10 +57,12 @@ The project currently only shows buses, bus stops, and announcements.  In the fu
 The project may also move to an alternate map provider that offers more flexibility in terms of scalability, performance (specifically when handling large amounts of polylines and annotations).
 
 # Interface
-![Bus stop](https://dl.dropboxusercontent.com/u/2177718/Screen%20Shot%202013-12-03%20at%2012.30.28%20AM.png "Bus stop")
-![Live bus](https://dl.dropboxusercontent.com/u/2177718/Screen%20Shot%202013-12-03%20at%2012.30.09%20AM.png "Live bus")
-![Street view](https://dl.dropboxusercontent.com/u/2177718/Screen%20Shot%202013-12-02%20at%206.31.20%20PM.png "Street view")
-![Announcement](https://dl.dropboxusercontent.com/u/2177718/Screen%20Shot%202013-12-01%20at%2010.45.44%20PM.png "Announcement")
+![Arrivals](https://dl.dropboxusercontent.com/u/2177718/Screen%20Shot%202013-12-09%20at%2012.13.39%20AM.png "Arrivals")
+![Route](https://dl.dropboxusercontent.com/u/2177718/Screen%20Shot%202013-12-09%20at%2012.13.42%20AM.png   "Route")
+![Route map](https://dl.dropboxusercontent.com/u/2177718/Screen%20Shot%202013-12-09%20at%2012.13.59%20AM.png "Route map")
+![Street view](https://dl.dropboxusercontent.com/u/2177718/Screen%20Shot%202013-12-09%20at%2012.14.16%20AM.png "Street view")
+![Live bus](https://dl.dropboxusercontent.com/u/2177718/Screen%20Shot%202013-12-09%20at%2012.14.35%20AM.png "Live bus")
+![Announcement](https://dl.dropboxusercontent.com/u/2177718/Screen%20Shot%202013-12-09%20at%2012.14.38%20AM.png "Announcement")
 
 		
 [![githalytics.com alpha](https://cruel-carlota.pagodabox.com/0fe6bae62d6859d30f7f447fb3b2b188 "githalytics.com")](http://githalytics.com/jonahgrant/um-magic-bus)
