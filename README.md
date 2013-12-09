@@ -58,7 +58,7 @@ The project may also move to an alternate map provider that offers more flexibil
 
 # Interface
 ![Arrivals](https://dl.dropboxusercontent.com/u/2177718/Screen%20Shot%202013-12-09%20at%2012.13.39%20AM.png "Arrivals")
-![Route](https://dl.dropboxusercontent.com/u/2177718/Screen%20Shot%202013-12-09%20at%2012.13.42%20AM.png   "Route")
+![Route](https://dl.dropboxusercontent.com/u/2177718/Screen%20Shot%202013-12-09%20at%2012.20.18%20AM.png   "Route")
 ![Route map](https://dl.dropboxusercontent.com/u/2177718/Screen%20Shot%202013-12-09%20at%2012.13.59%20AM.png "Route map")
 ![Street view](https://dl.dropboxusercontent.com/u/2177718/Screen%20Shot%202013-12-09%20at%2012.14.16%20AM.png "Street view")
 ![Live bus](https://dl.dropboxusercontent.com/u/2177718/Screen%20Shot%202013-12-09%20at%2012.14.35%20AM.png "Live bus")

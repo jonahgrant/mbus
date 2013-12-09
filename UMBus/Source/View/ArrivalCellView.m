@@ -69,13 +69,11 @@
     NSDictionary *etaDirectory = @{ NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue-Light" size:12],
                                     NSForegroundColorAttributeName: [UIColor lightGrayColor]};
     
-    UIColor *busRouteColor = [UIColor colorWithRed:0.576660 green:0.576660 blue:0.576660 alpha:1.0000];
-    
     NSDictionary *routeNameDictionary = @{ NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue-Light" size:17],
                                            NSForegroundColorAttributeName: [UIColor blackColor]};
     
     NSDictionary *arrivalTimeDictionary = @{ NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue-Bold" size:12],
-                                             NSForegroundColorAttributeName: [UIColor whiteColor]};
+                                             NSForegroundColorAttributeName: [UIColor colorWithRed:0.576660 green:0.576660 blue:0.576660 alpha:1.0000]};
     
     CGFloat routeNameHeight = [routeName boundingRectWithSize:CGSizeMake(rect.size.width - 50, MAXFLOAT)
                                                       options:NSStringDrawingUsesLineFragmentOrigin
@@ -131,7 +129,7 @@
     
     // Vertical line
     CGContextSetStrokeColorWithColor(context, [UIColor colorWithRed:0.811630 green:0.811630 blue:0.811630 alpha:1.0000].CGColor);
-    CGContextSetLineWidth(context, 8.0);
+    CGContextSetLineWidth(context, 3.0);
     
     CGContextBeginPath(context);
     CGContextMoveToPoint(context, 30, 0);
@@ -143,7 +141,7 @@
     CGContextSetRGBFillColor(context, 0,0,0,0.75);
 
     // Arrival time circle
-    CGContextSetFillColorWithColor(context, busRouteColor.CGColor);
+    CGContextSetFillColorWithColor(context, [UIColor whiteColor].CGColor);
     CGContextFillEllipseInRect(context, circleRect);
     
     CGContextSetLineWidth(context, 3.0f);
