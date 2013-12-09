@@ -38,6 +38,8 @@
 		ABBCE9DD1855273E00DEFA9E /* MapViewControllerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ABBCE9DC1855273E00DEFA9E /* MapViewControllerModel.m */; };
 		ABBCE9E01855573400DEFA9E /* map-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBCE9DE1855573400DEFA9E /* map-icon.png */; };
 		ABBCE9E11855573400DEFA9E /* map-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBCE9DF1855573400DEFA9E /* map-icon@2x.png */; };
+		ABBCE9E41855581E00DEFA9E /* AnnouncementsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABBCE9E31855581E00DEFA9E /* AnnouncementsViewController.m */; };
+		ABBCE9E7185558A100DEFA9E /* AnnouncementsViewControllerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ABBCE9E6185558A100DEFA9E /* AnnouncementsViewControllerModel.m */; };
 		ABE1AE4B1852FF230065C329 /* ArrivalCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = ABE1AE4A1852FF230065C329 /* ArrivalCellView.m */; };
 		ABE1AE5118530E3A0065C329 /* ArrivalRouteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ABE1AE5018530E3A0065C329 /* ArrivalRouteCell.m */; };
 		ABE1AE5418530E470065C329 /* ArrivalRouteCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = ABE1AE5318530E470065C329 /* ArrivalRouteCellView.m */; };
@@ -120,6 +122,10 @@
 		ABBCE9DC1855273E00DEFA9E /* MapViewControllerModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewControllerModel.m; sourceTree = "<group>"; };
 		ABBCE9DE1855573400DEFA9E /* map-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map-icon.png"; sourceTree = "<group>"; };
 		ABBCE9DF1855573400DEFA9E /* map-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map-icon@2x.png"; sourceTree = "<group>"; };
+		ABBCE9E21855581E00DEFA9E /* AnnouncementsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnnouncementsViewController.h; sourceTree = "<group>"; };
+		ABBCE9E31855581E00DEFA9E /* AnnouncementsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnnouncementsViewController.m; sourceTree = "<group>"; };
+		ABBCE9E5185558A100DEFA9E /* AnnouncementsViewControllerModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnnouncementsViewControllerModel.h; sourceTree = "<group>"; };
+		ABBCE9E6185558A100DEFA9E /* AnnouncementsViewControllerModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnnouncementsViewControllerModel.m; sourceTree = "<group>"; };
 		ABE1AE491852FF230065C329 /* ArrivalCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArrivalCellView.h; sourceTree = "<group>"; };
 		ABE1AE4A1852FF230065C329 /* ArrivalCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArrivalCellView.m; sourceTree = "<group>"; };
 		ABE1AE4F18530E3A0065C329 /* ArrivalRouteCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArrivalRouteCell.h; sourceTree = "<group>"; };
@@ -382,6 +388,8 @@
 				AB7528251854544D00DCA3CF /* StreetViewController.m */,
 				ABBCE9D81855273600DEFA9E /* MapViewController.h */,
 				ABBCE9D91855273600DEFA9E /* MapViewController.m */,
+				ABBCE9E21855581E00DEFA9E /* AnnouncementsViewController.h */,
+				ABBCE9E31855581E00DEFA9E /* AnnouncementsViewController.m */,
 				AB75281B1854464800DCA3CF /* CircleAnnotationView.h */,
 				AB75281C1854464800DCA3CF /* CircleAnnotationView.m */,
 				AB75281E1854538800DCA3CF /* StopTray.h */,
@@ -403,6 +411,8 @@
 				AB7528161853DCD800DCA3CF /* RouteMapViewControllerModel.m */,
 				ABBCE9DB1855273E00DEFA9E /* MapViewControllerModel.h */,
 				ABBCE9DC1855273E00DEFA9E /* MapViewControllerModel.m */,
+				ABBCE9E5185558A100DEFA9E /* AnnouncementsViewControllerModel.h */,
+				ABBCE9E6185558A100DEFA9E /* AnnouncementsViewControllerModel.m */,
 				AB3006DF1852F962007A4E29 /* ArrivalCellModel.h */,
 				AB3006E01852F962007A4E29 /* ArrivalCellModel.m */,
 				ABE1AE5718530E670065C329 /* ArrivalRouteCellModel.h */,
@@ -589,7 +599,9 @@
 				AB7528171853DCD800DCA3CF /* RouteMapViewControllerModel.m in Sources */,
 				ABBCE9DD1855273E00DEFA9E /* MapViewControllerModel.m in Sources */,
 				ABE1AE5918530E670065C329 /* ArrivalRouteCellModel.m in Sources */,
+				ABBCE9E41855581E00DEFA9E /* AnnouncementsViewController.m in Sources */,
 				ABEDEBA0184C139100B82E59 /* BusAnnotation.m in Sources */,
+				ABBCE9E7185558A100DEFA9E /* AnnouncementsViewControllerModel.m in Sources */,
 				ABE1AE5F185315C40065C329 /* ArrivalsViewControllerModel.m in Sources */,
 				ABE1AE5418530E470065C329 /* ArrivalRouteCellView.m in Sources */,
 				AB3006E11852F962007A4E29 /* ArrivalCellModel.m in Sources */,

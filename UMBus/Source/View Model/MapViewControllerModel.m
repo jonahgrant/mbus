@@ -21,10 +21,18 @@
         [self manageBusAnnotations];
         
         [RACObserve([DataStore sharedManager], buses) subscribeNext:^(NSArray *buses) {
-            self.buses = buses;
+            if (buses) {
+                self.buses = buses;
+            }
             
             if (self.continuouslyUpdating) {
                 [self fetchBuses];
+            }
+        }];
+                
+        [RACObserve(self, buses) subscribeNext:^(NSArray *buses) {
+            if (buses) {
+                [self manageBusAnnotations];
             }
         }];
     }
@@ -45,23 +53,20 @@
 }
 
 - (void)manageBusAnnotations {
-    [RACObserve(self, buses) subscribeNext:^(NSArray *buses) {
-        if (buses) {
-            NSMutableDictionary *mutableAnnotations = [NSMutableDictionary dictionaryWithDictionary:self.busAnnotations];
-            for (Bus *bus in buses) {
-                if ([self.busAnnotations objectForKey:bus.id]) {
-                    // OLD BUS: update it's properties
-                    [(BusAnnotation *)[mutableAnnotations objectForKey:bus.id] setCoordinate:CLLocationCoordinate2DMake([bus.latitude doubleValue], [bus.longitude doubleValue])];
-                    [(BusAnnotation *)[mutableAnnotations objectForKey:bus.id] setHeading:[bus.heading floatValue]];
-                } else {
-                    // NEW BUS: create annotation and add to dictionary
-                    BusAnnotation *annotation = [[BusAnnotation alloc] initWithBus:bus];
-                    [mutableAnnotations addEntriesFromDictionary:@{bus.id : annotation}];
-                }
-            }
-            self.busAnnotations = mutableAnnotations;
+    NSMutableDictionary *mutableAnnotations = [NSMutableDictionary dictionaryWithDictionary:self.busAnnotations];
+    for (Bus *bus in self.buses) {
+        if ([self.busAnnotations objectForKey:bus.id]) {
+            // OLD BUS: update it's properties
+            [(BusAnnotation *)[mutableAnnotations objectForKey:bus.id] setCoordinate:CLLocationCoordinate2DMake([bus.latitude doubleValue], [bus.longitude doubleValue])];
+            [(BusAnnotation *)[mutableAnnotations objectForKey:bus.id] setHeading:[bus.heading floatValue]];
+        } else {
+            // NEW BUS: create annotation and add to dictionary
+            BusAnnotation *annotation = [[BusAnnotation alloc] initWithBus:bus];
+            [mutableAnnotations addEntriesFromDictionary:@{bus.id : annotation}];
         }
-    }];
+    }
+    self.busAnnotations = mutableAnnotations;
 }
+
 
 @end

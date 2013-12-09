@@ -56,6 +56,8 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     [self.model beginFetchingBuses];
+    [self.navigationController.navigationBar setTintColor:nil];
+    [self.tabBarController.tabBar setTintColor:nil];
 }
 
 - (void)viewDidDisappear:(BOOL)animated {

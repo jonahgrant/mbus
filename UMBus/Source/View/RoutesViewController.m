@@ -26,7 +26,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.title = @"Arrivals";
+    self.title = @"Routes";
     
     self.model = [[RoutesViewControllerModel alloc] init];
     [self fetchData];

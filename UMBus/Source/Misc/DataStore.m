@@ -15,7 +15,7 @@
 @interface DataStore ()
 
 @property (strong, nonatomic) UMNetworkingSession *networkingSession;
-@property (strong, nonatomic, readwrite) NSArray *arrivals, *buses, *stops;
+@property (strong, nonatomic, readwrite) NSArray *arrivals, *buses, *stops, *announcements;
 @property (strong, nonatomic, readwrite) NSDictionary *arrivalsDictionary, *busesForRoutesDictionary;
 
 @end
@@ -77,6 +77,14 @@
 - (void)fetchStops {
     [self.networkingSession fetchStopsWithSuccessBlock:^(NSArray *stops) {
         self.stops = stops;
+    } errorBlock:^(NSError *error) {
+        [self handleError:error];
+    }];
+}
+
+- (void)fetchAnnouncements {
+    [self.networkingSession fetchAnnouncementsWithSuccessBlock:^(NSArray *announcements) {
+        self.announcements = announcements;
     } errorBlock:^(NSError *error) {
         [self handleError:error];
     }];

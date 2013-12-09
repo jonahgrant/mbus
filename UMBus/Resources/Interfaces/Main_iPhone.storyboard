@@ -52,10 +52,10 @@
             </objects>
             <point key="canvasLocation" x="389" y="447"/>
         </scene>
-        <!--View Controller - Announcements-->
+        <!--Announcements View Controller - Announcements-->
         <scene sceneID="xWv-ps-NUD">
             <objects>
-                <viewController id="AQf-w4-qpf" sceneMemberID="viewController">
+                <viewController id="AQf-w4-qpf" customClass="AnnouncementsViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="J8m-EG-8ib"/>
                         <viewControllerLayoutGuide type="bottom" id="eAw-Qp-QOJ"/>
@@ -68,12 +68,29 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="omN-wF-Asv">
+                                        <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="omN-wF-Asv" id="F9p-h2-ed8">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="AQf-w4-qpf" id="pne-xf-3YM"/>
+                                    <outlet property="delegate" destination="AQf-w4-qpf" id="ATb-Ao-lrr"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Announcements" image="info-tab.png" id="Egz-8M-NNI"/>
                     <navigationItem key="navigationItem" id="Vj3-wk-rra"/>
+                    <connections>
+                        <outlet property="tableView" destination="0L3-Ta-pAb" id="Qcw-ou-L69"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IeD-J2-BFb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -245,7 +262,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IHm-ag-dYz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1574" y="-770"/>
+            <point key="canvasLocation" x="1836" y="-1010"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Vex-rW-GRa">
