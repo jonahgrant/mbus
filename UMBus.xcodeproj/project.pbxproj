@@ -472,6 +472,9 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Jonah Grant";
 				TargetAttributes = {
+					ABEDEAD3184BD90D00B82E59 = {
+						DevelopmentTeam = LB4MBV72FH;
+					};
 					ABEDEAFA184BD90D00B82E59 = {
 						TestTargetID = ABEDEAD3184BD90D00B82E59;
 					};
@@ -732,10 +735,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "UMBus/Source/Misc/UMBus-Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/UMBus/Resources/Misc/UMBus-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -747,10 +753,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "UMBus/Source/Misc/UMBus-Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/UMBus/Resources/Misc/UMBus-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};

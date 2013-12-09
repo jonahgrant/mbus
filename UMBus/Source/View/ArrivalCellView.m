@@ -40,7 +40,7 @@
     
     CGContextRef context = UIGraphicsGetCurrentContext();
     
-    CGFloat x = rect.size.height / 2;
+    CGFloat x = rect.size.height / 3;
     
     NSString *routeName = self.model.stop.name2;
     
