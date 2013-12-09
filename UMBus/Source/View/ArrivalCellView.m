@@ -58,12 +58,14 @@
     } else if (![[DataStore sharedManager] arrivalHasBus1WithArrivalID:self.model.arrival.id] &&
                [[DataStore sharedManager] arrivalHasBus2WithArrivalID:self.model.arrival.id]) {
         toa = self.model.stop.timeOfArrival2;
+    } else {
+        toa = -1;
     }
     
     NSString *routeTimeOfArrival = [self.model abbreviatedArrivalTimeForTimeInterval:toa];
     
     NSString *eta = [@"Bus 1 arriving at " stringByAppendingString:[self timeOfArrivalForTimeInterval:self.model.stop.timeOfArrival]];
-    
+
     NSDictionary *etaDirectory = @{ NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue-Light" size:12],
                                     NSForegroundColorAttributeName: [UIColor lightGrayColor]};
     
