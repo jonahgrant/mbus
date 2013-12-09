@@ -43,10 +43,7 @@
         if (arrivals) {
             [self.refreshControl endRefreshing];
             Arrival *a = [[DataStore sharedManager] arrivalForID:self.model.arrival.id];
-            if (self.stops) {
-                NSLog(@"Old TOA: %@ new TOA: %@", self.stops[0], a.stops[0]);
-            }
-            self.stops = a.stops;
+            self.stops = [self.model stopsOrderedByTimeOfArrivalWithStops:a.stops];
             [self.tableView reloadData];
         }
     }];
