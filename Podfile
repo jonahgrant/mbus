@@ -9,7 +9,5 @@ target "UMBus" do
     pod 'FormatterKit', '~> 1.3.1'
     pod 'SVPulsingAnnotationView', '~> 0.3.0'
     pod 'HexColors', '~> 2.2.1'
-    pod 'Fare', 
-  	:git => 'git@github.com:jonahgrant/fare.git', 
-        :branch => 'master'
+    pod 'Fare', '~> 1.0.3'
 end
