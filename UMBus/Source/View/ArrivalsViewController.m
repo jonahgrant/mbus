@@ -111,7 +111,7 @@
             return 50;
             break;
         case 1:
-            return 100;
+            return 90;
         default:
             break;
     }

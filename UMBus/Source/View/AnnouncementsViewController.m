@@ -23,7 +23,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    self.title = @"Announcements";
+    self.navigationItem.title = @"University of Michigan";
     
     self.model = [[AnnouncementsViewControllerModel alloc] init];
     [self.model fetchAnnouncements];

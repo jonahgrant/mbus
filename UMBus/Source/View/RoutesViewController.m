@@ -26,7 +26,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.title = @"Routes";
+    self.navigationItem.title = @"University of Michigan";
     
     self.model = [[RoutesViewControllerModel alloc] init];
     [self fetchData];
