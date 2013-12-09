@@ -59,52 +59,26 @@
 #pragma UITableView data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 2;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    switch (section) {
-        case 0:
-            return self.model.arrivals.count;
-            break;
-        case 1:
-            return 1;
-        default:
-            break;
-    }
-    
-    return 0;
+    return self.model.arrivals.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.section == 0) {
-        return 70;
-    } else if (indexPath.section == 1) {
-        return 50;
-    }
-    
-    return 40;
+    return 70;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.section == 0) {
-        ArrivalRouteCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+    ArrivalRouteCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
         
-        Arrival *arrival = self.model.arrivals[indexPath.row];
-        ArrivalRouteCellModel *arrivalCellModel = [[ArrivalRouteCellModel alloc] initWithArrival:arrival];
-        cell.model = arrivalCellModel;
+    Arrival *arrival = self.model.arrivals[indexPath.row];
+    ArrivalRouteCellModel *arrivalCellModel = [[ArrivalRouteCellModel alloc] initWithArrival:arrival];
+    cell.model = arrivalCellModel;
         
-        return cell;
-    } else if (indexPath.section == 1) {
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TableCell" forIndexPath:indexPath];
-        cell.textLabel.text = @"Nearby stops";
-        cell.textLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:17];
-        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-        return cell;
-    }
-    
-    return nil;
-}
+    return cell;
+ }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     if (section == 0) {
@@ -117,11 +91,7 @@
 #pragma UITableView delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.section == 0) {
-        [self performSegueWithIdentifier:UMSequeArrivals sender:self];
-    } else if (indexPath.section == 1) {
-        // show nearby stops
-    }
+    [self performSegueWithIdentifier:UMSequeArrivals sender:self];
 }
 
 #pragma UIStoryboard
