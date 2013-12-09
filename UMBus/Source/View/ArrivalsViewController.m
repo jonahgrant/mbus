@@ -44,12 +44,6 @@
             [self.refreshControl endRefreshing];
             Arrival *a = [[DataStore sharedManager] arrivalForID:self.model.arrival.id];
             self.stops = [self.model stopsOrderedByTimeOfArrivalWithStops:a.stops];
-        }
-    }];
-    
-    [RACObserve(self, stops) subscribeNext:^(NSArray *stops) {
-        if (stops) {
-            NSLog(@"Refreshing data");
             [self.tableView reloadData];
         }
     }];
