@@ -47,7 +47,6 @@
 #pragma Fetch
 
 - (void)fetchArrivals {
-    NSLog(@"-fetchArrivals");
     [self.networkingSession fetchArrivalsWithSuccessBlock:^(NSArray *arrivals) {
         self.arrivals = arrivals;
 
@@ -132,6 +131,30 @@
         }
     }
     return mutableArray;
+}
+
+- (BOOL)arrivalHasBus1WithArrivalID:(NSString *)arrivalID {
+    Arrival *arrival = [self arrivalForID:arrivalID];
+    NSInteger busIndex = 0;
+    for (ArrivalStop *stop in arrival.stops) {
+        if (stop.timeOfArrival > 0) {
+            busIndex++;
+        }
+    }
+    
+    return (busIndex > 0);
+}
+
+- (BOOL)arrivalHasBus2WithArrivalID:(NSString *)arrivalID {
+    Arrival *arrival = [self arrivalForID:arrivalID];
+    NSInteger busIndex = 0;
+    for (ArrivalStop *stop in arrival.stops) {
+        if (stop.timeOfArrival2 > 0) {
+            busIndex++;
+        }
+    }
+    
+    return (busIndex > 0);
 }
 
 @end

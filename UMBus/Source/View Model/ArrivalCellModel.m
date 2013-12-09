@@ -8,12 +8,14 @@
 
 #import "ArrivalCellModel.h"
 #import "ArrivalStop.h"
+#import "Arrival.h"
 
 @implementation ArrivalCellModel
 
-- (instancetype)initWithStop:(ArrivalStop *)stop {
+- (instancetype)initWithStop:(ArrivalStop *)stop forArrival:(Arrival *)arrival {
     if (self = [super init]) {
         self.stop = stop;
+        self.arrival = arrival;
     }
     return self;
 }

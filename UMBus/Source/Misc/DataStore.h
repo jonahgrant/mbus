@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@class Arrival, Bus;
+@class Arrival, Bus, Route;
 
 @interface DataStore : NSObject
 
@@ -27,5 +27,8 @@
 
 - (NSArray *)arrivalStopsForStopID:(NSString *)stopID;
 - (NSArray *)allArrivalStops;
+
+- (BOOL)arrivalHasBus1WithArrivalID:(NSString *)arrivalID;
+- (BOOL)arrivalHasBus2WithArrivalID:(NSString *)arrivalID;
 
 @end

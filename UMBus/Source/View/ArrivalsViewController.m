@@ -43,8 +43,9 @@
         if (arrivals) {
             [self.refreshControl endRefreshing];
             Arrival *a = [[DataStore sharedManager] arrivalForID:self.model.arrival.id];
-            
-            NSLog(@"Old 1:\n%@\nNew 1:\n%@", self.stops[0], a.stops[0]);
+            if (self.stops) {
+                NSLog(@"Old TOA: %@ new TOA: %@", self.stops[0], a.stops[0]);
+            }
             self.stops = a.stops;
             [self.tableView reloadData];
         }
@@ -75,7 +76,6 @@
             return self.informationCells.count;
             break;
         case 1:
-            NSLog(@"reload data");
             return self.stops.count;
         default:
             break;
@@ -125,7 +125,7 @@
         ArrivalCell *cell = [tableView dequeueReusableCellWithIdentifier:@"StopCell" forIndexPath:indexPath];
         
         ArrivalStop *stop = self.stops[indexPath.row];
-        ArrivalCellModel *arrivalCellModel = [[ArrivalCellModel alloc] initWithStop:stop];
+        ArrivalCellModel *arrivalCellModel = [[ArrivalCellModel alloc] initWithStop:stop forArrival:self.model.arrival];
         cell.model = arrivalCellModel;
         
         return cell;

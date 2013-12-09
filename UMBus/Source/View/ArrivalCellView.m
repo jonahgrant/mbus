@@ -10,6 +10,8 @@
 #import "ArrivalCellModel.h"
 #import "ArrivalStop.h"
 #import "HexColor.h"
+#import "DataStore.h"
+#import "Arrival.h"
 
 @implementation ArrivalCellView
 
@@ -42,13 +44,20 @@
     
     NSString *routeName = self.model.stop.name2;
     
-    NSTimeInterval toa;
-    if (self.model.stop.timeOfArrival >= self.model.stop.timeOfArrival2) {
-        NSLog(@"toa1: %f is greater than toa2: %f", self.model.stop.timeOfArrival, self.model.stop.timeOfArrival2);
-        toa = self.model.stop.timeOfArrival2;
-    } else {
-        NSLog(@"toa2: %f is greater than toa1: %f", self.model.stop.timeOfArrival2, self.model.stop.timeOfArrival);
+    NSTimeInterval toa = 0;
+    if ([[DataStore sharedManager] arrivalHasBus1WithArrivalID:self.model.arrival.id] &&
+        [[DataStore sharedManager] arrivalHasBus2WithArrivalID:self.model.arrival.id]) {
+        if (self.model.stop.timeOfArrival >= self.model.stop.timeOfArrival2) {
+            toa = self.model.stop.timeOfArrival2;
+        } else {
+            toa = self.model.stop.timeOfArrival;
+        }
+    } else if ([[DataStore sharedManager] arrivalHasBus1WithArrivalID:self.model.arrival.id] &&
+               ![[DataStore sharedManager] arrivalHasBus2WithArrivalID:self.model.arrival.id]) {
         toa = self.model.stop.timeOfArrival;
+    } else if (![[DataStore sharedManager] arrivalHasBus1WithArrivalID:self.model.arrival.id] &&
+               [[DataStore sharedManager] arrivalHasBus2WithArrivalID:self.model.arrival.id]) {
+        toa = self.model.stop.timeOfArrival2;
     }
     
     NSString *routeTimeOfArrival = [self.model abbreviatedArrivalTimeForTimeInterval:toa];
