@@ -23,7 +23,7 @@
 - (NSString *)abbreviatedArrivalTimeForTimeInterval:(NSTimeInterval)timeInterval {
     if (timeInterval == -1) {
         return @"--";
-    }
+    } 
     
     int minutes = ((NSInteger)timeInterval / 60) % 60;
     if (minutes == 00) {
