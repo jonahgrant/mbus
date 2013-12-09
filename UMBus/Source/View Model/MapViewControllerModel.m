@@ -52,6 +52,11 @@
     [[DataStore sharedManager] fetchBuses];
 }
 
+- (void)refresh {
+    self.busAnnotations = nil;
+    [[DataStore sharedManager] fetchBuses];
+}
+
 - (void)manageBusAnnotations {
     NSMutableDictionary *mutableAnnotations = [NSMutableDictionary dictionaryWithDictionary:self.busAnnotations];
     for (Bus *bus in self.buses) {

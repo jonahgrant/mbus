@@ -34,6 +34,9 @@
     self.model = [[MapViewControllerModel alloc] init];
     [self.model beginFetchingBuses];
     
+    UIBarButtonItem *refreshButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self.model action:@selector(refresh)];
+    self.navigationItem.rightBarButtonItem = refreshButton;
+    
     [RACObserve(self, model.busAnnotations) subscribeNext:^(NSDictionary *annotations) {
         if (annotations) {
             NSMutableArray *annotationArray = [NSMutableArray array];
@@ -42,7 +45,7 @@
                 [self.mapView addAnnotation:annotation];
                 [annotationArray addObject:annotation];
             }
-            
+           
             // Remove buses no longer running
             NSMutableArray *intermediate = [NSMutableArray arrayWithArray:self.mapView.annotations];
             [intermediate removeObjectsInArray:annotationArray];

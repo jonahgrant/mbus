@@ -16,5 +16,6 @@
 
 - (void)beginFetchingBuses;
 - (void)endFetchingBuses;
+- (void)refresh;
 
 @end
