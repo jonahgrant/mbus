@@ -21,7 +21,7 @@ Clone this repository.
 
 Install it's dependencies
 		
-		cd um-magic-bus
+		cd um-bus
 		pod install
 
 Open the workspace (not the project)
