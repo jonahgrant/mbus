@@ -15,6 +15,7 @@
 @property (strong, nonatomic) Arrival *arrival;
 @property (strong, nonatomic) NSDictionary *busAnnotations, *stopAnnotations;
 @property (strong, nonatomic) NSArray *traceRoutes;
+@property (strong, nonatomic) NSError *fetchBusesError, *fetchTraceRouteError;
 
 - (instancetype)initWithArrival:(Arrival *)arrival;
 

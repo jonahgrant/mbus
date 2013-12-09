@@ -46,7 +46,7 @@
 
 #pragma Fetch
 
-- (void)fetchArrivals {
+- (void)fetchArrivalsWithErrorBlock:(DataStoreErrorBlock)errorBlock {
     [self.networkingSession fetchArrivalsWithSuccessBlock:^(NSArray *arrivals) {
         self.arrivals = arrivals;
 
@@ -56,11 +56,12 @@
         }
         self.arrivalsDictionary = mutableDictionary;
     } errorBlock:^(NSError *error) {
+        errorBlock(error);
         [self handleError:error];
     }];
 }
 
-- (void)fetchBuses {
+- (void)fetchBusesWithErrorBlock:(DataStoreErrorBlock)errorBlock {
     [self.networkingSession fetchBusesWithSuccessBlock:^(NSArray *buses) {
         self.buses = buses;
         
@@ -70,22 +71,25 @@
         }
         self.busesForRoutesDictionary = mutableDictionary;
     } errorBlock:^(NSError *error) {
+        errorBlock(error);
         [self handleError:error];
     }];
 }
 
-- (void)fetchStops {
+- (void)fetchStopsWithErrorBlock:(DataStoreErrorBlock)errorBlock {
     [self.networkingSession fetchStopsWithSuccessBlock:^(NSArray *stops) {
         self.stops = stops;
     } errorBlock:^(NSError *error) {
+        errorBlock(error);
         [self handleError:error];
     }];
 }
 
-- (void)fetchAnnouncements {
+- (void)fetchAnnouncementsWithErrorBlock:(DataStoreErrorBlock)errorBlock {
     [self.networkingSession fetchAnnouncementsWithSuccessBlock:^(NSArray *announcements) {
         self.announcements = announcements;
     } errorBlock:^(NSError *error) {
+        errorBlock(error);
         [self handleError:error];
     }];
 }

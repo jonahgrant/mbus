@@ -11,19 +11,10 @@
 
 @implementation RoutesViewControllerModel
 
-- (instancetype)init {
-    if (self = [super init]) {
-        [RACObserve([DataStore sharedManager], arrivals) subscribeNext:^(NSArray *arrivals) {
-            if (arrivals) {
-                self.arrivals = arrivals;
-            }
-        }];
-    }
-    return self;
-}
-
 - (void)fetchArrivals {
-    [[DataStore sharedManager] fetchArrivals];
+    [[DataStore sharedManager] fetchArrivalsWithErrorBlock:^(NSError *error) {
+        self.fetchError = error;
+    }];
 }
 
 @end

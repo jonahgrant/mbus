@@ -40,6 +40,10 @@
             self.tableView.separatorStyle = UITableViewCellSelectionStyleNone;
         }
     }];
+    
+    [RACObserve(self.model, fetchAnnouncementsError) subscribeNext:^(NSError *error) {
+        [self.refreshControl endRefreshing];
+    }];
 }
 
 - (void)viewWillAppear:(BOOL)animated {

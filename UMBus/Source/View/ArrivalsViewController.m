@@ -58,7 +58,7 @@
 }
 
 - (void)refresh {
-    [[DataStore sharedManager] fetchArrivals];
+    [[DataStore sharedManager] fetchArrivalsWithErrorBlock:NULL];
 }
 
 #pragma UITableView data source

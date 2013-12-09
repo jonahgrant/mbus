@@ -10,7 +10,7 @@
 
 @interface RoutesViewControllerModel : NSObject
 
-@property (strong, nonatomic) NSArray *arrivals;
+@property (strong, nonatomic) NSError *fetchError;
 
 - (void)fetchArrivals;
 

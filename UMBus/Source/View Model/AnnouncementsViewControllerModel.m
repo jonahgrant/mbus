@@ -19,6 +19,9 @@
 }
 
 - (void)fetchAnnouncements {
-    [[DataStore sharedManager] fetchAnnouncements];
+    [[DataStore sharedManager] fetchAnnouncementsWithErrorBlock:^(NSError *error) {
+        self.fetchAnnouncementsError = error;
+    }];
 }
+
 @end

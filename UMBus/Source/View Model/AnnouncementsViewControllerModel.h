@@ -10,6 +10,8 @@
 
 @interface AnnouncementsViewControllerModel : NSObject
 
+@property (strong, nonatomic) NSError *fetchAnnouncementsError;
+
 - (void)fetchAnnouncements;
 
 @end

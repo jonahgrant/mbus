@@ -53,6 +53,10 @@
         }
     }];
     
+    [RACObserve(self.model, fetchBusesError) subscribeNext:^(NSError *error) {
+        // error fetching buses
+    }];
+    
     [self zoomToCampus];
 }
 

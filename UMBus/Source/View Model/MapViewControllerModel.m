@@ -49,12 +49,14 @@
 }
 
 - (void)fetchBuses {
-    [[DataStore sharedManager] fetchBuses];
+    [[DataStore sharedManager] fetchBusesWithErrorBlock:^(NSError *error) {
+        self.fetchBusesError = error;
+    }];
 }
 
 - (void)refresh {
     self.busAnnotations = nil;
-    [[DataStore sharedManager] fetchBuses];
+    [self fetchBuses];
 }
 
 - (void)manageBusAnnotations {

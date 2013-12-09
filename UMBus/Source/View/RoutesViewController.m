@@ -13,6 +13,7 @@
 #import "Arrival.h"
 #import "SegueIdentifiers.h"
 #import "ArrivalsViewController.h"
+#import "DataStore.h"
 
 @interface RoutesViewController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -35,9 +36,15 @@
     [self.refreshControl addTarget:self action:@selector(fetchData) forControlEvents:UIControlEventValueChanged];
     [self.tableView addSubview:self.refreshControl];
     
-    [RACObserve(self.model, arrivals) subscribeNext:^(NSArray *arrivals) {
+    [RACObserve([DataStore sharedManager], arrivals) subscribeNext:^(NSArray *arrivals) {
+        if (arrivals) {
+            [self.tableView reloadData];
+        }
         [self.refreshControl endRefreshing];
-        [self.tableView reloadData];
+    }];
+    
+    [RACObserve(self.model, fetchError) subscribeNext:^(NSError *error) {
+        [self.refreshControl endRefreshing];
     }];
 }
 
@@ -63,7 +70,11 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.model.arrivals.count;
+    if ([DataStore sharedManager].arrivals.count == 0) {
+        return 1;
+    }
+    
+    return [DataStore sharedManager].arrivals.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -71,13 +82,25 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    ArrivalRouteCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+    if ([DataStore sharedManager].arrivals.count == 0) {
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"NoneCell" forIndexPath:indexPath];
         
-    Arrival *arrival = self.model.arrivals[indexPath.row];
-    ArrivalRouteCellModel *arrivalCellModel = [[ArrivalRouteCellModel alloc] initWithArrival:arrival];
-    cell.model = arrivalCellModel;
+        cell.textLabel.text = @"NO ROUTES OPERATING";
+        cell.textLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:17];
+        cell.textLabel.textColor = [UIColor lightGrayColor];
+        cell.textLabel.textAlignment = NSTextAlignmentCenter;
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         
-    return cell;
+        return cell;
+    } else {
+        ArrivalRouteCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+        
+        Arrival *arrival = [DataStore sharedManager].arrivals[indexPath.row];
+        ArrivalRouteCellModel *arrivalCellModel = [[ArrivalRouteCellModel alloc] initWithArrival:arrival];
+        cell.model = arrivalCellModel;
+        
+        return cell;
+    }
  }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
@@ -91,7 +114,9 @@
 #pragma UITableView delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [self performSegueWithIdentifier:UMSequeArrivals sender:self];
+    if (![DataStore sharedManager].arrivals.count == 0) {
+        [self performSegueWithIdentifier:UMSequeArrivals sender:self];
+    }
 }
 
 #pragma UIStoryboard
@@ -99,7 +124,7 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqual:UMSequeArrivals]) {
         ArrivalsViewController *arrivals = (ArrivalsViewController *)segue.destinationViewController;
-        Arrival *arrival = self.model.arrivals[[self.tableView indexPathForSelectedRow].row];
+        Arrival *arrival = [DataStore sharedManager].arrivals[[self.tableView indexPathForSelectedRow].row];
         arrivals.arrival = arrival;
     }
 }

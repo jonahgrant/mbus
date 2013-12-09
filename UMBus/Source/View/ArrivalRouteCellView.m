@@ -55,8 +55,8 @@
     CGContextSetLineWidth(context, 1.0);
     
     CGContextBeginPath(context);
-    CGContextMoveToPoint(context, self.bounds.origin.x, rect.size.height - 1);
-    CGContextAddLineToPoint(context, self.bounds.size.width, rect.size.height - 1);
+    CGContextMoveToPoint(context, self.bounds.origin.x, rect.size.height);
+    CGContextAddLineToPoint(context, self.bounds.size.width, rect.size.height);
     
     CGContextClosePath(context);
     CGContextStrokePath(context);

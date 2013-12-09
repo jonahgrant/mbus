@@ -73,7 +73,20 @@
         }
     }];
     
+    [RACObserve(self.model, fetchBusesError) subscribeNext:^(NSError *error) {
+       // Error fetching buses
+    }];
+    
+    [RACObserve(self.model, fetchTraceRouteError) subscribeNext:^(NSError *error) {
+       // error fetching trace route, try again
+    }];
+    
     [self zoom];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.tabBarController.tabBar setTintColor:[UIColor colorWithHexString:self.arrival.busRouteColor]];
 }
 
 - (void)viewDidAppear:(BOOL)animated {

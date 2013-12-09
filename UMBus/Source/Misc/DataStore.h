@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+typedef void (^DataStoreErrorBlock)(NSError *error);
+
 @class Arrival, Bus, Route;
 
 @interface DataStore : NSObject
@@ -17,10 +19,10 @@
 
 + (instancetype)sharedManager;
 
-- (void)fetchArrivals;
-- (void)fetchBuses;
-- (void)fetchStops;
-- (void)fetchAnnouncements;
+- (void)fetchArrivalsWithErrorBlock:(DataStoreErrorBlock)errorBlock;
+- (void)fetchBusesWithErrorBlock:(DataStoreErrorBlock)errorBlock;
+- (void)fetchStopsWithErrorBlock:(DataStoreErrorBlock)errorBlock;
+- (void)fetchAnnouncementsWithErrorBlock:(DataStoreErrorBlock)errorBlock;
 
 - (Arrival *)arrivalForID:(NSString *)arrivalID;
 - (Bus *)busOperatingRouteID:(NSString *)routeID;

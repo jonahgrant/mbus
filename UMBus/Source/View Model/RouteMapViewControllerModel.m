@@ -77,11 +77,15 @@
     [_networkingSession fetchTraceRouteForRouteID:self.arrival.id
                                  withSuccessBlock:^(NSArray *array) {
                                      self.traceRoutes = array;
-                                 } errorBlock:NULL];
+                                 } errorBlock:^(NSError *error) {
+                                     self.fetchTraceRouteError = error;
+                                 }];
 }
 
 - (void)fetchBuses {
-    [[DataStore sharedManager] fetchBuses];
+    [[DataStore sharedManager] fetchBusesWithErrorBlock:^(NSError *error) {
+        self.fetchBusesError = error;
+    }];
 }
 
 - (void)beginBusFetching {
