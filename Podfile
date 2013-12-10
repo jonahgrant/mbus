@@ -10,5 +10,4 @@ target "UMBus" do
     pod 'SVPulsingAnnotationView', '~> 0.3.0'
     pod 'HexColors', '~> 2.2.1'
     pod 'Fare', '~> 1.0.3'
-    pod 'GoogleAnalytics-iOS-SDK', '~> 3.0.2'
 end
