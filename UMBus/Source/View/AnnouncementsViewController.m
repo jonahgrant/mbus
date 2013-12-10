@@ -68,7 +68,12 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if ([[DataStore sharedManager] announcements].count > 0) {
-        return 80;
+        Announcement *announcement = [[DataStore sharedManager] announcements][indexPath.row];
+        return [announcement.text boundingRectWithSize:CGSizeMake(320, MAXFLOAT)
+                                               options:NSStringDrawingUsesLineFragmentOrigin
+                                            attributes:@{ NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue-Light" size:17],
+                                                          NSForegroundColorAttributeName: [UIColor lightGrayColor]}
+                                               context:nil].size.height + 80;
     }
     
     return self.view.frame.size.height / 2;
@@ -89,13 +94,13 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     
     cell.textLabel.text = @"NO ANNOUNCEMENTS AT THIS TIME";
+    cell.textLabel.numberOfLines = 0;
     cell.textLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:17];
     cell.textLabel.textColor = [UIColor lightGrayColor];
     cell.textLabel.textAlignment = NSTextAlignmentCenter;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     return cell;
-
 }
 
 #pragma UITableView delegate
