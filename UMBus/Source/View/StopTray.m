@@ -47,7 +47,7 @@
         _streetViewButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
         [_streetViewButton setTitle:@"Street View" forState:UIControlStateNormal];
         _streetViewButton.tintColor = color;
-        _streetViewButton.frame = CGRectMake(10, 10, 90, 30);
+        _streetViewButton.frame = CGRectMake(10, 10, 140, 30);
         _streetViewButton.layer.cornerRadius = 3;
         _streetViewButton.layer.borderWidth = 1;
         _streetViewButton.layer.borderColor = color.CGColor;
@@ -57,23 +57,12 @@
         _directionsButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
         [_directionsButton setTitle:@"Directions" forState:UIControlStateNormal];
         _directionsButton.tintColor = color;
-        _directionsButton.frame = CGRectMake(115, 10, 90, 30);
+        _directionsButton.frame = CGRectMake(170, 10, 140, 30);
         _directionsButton.layer.cornerRadius = 3;
         _directionsButton.layer.borderWidth = 1;
         _directionsButton.layer.borderColor = color.CGColor;
-        [_directionsButton addTarget:self action:nil forControlEvents:UIControlEventTouchUpInside];
+        [_directionsButton addTarget:self action:@selector(directions) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:_directionsButton];
-        
-        _shareButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-        [_shareButton setTitle:@"Share" forState:UIControlStateNormal];
-        _shareButton.tintColor = color;
-        _shareButton.frame = CGRectMake(220, 10, 90, 30);
-        _shareButton.layer.cornerRadius = 3;
-        _shareButton.layer.borderWidth = 1;
-        _shareButton.layer.borderColor = color.CGColor;
-        [_shareButton addTarget:self action:nil forControlEvents:UIControlEventTouchUpInside];
-        [self addSubview:_shareButton];
-
     }
     return self;
 }
@@ -85,6 +74,12 @@
 
 - (void)displayStreetView {
     [(RouteMapViewController *)_target displayStreetViewForAnnotation:(NSObject<MKAnnotation> *)_model.stopAnnotation];
+}
+
+- (void)directions {
+    NSString *address = [NSString stringWithFormat:@"http://maps.apple.com/maps?daddr=%1.6f,%1.6f&saddr=Posizione attuale", _model.stopAnnotation.coordinate.latitude, _model.stopAnnotation.coordinate.longitude];
+    NSURL *url = [[NSURL alloc] initWithString:[address stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+    [[UIApplication sharedApplication] openURL:url];
 }
 
 @end
