@@ -15,8 +15,6 @@
 @interface DataStore ()
 
 @property (strong, nonatomic) UMNetworkingSession *networkingSession;
-@property (strong, nonatomic, readwrite) NSArray *arrivals, *buses, *stops, *announcements;
-@property (strong, nonatomic, readwrite) NSDictionary *arrivalsDictionary, *busesForRoutesDictionary;
 
 @end
 

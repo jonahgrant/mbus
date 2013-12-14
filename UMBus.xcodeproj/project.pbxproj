@@ -31,6 +31,14 @@
 		AB32F9D11856B0C300FBC50D /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB32F9D01856B0C300FBC50D /* CoreData.framework */; };
 		AB32F9D31856B0C700FBC50D /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB32F9D21856B0C700FBC50D /* SystemConfiguration.framework */; };
 		AB32F9D51856B0E200FBC50D /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = AB32F9D41856B0E200FBC50D /* libz.dylib */; };
+		AB3DF353185CD2F800942F67 /* StopsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB3DF352185CD2F800942F67 /* StopsViewController.m */; };
+		AB3DF356185CD30500942F67 /* StopsViewControllerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AB3DF355185CD30500942F67 /* StopsViewControllerModel.m */; };
+		AB3DF359185CD45E00942F67 /* stop-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = AB3DF357185CD45E00942F67 /* stop-icon.png */; };
+		AB3DF35A185CD45E00942F67 /* stop-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AB3DF358185CD45E00942F67 /* stop-icon@2x.png */; };
+		AB3DF35D185CDA3300942F67 /* LocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AB3DF35C185CDA3300942F67 /* LocationManager.m */; };
+		AB3DF360185CE30B00942F67 /* StopCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AB3DF35F185CE30B00942F67 /* StopCell.m */; };
+		AB3DF364185CE31900942F67 /* StopCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = AB3DF363185CE31900942F67 /* StopCellView.m */; };
+		AB3DF367185CE32400942F67 /* StopCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AB3DF366185CE32400942F67 /* StopCellModel.m */; };
 		AB544339185696E200B65D3D /* Icon-40.png in Resources */ = {isa = PBXBuildFile; fileRef = AB544331185696E200B65D3D /* Icon-40.png */; };
 		AB54433A185696E200B65D3D /* Icon-40@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AB544332185696E200B65D3D /* Icon-40@2x.png */; };
 		AB54433B185696E200B65D3D /* Icon-60.png in Resources */ = {isa = PBXBuildFile; fileRef = AB544333185696E200B65D3D /* Icon-60.png */; };
@@ -118,7 +126,21 @@
 		AB32F9D01856B0C300FBC50D /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		AB32F9D21856B0C700FBC50D /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		AB32F9D41856B0E200FBC50D /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
-		AB32F9D61856B0E900FBC50D /* libPods-UMBus-GoogleAnalytics-iOS-SDK.a */ = {isa = PBXFileReference; lastKnownFileType = file; name = "libPods-UMBus-GoogleAnalytics-iOS-SDK.a"; path = "Pods/build/Debug-iphoneos/libPods-UMBus-GoogleAnalytics-iOS-SDK.a"; sourceTree = "<group>"; };
+		AB32F9D61856B0E900FBC50D /* libPods-UMBus-GoogleAnalytics-iOS-SDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-UMBus-GoogleAnalytics-iOS-SDK.a"; path = "Pods/build/Debug-iphoneos/libPods-UMBus-GoogleAnalytics-iOS-SDK.a"; sourceTree = "<group>"; };
+		AB3DF351185CD2F800942F67 /* StopsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StopsViewController.h; sourceTree = "<group>"; };
+		AB3DF352185CD2F800942F67 /* StopsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StopsViewController.m; sourceTree = "<group>"; };
+		AB3DF354185CD30500942F67 /* StopsViewControllerModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StopsViewControllerModel.h; sourceTree = "<group>"; };
+		AB3DF355185CD30500942F67 /* StopsViewControllerModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StopsViewControllerModel.m; sourceTree = "<group>"; };
+		AB3DF357185CD45E00942F67 /* stop-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stop-icon.png"; sourceTree = "<group>"; };
+		AB3DF358185CD45E00942F67 /* stop-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stop-icon@2x.png"; sourceTree = "<group>"; };
+		AB3DF35B185CDA3300942F67 /* LocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationManager.h; sourceTree = "<group>"; };
+		AB3DF35C185CDA3300942F67 /* LocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationManager.m; sourceTree = "<group>"; };
+		AB3DF35E185CE30B00942F67 /* StopCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StopCell.h; sourceTree = "<group>"; };
+		AB3DF35F185CE30B00942F67 /* StopCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StopCell.m; sourceTree = "<group>"; };
+		AB3DF362185CE31900942F67 /* StopCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StopCellView.h; sourceTree = "<group>"; };
+		AB3DF363185CE31900942F67 /* StopCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StopCellView.m; sourceTree = "<group>"; };
+		AB3DF365185CE32400942F67 /* StopCellModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StopCellModel.h; sourceTree = "<group>"; };
+		AB3DF366185CE32400942F67 /* StopCellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StopCellModel.m; sourceTree = "<group>"; };
 		AB544331185696E200B65D3D /* Icon-40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-40.png"; sourceTree = "<group>"; };
 		AB544332185696E200B65D3D /* Icon-40@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-40@2x.png"; sourceTree = "<group>"; };
 		AB544333185696E200B65D3D /* Icon-60.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-60.png"; sourceTree = "<group>"; };
@@ -228,6 +250,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AB3DF361185CE30F00942F67 /* StopCell */ = {
+			isa = PBXGroup;
+			children = (
+				AB3DF35E185CE30B00942F67 /* StopCell.h */,
+				AB3DF35F185CE30B00942F67 /* StopCell.m */,
+				AB3DF362185CE31900942F67 /* StopCellView.h */,
+				AB3DF363185CE31900942F67 /* StopCellView.m */,
+			);
+			name = StopCell;
+			sourceTree = "<group>";
+		};
 		ABE1AE5518530E4D0065C329 /* ArrivalRouteCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -345,6 +378,8 @@
 				ABEDEBA9184C266D00B82E59 /* bus270.png */,
 				ABEDEBAA184C266D00B82E59 /* bus315.png */,
 				ABEDEBA1184C1CA400B82E59 /* Bus.png */,
+				AB3DF357185CD45E00942F67 /* stop-icon.png */,
+				AB3DF358185CD45E00942F67 /* stop-icon@2x.png */,
 				ABEDEB14184BDA1B00B82E59 /* Images.xcassets */,
 			);
 			path = Images;
@@ -388,6 +423,8 @@
 				ABEDEB81184C103B00B82E59 /* UMBus-Prefix.pch */,
 				AB3006E21852F9E4007A4E29 /* DataStore.h */,
 				AB3006E31852F9E4007A4E29 /* DataStore.m */,
+				AB3DF35B185CDA3300942F67 /* LocationManager.h */,
+				AB3DF35C185CDA3300942F67 /* LocationManager.m */,
 				ABE1AE60185316540065C329 /* SegueIdentifiers.h */,
 			);
 			path = Misc;
@@ -428,10 +465,13 @@
 				ABBCE9D91855273600DEFA9E /* MapViewController.m */,
 				ABBCE9E21855581E00DEFA9E /* AnnouncementsViewController.h */,
 				ABBCE9E31855581E00DEFA9E /* AnnouncementsViewController.m */,
+				AB3DF351185CD2F800942F67 /* StopsViewController.h */,
+				AB3DF352185CD2F800942F67 /* StopsViewController.m */,
 				AB75281B1854464800DCA3CF /* CircleAnnotationView.h */,
 				AB75281C1854464800DCA3CF /* CircleAnnotationView.m */,
 				AB75281E1854538800DCA3CF /* StopTray.h */,
 				AB75281F1854538800DCA3CF /* StopTray.m */,
+				AB3DF361185CE30F00942F67 /* StopCell */,
 				ABE1AE5518530E4D0065C329 /* ArrivalRouteCell */,
 				ABE1AE5618530E550065C329 /* ArrivalCell */,
 			);
@@ -451,10 +491,14 @@
 				ABBCE9DC1855273E00DEFA9E /* MapViewControllerModel.m */,
 				ABBCE9E5185558A100DEFA9E /* AnnouncementsViewControllerModel.h */,
 				ABBCE9E6185558A100DEFA9E /* AnnouncementsViewControllerModel.m */,
+				AB3DF354185CD30500942F67 /* StopsViewControllerModel.h */,
+				AB3DF355185CD30500942F67 /* StopsViewControllerModel.m */,
 				AB3006DF1852F962007A4E29 /* ArrivalCellModel.h */,
 				AB3006E01852F962007A4E29 /* ArrivalCellModel.m */,
 				ABE1AE5718530E670065C329 /* ArrivalRouteCellModel.h */,
 				ABE1AE5818530E670065C329 /* ArrivalRouteCellModel.m */,
+				AB3DF365185CE32400942F67 /* StopCellModel.h */,
+				AB3DF366185CE32400942F67 /* StopCellModel.m */,
 				AB7528211854539400DCA3CF /* StopTrayModel.h */,
 				AB7528221854539400DCA3CF /* StopTrayModel.m */,
 			);
@@ -554,6 +598,7 @@
 				AB2C4C27184D49A5001E2EA2 /* street-view-icon.png in Resources */,
 				ABEDEBAF184C266D00B82E59 /* bus180.png in Resources */,
 				ABEDEBB0184C266D00B82E59 /* bus225.png in Resources */,
+				AB3DF35A185CD45E00942F67 /* stop-icon@2x.png in Resources */,
 				ABEDEBB1184C266D00B82E59 /* bus270.png in Resources */,
 				ABEDEBB2184C266D00B82E59 /* bus315.png in Resources */,
 				AB544340185696E200B65D3D /* Icon-Small@2x.png in Resources */,
@@ -570,6 +615,7 @@
 				ABEDEBAC184C266D00B82E59 /* bus0.png in Resources */,
 				AB54433D185696E200B65D3D /* Icon-76.png in Resources */,
 				ABBCE9E01855573400DEFA9E /* map-icon.png in Resources */,
+				AB3DF359185CD45E00942F67 /* stop-icon.png in Resources */,
 				AB54433C185696E200B65D3D /* Icon-60@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -635,18 +681,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB3DF356185CD30500942F67 /* StopsViewControllerModel.m in Sources */,
 				ABE1AE5118530E3A0065C329 /* ArrivalRouteCell.m in Sources */,
 				AB3006DB1852F81A007A4E29 /* RoutesViewControllerModel.m in Sources */,
+				AB3DF353185CD2F800942F67 /* StopsViewController.m in Sources */,
+				AB3DF364185CE31900942F67 /* StopCellView.m in Sources */,
 				AB3006D81852F7FE007A4E29 /* RoutesViewController.m in Sources */,
 				AB75281D1854464800DCA3CF /* CircleAnnotationView.m in Sources */,
+				AB3DF360185CE30B00942F67 /* StopCell.m in Sources */,
 				AB7528201854538800DCA3CF /* StopTray.m in Sources */,
 				AB3006DE1852F959007A4E29 /* ArrivalCell.m in Sources */,
+				AB3DF35D185CDA3300942F67 /* LocationManager.m in Sources */,
 				ABEDEBB8184C350400B82E59 /* StopAnnotation.m in Sources */,
 				ABEDEB93184C103B00B82E59 /* AppDelegate.m in Sources */,
 				ABEDEB94184C103B00B82E59 /* main.m in Sources */,
 				AB7528231854539400DCA3CF /* StopTrayModel.m in Sources */,
 				AB7528171853DCD800DCA3CF /* RouteMapViewControllerModel.m in Sources */,
 				ABBCE9DD1855273E00DEFA9E /* MapViewControllerModel.m in Sources */,
+				AB3DF367185CE32400942F67 /* StopCellModel.m in Sources */,
 				ABE1AE5918530E670065C329 /* ArrivalRouteCellModel.m in Sources */,
 				ABBCE9E41855581E00DEFA9E /* AnnouncementsViewController.m in Sources */,
 				ABEDEBA0184C139100B82E59 /* BusAnnotation.m in Sources */,
@@ -792,7 +844,7 @@
 				GCC_PREFIX_HEADER = "UMBus/Source/Misc/UMBus-Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/UMBus/Resources/Misc/UMBus-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "C74BD783-AAB8-4FB6-A275-3050BC89ED04";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
@@ -812,7 +864,7 @@
 				GCC_PREFIX_HEADER = "UMBus/Source/Misc/UMBus-Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/UMBus/Resources/Misc/UMBus-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "C74BD783-AAB8-4FB6-A275-3050BC89ED04";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;

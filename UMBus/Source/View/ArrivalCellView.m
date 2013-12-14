@@ -13,6 +13,12 @@
 #import "DataStore.h"
 #import "Arrival.h"
 
+@interface ArrivalCellView ()
+
+@property (nonatomic, copy) NSString *eta;
+
+@end
+
 @implementation ArrivalCellView
 
 - (instancetype)initWithFrame:(CGRect)frame arrivalModel:(ArrivalCellModel *)model {
@@ -26,13 +32,6 @@
         }];
     }
     return self;
-}
-
-- (NSString *)timeOfArrivalForTimeInterval:(NSTimeInterval)interval {
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"hh:mm a"];
-    NSDate *date = [NSDate dateWithTimeIntervalSinceNow:interval];
-    return [dateFormatter stringFromDate:date];
 }
 
 - (void)drawRect:(CGRect)rect {
@@ -63,8 +62,9 @@
     }
     
     NSString *routeTimeOfArrival = [self.model abbreviatedArrivalTimeForTimeInterval:toa];
+    NSLog(@"%f : %@", toa, [self.model abbreviatedArrivalTimeForTimeInterval:toa]);
     
-    NSString *eta = [@"Bus 1 arriving at " stringByAppendingString:[self timeOfArrivalForTimeInterval:self.model.stop.timeOfArrival]];
+    NSString *eta = [@"Bus 1 arriving at " stringByAppendingString:[self.model timeOfArrivalForTimeInterval:self.model.stop.timeOfArrival]];
 
     NSDictionary *etaDirectory = @{ NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue-Light" size:12],
                                     NSForegroundColorAttributeName: [UIColor lightGrayColor]};
@@ -113,7 +113,7 @@
     }
 
     if (self.model.stop.timeOfArrival2) {
-        NSString *eta2 = [@"Bus 2 arriving at " stringByAppendingString:[self timeOfArrivalForTimeInterval:self.model.stop.timeOfArrival2]];
+        NSString *eta2 = [@"Bus 2 arriving at " stringByAppendingString:[self.model timeOfArrivalForTimeInterval:self.model.stop.timeOfArrival2]];
         CGFloat etaHeight = [eta boundingRectWithSize:CGSizeMake(rect.size.width - 50, MAXFLOAT)
                                               options:NSStringDrawingUsesLineFragmentOrigin
                                            attributes:etaDirectory

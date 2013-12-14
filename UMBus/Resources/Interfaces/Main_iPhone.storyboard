@@ -128,6 +128,48 @@
             </objects>
             <point key="canvasLocation" x="880" y="-262"/>
         </scene>
+        <!--Stops View Controller - Root View Controller-->
+        <scene sceneID="BGf-Zb-EOc">
+            <objects>
+                <tableViewController id="zqW-Gg-twh" customClass="StopsViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="J0j-V0-gD4">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" rowHeight="100" id="Lbg-9p-SPa" customClass="StopCell">
+                                <rect key="frame" x="0.0" y="119" width="320" height="100"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Lbg-9p-SPa" id="WKn-XB-02i">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                    </tableView>
+                    <tabBarItem key="tabBarItem" title="Stops" image="stop-icon.png" id="WCa-Cp-z0n"/>
+                    <navigationItem key="navigationItem" title="Root View Controller" id="6yE-LA-M2G"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jHY-8v-iNt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="880" y="-1694"/>
+        </scene>
+        <!--Navigation Controller - Item-->
+        <scene sceneID="bvs-O5-klP">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="rfk-lV-74w" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="dXC-cm-Ggb"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="eVJ-db-N7J">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="zqW-Gg-twh" kind="relationship" relationship="rootViewController" id="fAe-f6-66M"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="opK-12-V24" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="396" y="-1694"/>
+        </scene>
         <!--Routes View Controller - First-->
         <scene sceneID="W3I-pn-N6e">
             <objects>
@@ -239,7 +281,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZkA-En-kfn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1310" y="-1010"/>
+            <point key="canvasLocation" x="1364" y="-1000"/>
         </scene>
         <!--Route Map View Controller-->
         <scene sceneID="GPJ-jr-T79">
@@ -283,6 +325,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
+                        <segue destination="rfk-lV-74w" kind="relationship" relationship="viewControllers" id="eEo-mr-rI4"/>
                         <segue destination="4BA-8P-jNg" kind="relationship" relationship="viewControllers" id="cR5-XW-7iw"/>
                         <segue destination="xh9-57-ezK" kind="relationship" relationship="viewControllers" id="xvF-wU-uIB"/>
                         <segue destination="zmw-1T-4h2" kind="relationship" relationship="viewControllers" id="IwJ-oS-bCc"/>
@@ -297,6 +340,7 @@
         <image name="bus-tab.png" width="25" height="25"/>
         <image name="info-tab.png" width="25" height="25"/>
         <image name="map-icon.png" width="25" height="25"/>
+        <image name="stop-icon.png" width="25" height="25"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

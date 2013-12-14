@@ -33,4 +33,11 @@
     return [NSString stringWithFormat:@"%02im", minutes];
 }
 
+- (NSString *)timeOfArrivalForTimeInterval:(NSTimeInterval)interval {
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"hh:mm a"];
+    NSDate *date = [NSDate dateWithTimeIntervalSinceNow:interval];
+    return [dateFormatter stringFromDate:date];
+}
+
 @end

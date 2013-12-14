@@ -13,11 +13,11 @@
 @interface ArrivalsViewControllerModel : NSObject
 
 @property (strong, nonatomic) Arrival *arrival;
+@property (strong, nonatomic) NSArray *sortedArrivalStops;
 
 - (instancetype)initWithArrival:(Arrival *)arrival;
 
 - (NSArray *)stopsOrderedByTimeOfArrivalWithStops:(NSArray *)stops;
-
 - (NSString *)mmssForTimeInterval:(NSTimeInterval)timeInterval;
 
 @end

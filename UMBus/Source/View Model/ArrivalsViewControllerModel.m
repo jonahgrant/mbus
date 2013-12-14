@@ -22,6 +22,13 @@
 - (instancetype)initWithArrival:(Arrival *)arrival {
     if (self = [super init]) {
         self.arrival = arrival;
+        
+        [RACObserve([DataStore sharedManager], arrivals) subscribeNext:^(NSArray *arrivals) {
+            if (arrivals) {
+                Arrival *arrival = [[DataStore sharedManager] arrivalForID:self.arrival.id];
+                self.sortedArrivalStops = [self stopsOrderedByTimeOfArrivalWithStops:arrival.stops];
+            }
+        }];
     }
     return self;
 }

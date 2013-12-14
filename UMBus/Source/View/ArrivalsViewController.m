@@ -20,7 +20,6 @@
 
 @property (strong, nonatomic) NSArray *stops, *informationCells;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
-@property (strong, nonatomic) UIRefreshControl *refreshControl;
 
 @end
 
@@ -33,17 +32,13 @@
     
     self.model = [[ArrivalsViewControllerModel alloc] initWithArrival:self.arrival];
     
-    self.refreshControl = [[UIRefreshControl alloc] init];
-    [self.refreshControl addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
-    [self.tableView addSubview:self.refreshControl];
+    UIBarButtonItem *refreshButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(refresh)];
+    self.navigationItem.rightBarButtonItem = refreshButton;
     
     self.informationCells = @[@"Map"];
     
-    [RACObserve([DataStore sharedManager], arrivals) subscribeNext:^(NSArray *arrivals) {
-        if (arrivals) {
-            [self.refreshControl endRefreshing];
-            Arrival *a = [[DataStore sharedManager] arrivalForID:self.model.arrival.id];
-            self.stops = [self.model stopsOrderedByTimeOfArrivalWithStops:a.stops];
+    [RACObserve(self.model, sortedArrivalStops) subscribeNext:^(NSArray *stops) {
+        if (stops) {
             [self.tableView reloadData];
         }
     }];
@@ -73,7 +68,7 @@
             return self.informationCells.count;
             break;
         case 1:
-            return self.stops.count;
+            return self.model.sortedArrivalStops.count;
         default:
             break;
     }
@@ -121,7 +116,7 @@
     if (indexPath.section == 1) {
         ArrivalCell *cell = [tableView dequeueReusableCellWithIdentifier:@"StopCell" forIndexPath:indexPath];
         
-        ArrivalStop *stop = self.stops[indexPath.row];
+        ArrivalStop *stop = self.model.sortedArrivalStops[indexPath.row];
         ArrivalCellModel *arrivalCellModel = [[ArrivalCellModel alloc] initWithStop:stop forArrival:self.model.arrival];
         cell.model = arrivalCellModel;
         
