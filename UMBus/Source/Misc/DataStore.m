@@ -107,7 +107,7 @@
     for (Arrival *arrival in self.arrivals) {
         if ([arrival.id isEqualToString:routeID]) {
             for (ArrivalStop *arrivalStop in arrival.stops) {
-                if ([arrivalStop.name2 isEqualToString:stopName]) {
+                if ([arrivalStop.name isEqualToString:stopName]) {
                     return arrivalStop;
                 }
             }

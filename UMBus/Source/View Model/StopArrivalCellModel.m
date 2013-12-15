@@ -23,7 +23,7 @@
 }
 
 - (ArrivalStop *)arrivalStop {
-    return [[DataStore sharedManager] arrivalStopForRouteID:self.arrival.id stopName:self.stop.humanName];
+    return [[DataStore sharedManager] arrivalStopForRouteID:self.arrival.id stopName:self.stop.uniqueName];
 }
 
 - (NSString *)abbreviatedArrivalTimeForTimeInterval:(NSTimeInterval)timeInterval {

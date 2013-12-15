@@ -21,6 +21,5 @@
 - (NSString *)abbreviatedArrivalTimeForTimeInterval:(NSTimeInterval)timeInterval;
 
 - (NSTimeInterval)firstArrival;
-- (NSTimeInterval)secondArrival;
 
 @end
