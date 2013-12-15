@@ -16,7 +16,7 @@
 @interface StreetViewController ()
 
 @property (nonatomic) CLLocationCoordinate2D coordinate;
-@property (strong, nonatomic) NSObject<MKAnnotation> *annotation;
+@property (nonatomic) NSUInteger heading;
 
 @end
 
@@ -25,7 +25,16 @@
 - (instancetype)initWithAnnotation:(NSObject<MKAnnotation> *)annotation {
     if (self = [super init]) {
         _coordinate = annotation.coordinate;
-        _annotation = annotation;
+        self.title = annotation.title;
+    }
+    return self;
+}
+
+- (instancetype)initWithStop:(Stop *)stop {
+    if (self = [super init]) {
+        _coordinate = stop.coordinate;
+        _heading = (NSUInteger)stop.heading;
+        self.title = stop.humanName;
     }
     return self;
 }
@@ -34,12 +43,11 @@
     [super viewDidLoad];
     
     GMSPanoramaView *panoView = [GMSPanoramaView panoramaWithFrame:CGRectZero nearCoordinate:_coordinate];
+    if (_heading) panoView.camera = [GMSPanoramaCamera cameraWithHeading:_heading pitch:-10 zoom:1];
     self.view = panoView;
     
     UIBarButtonItem *closeBarButton = [[UIBarButtonItem alloc] initWithTitle:@"Dismiss" style:UIBarButtonItemStyleDone target:self action:@selector(dismiss)];
     self.navigationItem.leftBarButtonItem = closeBarButton;
-    
-    self.title = _annotation.title;
 }
 
 - (void)dismiss {

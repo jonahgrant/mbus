@@ -28,9 +28,12 @@ typedef void (^DataStoreErrorBlock)(NSError *error);
 - (Bus *)busOperatingRouteID:(NSString *)routeID;
 
 - (NSArray *)arrivalStopsForStopID:(NSString *)stopID;
+- (NSArray *)arrivalsContainingStopName:(NSString *)stopName;
 - (NSArray *)allArrivalStops;
 
 - (BOOL)arrivalHasBus1WithArrivalID:(NSString *)arrivalID;
 - (BOOL)arrivalHasBus2WithArrivalID:(NSString *)arrivalID;
+
+- (NSArray *)stopsBeingServiced;
 
 @end

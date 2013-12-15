@@ -1,20 +1,20 @@
 //
-//  StopCell.m
+//  StopArrivalCell.m
 //  UMBus
 //
-//  Created by Jonah Grant on 12/14/13.
+//  Created by Jonah Grant on 12/15/13.
 //  Copyright (c) 2013 Jonah Grant. All rights reserved.
 //
 
-#import "StopCell.h"
-#import "StopCellModel.h"
-#import "StopCellView.h"
+#import "StopArrivalCell.h"
+#import "StopArrivalCellModel.h"
+#import "StopArrivalCellView.h"
 
-@implementation StopCell
+@implementation StopArrivalCell
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
     if (self = [super initWithCoder:aDecoder]) {
-        StopCellView *cellView = [[StopCellView alloc] initWithFrame:self.frame arrivalModel:self.model];
+        StopArrivalCellView *cellView = [[StopArrivalCellView alloc] initWithFrame:self.frame arrivalModel:self.model];
         [self addSubview:cellView];
         
         RAC(cellView, model) = RACObserve(self, model);
@@ -23,5 +23,6 @@
     }
     return self;
 }
+
 
 @end

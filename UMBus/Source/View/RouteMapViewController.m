@@ -73,14 +73,6 @@
         }
     }];
     
-    [RACObserve(self.model, fetchBusesError) subscribeNext:^(NSError *error) {
-       // Error fetching buses
-    }];
-    
-    [RACObserve(self.model, fetchTraceRouteError) subscribeNext:^(NSError *error) {
-       // error fetching trace route, try again
-    }];
-    
     [self zoom];
 }
 
@@ -168,16 +160,8 @@
                      } completion:NULL];
 }
 
-- (void)displayDirections {
-    // open Maps.app
-}
-
 - (void)detailInformationForStopAnnotation:(StopAnnotation *)annotation {
     [self displayTray];
-}
-
-- (void)detailInformationForBusAnnotation:(BusAnnotation *)annotation {
-    // no detailing info for bus for now
 }
 
 #pragma MKMapView
@@ -217,10 +201,7 @@
 
 - (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view {
     NSObject<MKAnnotation> *annotation = view.annotation;
-    if ([annotation class] == [BusAnnotation class]) {
-        BusAnnotation *busAnnotation = (BusAnnotation *)annotation;
-        [self detailInformationForBusAnnotation:busAnnotation];
-    } else if ([annotation class] == [StopAnnotation class]){
+    if ([annotation class] == [StopAnnotation class]) {
         StopAnnotation *stopAnnotation = (StopAnnotation *)annotation;
         _stopTray.model.stopAnnotation = stopAnnotation;
         [self detailInformationForStopAnnotation:stopAnnotation];

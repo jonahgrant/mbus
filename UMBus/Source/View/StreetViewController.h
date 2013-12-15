@@ -8,8 +8,11 @@
 
 #import <MapKit/MapKit.h>
 
+@class Stop;
+
 @interface StreetViewController : UIViewController
 
 - (instancetype)initWithAnnotation:(NSObject<MKAnnotation> *)annotation;
+- (instancetype)initWithStop:(Stop *)stop;
 
 @end

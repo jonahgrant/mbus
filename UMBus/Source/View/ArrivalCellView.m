@@ -62,7 +62,6 @@
     }
     
     NSString *routeTimeOfArrival = [self.model abbreviatedArrivalTimeForTimeInterval:toa];
-    NSLog(@"%f : %@", toa, [self.model abbreviatedArrivalTimeForTimeInterval:toa]);
     
     NSString *eta = [@"Bus 1 arriving at " stringByAppendingString:[self.model timeOfArrivalForTimeInterval:self.model.stop.timeOfArrival]];
 

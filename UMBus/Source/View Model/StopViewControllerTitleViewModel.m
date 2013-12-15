@@ -1,23 +1,23 @@
 //
-//  StopCellModel.m
+//  StopViewControllerTitleViewModel.m
 //  UMBus
 //
-//  Created by Jonah Grant on 12/14/13.
+//  Created by Jonah Grant on 12/15/13.
 //  Copyright (c) 2013 Jonah Grant. All rights reserved.
 //
 
-#import "StopCellModel.h"
+#import "StopViewControllerTitleViewModel.h"
 #import "TTTLocationFormatter.h"
 #import "LocationManager.h"
 #import "Stop.h"
 
-@interface StopCellModel ()
+@interface StopViewControllerTitleViewModel ()
 
 @property (strong, nonatomic) TTTLocationFormatter *locationFormatter;
 
 @end
 
-@implementation StopCellModel
+@implementation StopViewControllerTitleViewModel
 
 - (instancetype)initWithStop:(Stop *)stop {
     if (self = [super init]) {

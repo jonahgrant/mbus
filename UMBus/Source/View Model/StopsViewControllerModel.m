@@ -20,7 +20,7 @@
 
         [RACObserve([DataStore sharedManager], stops) subscribeNext:^(NSArray *stops) {
             if (stops && [[LocationManager sharedManager] currentLocation]) {
-                self.sortedStops = [self stopsOrderedByTimeOfArrivalWithStops:stops];
+                self.sortedStops = [self stopsOrderedByTimeOfArrivalWithStops:[[DataStore sharedManager] stopsBeingServiced]];
             } else {
                 self.sortedStops = stops;
             }
@@ -28,7 +28,7 @@
         
         [RACObserve([LocationManager sharedManager], currentLocation) subscribeNext:^(CLLocation *location) {
             if (location && [DataStore sharedManager].stops) {
-                self.sortedStops = [self stopsOrderedByTimeOfArrivalWithStops:[DataStore sharedManager].stops];
+                self.sortedStops = [self stopsOrderedByTimeOfArrivalWithStops:[[DataStore sharedManager] stopsBeingServiced]];
             }
         }];
     }

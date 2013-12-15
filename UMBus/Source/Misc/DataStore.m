@@ -11,6 +11,7 @@
 #import "Arrival.h"
 #import "ArrivalStop.h"
 #import "Bus.h"
+#import "Stop.h"
 
 @interface DataStore ()
 
@@ -120,6 +121,24 @@
     return mutableArray;
 }
 
+- (NSArray *)arrivalsContainingStopName:(NSString *)stopName {
+    if ([self arrivals] == nil) {
+        NSLog(@"No arrivals have been pulled yet.  Call -fetchArrivals before calling this method again.");
+        return nil;
+    }
+    
+    NSMutableArray *mutableArray = [NSMutableArray array];
+    for (Arrival *arrival in self.arrivals) {
+        for (ArrivalStop *stop in arrival.stops) {
+            if ([stop.name2 isEqualToString:stopName]) {
+                [mutableArray addObject:arrival];
+            }
+        }
+    }
+    
+    return mutableArray;
+}
+
 - (NSArray *)allArrivalStops {
     if ([self arrivals] == nil) {
         NSLog(@"No arrivals have been pulled yet.  Call -fetchArrivals before calling this method again.");
@@ -157,6 +176,26 @@
     }
     
     return (busIndex > 0);
+}
+
+- (NSArray *)stopsBeingServiced {
+    if ([self arrivals] == nil) {
+        NSLog(@"No arrivals have been pulled yet.  Call -fetchArrivals before calling this method again.");
+        return nil;
+    }
+    
+    NSMutableArray *mutableArray = [NSMutableArray array];
+    for (Stop *stop in self.stops) {
+        for (Arrival *arrival in self.arrivals) {
+            for (ArrivalStop *arrivalStop in arrival.stops) {
+                if ([arrivalStop.name2 isEqualToString:stop.humanName] && ![mutableArray containsObject:stop]) {
+                    [mutableArray addObject:stop];
+                }
+            }
+        }
+    }
+    
+    return mutableArray;
 }
 
 @end

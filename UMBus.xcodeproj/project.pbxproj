@@ -39,6 +39,13 @@
 		AB3DF360185CE30B00942F67 /* StopCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AB3DF35F185CE30B00942F67 /* StopCell.m */; };
 		AB3DF364185CE31900942F67 /* StopCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = AB3DF363185CE31900942F67 /* StopCellView.m */; };
 		AB3DF367185CE32400942F67 /* StopCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AB3DF366185CE32400942F67 /* StopCellModel.m */; };
+		AB3DF36A185CEB3A00942F67 /* StopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB3DF369185CEB3A00942F67 /* StopViewController.m */; };
+		AB3DF36D185D879400942F67 /* StopViewControllerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AB3DF36C185D879400942F67 /* StopViewControllerModel.m */; };
+		AB3DF370185D8BD100942F67 /* StopArrivalCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AB3DF36F185D8BD100942F67 /* StopArrivalCell.m */; };
+		AB3DF373185D8BDD00942F67 /* StopArrivalCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = AB3DF372185D8BDD00942F67 /* StopArrivalCellView.m */; };
+		AB3DF377185D8BF100942F67 /* StopArrivalCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AB3DF376185D8BF100942F67 /* StopArrivalCellModel.m */; };
+		AB3DF37A185D993100942F67 /* StopViewControllerTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = AB3DF379185D993100942F67 /* StopViewControllerTitleView.m */; };
+		AB3DF37D185D994900942F67 /* StopViewControllerTitleViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AB3DF37C185D994900942F67 /* StopViewControllerTitleViewModel.m */; };
 		AB544339185696E200B65D3D /* Icon-40.png in Resources */ = {isa = PBXBuildFile; fileRef = AB544331185696E200B65D3D /* Icon-40.png */; };
 		AB54433A185696E200B65D3D /* Icon-40@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AB544332185696E200B65D3D /* Icon-40@2x.png */; };
 		AB54433B185696E200B65D3D /* Icon-60.png in Resources */ = {isa = PBXBuildFile; fileRef = AB544333185696E200B65D3D /* Icon-60.png */; };
@@ -141,6 +148,20 @@
 		AB3DF363185CE31900942F67 /* StopCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StopCellView.m; sourceTree = "<group>"; };
 		AB3DF365185CE32400942F67 /* StopCellModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StopCellModel.h; sourceTree = "<group>"; };
 		AB3DF366185CE32400942F67 /* StopCellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StopCellModel.m; sourceTree = "<group>"; };
+		AB3DF368185CEB3A00942F67 /* StopViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StopViewController.h; sourceTree = "<group>"; };
+		AB3DF369185CEB3A00942F67 /* StopViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StopViewController.m; sourceTree = "<group>"; };
+		AB3DF36B185D879400942F67 /* StopViewControllerModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StopViewControllerModel.h; sourceTree = "<group>"; };
+		AB3DF36C185D879400942F67 /* StopViewControllerModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StopViewControllerModel.m; sourceTree = "<group>"; };
+		AB3DF36E185D8BD100942F67 /* StopArrivalCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StopArrivalCell.h; sourceTree = "<group>"; };
+		AB3DF36F185D8BD100942F67 /* StopArrivalCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StopArrivalCell.m; sourceTree = "<group>"; };
+		AB3DF371185D8BDD00942F67 /* StopArrivalCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StopArrivalCellView.h; sourceTree = "<group>"; };
+		AB3DF372185D8BDD00942F67 /* StopArrivalCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StopArrivalCellView.m; sourceTree = "<group>"; };
+		AB3DF375185D8BF100942F67 /* StopArrivalCellModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StopArrivalCellModel.h; sourceTree = "<group>"; };
+		AB3DF376185D8BF100942F67 /* StopArrivalCellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StopArrivalCellModel.m; sourceTree = "<group>"; };
+		AB3DF378185D993100942F67 /* StopViewControllerTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StopViewControllerTitleView.h; sourceTree = "<group>"; };
+		AB3DF379185D993100942F67 /* StopViewControllerTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StopViewControllerTitleView.m; sourceTree = "<group>"; };
+		AB3DF37B185D994900942F67 /* StopViewControllerTitleViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StopViewControllerTitleViewModel.h; sourceTree = "<group>"; };
+		AB3DF37C185D994900942F67 /* StopViewControllerTitleViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StopViewControllerTitleViewModel.m; sourceTree = "<group>"; };
 		AB544331185696E200B65D3D /* Icon-40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-40.png"; sourceTree = "<group>"; };
 		AB544332185696E200B65D3D /* Icon-40@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-40@2x.png"; sourceTree = "<group>"; };
 		AB544333185696E200B65D3D /* Icon-60.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-60.png"; sourceTree = "<group>"; };
@@ -259,6 +280,17 @@
 				AB3DF363185CE31900942F67 /* StopCellView.m */,
 			);
 			name = StopCell;
+			sourceTree = "<group>";
+		};
+		AB3DF374185D8BE100942F67 /* StopArrivalCell */ = {
+			isa = PBXGroup;
+			children = (
+				AB3DF36E185D8BD100942F67 /* StopArrivalCell.h */,
+				AB3DF36F185D8BD100942F67 /* StopArrivalCell.m */,
+				AB3DF371185D8BDD00942F67 /* StopArrivalCellView.h */,
+				AB3DF372185D8BDD00942F67 /* StopArrivalCellView.m */,
+			);
+			name = StopArrivalCell;
 			sourceTree = "<group>";
 		};
 		ABE1AE5518530E4D0065C329 /* ArrivalRouteCell */ = {
@@ -467,10 +499,15 @@
 				ABBCE9E31855581E00DEFA9E /* AnnouncementsViewController.m */,
 				AB3DF351185CD2F800942F67 /* StopsViewController.h */,
 				AB3DF352185CD2F800942F67 /* StopsViewController.m */,
+				AB3DF368185CEB3A00942F67 /* StopViewController.h */,
+				AB3DF369185CEB3A00942F67 /* StopViewController.m */,
 				AB75281B1854464800DCA3CF /* CircleAnnotationView.h */,
 				AB75281C1854464800DCA3CF /* CircleAnnotationView.m */,
 				AB75281E1854538800DCA3CF /* StopTray.h */,
 				AB75281F1854538800DCA3CF /* StopTray.m */,
+				AB3DF378185D993100942F67 /* StopViewControllerTitleView.h */,
+				AB3DF379185D993100942F67 /* StopViewControllerTitleView.m */,
+				AB3DF374185D8BE100942F67 /* StopArrivalCell */,
 				AB3DF361185CE30F00942F67 /* StopCell */,
 				ABE1AE5518530E4D0065C329 /* ArrivalRouteCell */,
 				ABE1AE5618530E550065C329 /* ArrivalCell */,
@@ -493,14 +530,20 @@
 				ABBCE9E6185558A100DEFA9E /* AnnouncementsViewControllerModel.m */,
 				AB3DF354185CD30500942F67 /* StopsViewControllerModel.h */,
 				AB3DF355185CD30500942F67 /* StopsViewControllerModel.m */,
+				AB3DF36B185D879400942F67 /* StopViewControllerModel.h */,
+				AB3DF36C185D879400942F67 /* StopViewControllerModel.m */,
 				AB3006DF1852F962007A4E29 /* ArrivalCellModel.h */,
 				AB3006E01852F962007A4E29 /* ArrivalCellModel.m */,
 				ABE1AE5718530E670065C329 /* ArrivalRouteCellModel.h */,
 				ABE1AE5818530E670065C329 /* ArrivalRouteCellModel.m */,
 				AB3DF365185CE32400942F67 /* StopCellModel.h */,
 				AB3DF366185CE32400942F67 /* StopCellModel.m */,
+				AB3DF375185D8BF100942F67 /* StopArrivalCellModel.h */,
+				AB3DF376185D8BF100942F67 /* StopArrivalCellModel.m */,
 				AB7528211854539400DCA3CF /* StopTrayModel.h */,
 				AB7528221854539400DCA3CF /* StopTrayModel.m */,
+				AB3DF37B185D994900942F67 /* StopViewControllerTitleViewModel.h */,
+				AB3DF37C185D994900942F67 /* StopViewControllerTitleViewModel.m */,
 			);
 			path = "View Model";
 			sourceTree = "<group>";
@@ -694,13 +737,20 @@
 				AB3DF35D185CDA3300942F67 /* LocationManager.m in Sources */,
 				ABEDEBB8184C350400B82E59 /* StopAnnotation.m in Sources */,
 				ABEDEB93184C103B00B82E59 /* AppDelegate.m in Sources */,
+				AB3DF370185D8BD100942F67 /* StopArrivalCell.m in Sources */,
 				ABEDEB94184C103B00B82E59 /* main.m in Sources */,
 				AB7528231854539400DCA3CF /* StopTrayModel.m in Sources */,
+				AB3DF37A185D993100942F67 /* StopViewControllerTitleView.m in Sources */,
+				AB3DF36D185D879400942F67 /* StopViewControllerModel.m in Sources */,
+				AB3DF37D185D994900942F67 /* StopViewControllerTitleViewModel.m in Sources */,
 				AB7528171853DCD800DCA3CF /* RouteMapViewControllerModel.m in Sources */,
 				ABBCE9DD1855273E00DEFA9E /* MapViewControllerModel.m in Sources */,
 				AB3DF367185CE32400942F67 /* StopCellModel.m in Sources */,
 				ABE1AE5918530E670065C329 /* ArrivalRouteCellModel.m in Sources */,
+				AB3DF377185D8BF100942F67 /* StopArrivalCellModel.m in Sources */,
 				ABBCE9E41855581E00DEFA9E /* AnnouncementsViewController.m in Sources */,
+				AB3DF36A185CEB3A00942F67 /* StopViewController.m in Sources */,
+				AB3DF373185D8BDD00942F67 /* StopArrivalCellView.m in Sources */,
 				ABEDEBA0184C139100B82E59 /* BusAnnotation.m in Sources */,
 				ABBCE9E7185558A100DEFA9E /* AnnouncementsViewControllerModel.m in Sources */,
 				ABE1AE5F185315C40065C329 /* ArrivalsViewControllerModel.m in Sources */,
