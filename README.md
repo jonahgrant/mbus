@@ -1,5 +1,5 @@
 # Magic Bus
-
+[![githalytics.com alpha](https://cruel-carlota.pagodabox.com/0fe6bae62d6859d30f7f447fb3b2b188 "githalytics.com")](http://githalytics.com/jonahgrant/um-magic-bus)
 The University of Michigan has an awesome [live bus tracking system](http://mbus.pts.umich.edu/) for students.  This is an implementation of that for iOS 7 (and up).
 
 This project runs on the [MVVM](http://en.wikipedia.org/wiki/Model_View_ViewModel) architecture, allowing abstraction of data-heavy code that would typically live in the view controller.  Because of this, we can test that data-heavy code where we couldn't easily before.
@@ -34,12 +34,8 @@ Run the project
 		Run
 		
 # Interface
-![Arrivals](https://dl.dropboxusercontent.com/u/2177718/Screen%20Shot%202013-12-09%20at%2012.13.39%20AM.png "Arrivals")
-![Route](https://dl.dropboxusercontent.com/u/2177718/Screen%20Shot%202013-12-09%20at%2012.20.18%20AM.png   "Route")
-![Route map](https://dl.dropboxusercontent.com/u/2177718/Screen%20Shot%202013-12-09%20at%2012.13.59%20AM.png "Route map")
-![Street view](https://dl.dropboxusercontent.com/u/2177718/Screen%20Shot%202013-12-09%20at%2012.14.16%20AM.png "Street view")
-![Live bus](https://dl.dropboxusercontent.com/u/2177718/Screen%20Shot%202013-12-09%20at%2012.14.35%20AM.png "Live bus")
-![Announcement](https://dl.dropboxusercontent.com/u/2177718/Screen%20Shot%202013-12-09%20at%2012.14.38%20AM.png "Announcement")
-
-		
-[![githalytics.com alpha](https://cruel-carlota.pagodabox.com/0fe6bae62d6859d30f7f447fb3b2b188 "githalytics.com")](http://githalytics.com/jonahgrant/um-magic-bus)
+![Stop](https://dl.dropboxusercontent.com/u/2177718/Screen%20Shot%202013-12-15%20at%203.05.34%20PM.png "Stop")
+![Routes](https://dl.dropboxusercontent.com/u/2177718/Screen%20Shot%202013-12-15%20at%203.05.38%20PM.png   "Routes")
+![Route](https://dl.dropboxusercontent.com/u/2177718/Screen%20Shot%202013-12-15%20at%203.05.41%20PM.png "Route")
+![Route map](https://dl.dropboxusercontent.com/u/2177718/Screen%20Shot%202013-12-15%20at%203.05.53%20PM.png "Route map")
+![Live bus](https://dl.dropboxusercontent.com/u/2177718/Screen%20Shot%202013-12-15%20at%203.06.02%20PM.png "Live bus")
