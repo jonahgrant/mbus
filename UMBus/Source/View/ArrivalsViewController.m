@@ -16,10 +16,9 @@
 #import "DataStore.h"
 #import "RouteMapViewController.h"
 
-@interface ArrivalsViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface ArrivalsViewController ()
 
 @property (strong, nonatomic) NSArray *stops, *informationCells;
-@property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) UIRefreshControl *refreshControl;
 
 @end

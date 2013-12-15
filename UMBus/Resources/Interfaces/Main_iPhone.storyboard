@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13A3017" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="8YX-ce-x5E">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13A3017" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="8YX-ce-x5E">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
     </dependencies>
@@ -56,15 +56,11 @@
         <scene sceneID="xWv-ps-NUD">
             <objects>
                 <viewController id="AQf-w4-qpf" customClass="AnnouncementsViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="J8m-EG-8ib"/>
-                        <viewControllerLayoutGuide type="bottom" id="eAw-Qp-QOJ"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="bZ0-l6-pc4">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="0L3-Ta-pAb">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="0L3-Ta-pAb">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -100,15 +96,11 @@
         <scene sceneID="rAL-xt-101">
             <objects>
                 <viewController id="Bdn-c1-635" customClass="MapViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="9Gz-VS-LLU"/>
-                        <viewControllerLayoutGuide type="bottom" id="OG3-ec-gPQ"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="GMm-ef-9V0">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="S6f-ii-fiY">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" id="S6f-ii-fiY">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <connections>
@@ -127,6 +119,46 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vbs-NL-XWm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="880" y="-262"/>
+        </scene>
+        <!--Arrivals View Controller-->
+        <scene sceneID="dYT-oR-q5p">
+            <objects>
+                <tableViewController id="oXI-fU-Lyh" customClass="ArrivalsViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="hbT-HP-T0A">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="StopCell" rowHeight="100" id="t1O-1Q-eP1" customClass="ArrivalCell">
+                                <rect key="frame" x="0.0" y="119" width="320" height="100"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="t1O-1Q-eP1" id="WGZ-8b-J32">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="50" id="4Ko-GF-cYe">
+                                <rect key="frame" x="0.0" y="219" width="320" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4Ko-GF-cYe" id="6TL-DL-6A8">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="oXI-fU-Lyh" id="gRh-ep-4Lh"/>
+                            <outlet property="delegate" destination="oXI-fU-Lyh" id="J0h-TC-o93"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="fFU-IF-cfJ"/>
+                    <connections>
+                        <segue destination="Xvd-mh-W0a" kind="push" identifier="UMSegueRouteMap" id="ZHe-BW-uMX"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mAl-Gg-qYH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1355" y="-1000"/>
         </scene>
         <!--Stops View Controller - Root View Controller-->
         <scene sceneID="BGf-Zb-EOc">
@@ -198,7 +230,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="VWx-dB-uYY"/>
                     <connections>
-                        <segue destination="FEA-wM-fbr" kind="push" identifier="UMSequeArrivals" id="5aM-EY-GiV"/>
+                        <segue destination="oXI-fU-Lyh" kind="modal" identifier="UMSequeArrivals" id="eit-U5-ael"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5mh-ok-IdG" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -225,15 +257,11 @@
         <scene sceneID="W3I-pn-N6e">
             <objects>
                 <viewController title="First" id="CZ4-MO-1fc" customClass="RoutesViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="7nl-Ko-M0Z"/>
-                        <viewControllerLayoutGuide type="bottom" id="A1j-tt-k3b"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="2VE-Yg-loa">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="lCE-Q7-reg">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="lCE-Q7-reg">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
@@ -275,78 +303,22 @@
                     <navigationItem key="navigationItem" id="UQW-H0-950"/>
                     <connections>
                         <outlet property="tableView" destination="lCE-Q7-reg" id="9A5-Hj-B50"/>
-                        <segue destination="FEA-wM-fbr" kind="push" identifier="UMSequeArrivals" id="A9Y-su-dSf"/>
+                        <segue destination="oXI-fU-Lyh" kind="push" identifier="UMSequeArrivals" id="EnH-TW-WDV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qh2-T1-AhA" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="880" y="-1000"/>
         </scene>
-        <!--Arrivals View Controller-->
-        <scene sceneID="fSw-2W-KVF">
-            <objects>
-                <viewController id="FEA-wM-fbr" customClass="ArrivalsViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="XTT-b0-V1b"/>
-                        <viewControllerLayoutGuide type="bottom" id="rDJ-YL-5OW"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="vGa-jZ-eVp">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="126" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="bME-bH-eES">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                                <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="StopCell" rowHeight="100" id="Dpa-s4-Se3" customClass="ArrivalCell">
-                                        <rect key="frame" x="0.0" y="119" width="320" height="100"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Dpa-s4-Se3" id="jC1-pJ-IU0">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="50" id="sJu-mC-Ub1">
-                                        <rect key="frame" x="0.0" y="219" width="320" height="50"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sJu-mC-Ub1" id="59W-Vk-RmH">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
-                                <connections>
-                                    <outlet property="dataSource" destination="FEA-wM-fbr" id="mL1-HL-9Jp"/>
-                                    <outlet property="delegate" destination="FEA-wM-fbr" id="cww-mz-bxa"/>
-                                </connections>
-                            </tableView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="C5c-c6-3Lf"/>
-                    <connections>
-                        <outlet property="tableView" destination="bME-bH-eES" id="eup-te-vyn"/>
-                        <segue destination="Xvd-mh-W0a" kind="push" identifier="UMSegueRouteMap" id="mQR-Dg-JFD"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ZkA-En-kfn" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1364" y="-1000"/>
-        </scene>
         <!--Route Map View Controller-->
         <scene sceneID="GPJ-jr-T79">
             <objects>
                 <viewController id="Xvd-mh-W0a" customClass="RouteMapViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="eSD-kE-KpI"/>
-                        <viewControllerLayoutGuide type="bottom" id="tP4-OC-03A"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="3v4-Yy-2nD">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" rotateEnabled="NO" pitchEnabled="NO" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aNv-gO-PBk">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" rotateEnabled="NO" pitchEnabled="NO" showsUserLocation="YES" id="aNv-gO-PBk">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <connections>
@@ -399,6 +371,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="5aM-EY-GiV"/>
+        <segue reference="EnH-TW-WDV"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -10,7 +10,7 @@
 
 @class Arrival, ArrivalsViewControllerModel;
 
-@interface ArrivalsViewController : UIViewController
+@interface ArrivalsViewController : UITableViewController
 
 @property (strong, nonatomic) Arrival *arrival;
 @property (strong, nonatomic) ArrivalsViewControllerModel *model;
