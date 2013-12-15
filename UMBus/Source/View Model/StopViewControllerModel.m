@@ -25,5 +25,10 @@
     return self;
 }
 
+- (void)loadData {
+    [[DataStore sharedManager] fetchArrivalsWithErrorBlock:^(NSError *error) {
+        
+    }];
+}
 
 @end

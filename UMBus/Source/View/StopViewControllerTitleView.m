@@ -17,7 +17,7 @@
     if (self) {
         self.model = [[StopViewControllerTitleViewModel alloc] initWithStop:stop];
         
-        UILabel *stopLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 5, 320, 22)];
+        UILabel *stopLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 5, 180, 22)];
         stopLabel.backgroundColor = [UIColor clearColor];
         stopLabel.numberOfLines = 1;
         stopLabel.font = [UIFont boldSystemFontOfSize:17];
@@ -26,7 +26,7 @@
         stopLabel.text = self.model.stop.humanName;
         [self addSubview:stopLabel];
         
-        UILabel *distanceLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 22, 320, 22)];
+        UILabel *distanceLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 22, 180, 22)];
         distanceLabel.backgroundColor = [UIColor clearColor];
         distanceLabel.numberOfLines = 1;
         distanceLabel.font = [UIFont systemFontOfSize:14];

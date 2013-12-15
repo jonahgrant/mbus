@@ -14,7 +14,6 @@
 
 + (instancetype)sharedManager;
 
-- (void)startFetchingLocation;
-- (void)stopFetchingLocation;
+- (void)fetchLocation;
 
 @end

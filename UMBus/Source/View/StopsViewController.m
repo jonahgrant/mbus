@@ -11,13 +11,14 @@
 #import "StopViewController.h"
 #import "DataStore.h"
 #import "Stop.h"
-#import "LocationManager.h"
 #import "TTTLocationFormatter.h"
 #import "StopCell.h"
 #import "StopCellModel.h"
 #import "SegueIdentifiers.h"
 
 @interface StopsViewController ()
+
+@property (strong, nonatomic) UIRefreshControl *refreshControl;
 
 @end
 
@@ -31,8 +32,13 @@
     self.model = [[StopsViewControllerModel alloc] init];
     [self.model fetchStops];
     
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self.model action:@selector(fetchStops) forControlEvents:UIControlEventValueChanged];
+    [self.tableView addSubview:self.refreshControl];
+    
     [RACObserve(self.model, sortedStops) subscribeNext:^(NSArray *stops) {
         if (stops) {
+            [self.refreshControl endRefreshing];
             [self.tableView reloadData];
         }
     }];

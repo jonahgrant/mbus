@@ -174,16 +174,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" rowHeight="100" id="kXS-W9-G22" customClass="StopArrivalCell">
-                                <rect key="frame" x="0.0" y="119" width="320" height="100"/>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" rowHeight="130" id="kXS-W9-G22" customClass="StopArrivalCell">
+                                <rect key="frame" x="0.0" y="119" width="320" height="130"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kXS-W9-G22" id="3Wg-0x-8Br">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="99"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="129"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="InfoCell" rowHeight="50" id="FRI-cI-tfq">
-                                <rect key="frame" x="0.0" y="219" width="320" height="50"/>
+                                <rect key="frame" x="0.0" y="249" width="320" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="FRI-cI-tfq" id="MPB-3e-x7T">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
@@ -197,10 +197,13 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="VWx-dB-uYY"/>
+                    <connections>
+                        <segue destination="FEA-wM-fbr" kind="push" identifier="UMSequeArrivals" id="5aM-EY-GiV"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5mh-ok-IdG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1335" y="-1694"/>
+            <point key="canvasLocation" x="1355" y="-1686"/>
         </scene>
         <!--Navigation Controller - Item-->
         <scene sceneID="bvs-O5-klP">
@@ -395,4 +398,7 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="5aM-EY-GiV"/>
+    </inferredMetricsTieBreakers>
 </document>

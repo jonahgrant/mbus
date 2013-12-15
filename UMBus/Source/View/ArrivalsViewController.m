@@ -20,6 +20,7 @@
 
 @property (strong, nonatomic) NSArray *stops, *informationCells;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) UIRefreshControl *refreshControl;
 
 @end
 
@@ -32,11 +33,12 @@
     
     self.model = [[ArrivalsViewControllerModel alloc] initWithArrival:self.arrival];
     
-    UIBarButtonItem *refreshButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(refresh)];
-    self.navigationItem.rightBarButtonItem = refreshButton;
-    
     self.informationCells = @[@"Map"];
     
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
+    [self.tableView addSubview:self.refreshControl];
+
     [RACObserve(self.model, sortedArrivalStops) subscribeNext:^(NSArray *stops) {
         if (stops) {
             [self.tableView reloadData];

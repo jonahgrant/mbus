@@ -18,8 +18,6 @@
         [self addSubview:cellView];
         
         RAC(cellView, model) = RACObserve(self, model);
-        
-        self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
     return self;
 }

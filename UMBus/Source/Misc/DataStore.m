@@ -103,6 +103,20 @@
     return [self.busesForRoutesDictionary objectForKey:routeID];
 }
 
+- (ArrivalStop *)arrivalStopForRouteID:(NSString *)routeID stopName:(NSString *)stopName {
+    for (Arrival *arrival in self.arrivals) {
+        if ([arrival.id isEqualToString:routeID]) {
+            for (ArrivalStop *arrivalStop in arrival.stops) {
+                if ([arrivalStop.name2 isEqualToString:stopName]) {
+                    return arrivalStop;
+                }
+            }
+        }
+    }
+    
+    return nil;
+}
+
 - (NSArray *)arrivalStopsForStopID:(NSString *)stopID {
     if ([self arrivals] == nil) {
         NSLog(@"No arrivals have been pulled yet.  Call -fetchArrivals before calling this method again.");

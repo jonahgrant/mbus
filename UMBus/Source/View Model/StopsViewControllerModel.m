@@ -16,8 +16,12 @@
 
 - (instancetype)init {
     if (self = [super init]) {
-        [[LocationManager sharedManager] startFetchingLocation];
-
+        [RACObserve([DataStore sharedManager], arrivals) subscribeNext:^(NSArray *arrivals) {
+            if (arrivals) {
+                [[DataStore sharedManager] fetchStopsWithErrorBlock:NULL];
+            }
+        }];
+        
         [RACObserve([DataStore sharedManager], stops) subscribeNext:^(NSArray *stops) {
             if (stops && [[LocationManager sharedManager] currentLocation]) {
                 self.sortedStops = [self stopsOrderedByTimeOfArrivalWithStops:[[DataStore sharedManager] stopsBeingServiced]];
@@ -57,7 +61,8 @@
 }
 
 - (void)fetchStops {
-    [[DataStore sharedManager] fetchStopsWithErrorBlock:NULL];
+    [[DataStore sharedManager] fetchArrivalsWithErrorBlock:NULL];
+    [[LocationManager sharedManager] fetchLocation];
 }
 
 @end

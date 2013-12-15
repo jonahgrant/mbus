@@ -17,4 +17,6 @@
 
 - (instancetype)initWithStop:(Stop *)stop;
 
+- (void)loadData;
+
 @end

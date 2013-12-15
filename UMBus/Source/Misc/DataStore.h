@@ -10,7 +10,7 @@
 
 typedef void (^DataStoreErrorBlock)(NSError *error);
 
-@class Arrival, Bus, Route;
+@class Arrival, Bus, Route, ArrivalStop;
 
 @interface DataStore : NSObject
 
@@ -26,6 +26,7 @@ typedef void (^DataStoreErrorBlock)(NSError *error);
 
 - (Arrival *)arrivalForID:(NSString *)arrivalID;
 - (Bus *)busOperatingRouteID:(NSString *)routeID;
+- (ArrivalStop *)arrivalStopForRouteID:(NSString *)routeID stopName:(NSString *)stopName;
 
 - (NSArray *)arrivalStopsForStopID:(NSString *)stopID;
 - (NSArray *)arrivalsContainingStopName:(NSString *)stopName;

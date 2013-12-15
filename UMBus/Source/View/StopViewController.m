@@ -15,10 +15,13 @@
 #import "StopArrivalCellModel.h"
 #import "StreetViewController.h"
 #import "StopViewControllerTitleView.h"
+#import "ArrivalsViewController.h"
+#import "SegueIdentifiers.h"
 
 @interface StopViewController ()
 
 @property (strong, nonatomic) NSArray *cells;
+@property (strong, nonatomic) UIRefreshControl *refreshControl;
 
 @end
 
@@ -32,13 +35,25 @@
     
     self.cells = @[@"Directions to stop", @"Street view"];
     
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self.model action:@selector(loadData) forControlEvents:UIControlEventValueChanged];
+    [self.tableView addSubview:self.refreshControl];
+    
     [RACObserve(self.model, arrivals) subscribeNext:^(NSArray *arrivals) {
         if (arrivals) {
+            [self.refreshControl endRefreshing];
             [self.tableView reloadData];
         }
     }];
     
     self.navigationItem.titleView = [[StopViewControllerTitleView alloc] initWithStop:self.model.stop];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.tabBarController.tabBar setTintColor:nil];
+    [self.navigationController.navigationBar setTintColor:nil];
+    [self.tableView deselectRowAtIndexPath:[[self.tableView indexPathsForSelectedRows] firstObject] animated:YES];
 }
 
 #pragma UITableView data source
@@ -62,7 +77,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
-        return 100;
+        return 130;
     }
     
     return 50;
@@ -89,7 +104,7 @@
         StopArrivalCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
         
         Arrival *arrival = self.model.arrivals[indexPath.row];
-        StopArrivalCellModel *arrivalCellModel = [[StopArrivalCellModel alloc] initWithArrival:arrival];
+        StopArrivalCellModel *arrivalCellModel = [[StopArrivalCellModel alloc] initWithArrival:arrival stop:self.model.stop];
         cell.model = arrivalCellModel;
         
         return cell;
@@ -109,6 +124,10 @@
 #pragma UITableView delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.section == 0) {
+        [self performSegueWithIdentifier:UMSequeArrivals sender:self];
+    }
+    
     if (indexPath.section == 1) {
         if (indexPath.row == 0) {
             NSString *address = [NSString stringWithFormat:@"http://maps.apple.com/maps?daddr=%1.6f,%1.6f&saddr=Posizione attuale", self.model.stop.coordinate.latitude, self.model.stop.coordinate.longitude];
@@ -124,5 +143,14 @@
     }
 }
 
+#pragma UIStoryboard
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqual:UMSequeArrivals]) {
+        ArrivalsViewController *arrivals = (ArrivalsViewController *)segue.destinationViewController;
+        Arrival *arrival = self.model.arrivals[[self.tableView indexPathForSelectedRow].row];
+        arrivals.arrival = arrival;
+    }
+}
 
 @end

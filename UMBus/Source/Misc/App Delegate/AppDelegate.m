@@ -9,6 +9,7 @@
 #import <GoogleMaps/GoogleMaps.h>
 #import "AppDelegate.h"
 #import "DataStore.h"
+#import "LocationManager.h"
 
 @implementation AppDelegate
 
@@ -31,6 +32,8 @@
         
     }];
     
+    [[LocationManager sharedManager] fetchLocation];
+
     return YES;
 }
 

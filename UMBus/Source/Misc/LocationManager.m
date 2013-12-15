@@ -38,17 +38,15 @@
 
 #pragma CLLocation
 
-- (void)startFetchingLocation {
+- (void)fetchLocation {
     [self.locationManager startUpdatingLocation];
-}
-
-- (void)stopFetchingLocation {
-    [self.locationManager stopUpdatingLocation];
 }
 
 #pragma CLLocationManager delegate methods
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
+    [self.locationManager stopUpdatingLocation];
+    
     CLLocationDistance distance = [oldLocation distanceFromLocation:newLocation];
     if (!oldLocation) {
         self.currentLocation = newLocation;
