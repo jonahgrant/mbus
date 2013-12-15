@@ -210,7 +210,7 @@
     for (Stop *stop in self.stops) {
         for (Arrival *arrival in self.arrivals) {
             for (ArrivalStop *arrivalStop in arrival.stops) {
-                if ([arrivalStop.name2 isEqualToString:stop.humanName] && ![mutableArray containsObject:stop]) {
+                if ([arrivalStop.name isEqualToString:stop.uniqueName] && ![mutableArray containsObject:stop]) {
                     [mutableArray addObject:stop];
                 }
             }
