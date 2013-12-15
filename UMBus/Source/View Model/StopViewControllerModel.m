@@ -18,7 +18,7 @@
         
         [RACObserve([DataStore sharedManager], arrivals) subscribeNext:^(NSArray *arrivals) {
             if (arrivals) {
-                self.arrivals = [[DataStore sharedManager] arrivalsContainingStopName:self.stop.humanName];
+                self.arrivals = [[DataStore sharedManager] arrivalsContainingStopName:self.stop.uniqueName];
             }
         }];
     }

@@ -55,7 +55,9 @@
         }
         self.arrivalsDictionary = mutableDictionary;
     } errorBlock:^(NSError *error) {
-        errorBlock(error);
+        if (errorBlock) {
+            errorBlock(error);
+        }
         [self handleError:error];
     }];
 }
@@ -70,7 +72,9 @@
         }
         self.busesForRoutesDictionary = mutableDictionary;
     } errorBlock:^(NSError *error) {
-        errorBlock(error);
+          if (errorBlock) {
+            errorBlock(error);
+        };
         [self handleError:error];
     }];
 }
@@ -79,7 +83,9 @@
     [self.networkingSession fetchStopsWithSuccessBlock:^(NSArray *stops) {
         self.stops = stops;
     } errorBlock:^(NSError *error) {
-        errorBlock(error);
+          if (errorBlock) {
+            errorBlock(error);
+        };
         [self handleError:error];
     }];
 }
@@ -88,7 +94,9 @@
     [self.networkingSession fetchAnnouncementsWithSuccessBlock:^(NSArray *announcements) {
         self.announcements = announcements;
     } errorBlock:^(NSError *error) {
-        errorBlock(error);
+          if (errorBlock) {
+            errorBlock(error);
+        };
         [self handleError:error];
     }];
 }
@@ -144,7 +152,7 @@
     NSMutableArray *mutableArray = [NSMutableArray array];
     for (Arrival *arrival in self.arrivals) {
         for (ArrivalStop *stop in arrival.stops) {
-            if ([stop.name2 isEqualToString:stopName]) {
+            if ([stop.name isEqualToString:stopName]) {
                 [mutableArray addObject:arrival];
             }
         }
