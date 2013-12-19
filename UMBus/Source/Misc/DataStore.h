@@ -30,4 +30,6 @@ typedef void (^DataStoreErrorBlock)(NSError *error);
 - (NSArray *)persistedAnnouncements;
 - (CLLocation *)persistedLastKnownLocation;
 
+- (NSArray *)stopsBeingServicedInArray:(NSArray *)array;
+
 @end

@@ -149,4 +149,26 @@ static NSString * kArrivalsFile = @"arrivals.txt";
     }];
 }
 
+#pragma mark -
+
+- (NSArray *)stopsBeingServicedInArray:(NSArray *)stops {
+    if ([self arrivals] == nil) {
+        NSLog(@"No arrivals have been pulled yet.  Call -fetchArrivals before calling this method again.");
+        return nil;
+    }
+    
+    NSMutableArray *mutableArray = [NSMutableArray array];
+    for (Stop *stop in stops) {
+        for (Arrival *arrival in self.arrivals) {
+            for (ArrivalStop *arrivalStop in arrival.stops) {
+                if ([arrivalStop.name isEqualToString:stop.uniqueName] && ![mutableArray containsObject:stop]) {
+                    [mutableArray addObject:stop];
+                }
+            }
+        }
+    }
+    
+    return mutableArray;
+}
+
 @end
