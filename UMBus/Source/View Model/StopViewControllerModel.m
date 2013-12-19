@@ -15,15 +15,19 @@
 - (instancetype)initWithStop:(Stop *)stop {
     if (self = [super init]) {
         self.stop = stop;
+        [self updateArrivals];
         
         [RACObserve([DataStore sharedManager], arrivals) subscribeNext:^(NSArray *arrivals) {
             if (arrivals) {
-                NSLog(@"%@", arrivals);
-                self.arrivalsServicingStop = [[DataStore sharedManager] arrivalsContainingStopName:self.stop.uniqueName];
+                [self updateArrivals];
             }
         }];
     }
     return self;
+}
+
+- (void)updateArrivals {
+    self.arrivalsServicingStop = [[DataStore sharedManager] arrivalsContainingStopName:self.stop.uniqueName];
 }
 
 - (void)fetchData {

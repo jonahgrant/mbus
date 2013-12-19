@@ -37,7 +37,7 @@
     
     [RACObserve(self.model, arrivalsServicingStop) subscribeNext:^(NSArray *arrivals) {
         if (arrivals) {
-            [self.refreshControl endRefreshing];
+            if (self.refreshControl.isRefreshing) [self.refreshControl endRefreshing];
             [self.tableView reloadData];
         }
     }];
@@ -61,6 +61,10 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     switch (section) {
         case 0:
+            if (self.model.arrivalsServicingStop.count == 0) {
+                return 1;
+            }
+            
             return self.model.arrivalsServicingStop.count;
             break;
         case 1:
@@ -97,13 +101,25 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
-        StopArrivalCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-        
-        Arrival *arrival = self.model.arrivalsServicingStop[indexPath.row];
-        StopArrivalCellModel *arrivalCellModel = [[StopArrivalCellModel alloc] initWithArrival:arrival stop:self.model.stop];
-        cell.model = arrivalCellModel;
-        
-        return cell;
+        if (self.model.arrivalsServicingStop.count == 0) {
+            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"NoneCell" forIndexPath:indexPath];
+            
+            cell.textLabel.text = @"NONE";
+            cell.textLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:17];
+            cell.textLabel.textColor = [UIColor lightGrayColor];
+            cell.textLabel.textAlignment = NSTextAlignmentCenter;
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            
+            return cell;
+        } else {
+            StopArrivalCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+            
+            Arrival *arrival = self.model.arrivalsServicingStop[indexPath.row];
+            StopArrivalCellModel *arrivalCellModel = [[StopArrivalCellModel alloc] initWithArrival:arrival stop:self.model.stop];
+            cell.model = arrivalCellModel;
+            
+            return cell;
+        }
     }
     
     else if (indexPath.section == 1) {

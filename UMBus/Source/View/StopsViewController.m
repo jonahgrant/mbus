@@ -34,7 +34,7 @@
     
     [RACObserve(self.model, stops) subscribeNext:^(NSArray *stops) {
         if (stops) {
-            [self.refreshControl endRefreshing];
+            if (self.refreshControl.isRefreshing) [self.refreshControl endRefreshing];
             [self.tableView reloadData];
         }
     }];
