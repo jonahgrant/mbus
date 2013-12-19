@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 Jonah Grant. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <CoreLocation/CoreLocation.h>
 
 typedef void (^DataStoreErrorBlock)(NSError *error);
 
@@ -15,7 +15,7 @@ typedef void (^DataStoreErrorBlock)(NSError *error);
 @interface DataStore : NSObject
 
 @property (strong, nonatomic) NSArray *arrivals, *buses, *stops, *announcements;
-@property (strong, nonatomic) NSDictionary *arrivalsDictionary, *busesForRoutesDictionary;
+@property (strong, nonatomic) CLLocation *lastKnownLocation;
 
 + (instancetype)sharedManager;
 
@@ -24,17 +24,10 @@ typedef void (^DataStoreErrorBlock)(NSError *error);
 - (void)fetchStopsWithErrorBlock:(DataStoreErrorBlock)errorBlock;
 - (void)fetchAnnouncementsWithErrorBlock:(DataStoreErrorBlock)errorBlock;
 
-- (Arrival *)arrivalForID:(NSString *)arrivalID;
-- (Bus *)busOperatingRouteID:(NSString *)routeID;
-- (ArrivalStop *)arrivalStopForRouteID:(NSString *)routeID stopName:(NSString *)stopName;
-
-- (NSArray *)arrivalStopsForStopID:(NSString *)stopID;
-- (NSArray *)arrivalsContainingStopName:(NSString *)stopName;
-- (NSArray *)allArrivalStops;
-
-- (BOOL)arrivalHasBus1WithArrivalID:(NSString *)arrivalID;
-- (BOOL)arrivalHasBus2WithArrivalID:(NSString *)arrivalID;
-
-- (NSArray *)stopsBeingServiced;
+- (NSArray *)persistedArrivals;
+- (NSArray *)persistedBuses;
+- (NSArray *)persistedStops;
+- (NSArray *)persistedAnnouncements;
+- (CLLocation *)persistedLastKnownLocation;
 
 @end

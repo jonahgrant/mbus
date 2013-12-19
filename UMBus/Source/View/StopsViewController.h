@@ -2,7 +2,7 @@
 //  StopsViewController.h
 //  UMBus
 //
-//  Created by Jonah Grant on 12/14/13.
+//  Created by Jonah Grant on 12/18/13.
 //  Copyright (c) 2013 Jonah Grant. All rights reserved.
 //
 

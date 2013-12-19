@@ -19,10 +19,7 @@
     [[DataStore sharedManager] fetchArrivalsWithErrorBlock:^(NSError *error) {
         
     }];
-    
-    [[DataStore sharedManager] fetchStopsWithErrorBlock:^(NSError *error) {
-        
-    }];
+
     
     [[DataStore sharedManager] fetchAnnouncementsWithErrorBlock:^(NSError *error) {
         
@@ -31,6 +28,11 @@
     [[DataStore sharedManager] fetchBusesWithErrorBlock:^(NSError *error) {
         
     }];
+    
+    // as long as we have stops, we don't need to reload them until the user requests it
+    if ([[DataStore sharedManager] persistedStops] == nil) {
+        [[DataStore sharedManager] fetchStopsWithErrorBlock:^(NSError *error) {}];
+    }
     
     [[LocationManager sharedManager] fetchLocation];
 

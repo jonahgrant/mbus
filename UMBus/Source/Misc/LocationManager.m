@@ -31,7 +31,7 @@
         self.locationManager = [[CLLocationManager alloc] init];
         self.locationManager.delegate = self;
         self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-        self.locationManager.distanceFilter = kCLDistanceFilterNone;
+        self.locationManager.distanceFilter = 1609.34; // one mile
     }
     return self;
 }
@@ -45,14 +45,7 @@
 #pragma CLLocationManager delegate methods
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
-    [self.locationManager stopUpdatingLocation];
-    
-    CLLocationDistance distance = [oldLocation distanceFromLocation:newLocation];
-    if (!oldLocation) {
-        self.currentLocation = newLocation;
-    } else if (distance >= 300) {
-        self.currentLocation = newLocation;
-    }
+    self.currentLocation = newLocation;
 }
 
 @end

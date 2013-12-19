@@ -2,19 +2,15 @@
 //  StopsViewController.m
 //  UMBus
 //
-//  Created by Jonah Grant on 12/14/13.
+//  Created by Jonah Grant on 12/18/13.
 //  Copyright (c) 2013 Jonah Grant. All rights reserved.
 //
 
 #import "StopsViewController.h"
 #import "StopsViewControllerModel.h"
-#import "StopViewController.h"
-#import "DataStore.h"
 #import "Stop.h"
-#import "TTTLocationFormatter.h"
 #import "StopCell.h"
 #import "StopCellModel.h"
-#import "SegueIdentifiers.h"
 
 @interface StopsViewController ()
 
@@ -27,46 +23,53 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    self.navigationItem.title = @"University of Michigan";
-    
     self.model = [[StopsViewControllerModel alloc] init];
-    [self.model fetchStops];
     
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self.model action:@selector(fetchStops) forControlEvents:UIControlEventValueChanged];
     [self.tableView addSubview:self.refreshControl];
     
-    [RACObserve(self.model, sortedStops) subscribeNext:^(NSArray *stops) {
+    [RACObserve(self.model, stops) subscribeNext:^(NSArray *stops) {
         if (stops) {
             [self.refreshControl endRefreshing];
             [self.tableView reloadData];
         }
     }];
+
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    [self.tabBarController.tabBar setTintColor:nil];
-    [self.tableView deselectRowAtIndexPath:[[self.tableView indexPathsForSelectedRows] firstObject] animated:YES];
+-(BOOL)writeToPlistFile:(NSString*)filename{
+    NSData * data = [NSKeyedArchiver archivedDataWithRootObject:@[@"hello", @"world"]];
+    NSArray * paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString * documentsDirectory = [paths objectAtIndex:0];
+    NSString * path = [documentsDirectory stringByAppendingPathComponent:filename];
+    BOOL didWriteSuccessfull = [data writeToFile:path atomically:YES];
+    return didWriteSuccessfull;
 }
 
-#pragma UITableView data source
+-(NSArray*)readFromPlistFile:(NSString*)filename{
+    NSArray * paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString * documentsDirectory = [paths objectAtIndex:0];
+    NSString * path = [documentsDirectory stringByAppendingPathComponent:filename];
+    NSData * data = [NSData dataWithContentsOfFile:path];
+    return  [NSKeyedUnarchiver unarchiveObjectWithData:data];
+}
+
+
+#pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if (self.model.sortedStops.count == 0) {
-        return 1;
-    }
-    
-    return self.model.sortedStops.count;
+    return self.model.stops.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 100;
 }
+
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     if (section == 0) {
@@ -77,7 +80,7 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (self.model.sortedStops.count == 0) {
+    if (self.model.stops.count == 0) {
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"NoneCell" forIndexPath:indexPath];
         
         cell.textLabel.text = @"NO STOPS BEING SERVICED";
@@ -89,31 +92,15 @@
         return cell;
     } else {
         StopCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-    
-        Stop *stop = self.model.sortedStops[indexPath.row];
+        
+        Stop *stop = self.model.stops[indexPath.row];
         StopCellModel *stopCellModel = [[StopCellModel alloc] initWithStop:stop];
         cell.model = stopCellModel;
-    
+        
         return cell;
     }
     
     return nil;
-}
-
-#pragma UITableView delegate
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [self performSegueWithIdentifier:UMSegueStop sender:self];
-}
-
-#pragma UIStoryboard
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([segue.identifier isEqual:UMSegueStop]) {
-        StopViewController *controller = (StopViewController *)segue.destinationViewController;
-        Stop *stop = self.model.sortedStops[[self.tableView indexPathForSelectedRow].row];
-        controller.stop = stop;
-    }
 }
 
 @end
