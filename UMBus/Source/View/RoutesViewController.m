@@ -25,7 +25,6 @@
     self.navigationItem.title = @"University of Michigan";
     
     self.model = [[RoutesViewControllerModel alloc] init];
-    [self.model fetchData];
     
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self.model action:@selector(fetchData) forControlEvents:UIControlEventValueChanged];

@@ -10,6 +10,7 @@
 #import "LocationManager.h"
 #import "DataStore.h"
 #import "Stop.h"
+#import "StopCellModel.h"
 
 @implementation StopsViewControllerModel
 
@@ -68,9 +69,21 @@
                 }
             }
         }];
+        
+        [RACObserve(self, stops) subscribeNext:^(NSArray *stops) {
+            if (stops) {
+                NSMutableArray *mutableArray = [NSMutableArray arrayWithCapacity:stops.count];
+                for (Stop *stop in stops) {
+                    StopCellModel *stopCellModel = [[StopCellModel alloc] initWithStop:stop];
+                    [mutableArray addObject:stopCellModel];
+                }
+                self.stopCellModels = mutableArray;
+            }
+        }];
     }
     return self;
 }
+
 
 - (NSArray *)sortedStopsByDistanceWithArray:(NSArray *)array location:(CLLocation *)location {
     return [array sortedArrayUsingComparator:^(id a,id b) {

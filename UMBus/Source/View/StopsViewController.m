@@ -54,7 +54,6 @@
     return 100;
 }
 
-
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     if (section == 0) {
         return @"Stops being serviced";
@@ -77,8 +76,7 @@
     } else {
         StopCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
         
-        Stop *stop = self.model.stops[indexPath.row];
-        StopCellModel *stopCellModel = [[StopCellModel alloc] initWithStop:stop];
+        StopCellModel *stopCellModel = self.model.stopCellModels[indexPath.row];
         cell.model = stopCellModel;
         
         return cell;

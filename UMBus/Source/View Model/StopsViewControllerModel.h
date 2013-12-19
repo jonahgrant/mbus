@@ -10,7 +10,7 @@
 
 @interface StopsViewControllerModel : NSObject
 
-@property (strong, nonatomic) NSArray *stops;
+@property (strong, nonatomic) NSArray *stops, *stopCellModels;
 
 - (void)fetchData;
 

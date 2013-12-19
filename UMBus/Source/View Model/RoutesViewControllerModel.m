@@ -13,6 +13,12 @@
 
 - (instancetype)init {
     if (self = [super init]) {
+        self.routes = [DataStore sharedManager].arrivals;
+        
+        if (!self.routes) {
+            [self fetchData];
+        }
+        
         [RACObserve([DataStore sharedManager], arrivals) subscribeNext:^(NSArray *arrivals) {
             if (arrivals) {
                 self.routes = arrivals;
