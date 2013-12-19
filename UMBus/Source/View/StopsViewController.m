@@ -8,6 +8,7 @@
 
 #import "StopsViewController.h"
 #import "StopsViewControllerModel.h"
+#import "StopViewController.h"
 #import "Stop.h"
 #import "StopCell.h"
 #import "StopCellModel.h"
@@ -25,8 +26,10 @@
 
     self.model = [[StopsViewControllerModel alloc] init];
     
+    self.navigationItem.title = @"University of Michigan";
+    
     self.refreshControl = [[UIRefreshControl alloc] init];
-    [self.refreshControl addTarget:self.model action:@selector(fetchStops) forControlEvents:UIControlEventValueChanged];
+    [self.refreshControl addTarget:self.model action:@selector(fetchData) forControlEvents:UIControlEventValueChanged];
     [self.tableView addSubview:self.refreshControl];
     
     [RACObserve(self.model, stops) subscribeNext:^(NSArray *stops) {
@@ -35,7 +38,6 @@
             [self.tableView reloadData];
         }
     }];
-
 }
 
 #pragma mark - Table view data source
@@ -55,7 +57,7 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     if (section == 0) {
-        return @"Select a stop";
+        return @"Stops being serviced";
     }
     
     return nil;
@@ -83,6 +85,22 @@
     }
     
     return nil;
+}
+
+#pragma UITableView delegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [self performSegueWithIdentifier:UMSegueStop sender:self];
+}
+
+#pragma UIStoryboard
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqual:UMSegueStop]) {
+        StopViewController *controller = (StopViewController *)segue.destinationViewController;
+        Stop *stop = self.model.stops[[self.tableView indexPathForSelectedRow].row];
+        controller.stop = stop;
+    }
 }
 
 @end

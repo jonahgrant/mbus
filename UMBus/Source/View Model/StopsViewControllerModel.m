@@ -64,7 +64,7 @@
                     self.stops = [self sortedStopsByDistanceWithArray:[[DataStore sharedManager] stopsBeingServicedInArray:array] location:location];
                 } else if ([DataStore sharedManager].stops || [[DataStore sharedManager] persistedStops]) {
                     NSArray *array = ([DataStore sharedManager].stops) ? [DataStore sharedManager].stops : [[DataStore sharedManager] persistedStops];
-                    self.stops = [[DataStore sharedManager] stopsBeingServicedInArray:array];
+                    self.stops = [self sortedStopsByDistanceWithArray:array location:location];
                 }
             }
         }];
@@ -93,7 +93,7 @@
     }];
 }
 
-- (void)fetchStops {
+- (void)fetchData {
     [[DataStore sharedManager] fetchStopsWithErrorBlock:^(NSError *error) {
         self.stops = self.stops;
     }];

@@ -30,6 +30,24 @@ typedef void (^DataStoreErrorBlock)(NSError *error);
 - (NSArray *)persistedAnnouncements;
 - (CLLocation *)persistedLastKnownLocation;
 
+/*
+ Takes in an array of Stop objects and returns the ones that are being serviced
+ Requires self.arrivals to be loaded
+ */
 - (NSArray *)stopsBeingServicedInArray:(NSArray *)array;
+
+/*
+ Returns arrivals containing a stop name.  Used to determine what routes are servicing a given stop
+ */
+- (NSArray *)arrivalsContainingStopName:(NSString *)name;
+
+// TODO: DOCUMENT THE BELOW METHODS ***************************
+
+- (ArrivalStop *)arrivalStopForRouteID:(NSString *)routeID stopName:(NSString *)stopName;
+
+- (BOOL)arrivalHasBus1WithArrivalID:(NSString *)arrivalID;
+- (BOOL)arrivalHasBus2WithArrivalID:(NSString *)arrivalID;
+
+- (Arrival *)arrivalForID:(NSString *)arrivalID;
 
 @end

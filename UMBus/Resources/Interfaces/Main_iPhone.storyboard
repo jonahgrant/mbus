@@ -39,14 +39,62 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="NoneCell" id="dOO-vd-cWO">
+                                <rect key="frame" x="0.0" y="219" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dOO-vd-cWO" id="4l9-8F-fYc">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
                         </prototypes>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="Stops" image="stop-icon.png" id="NCk-1s-aIa"/>
                     <navigationItem key="navigationItem" title="Root View Controller" id="hgH-U8-i2D"/>
+                    <connections>
+                        <segue destination="Nm7-h3-igH" kind="push" identifier="UMSegueStop" id="8wc-Bm-j6C"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BcN-r6-zp7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="742" y="-690"/>
+        </scene>
+        <!--Stop View Controller-->
+        <scene sceneID="mcS-KU-NJt">
+            <objects>
+                <tableViewController id="Nm7-h3-igH" customClass="StopViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="ISS-el-NBL">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" rowHeight="130" id="YTY-dR-Yb1" customClass="StopArrivalCell">
+                                <rect key="frame" x="0.0" y="119" width="320" height="130"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="YTY-dR-Yb1" id="0mg-su-yV0">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="129"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="InfoCell" rowHeight="50" id="Y1U-km-G1V">
+                                <rect key="frame" x="0.0" y="249" width="320" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Y1U-km-G1V" id="77s-rv-Fyt">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Nm7-h3-igH" id="jBK-Ts-SUj"/>
+                            <outlet property="delegate" destination="Nm7-h3-igH" id="mRH-ef-ULU"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="km5-CM-pyn"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7l4-tg-0O5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1242" y="-690"/>
         </scene>
         <!--Navigation Controller - Item-->
         <scene sceneID="fzg-SU-ofP">

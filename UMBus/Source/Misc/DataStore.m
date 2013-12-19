@@ -23,6 +23,7 @@ static NSString * kArrivalsFile = @"arrivals.txt";
 @interface DataStore ()
 
 @property (strong, nonatomic) UMNetworkingSession *networkingSession;
+@property (strong, nonatomic) NSDictionary *arrivalsDictionary;
 
 @end
 
@@ -47,7 +48,6 @@ static NSString * kArrivalsFile = @"arrivals.txt";
             if (location) {
                 self.lastKnownLocation = location;
                 [self persistArray:@[location] withFileName:kLastKnownLocation];
-                NSLog(@"new loc");
             }
         }];
     }
@@ -105,6 +105,12 @@ static NSString * kArrivalsFile = @"arrivals.txt";
     [self.networkingSession fetchArrivalsWithSuccessBlock:^(NSArray *arrivals) {
         [self persistArray:arrivals withFileName:kArrivalsFile];
         self.arrivals = arrivals;
+        
+        NSMutableDictionary *mutableDictionary = [NSMutableDictionary dictionary];
+        for (Arrival *arrival in arrivals) {
+            [mutableDictionary addEntriesFromDictionary:@{arrival.id: arrival}];
+        }
+        self.arrivalsDictionary = mutableDictionary;
     } errorBlock:^(NSError *error) {
         if (errorBlock) {
             errorBlock(error);
@@ -169,6 +175,66 @@ static NSString * kArrivalsFile = @"arrivals.txt";
     }
     
     return mutableArray;
+}
+
+- (NSArray *)arrivalsContainingStopName:(NSString *)name {
+    if ([self arrivals] == nil) {
+        NSLog(@"No arrivals have been pulled yet.  Call -fetchArrivals before calling this method again.");
+        return nil;
+    }
+    
+    NSMutableArray *mutableArray = [NSMutableArray array];
+    for (Arrival *arrival in self.arrivals) {
+        for (ArrivalStop *stop in arrival.stops) {
+            if ([stop.name isEqualToString:name]) {
+                [mutableArray addObject:arrival];
+            }
+        }
+    }
+    
+    return mutableArray;
+}
+
+- (ArrivalStop *)arrivalStopForRouteID:(NSString *)routeID stopName:(NSString *)stopName {
+    for (Arrival *arrival in self.arrivals) {
+        if ([arrival.id isEqualToString:routeID]) {
+            for (ArrivalStop *arrivalStop in arrival.stops) {
+                if ([arrivalStop.name isEqualToString:stopName]) {
+                    return arrivalStop;
+                }
+            }
+        }
+    }
+    
+    return nil;
+}
+
+- (BOOL)arrivalHasBus1WithArrivalID:(NSString *)arrivalID {
+    Arrival *arrival = [self arrivalForID:arrivalID];
+    NSInteger busIndex = 0;
+    for (ArrivalStop *stop in arrival.stops) {
+        if (stop.timeOfArrival > 0) {
+            busIndex++;
+        }
+    }
+    
+    return (busIndex > 0);
+}
+
+- (BOOL)arrivalHasBus2WithArrivalID:(NSString *)arrivalID {
+    Arrival *arrival = [self arrivalForID:arrivalID];
+    NSInteger busIndex = 0;
+    for (ArrivalStop *stop in arrival.stops) {
+        if (stop.timeOfArrival2 > 0) {
+            busIndex++;
+        }
+    }
+    
+    return (busIndex > 0);
+}
+
+- (Arrival *)arrivalForID:(NSString *)arrivalID {
+    return [self.arrivalsDictionary objectForKey:arrivalID];
 }
 
 @end

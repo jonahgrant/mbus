@@ -12,6 +12,6 @@
 
 @property (strong, nonatomic) NSArray *stops;
 
-- (void)fetchStops;
+- (void)fetchData;
 
 @end
