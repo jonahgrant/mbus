@@ -43,10 +43,8 @@
     [self.tableView addSubview:self.refreshControl];
     
     [RACObserve(self.model, arrivalsServicingStop) subscribeNext:^(NSArray *arrivals) {
-        if (arrivals) {
-            if (self.refreshControl.isRefreshing) [self.refreshControl endRefreshing];
-            [self.tableView reloadData];
-        }
+        if (self.refreshControl.isRefreshing) [self.refreshControl endRefreshing];
+        [self.tableView reloadData];
     }];
     
     self.navigationItem.titleView = [[StopViewControllerTitleView alloc] initWithStop:self.model.stop];
