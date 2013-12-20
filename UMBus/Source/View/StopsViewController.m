@@ -33,8 +33,11 @@
     [self.tableView addSubview:self.refreshControl];
     
     [RACObserve(self.model, stops) subscribeNext:^(NSArray *stops) {
-        if (self.refreshControl.isRefreshing) [self.refreshControl endRefreshing];
-        [self.tableView reloadData];
+        if (self.refreshControl.isRefreshing)
+            [self.refreshControl endRefreshing];
+        
+        if (stops)
+            [self.tableView reloadData];
     }];
 }
 
