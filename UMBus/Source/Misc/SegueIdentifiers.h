@@ -9,3 +9,4 @@
 static NSString * UMSequeArrivals = @"UMSequeArrivals";
 static NSString * UMSegueRouteMap = @"UMSegueRouteMap";
 static NSString * UMSegueStop     = @"UMSegueStop";
+static NSString * UMSegueRoute    = @"UMSegueRoute";

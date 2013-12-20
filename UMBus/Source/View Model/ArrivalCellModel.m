@@ -7,6 +7,7 @@
 //
 
 #import "ArrivalCellModel.h"
+#import "DataStore.h"
 #import "ArrivalStop.h"
 #import "Arrival.h"
 
@@ -30,13 +31,17 @@
         return @"Arr";
     }
     
+    if (minutes < 0) {
+        return [NSString stringWithFormat:@"%02im ago", minutes];
+    }
+    
     return [NSString stringWithFormat:@"%02im", minutes];
 }
 
 - (NSString *)timeOfArrivalForTimeInterval:(NSTimeInterval)interval {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"hh:mm a"];
-    NSDate *date = [NSDate dateWithTimeIntervalSinceNow:interval];
+    NSDate *date = [NSDate dateWithTimeInterval:interval sinceDate:[[DataStore sharedManager] arrivalsTimestamp]];
     return [dateFormatter stringFromDate:date];
 }
 

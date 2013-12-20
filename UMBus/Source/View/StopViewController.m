@@ -165,10 +165,10 @@
         [actionSheet addButtonWithTitle:@"Notify me" handler:^ {
             NotificationManager *notificationManager = [[NotificationManager alloc] init];
             [notificationManager scheduleNotificationWithFireDate:[self.model firstArrivalDateForArrival:arrival]
-                                                          message:[NSString stringWithFormat:@"%@ is arriving at %@ in less than two minutes!", arrival.name, self.model.stop.humanName]];
+                                                          message:[NSString stringWithFormat:@"The %@ bus is arriving at %@ soon!", arrival.name, self.model.stop.humanName]];
         }];
         [actionSheet addButtonWithTitle:@"See route" handler:^ {
-            //[self performSegueWithIdentifier:UMSequeArrivals sender:self];
+            [self performSegueWithIdentifier:UMSegueRoute sender:self];
         }];
         [actionSheet addCancelButtonWithTitle:@"Dismiss" handler:NULL];
         [actionSheet showFromTabBar:self.tabBarController.tabBar];
