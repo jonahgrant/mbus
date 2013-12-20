@@ -17,7 +17,8 @@
     self = [super initWithFrame:frame];
     if (self) {
         self.model = model;
-        self.backgroundColor = [UIColor clearColor];
+        self.backgroundColor = [UIColor whiteColor];
+        self.opaque = YES;
         
         [RACObserve(self, model) subscribeNext:^(id x) {
             [self setNeedsDisplay];

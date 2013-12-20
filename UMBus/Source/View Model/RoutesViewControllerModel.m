@@ -29,11 +29,9 @@
 }
 
 - (void)fetchData {
-    if (![DataStore sharedManager].arrivals) {
-        [[DataStore sharedManager] fetchArrivalsWithErrorBlock:^(NSError *error) {
-            self.routes = self.routes;
-        }];
-    }
+    [[DataStore sharedManager] fetchArrivalsWithErrorBlock:^(NSError *error) {
+        self.routes = self.routes;
+    }];
 }
 
 @end

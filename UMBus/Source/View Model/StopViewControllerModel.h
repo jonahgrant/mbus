@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@class Stop;
+@class Stop, Arrival;
 
 @interface StopViewControllerModel : NSObject
 
@@ -18,5 +18,7 @@
 - (instancetype)initWithStop:(Stop *)stop;
 
 - (void)fetchData;
+
+- (NSDate *)firstArrivalDateForArrival:(Arrival *)arrival;
 
 @end

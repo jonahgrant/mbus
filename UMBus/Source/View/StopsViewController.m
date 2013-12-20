@@ -40,6 +40,10 @@
     }];
 }
 
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -75,9 +79,10 @@
         return cell;
     } else {
         StopCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-        
-        StopCellModel *stopCellModel = self.model.stopCellModels[indexPath.row];
-        cell.model = stopCellModel;
+        if (cell) {
+            StopCellModel *stopCellModel = self.model.stopCellModels[indexPath.row];
+            cell.model = stopCellModel;
+        }
         
         return cell;
     }

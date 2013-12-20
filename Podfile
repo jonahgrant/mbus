@@ -10,4 +10,5 @@ target "UMBus" do
     pod 'SVPulsingAnnotationView', '~> 0.3.0'
     pod 'HexColors', '~> 2.2.1'
     pod 'Fare', '~> 1.0.3'
+    pod 'GCBActionSheet', '~> 1.0.0'
 end

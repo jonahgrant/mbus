@@ -16,6 +16,7 @@
     self = [super initWithFrame:CGRectMake(0, 0, 320, 44)];
     if (self) {
         self.model = [[StopViewControllerTitleViewModel alloc] initWithStop:stop];
+        self.opaque = YES;
         
         UILabel *stopLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 5, 180, 22)];
         stopLabel.backgroundColor = [UIColor clearColor];

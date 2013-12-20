@@ -54,4 +54,8 @@
     [self dismissViewControllerAnimated:YES completion:NULL];
 }
 
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+}
+
 @end

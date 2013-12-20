@@ -15,6 +15,8 @@ typedef void (^DataStoreErrorBlock)(NSError *error);
 @interface DataStore : NSObject
 
 @property (strong, nonatomic) NSArray *arrivals, *buses, *stops, *announcements;
+@property (strong, nonatomic) NSDate *arrivalsTimestamp, *busesTimestamp, *stopsTimestamp, *announcementsTimestamp;
+
 @property (strong, nonatomic) CLLocation *lastKnownLocation;
 
 + (instancetype)sharedManager;

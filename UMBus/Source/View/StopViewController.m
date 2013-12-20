@@ -12,7 +12,13 @@
 #import "Stop.h"
 #import "StopArrivalCell.h"
 #import "StopArrivalCellModel.h"
+#import "AddressCell.h"
+#import "AddressCellModel.h"
 #import "StreetViewController.h"
+#import "GCBActionSheet.h"
+#import "Arrival.h"
+#import "Stop.h"
+#import "NotificationManager.h"
 
 @interface StopViewController ()
 
@@ -52,10 +58,14 @@
     [self.tableView deselectRowAtIndexPath:[[self.tableView indexPathsForSelectedRows] firstObject] animated:YES];
 }
 
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 2;
+    return 3;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -68,6 +78,9 @@
             return self.model.arrivalsServicingStop.count;
             break;
         case 1:
+            return 1;
+            break;
+        case 2:
             return self.cells.count;
             break;
     }
@@ -78,6 +91,8 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
         return 130;
+    } else if (indexPath.section == 1) {
+        return 80;
     }
     
     return 50;
@@ -92,7 +107,7 @@
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section {
-    if (section == 1) {
+    if (section == 2) {
         return @"The system behind MBus is under development.  Riders are encouraged to use it, but reliable and accurate information is not garunteed.";
     }
     
@@ -120,9 +135,14 @@
             
             return cell;
         }
-    }
-    
-    else if (indexPath.section == 1) {
+    } else if (indexPath.section == 1) {
+        AddressCellModel *addressCellModel = [[AddressCellModel alloc] initWithLocation:[[CLLocation alloc] initWithLatitude:self.model.stop.coordinate.latitude
+                                                                                                                   longitude:self.model.stop.coordinate.longitude]];
+        AddressCell *cell = [tableView dequeueReusableCellWithIdentifier:@"AddressCell" forIndexPath:indexPath];
+        cell.model = addressCellModel;
+        
+        return cell;
+    } else if (indexPath.section == 2) {
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"InfoCell" forIndexPath:indexPath];
         cell.textLabel.text = self.cells[indexPath.row];
         cell.textLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:17];
@@ -137,10 +157,24 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
-        //[self performSegueWithIdentifier:UMSequeArrivals sender:self];
+        [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
+        
+        Arrival *arrival = self.model.arrivalsServicingStop[indexPath.row];
+
+        GCBActionSheet *actionSheet = [[GCBActionSheet alloc] initWithTitle:arrival.name delegate:nil];
+        [actionSheet addButtonWithTitle:@"Notify me" handler:^ {
+            NotificationManager *notificationManager = [[NotificationManager alloc] init];
+            [notificationManager scheduleNotificationWithFireDate:[self.model firstArrivalDateForArrival:arrival]
+                                                          message:[NSString stringWithFormat:@"%@ is arriving at %@ in less than two minutes!", arrival.name, self.model.stop.humanName]];
+        }];
+        [actionSheet addButtonWithTitle:@"See route" handler:^ {
+            //[self performSegueWithIdentifier:UMSequeArrivals sender:self];
+        }];
+        [actionSheet addCancelButtonWithTitle:@"Dismiss" handler:NULL];
+        [actionSheet showFromTabBar:self.tabBarController.tabBar];
     }
     
-    if (indexPath.section == 1) {
+    if (indexPath.section == 2) {
         if (indexPath.row == 0) {
             NSString *address = [NSString stringWithFormat:@"http://maps.apple.com/maps?daddr=%1.6f,%1.6f&saddr=Posizione attuale", self.model.stop.coordinate.latitude, self.model.stop.coordinate.longitude];
             NSURL *url = [[NSURL alloc] initWithString:[address stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
