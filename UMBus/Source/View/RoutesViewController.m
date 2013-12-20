@@ -10,6 +10,8 @@
 #import "RoutesViewControllerModel.h"
 #import "ArrivalRouteCell.h"
 #import "ArrivalRouteCellModel.h"
+#import "RouteViewController.h"
+#import "Arrival.h"
 
 @interface RoutesViewController ()
 
@@ -40,7 +42,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [self.tableView deselectRowAtIndexPath:[[self.tableView indexPathsForSelectedRows] firstObject] animated:YES];
+    [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -99,6 +101,20 @@
     }
     
     return nil;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [self performSegueWithIdentifier:UMSegueRoute sender:self];
+}
+
+#pragma UIStoryboard
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqual:UMSegueRoute]) {
+        Arrival *arrival = self.model.routes[[self.tableView indexPathForSelectedRow].row];
+        RouteViewController *routeController = (RouteViewController *)segue.destinationViewController;
+        routeController.arrival = arrival;
+    }
 }
 
 @end

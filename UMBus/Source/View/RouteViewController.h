@@ -8,10 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@class RouteViewControllerModel;
+@class RouteViewControllerModel, Arrival;
 
 @interface RouteViewController : UITableViewController
 
+@property (strong, nonatomic) Arrival *arrival;
 @property (strong, nonatomic) RouteViewControllerModel *model;
 
 @end
