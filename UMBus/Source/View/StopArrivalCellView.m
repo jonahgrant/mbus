@@ -44,7 +44,7 @@
                                                       options:NSStringDrawingUsesLineFragmentOrigin
                                                    attributes:routeNameDictionary
                                                       context:nil].size.height;
-    CGRect routeNameRect = CGRectMake(40, x - (routeNameHeight / 2), rect.size.width - 50, routeNameHeight);
+    CGRect routeNameRect = CGRectMake(40, x - 7, rect.size.width - 50, routeNameHeight);
     
     CGContextSetFillColorWithColor(context, busRouteColor.CGColor);
     CGRect circlePoint = CGRectMake(10, x - 7, 15, 15);
@@ -78,7 +78,7 @@
                                                      attributes:arrivingInDictionary
                                                         context:nil];
     
-    CGRect arrivingInRect = CGRectMake(0, x + routeNameHeight + (arrivingInTextRec.size.height / 2) + 20, 320, arrivingInTextRec.size.height);
+    CGRect arrivingInRect = CGRectMake(0, 75, 320, arrivingInTextRec.size.height);
     
     [arrivingIn drawInRect:arrivingInRect withAttributes:arrivingInDictionary];
     
@@ -97,11 +97,10 @@
                                                     attributes:arrivingInTimeDictionary
                                                        context:nil].size.height;
     
-    CGRect arrivingInTimeRect = CGRectMake(0, x + routeNameHeight + arrivingInTimeHeight + 25, 320, arrivingInTimeHeight);
+    CGRect arrivingInTimeRect = CGRectMake(0, 90, 320, arrivingInTimeHeight);
     
     [arrivingInTime drawInRect:arrivingInTimeRect withAttributes:arrivingInTimeDictionary];
 
-    
     // Cell seperator
     CGContextSetStrokeColorWithColor(context, [UIColor colorWithRed:0.882855 green:0.882855 blue:0.882855 alpha:1.0000].CGColor);
     CGContextSetLineWidth(context, 1.0);

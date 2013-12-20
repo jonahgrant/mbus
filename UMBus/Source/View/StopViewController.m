@@ -19,6 +19,7 @@
 #import "Arrival.h"
 #import "Stop.h"
 #import "NotificationManager.h"
+#import "DataStore.h"
 
 @interface StopViewController ()
 
@@ -107,6 +108,10 @@
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section {
+    if (section == 0) {
+        return [NSString stringWithFormat:@"Last updated %@", [[DataStore sharedManager] arrivalsTimestamp]];
+    }
+    
     if (section == 2) {
         return @"The system behind MBus is under development.  Riders are encouraged to use it, but reliable and accurate information is not garunteed.";
     }
