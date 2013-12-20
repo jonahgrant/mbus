@@ -33,10 +33,8 @@
     [self.tableView addSubview:self.refreshControl];
     
     [RACObserve(self.model, routes) subscribeNext:^(NSArray *routes) {
-        if (routes) {
-            [self.tableView reloadData];
-            [self.refreshControl endRefreshing];
-        }
+        [self.tableView reloadData];
+        [self.refreshControl endRefreshing];
     }];
 }
 
@@ -63,7 +61,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (self.model.routes.count == 0) {
-        return 1;
+        return 2;
     }
     
     return self.model.routes.count;
@@ -75,15 +73,26 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (self.model.routes.count == 0) {
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"NoneCell" forIndexPath:indexPath];
-        
-        cell.textLabel.text = @"NO ROUTES OPERATING";
-        cell.textLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:17];
-        cell.textLabel.textColor = [UIColor lightGrayColor];
-        cell.textLabel.textAlignment = NSTextAlignmentCenter;
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        
-        return cell;
+        if (indexPath.row == 0) {
+            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"NoneCell" forIndexPath:indexPath];
+            
+            cell.textLabel.text = @"NO ROUTES OPERATING";
+            cell.textLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:17];
+            cell.textLabel.textColor = [UIColor lightGrayColor];
+            cell.textLabel.textAlignment = NSTextAlignmentCenter;
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            
+            return cell;
+        } else {
+            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"NoneCell" forIndexPath:indexPath];
+            
+            cell.textLabel.text = @"Call Safe Rides";
+            cell.textLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:17];
+            cell.textLabel.textColor = [UIColor blackColor];
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            
+            return cell;
+        }
     } else {
         ArrivalRouteCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
         
@@ -104,7 +113,14 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [self performSegueWithIdentifier:UMSegueRoute sender:self];
+    if (self.model.routes.count == 0) {
+        if (indexPath.row == 1) {
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"tel://7346478000"]];
+            [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
+        }
+    } else {
+        [self performSegueWithIdentifier:UMSegueRoute sender:self];
+    }
 }
 
 #pragma UIStoryboard
