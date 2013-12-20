@@ -20,9 +20,7 @@
         [self updateArrivals];
         
         [RACObserve([DataStore sharedManager], arrivals) subscribeNext:^(NSArray *arrivals) {
-            if (arrivals) {
-                [self updateArrivals];
-            }
+            [self updateArrivals];
         }];
     }
     return self;
