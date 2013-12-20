@@ -107,7 +107,7 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section {
     if (section == 0) {
-        return [NSString stringWithFormat:@"Last updated %@", [[DataStore sharedManager] arrivalsTimestamp]];
+        return [NSString stringWithFormat:@"Routes last updated %@", [self.model timeSinceRoutesRefresh]];
     }
     
     if (section == 2) {

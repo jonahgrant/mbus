@@ -105,7 +105,6 @@ static NSString * kArrivalsFile = @"arrivals.txt";
     [self.networkingSession fetchArrivalsWithSuccessBlock:^(NSArray *arrivals) {
         [self persistArray:arrivals withFileName:kArrivalsFile];
         self.arrivals = arrivals;
-        
         self.arrivalsTimestamp = [NSDate date];
         
         NSMutableDictionary *mutableDictionary = [NSMutableDictionary dictionary];
@@ -114,6 +113,7 @@ static NSString * kArrivalsFile = @"arrivals.txt";
         }
         self.arrivalsDictionary = mutableDictionary;
     } errorBlock:^(NSError *error) {
+        self.arrivalsTimestamp = [NSDate date];
         if (errorBlock) {
             errorBlock(error);
         }
@@ -127,6 +127,7 @@ static NSString * kArrivalsFile = @"arrivals.txt";
         self.buses = buses;
         self.busesTimestamp = [NSDate date];
         } errorBlock:^(NSError *error) {
+            self.busesTimestamp = [NSDate date];
           if (errorBlock) {
             errorBlock(error);
         };
@@ -140,6 +141,7 @@ static NSString * kArrivalsFile = @"arrivals.txt";
         self.stops = stops;
         self.stopsTimestamp = [NSDate date];
     } errorBlock:^(NSError *error) {
+        self.stopsTimestamp = [NSDate date];
           if (errorBlock) {
             errorBlock(error);
         };
@@ -153,6 +155,7 @@ static NSString * kArrivalsFile = @"arrivals.txt";
         self.announcements = announcements;
         self.announcementsTimestamp = [NSDate date];
     } errorBlock:^(NSError *error) {
+        self.announcementsTimestamp = [NSDate date];
           if (errorBlock) {
             errorBlock(error);
         };

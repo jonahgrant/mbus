@@ -20,5 +20,6 @@
 - (void)fetchData;
 
 - (NSDate *)firstArrivalDateForArrival:(Arrival *)arrival;
+- (NSString *)timeSinceRoutesRefresh;
 
 @end

@@ -11,6 +11,13 @@
 #import "Arrival.h"
 #import "ArrivalStop.h"
 #import "DataStore.h"
+#import "TTTTimeIntervalFormatter.h"
+
+@interface StopViewControllerModel ()
+
+@property (strong, nonatomic) TTTTimeIntervalFormatter *timeIntervalFormatter;
+
+@end
 
 @implementation StopViewControllerModel
 
@@ -19,6 +26,8 @@
         self.stop = stop;
         [self updateArrivals];
         
+        self.timeIntervalFormatter = [[TTTTimeIntervalFormatter alloc] init];
+
         [RACObserve([DataStore sharedManager], arrivals) subscribeNext:^(NSArray *arrivals) {
             [self updateArrivals];
         }];
@@ -72,6 +81,14 @@
     
     return [NSDate dateWithTimeInterval:(timeInterval > 300) ? timeInterval - 120 : timeInterval // notify two minutes before the bus arrives
                               sinceDate:[[DataStore sharedManager] arrivalsTimestamp]];
+}
+
+- (NSString *)timeSinceRoutesRefresh {
+    if (![[DataStore sharedManager] arrivalsTimestamp]) {
+        return @"never";
+    }
+    
+    return [self.timeIntervalFormatter stringForTimeInterval:[[[DataStore sharedManager] arrivalsTimestamp] timeIntervalSinceDate:[NSDate date]]];
 }
 
 @end
