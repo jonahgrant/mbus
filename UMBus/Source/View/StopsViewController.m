@@ -56,6 +56,10 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    if (self.model.stops.count == 0) {
+        return 2;
+    }
+    
     return self.model.stops.count;
 }
 
@@ -73,15 +77,25 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (self.model.stops.count == 0) {
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"NoneCell" forIndexPath:indexPath];
-        
-        cell.textLabel.text = @"NO STOPS BEING SERVICED";
-        cell.textLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:17];
-        cell.textLabel.textColor = [UIColor lightGrayColor];
-        cell.textLabel.textAlignment = NSTextAlignmentCenter;
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        
-        return cell;
+        if (indexPath.row == 0) {
+            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"NoneCell" forIndexPath:indexPath];
+            
+            cell.textLabel.text = @"NO STOPS BEING SERVICED";
+            cell.textLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:17];
+            cell.textLabel.textColor = [UIColor lightGrayColor];
+            cell.textLabel.textAlignment = NSTextAlignmentCenter;
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            
+            return cell;
+        } else {
+            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"NoneCell" forIndexPath:indexPath];
+            
+            cell.textLabel.text = @"Call Safe Rides";
+            cell.textLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:17];
+            cell.textLabel.textColor = [UIColor blackColor];
+            
+            return cell;
+        }
     } else {
         StopCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
         if (cell) {
@@ -98,7 +112,13 @@
 #pragma UITableView delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [self performSegueWithIdentifier:UMSegueStop sender:self];
+    if (self.model.stops.count == 0) {
+        if (indexPath.row == 1) {
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"tel://7346478000"]];
+        }
+    } else {
+        [self performSegueWithIdentifier:UMSegueStop sender:self];
+    }
 }
 
 #pragma UIStoryboard

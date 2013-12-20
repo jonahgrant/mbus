@@ -107,6 +107,7 @@
 }
 
 - (void)fetchData {
+    [[DataStore sharedManager] fetchArrivalsWithErrorBlock:^(NSError *error) {}];
     [[DataStore sharedManager] fetchStopsWithErrorBlock:^(NSError *error) {
         self.stops = self.stops;
     }];

@@ -162,7 +162,7 @@
         Arrival *arrival = self.model.arrivalsServicingStop[indexPath.row];
 
         GCBActionSheet *actionSheet = [[GCBActionSheet alloc] initWithTitle:arrival.name delegate:nil];
-        [actionSheet addButtonWithTitle:@"Notify me" handler:^ {
+        [actionSheet addButtonWithTitle:@"Notify before arrival" handler:^ {
             NotificationManager *notificationManager = [[NotificationManager alloc] init];
             [notificationManager scheduleNotificationWithFireDate:[self.model firstArrivalDateForArrival:arrival]
                                                           message:[NSString stringWithFormat:@"The %@ bus is arriving at %@ soon!", arrival.name, self.model.stop.humanName]];
