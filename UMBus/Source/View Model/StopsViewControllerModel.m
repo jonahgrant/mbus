@@ -24,7 +24,7 @@
         } else if ([[DataStore sharedManager] persistedStops] && ![[DataStore sharedManager] persistedLastKnownLocation]) {
             self.stops = [[DataStore sharedManager] persistedStops];
         } else {
-            self.stops = [NSArray array];
+            //self.stops = [NSArray array];
         }
         
         // handle incoming data
@@ -36,21 +36,23 @@
                 self.stops = [[DataStore sharedManager] stopsBeingServicedInArray:stops];
             } else if (([DataStore sharedManager].lastKnownLocation || [[DataStore sharedManager] persistedLastKnownLocation]) && ![DataStore sharedManager].arrivals) {
                 self.stops = [self sortedStopsByDistanceWithArray:stops location:([DataStore sharedManager].lastKnownLocation) ? [DataStore sharedManager].lastKnownLocation : [[DataStore sharedManager] persistedLastKnownLocation]];
-            } else {
+            } else if (stops) {
                 self.stops = stops;
             }
         }];
         
         [RACObserve([DataStore sharedManager], arrivals) subscribeNext:^(NSArray *arrivals) {
-            if (([DataStore sharedManager].lastKnownLocation || [[DataStore sharedManager] persistedLastKnownLocation]) &&
-                ([DataStore sharedManager].stops || [[DataStore sharedManager] persistedStops])) {
-                self.stops = [self sortedStopsByDistanceWithArray:[[DataStore sharedManager] stopsBeingServicedInArray:([DataStore sharedManager].stops) ? [DataStore sharedManager].stops : [[DataStore sharedManager] persistedStops]]
-                                                         location:([DataStore sharedManager].lastKnownLocation) ? [DataStore sharedManager].lastKnownLocation : [[DataStore sharedManager] persistedLastKnownLocation]];
-            } else if (([DataStore sharedManager].stops || [[DataStore sharedManager] persistedStops])) {
-                NSArray *array = ([DataStore sharedManager].stops) ? [DataStore sharedManager].stops : [[DataStore sharedManager] persistedStops];
-                self.stops = [[DataStore sharedManager] stopsBeingServicedInArray:array];
-            } else {
-                // if there aren't any stops on file, these arrivals are useless because we have no stops to compare them against
+            if (arrivals) {
+                if (([DataStore sharedManager].lastKnownLocation || [[DataStore sharedManager] persistedLastKnownLocation]) &&
+                    ([DataStore sharedManager].stops || [[DataStore sharedManager] persistedStops])) {
+                    self.stops = [self sortedStopsByDistanceWithArray:[[DataStore sharedManager] stopsBeingServicedInArray:([DataStore sharedManager].stops) ? [DataStore sharedManager].stops : [[DataStore sharedManager] persistedStops]]
+                                                             location:([DataStore sharedManager].lastKnownLocation) ? [DataStore sharedManager].lastKnownLocation : [[DataStore sharedManager] persistedLastKnownLocation]];
+                } else if (([DataStore sharedManager].stops || [[DataStore sharedManager] persistedStops])) {
+                    NSArray *array = [[DataStore sharedManager] stopsBeingServicedInArray:([DataStore sharedManager].stops) ? [DataStore sharedManager].stops : [[DataStore sharedManager] persistedStops]];
+                    self.stops = (array) ? array : self.stops;
+                } else {
+                    // if there aren't any stops on file, these arrivals are useless because we have no stops to compare them against
+                }
             }
         }];
         
