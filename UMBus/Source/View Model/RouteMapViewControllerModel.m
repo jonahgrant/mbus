@@ -11,6 +11,7 @@
 #import "DataStore.h"
 #import "Arrival.h"
 #import "ArrivalStop.h"
+#import "TraceRoute.h"
 #import "StopAnnotation.h"
 
 @interface RouteMapViewControllerModel ()
@@ -45,17 +46,28 @@
 - (void)fetchTraceRoute {
     if (self.arrival) {
         if ([[DataStore sharedManager] hasTraceRouteForRouteID:self.arrival.id]) {
-            self.traceRoute = [[DataStore sharedManager] traceRouteForRouteID:self.arrival.id];
+            [self createPolylineFromTraceRoute:[[DataStore sharedManager] traceRouteForRouteID:self.arrival.id]];
         } else {
             [self.networkingSession fetchTraceRouteForRouteID:self.arrival.id
                                              withSuccessBlock:^(NSArray *traceRoute) {
-                                                 self.traceRoute = traceRoute;
-                                                 [[DataStore sharedManager] persistTraceRoute:traceRoute forRouteID:self.arrival.id];
+                                                 [self createPolylineFromTraceRoute:traceRoute];
+                                                 if (traceRoute) {
+                                                     [[DataStore sharedManager] persistTraceRoute:traceRoute forRouteID:self.arrival.id];
+                                                 }
                                              } errorBlock:^(NSError *error) {
-                                                 self.traceRoute = self.traceRoute;
+                                                 self.polyline = self.polyline;
                                              }];
         }
     }
+}
+
+- (void)createPolylineFromTraceRoute:(NSArray *)traceRoute {
+    CLLocationCoordinate2D coordinates[traceRoute.count];
+    for (int i = 0; i < traceRoute.count; i++) {
+        TraceRoute *route = traceRoute[i];
+        coordinates[i] = CLLocationCoordinate2DMake([route.latitude doubleValue], [route.longitude doubleValue]);
+    }
+    self.polyline = [MKPolyline polylineWithCoordinates:coordinates count:traceRoute.count];
 }
 
 @end

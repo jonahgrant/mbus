@@ -6,14 +6,14 @@
 //  Copyright (c) 2013 Jonah Grant. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <MapKit/MapKit.h>
 
 @class Arrival;
 
 @interface RouteMapViewControllerModel : NSObject
 
 @property (strong, nonatomic) Arrival *arrival;
-@property (strong, nonatomic) NSArray *traceRoute;
+@property (strong, nonatomic) MKPolyline *polyline;
 @property (strong, nonatomic) NSDictionary *stopAnnotations;
 
 - (instancetype)initWithArrival:(Arrival *)arrival;

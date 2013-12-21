@@ -14,4 +14,6 @@
 
 - (void)fetchData;
 
+- (NSString *)footerString;
+
 @end

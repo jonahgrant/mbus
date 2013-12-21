@@ -30,22 +30,15 @@
     [self.model fetchTraceRoute];
     [self.model fetchStopAnnotations];
     
-    [RACObserve(self.model, traceRoute) subscribeNext:^(NSArray *traceRoute) {
-        if (traceRoute) {
-            NSMutableArray *locations = [NSMutableArray array];
-            for (TraceRoute *route in self.model.traceRoute) {
-                CLLocation *location = [[CLLocation alloc] initWithLatitude:[route.latitude doubleValue] longitude:[route.longitude doubleValue]];
-                [locations addObject:location];
-            }
-            [self drawPolylineWithLocations:locations];
-        }
+    [RACObserve(self.model, polyline) subscribeNext:^(MKPolyline *polyline) {
+        if (polyline)
+            [self.mapView addOverlay:polyline];
     }];
-    
+
     [RACObserve(self.model, stopAnnotations) subscribeNext:^(NSDictionary *annotations) {
         if (annotations) {
-            for (id key in annotations) {
+            for (id key in annotations)
                 [self.mapView addAnnotation:(StopAnnotation *)[annotations objectForKey:key]];
-            }
         }
     }];
     
@@ -55,6 +48,17 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self.tabBarController.tabBar setTintColor:[UIColor colorWithHexString:self.arrival.busRouteColor]];
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    [self purgeMapMemory];
+}
+
+- (void)purgeMapMemory {
+    self.mapView.mapType = MKMapTypeStandard;
+    [self.mapView removeFromSuperview];
+    self.mapView = nil;
 }
 
 - (void)didReceiveMemoryWarning {
