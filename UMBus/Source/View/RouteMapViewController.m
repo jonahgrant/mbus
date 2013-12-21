@@ -30,6 +30,8 @@
     [self.model fetchTraceRoute];
     [self.model fetchStopAnnotations];
     
+    self.title = self.model.arrival.name;
+    
     [RACObserve(self.model, polyline) subscribeNext:^(MKPolyline *polyline) {
         if (polyline)
             [self.mapView addOverlay:polyline];
