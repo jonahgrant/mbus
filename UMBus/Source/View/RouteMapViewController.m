@@ -12,6 +12,7 @@
 #import "TraceRoute.h"
 #import "Arrival.h"
 #import "HexColor.h"
+#import "StopAnnotation.h"
 
 @interface RouteMapViewController ()
 
@@ -27,6 +28,7 @@
 
     self.model = [[RouteMapViewControllerModel alloc] initWithArrival:self.arrival];
     [self.model fetchTraceRoute];
+    [self.model fetchStopAnnotations];
     
     [RACObserve(self.model, traceRoute) subscribeNext:^(NSArray *traceRoute) {
         if (traceRoute) {
@@ -36,6 +38,14 @@
                 [locations addObject:location];
             }
             [self drawPolylineWithLocations:locations];
+        }
+    }];
+    
+    [RACObserve(self.model, stopAnnotations) subscribeNext:^(NSDictionary *annotations) {
+        if (annotations) {
+            for (id key in annotations) {
+                [self.mapView addAnnotation:(StopAnnotation *)[annotations objectForKey:key]];
+            }
         }
     }];
     

@@ -10,6 +10,8 @@
 #import "UMNetworkingSession.h"
 #import "DataStore.h"
 #import "Arrival.h"
+#import "ArrivalStop.h"
+#import "StopAnnotation.h"
 
 @interface RouteMapViewControllerModel ()
 
@@ -25,6 +27,19 @@
         self.networkingSession = [[UMNetworkingSession alloc] init];
     }
     return self;
+}
+
+- (void)fetchStopAnnotations {
+    NSMutableDictionary *mutableAnnotations = [NSMutableDictionary dictionaryWithDictionary:self.stopAnnotations];
+    for (ArrivalStop *stop in self.arrival.stops) {
+        if ([self.stopAnnotations objectForKey:self.arrival.id]) {
+            [(StopAnnotation *)[mutableAnnotations objectForKey:stop.name] setCoordinate:CLLocationCoordinate2DMake([stop.latitude doubleValue], [stop.longitude doubleValue])];
+        } else {
+            StopAnnotation *annotation = [[StopAnnotation alloc] initWithArrivalStop:stop];
+            [mutableAnnotations addEntriesFromDictionary:@{stop.name : annotation}];
+        }
+    }
+    self.stopAnnotations = mutableAnnotations;
 }
 
 - (void)fetchTraceRoute {

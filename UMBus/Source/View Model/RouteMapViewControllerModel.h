@@ -14,9 +14,11 @@
 
 @property (strong, nonatomic) Arrival *arrival;
 @property (strong, nonatomic) NSArray *traceRoute;
+@property (strong, nonatomic) NSDictionary *stopAnnotations;
 
 - (instancetype)initWithArrival:(Arrival *)arrival;
 
 - (void)fetchTraceRoute;
+- (void)fetchStopAnnotations;
 
 @end
