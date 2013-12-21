@@ -20,6 +20,7 @@ static NSString * kBusesFile = @"buses.txt";
 static NSString * kAnnouncementsFile = @"announcements.txt";
 static NSString * kArrivalsFile = @"arrivals.txt";
 static NSString * kTraceRoutesFile = @"traceroutes.txt";
+static NSString * kPlacemarksFile = @"placemarks.txt";
 
 @interface DataStore ()
 
@@ -100,6 +101,10 @@ static NSString * kTraceRoutesFile = @"traceroutes.txt";
     return [self persistedObjectWithFileName:kTraceRoutesFile];
 }
 
+- (NSDictionary *)persistedPlacemarks {
+    return [self persistedObjectWithFileName:kPlacemarksFile];
+}
+
 - (CLLocation *)persistedLastKnownLocation {
     return [self persistedObjectWithFileName:kLastKnownLocation][0];
 }
@@ -110,6 +115,12 @@ static NSString * kTraceRoutesFile = @"traceroutes.txt";
     NSMutableDictionary *mutableDictionary = [NSMutableDictionary dictionaryWithDictionary:[self persistedTraceRoutes]];
     [mutableDictionary addEntriesFromDictionary:@{routeID: traceRoute}];
     [self persistObject:mutableDictionary withFileName:kTraceRoutesFile];
+}
+
+- (void)persistPlacemark:(CLPlacemark *)placemark forStopID:(NSString *)stopID {
+    NSMutableDictionary *mutableDictionary = [NSMutableDictionary dictionaryWithDictionary:[self persistedPlacemarks]];
+    [mutableDictionary addEntriesFromDictionary:@{stopID: placemark}];
+    [self persistObject:mutableDictionary withFileName:kPlacemarksFile];
 }
 
 #pragma Fetch
@@ -268,6 +279,18 @@ static NSString * kTraceRoutesFile = @"traceroutes.txt";
 
 - (NSArray *)traceRouteForRouteID:(NSString *)routeID {
     return [[self persistedTraceRoutes] objectForKey:routeID];
+}
+
+- (BOOL)hasPlacemarkForStopID:(NSString *)stopID {
+    if ([[self persistedPlacemarks] objectForKey:stopID]) {
+        return YES;
+    }
+    
+    return NO;
+}
+
+- (CLPlacemark *)placemarkForStopID:(NSString *)stopID {
+    return [[self persistedPlacemarks] objectForKey:stopID];
 }
 
 @end

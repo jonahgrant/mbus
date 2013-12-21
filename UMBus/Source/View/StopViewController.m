@@ -141,10 +141,11 @@
             return cell;
         }
     } else if (indexPath.section == 1) {
-        AddressCellModel *addressCellModel = [[AddressCellModel alloc] initWithLocation:[[CLLocation alloc] initWithLatitude:self.model.stop.coordinate.latitude
-                                                                                                                   longitude:self.model.stop.coordinate.longitude]];
+        AddressCellModel *cellModel = [[AddressCellModel alloc] initWithLocation:[[CLLocation alloc] initWithLatitude:self.model.stop.coordinate.latitude
+                                                                                                            longitude:self.model.stop.coordinate.longitude]
+                                                                          stopID:self.model.stop.id];
         AddressCell *cell = [tableView dequeueReusableCellWithIdentifier:@"AddressCell" forIndexPath:indexPath];
-        cell.model = addressCellModel;
+        cell.model = cellModel;
         
         return cell;
     } else if (indexPath.section == 2) {

@@ -31,11 +31,16 @@ typedef void (^DataStoreErrorBlock)(NSError *error);
 - (NSArray *)persistedStops;
 - (NSArray *)persistedAnnouncements;
 - (NSDictionary *)persistedTraceRoutes;
+- (NSDictionary *)persistedPlacemarks;
 - (CLLocation *)persistedLastKnownLocation;
 
 - (void)persistTraceRoute:(NSArray *)traceRoute forRouteID:(NSString *)routeID;
 - (BOOL)hasTraceRouteForRouteID:(NSString *)routeID;
 - (NSArray *)traceRouteForRouteID:(NSString *)routeID;
+
+- (void)persistPlacemark:(CLPlacemark *)placemark forStopID:(NSString *)stopID;
+- (BOOL)hasPlacemarkForStopID:(NSString *)stopID;
+- (CLPlacemark *)placemarkForStopID:(NSString *)stopID;
 
 /*
  Takes in an array of Stop objects and returns the ones that are being serviced

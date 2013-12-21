@@ -12,8 +12,9 @@
 
 @property (strong, nonatomic) CLLocation *location;
 @property (strong, nonatomic) CLPlacemark *placemark;
+@property (nonatomic, copy) NSString *stopID;
 
-- (instancetype)initWithLocation:(CLLocation *)location;
+- (instancetype)initWithLocation:(CLLocation *)location stopID:(NSString *)stopID;
 
 - (void)reverseGeocodeLocation:(CLLocation *)location;
 
