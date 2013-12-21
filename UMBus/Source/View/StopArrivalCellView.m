@@ -78,7 +78,7 @@
                                                      attributes:arrivingInDictionary
                                                         context:nil];
     
-    CGRect arrivingInRect = CGRectMake(0, 75, 320, arrivingInTextRec.size.height);
+    CGRect arrivingInRect = CGRectMake(0, 70, 320, arrivingInTextRec.size.height);
     
     [arrivingIn drawInRect:arrivingInRect withAttributes:arrivingInDictionary];
     
@@ -97,7 +97,7 @@
                                                     attributes:arrivingInTimeDictionary
                                                        context:nil].size.height;
     
-    CGRect arrivingInTimeRect = CGRectMake(0, 90, 320, arrivingInTimeHeight);
+    CGRect arrivingInTimeRect = CGRectMake(0, 85, 320, arrivingInTimeHeight);
     
     [arrivingInTime drawInRect:arrivingInTimeRect withAttributes:arrivingInTimeDictionary];
 

@@ -19,6 +19,7 @@ static NSString * kStopsFile = @"stops.txt";
 static NSString * kBusesFile = @"buses.txt";
 static NSString * kAnnouncementsFile = @"announcements.txt";
 static NSString * kArrivalsFile = @"arrivals.txt";
+static NSString * kTraceRoutesFile = @"traceroutes.txt";
 
 @interface DataStore ()
 
@@ -47,7 +48,7 @@ static NSString * kArrivalsFile = @"arrivals.txt";
         [RACObserve([LocationManager sharedManager], currentLocation) subscribeNext:^(CLLocation *location) {
             if (location) {
                 self.lastKnownLocation = location;
-                [self persistArray:@[location] withFileName:kLastKnownLocation];
+                [self persistObject:@[location] withFileName:kLastKnownLocation];
             }
         }];
     }
@@ -58,8 +59,8 @@ static NSString * kArrivalsFile = @"arrivals.txt";
     NSLog(@"Error: %@", error.localizedDescription);
 }
 
-- (void)persistArray:(NSArray *)array withFileName:(NSString *)fileName {
-    [[NSKeyedArchiver archivedDataWithRootObject:array] writeToFile:[self filePathWithName:fileName] atomically:YES];
+- (void)persistObject:(id)object withFileName:(NSString *)fileName {
+    [[NSKeyedArchiver archivedDataWithRootObject:object] writeToFile:[self filePathWithName:fileName] atomically:YES];
 }
 
 - (NSString *)filePathWithName:(NSString *)fileName {
@@ -68,42 +69,54 @@ static NSString * kArrivalsFile = @"arrivals.txt";
     return [documentsDirectory stringByAppendingPathComponent:fileName];
 }
 
-- (NSArray *)persistedArrayWithFileName:(NSString *)fileName {
+- (id)persistedObjectWithFileName:(NSString *)fileName {
     NSData *data = [NSData dataWithContentsOfFile:[self filePathWithName:fileName]];
     if (!data) {
         return nil;
     }
     
-    return [NSArray arrayWithArray:[NSKeyedUnarchiver unarchiveObjectWithData:data]];
+    return [NSKeyedUnarchiver unarchiveObjectWithData:data];
 }
 
 #pragma Properties
 
 - (NSArray *)persistedArrivals {
-    return [self persistedArrayWithFileName:kArrivalsFile];
+    return [self persistedObjectWithFileName:kArrivalsFile];
 }
 
 - (NSArray *)persistedBuses {
-    return [self persistedArrayWithFileName:kBusesFile];
+    return [self persistedObjectWithFileName:kBusesFile];
 }
 
 - (NSArray *)persistedStops {
-    return [self persistedArrayWithFileName:kStopsFile];
+    return [self persistedObjectWithFileName:kStopsFile];
 }
 
 - (NSArray *)persistedAnnouncements {
-    return [self persistedArrayWithFileName:kAnnouncementsFile];
+    return [self persistedObjectWithFileName:kAnnouncementsFile];
+}
+
+- (NSDictionary *)persistedTraceRoutes {
+    return [self persistedObjectWithFileName:kTraceRoutesFile];
 }
 
 - (CLLocation *)persistedLastKnownLocation {
-    return (CLLocation *)[self persistedArrayWithFileName:kLastKnownLocation][0];
+    return [self persistedObjectWithFileName:kLastKnownLocation][0];
+}
+
+#pragma Persisting
+
+- (void)persistTraceRoute:(NSArray *)traceRoute forRouteID:(NSString *)routeID {
+    NSMutableDictionary *mutableDictionary = [NSMutableDictionary dictionaryWithDictionary:[self persistedTraceRoutes]];
+    [mutableDictionary addEntriesFromDictionary:@{routeID: traceRoute}];
+    [self persistObject:mutableDictionary withFileName:kTraceRoutesFile];
 }
 
 #pragma Fetch
 
 - (void)fetchArrivalsWithErrorBlock:(DataStoreErrorBlock)errorBlock {
     [self.networkingSession fetchArrivalsWithSuccessBlock:^(NSArray *arrivals) {
-        [self persistArray:arrivals withFileName:kArrivalsFile];
+        [self persistObject:arrivals withFileName:kArrivalsFile];
         self.arrivals = arrivals;
         self.arrivalsTimestamp = [NSDate date];
         
@@ -123,7 +136,7 @@ static NSString * kArrivalsFile = @"arrivals.txt";
 
 - (void)fetchBusesWithErrorBlock:(DataStoreErrorBlock)errorBlock {
     [self.networkingSession fetchBusesWithSuccessBlock:^(NSArray *buses) {
-        [self persistArray:buses withFileName:kBusesFile];
+        [self persistObject:buses withFileName:kBusesFile];
         self.buses = buses;
         self.busesTimestamp = [NSDate date];
         } errorBlock:^(NSError *error) {
@@ -137,7 +150,7 @@ static NSString * kArrivalsFile = @"arrivals.txt";
 
 - (void)fetchStopsWithErrorBlock:(DataStoreErrorBlock)errorBlock {
     [self.networkingSession fetchStopsWithSuccessBlock:^(NSArray *stops) {
-        [self persistArray:stops withFileName:kStopsFile];
+        [self persistObject:stops withFileName:kStopsFile];
         self.stops = stops;
         self.stopsTimestamp = [NSDate date];
     } errorBlock:^(NSError *error) {
@@ -151,12 +164,12 @@ static NSString * kArrivalsFile = @"arrivals.txt";
 
 - (void)fetchAnnouncementsWithErrorBlock:(DataStoreErrorBlock)errorBlock {
     [self.networkingSession fetchAnnouncementsWithSuccessBlock:^(NSArray *announcements) {
-        [self persistArray:announcements withFileName:kAnnouncementsFile];
+        [self persistObject:announcements withFileName:kAnnouncementsFile];
         self.announcements = announcements;
         self.announcementsTimestamp = [NSDate date];
     } errorBlock:^(NSError *error) {
         self.announcementsTimestamp = [NSDate date];
-          if (errorBlock) {
+        if (errorBlock) {
             errorBlock(error);
         };
         [self handleError:error];
@@ -243,6 +256,18 @@ static NSString * kArrivalsFile = @"arrivals.txt";
 
 - (Arrival *)arrivalForID:(NSString *)arrivalID {
     return [self.arrivalsDictionary objectForKey:arrivalID];
+}
+
+- (BOOL)hasTraceRouteForRouteID:(NSString *)routeID {
+    if ([[self persistedTraceRoutes] objectForKey:routeID]) {
+        return YES;
+    }
+    
+    return NO;
+}
+
+- (NSArray *)traceRouteForRouteID:(NSString *)routeID {
+    return [[self persistedTraceRoutes] objectForKey:routeID];
 }
 
 @end

@@ -10,4 +10,11 @@
 
 @implementation RouteViewControllerModel
 
+- (instancetype)initWithArrival:(Arrival *)arrival {
+    if (self = [super init]) {
+        self.arrival = arrival;
+    }
+    return self;
+}
+
 @end

@@ -30,7 +30,12 @@ typedef void (^DataStoreErrorBlock)(NSError *error);
 - (NSArray *)persistedBuses;
 - (NSArray *)persistedStops;
 - (NSArray *)persistedAnnouncements;
+- (NSDictionary *)persistedTraceRoutes;
 - (CLLocation *)persistedLastKnownLocation;
+
+- (void)persistTraceRoute:(NSArray *)traceRoute forRouteID:(NSString *)routeID;
+- (BOOL)hasTraceRouteForRouteID:(NSString *)routeID;
+- (NSArray *)traceRouteForRouteID:(NSString *)routeID;
 
 /*
  Takes in an array of Stop objects and returns the ones that are being serviced

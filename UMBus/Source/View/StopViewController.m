@@ -20,6 +20,7 @@
 #import "Stop.h"
 #import "NotificationManager.h"
 #import "DataStore.h"
+#import "RouteViewController.h"
 
 @interface StopViewController ()
 
@@ -52,6 +53,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    [self.tableView reloadData];
     [self.tabBarController.tabBar setTintColor:nil];
     [self.navigationController.navigationBar setTintColor:nil];
     [self.tableView deselectRowAtIndexPath:[[self.tableView indexPathsForSelectedRows] firstObject] animated:YES];
@@ -107,7 +109,7 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section {
     if (section == 0) {
-        return [NSString stringWithFormat:@"Routes last updated %@", [self.model timeSinceRoutesRefresh]];
+        return [NSString stringWithFormat:@"Last updated %@", [self.model timeSinceRoutesRefresh]];
     }
     
     if (section == 2) {
@@ -159,9 +161,9 @@
 #pragma UITableView delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.section == 0) {
-        [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
-        
+    [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
+
+    if (indexPath.section == 0 && self.model.arrivalsServicingStop.count > 0) {
         Arrival *arrival = self.model.arrivalsServicingStop[indexPath.row];
 
         GCBActionSheet *actionSheet = [[GCBActionSheet alloc] initWithTitle:arrival.name delegate:nil];
@@ -192,5 +194,14 @@
     }
 }
 
+#pragma UIStoryboard
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqual:UMSegueRoute]) {
+        Arrival *arrival = self.model.arrivalsServicingStop[[self.tableView indexPathForSelectedRow].row];
+        RouteViewController *routeController = (RouteViewController *)segue.destinationViewController;
+        routeController.arrival = arrival;
+    }
+}
 
 @end
