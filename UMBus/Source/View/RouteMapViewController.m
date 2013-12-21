@@ -6,18 +6,23 @@
 //  Copyright (c) 2013 Jonah Grant. All rights reserved.
 //
 
-#import <MapKit/MapKit.h>
 #import "RouteMapViewController.h"
 #import "RouteMapViewControllerModel.h"
 #import "TraceRoute.h"
 #import "Arrival.h"
 #import "HexColor.h"
 #import "StopAnnotation.h"
+#import "BusAnnotation.h"
+#import "SVPulsingAnnotationView.h"
+#import "StreetViewController.h"
+#import "StopTray.h"
+#import "StopTrayModel.h"
 
 @interface RouteMapViewController ()
 
 @property (strong, nonatomic) IBOutlet MKMapView *mapView;
 @property (strong, nonatomic) MKPolyline *polyline;
+@property (strong, nonatomic) StopTray *stopTray;
 
 @end
 
@@ -29,6 +34,12 @@
     self.model = [[RouteMapViewControllerModel alloc] initWithArrival:self.arrival];
     [self.model fetchTraceRoute];
     [self.model fetchStopAnnotations];
+    
+    self.stopTray = [[StopTray alloc] initWithTintColor:[UIColor colorWithHexString:self.model.arrival.busRouteColor]];
+    self.stopTray.frame = CGRectMake(0, self.view.frame.size.height + 44, self.stopTray.frame.size.width, self.stopTray.frame.size.height);
+    self.stopTray.target = self;
+    [self.view insertSubview:self.stopTray aboveSubview:self.mapView];
+
     
     self.title = self.model.arrival.name;
     
@@ -52,11 +63,6 @@
     [self.tabBarController.tabBar setTintColor:[UIColor colorWithHexString:self.arrival.busRouteColor]];
 }
 
-- (void)viewDidDisappear:(BOOL)animated {
-    [super viewDidDisappear:animated];
-    [self purgeMapMemory];
-}
-
 - (void)purgeMapMemory {
     self.mapView.mapType = MKMapTypeStandard;
     [self.mapView removeFromSuperview];
@@ -65,6 +71,7 @@
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
+    [self purgeMapMemory];
 }
 
 #pragma Map
@@ -126,6 +133,36 @@
     [_mapView setRegion:region animated:YES];
 }
 
+- (void)displayStreetViewForAnnotation:(NSObject<MKAnnotation> *)annotation {
+    StreetViewController *streetViewController = [[StreetViewController alloc] initWithAnnotation:annotation];
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:streetViewController];
+    [self presentViewController:navigationController animated:YES completion:NULL];
+}
+
+- (void)displayTray {
+    [UIView animateWithDuration:0.5
+                     animations:^ {
+                         self.stopTray.frame = CGRectMake(0,
+                                                          self.view.frame.size.height - self.tabBarController.tabBar.frame.size.height - self.stopTray.frame.size.height,
+                                                          self.stopTray.frame.size.width,
+                                                          self.stopTray.frame.size.height);
+                     }];
+}
+
+- (void)dismissTray {
+    [UIView animateWithDuration:0.5
+                     animations:^ {
+                         self.stopTray.frame = CGRectMake(0,
+                                                          self.view.frame.size.height - self.tabBarController.tabBar.frame.size.height + self.stopTray.frame.size.height,
+                                                          self.stopTray.frame.size.width,
+                                                          self.stopTray.frame.size.height);
+                     } completion:NULL];
+}
+
+- (void)detailInformationForStopAnnotation:(StopAnnotation *)annotation {
+    [self displayTray];
+}
+
 #pragma MKMapView
 
 - (MKOverlayRenderer *)mapView:(MKMapView *)mapView rendererForOverlay:(id<MKOverlay>)overlay{
@@ -135,6 +172,38 @@
     renderer.alpha = 0.8;
     
     return renderer;
+}
+
+- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
+    if ([annotation isKindOfClass:[MKUserLocation class]]) return nil;
+    
+    if ([annotation class] == [BusAnnotation class]) {
+        SVPulsingAnnotationView *pin = [[SVPulsingAnnotationView alloc] initWithAnnotation:(BusAnnotation *)annotation reuseIdentifier:@"BusPin"];
+        pin.annotationColor = [UIColor colorWithHexString:self.model.arrival.busRouteColor];
+        
+        return pin;
+    } else if ([annotation class] == [StopAnnotation class] ) {
+        MKPinAnnotationView *pinView = [[MKPinAnnotationView alloc] initWithAnnotation:(StopAnnotation *)annotation
+                                                                       reuseIdentifier:@"Stop"];
+        pinView.canShowCallout = YES;
+        pinView.pinColor = MKPinAnnotationColorRed;
+        return pinView;
+    }
+    
+    return nil;
+}
+
+- (void)mapView:(MKMapView *)mapView didDeselectAnnotationView:(MKAnnotationView *)view {
+    [self dismissTray];
+}
+
+- (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view {
+    NSObject<MKAnnotation> *annotation = view.annotation;
+    if ([annotation class] == [StopAnnotation class]) {
+        StopAnnotation *stopAnnotation = (StopAnnotation *)annotation;
+        self.stopTray.model.stopAnnotation = stopAnnotation;
+        [self detailInformationForStopAnnotation:stopAnnotation];
+    }
 }
 
 @end

@@ -72,7 +72,7 @@
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" rowHeight="130" id="YTY-dR-Yb1" customClass="StopArrivalCell">
-                                <rect key="frame" x="0.0" y="119" width="320" height="130"/>
+                                <rect key="frame" x="0.0" y="55" width="320" height="130"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="YTY-dR-Yb1" id="0mg-su-yV0">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="129"/>
@@ -80,7 +80,7 @@
                                 </tableViewCellContentView>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="InfoCell" rowHeight="50" id="Y1U-km-G1V">
-                                <rect key="frame" x="0.0" y="249" width="320" height="50"/>
+                                <rect key="frame" x="0.0" y="185" width="320" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Y1U-km-G1V" id="77s-rv-Fyt">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
@@ -88,7 +88,7 @@
                                 </tableViewCellContentView>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="AddressCell" rowHeight="80" id="CvD-dC-vkB" customClass="AddressCell">
-                                <rect key="frame" x="0.0" y="299" width="320" height="80"/>
+                                <rect key="frame" x="0.0" y="235" width="320" height="80"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="CvD-dC-vkB" id="KOM-he-5Lk">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="79"/>
@@ -96,7 +96,7 @@
                                 </tableViewCellContentView>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="NoneCell" id="8iV-eZ-KZ4">
-                                <rect key="frame" x="0.0" y="379" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="315" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8iV-eZ-KZ4" id="LYa-p9-oc3">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -292,7 +292,7 @@
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="2L4-RT-ZqR">
-                                <rect key="frame" x="0.0" y="119" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="55" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2L4-RT-ZqR" id="bP1-ep-JZW">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -335,11 +335,12 @@
                     <navigationItem key="navigationItem" id="yEU-Lj-ZiM"/>
                     <connections>
                         <outlet property="mapView" destination="auj-pe-LiZ" id="7q6-BD-077"/>
+                        <segue destination="Nm7-h3-igH" kind="push" identifier="UMSegueStop" id="mBu-eH-a8U"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TgL-yF-UN6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1638" y="-22"/>
+            <point key="canvasLocation" x="1760" y="-22"/>
         </scene>
     </scenes>
     <resources>
@@ -354,6 +355,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="psE-gR-vRD"/>
+        <segue reference="UqJ-Af-cdY"/>
+        <segue reference="mBu-eH-a8U"/>
     </inferredMetricsTieBreakers>
 </document>

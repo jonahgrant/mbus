@@ -25,6 +25,12 @@
     self.title = @"Map";
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [self.navigationController.navigationBar setTintColor:nil];
+    [self.tabBarController.tabBar setTintColor:nil];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
