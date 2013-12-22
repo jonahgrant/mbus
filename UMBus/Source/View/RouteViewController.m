@@ -13,6 +13,7 @@
 #import "ArrivalCell.h"
 #import "ArrivalCellModel.h"
 #import "HexColor.h"
+#import "DataStore.h"
 
 @interface RouteViewController ()
 
@@ -31,7 +32,7 @@
     
     self.informationCells = @[@"Map"];
     
-    //[self.refreshControl addTarget:self.model action:@selector(fetchData) forControlEvents:UIControlEventValueChanged];
+    [self.refreshControl addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
 
     [RACObserve(self.model, sortedStops) subscribeNext:^(NSArray *stops) {
         if (stops) {
@@ -50,6 +51,16 @@
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
+}
+
+- (void)refresh {
+    [[DataStore sharedManager] fetchArrivalsWithErrorBlock:NULL];
+}
+
+#pragma UITableView data source
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {

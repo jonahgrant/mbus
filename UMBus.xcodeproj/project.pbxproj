@@ -280,7 +280,7 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		AB7D4B8F18653F5E0035D64A /* ArrivalCell */ = {
+		AB3976271866A26B00BF42CD /* ArrivalCell */ = {
 			isa = PBXGroup;
 			children = (
 				AB7D4B8918653F5A0035D64A /* ArrivalCell.h */,
@@ -316,7 +316,7 @@
 				AB7D4B9D186560A50035D64A /* StopTray.m */,
 				AB3976241866904200BF42CD /* CircleAnnotationView.h */,
 				AB3976251866904200BF42CD /* CircleAnnotationView.m */,
-				AB7D4B8F18653F5E0035D64A /* ArrivalCell */,
+				AB3976271866A26B00BF42CD /* ArrivalCell */,
 				ABABF57B1863C682006DEAF0 /* AddressCell */,
 				ABABF57118633AFA006DEAF0 /* ArrivalRouteCell */,
 				ABABF5521862D6CE006DEAF0 /* StopArrivalCell */,

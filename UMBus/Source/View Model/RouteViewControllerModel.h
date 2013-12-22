@@ -17,4 +17,7 @@
 
 - (instancetype)initWithArrival:(Arrival *)arrival;
 
+- (NSArray *)stopsOrderedByTimeOfArrivalWithStops:(NSArray *)stops;
+- (NSString *)mmssForTimeInterval:(NSTimeInterval)timeInterval;
+
 @end
