@@ -25,7 +25,6 @@
 @interface StopViewController ()
 
 @property (strong, nonatomic) NSArray *cells;
-@property (strong, nonatomic) UIRefreshControl *refreshControl;
 
 @end
 
@@ -39,9 +38,7 @@
     
     self.cells = @[@"Directions to stop", @"Street view"];
     
-    self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self.model action:@selector(fetchData) forControlEvents:UIControlEventValueChanged];
-    [self.tableView addSubview:self.refreshControl];
     
     [RACObserve(self.model, arrivalsServicingStop) subscribeNext:^(NSArray *arrivals) {
         if (self.refreshControl.isRefreshing) [self.refreshControl endRefreshing];

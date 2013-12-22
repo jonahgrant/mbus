@@ -13,12 +13,6 @@
 #import "StopCell.h"
 #import "StopCellModel.h"
 
-@interface StopsViewController ()
-
-@property (strong, nonatomic) UIRefreshControl *refreshControl;
-
-@end
-
 @implementation StopsViewController
 
 - (void)viewDidLoad {
@@ -28,9 +22,7 @@
     
     self.navigationItem.title = @"University of Michigan";
     
-    self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self.model action:@selector(fetchData) forControlEvents:UIControlEventValueChanged];
-    [self.tableView addSubview:self.refreshControl];
     
     [RACObserve(self.model, stops) subscribeNext:^(NSArray *stops) {
         if (self.refreshControl.isRefreshing)

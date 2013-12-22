@@ -11,10 +11,6 @@
 #import "DataStore.h"
 #import "Announcement.h"
 
-@interface AnnouncementsViewController ()
-
-@end
-
 @implementation AnnouncementsViewController
 
 - (void)viewDidLoad {
@@ -28,6 +24,7 @@
     }
     
     [RACObserve(self.model, announcements) subscribeNext:^(NSArray *announcements) {
+        [self.refreshControl endRefreshing];
         [self.tableView reloadData];
     }];
 }
@@ -45,6 +42,10 @@
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
+}
+
+- (IBAction)refresh:(id)sender {
+    [self.model fetchData];
 }
 
 #pragma mark - Table view data source

@@ -41,7 +41,7 @@
         return @"never";
     }
     
-    return [self.timeIntervalFormatter stringForTimeInterval:[[[DataStore sharedManager] arrivalsTimestamp] timeIntervalSinceDate:[NSDate date]]];
+    return [self.timeIntervalFormatter stringForTimeInterval:[[[DataStore sharedManager] announcementsTimestamp] timeIntervalSinceDate:[NSDate date]]];
 }
 
 - (NSString *)footerString {

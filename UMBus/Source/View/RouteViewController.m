@@ -31,6 +31,8 @@
     
     self.informationCells = @[@"Map"];
     
+    //[self.refreshControl addTarget:self.model action:@selector(fetchData) forControlEvents:UIControlEventValueChanged];
+
     [RACObserve(self.model, sortedStops) subscribeNext:^(NSArray *stops) {
         if (stops) {
             [self.tableView reloadData];

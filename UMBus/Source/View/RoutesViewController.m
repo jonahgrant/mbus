@@ -13,12 +13,6 @@
 #import "RouteViewController.h"
 #import "Arrival.h"
 
-@interface RoutesViewController ()
-
-@property (strong, nonatomic) UIRefreshControl *refreshControl;
-
-@end
-
 @implementation RoutesViewController
 
 - (void)viewDidLoad {
@@ -28,9 +22,7 @@
     
     self.model = [[RoutesViewControllerModel alloc] init];
     
-    self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self.model action:@selector(fetchData) forControlEvents:UIControlEventValueChanged];
-    [self.tableView addSubview:self.refreshControl];
     
     [RACObserve(self.model, routes) subscribeNext:^(NSArray *routes) {
         [self.tableView reloadData];

@@ -132,9 +132,9 @@ static NSString * kPlacemarksFile = @"placemarks.txt";
 
 - (void)fetchArrivalsWithErrorBlock:(DataStoreErrorBlock)errorBlock {
     [self.networkingSession fetchArrivalsWithSuccessBlock:^(NSArray *arrivals) {
+        self.arrivalsTimestamp = [NSDate date];
         [self persistObject:arrivals withFileName:kArrivalsFile];
         self.arrivals = arrivals;
-        self.arrivalsTimestamp = [NSDate date];
         
         NSMutableDictionary *mutableDictionary = [NSMutableDictionary dictionary];
         for (Arrival *arrival in arrivals) {
@@ -153,9 +153,9 @@ static NSString * kPlacemarksFile = @"placemarks.txt";
 
 - (void)fetchBusesWithErrorBlock:(DataStoreErrorBlock)errorBlock {
     [self.networkingSession fetchBusesWithSuccessBlock:^(NSArray *buses) {
+        self.busesTimestamp = [NSDate date];
         [self persistObject:buses withFileName:kBusesFile];
         self.buses = buses;
-        self.busesTimestamp = [NSDate date];
         } errorBlock:^(NSError *error) {
             self.busesTimestamp = [NSDate date];
           if (errorBlock) {
@@ -167,9 +167,9 @@ static NSString * kPlacemarksFile = @"placemarks.txt";
 
 - (void)fetchStopsWithErrorBlock:(DataStoreErrorBlock)errorBlock {
     [self.networkingSession fetchStopsWithSuccessBlock:^(NSArray *stops) {
+        self.stopsTimestamp = [NSDate date];
         [self persistObject:stops withFileName:kStopsFile];
         self.stops = stops;
-        self.stopsTimestamp = [NSDate date];
     } errorBlock:^(NSError *error) {
         self.stopsTimestamp = [NSDate date];
           if (errorBlock) {
@@ -181,9 +181,9 @@ static NSString * kPlacemarksFile = @"placemarks.txt";
 
 - (void)fetchAnnouncementsWithErrorBlock:(DataStoreErrorBlock)errorBlock {
     [self.networkingSession fetchAnnouncementsWithSuccessBlock:^(NSArray *announcements) {
+        self.announcementsTimestamp = [NSDate date];
         [self persistObject:announcements withFileName:kAnnouncementsFile];
         self.announcements = announcements;
-        self.announcementsTimestamp = [NSDate date];
     } errorBlock:^(NSError *error) {
         self.announcementsTimestamp = [NSDate date];
         if (errorBlock) {
