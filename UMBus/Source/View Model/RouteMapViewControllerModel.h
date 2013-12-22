@@ -12,13 +12,16 @@
 
 @interface RouteMapViewControllerModel : NSObject
 
+@property (nonatomic) BOOL continuouslyFetchBuses;
 @property (strong, nonatomic) Arrival *arrival;
 @property (strong, nonatomic) MKPolyline *polyline;
-@property (strong, nonatomic) NSDictionary *stopAnnotations;
+@property (strong, nonatomic) NSDictionary *stopAnnotations, *busAnnotations;
 
 - (instancetype)initWithArrival:(Arrival *)arrival;
 
 - (void)fetchTraceRoute;
 - (void)fetchStopAnnotations;
+- (void)beginFetchingBuses;
+- (void)endFetchingBuses;
 
 @end

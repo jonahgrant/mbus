@@ -44,14 +44,18 @@
     self.title = self.model.arrival.name;
     
     [RACObserve(self.model, polyline) subscribeNext:^(MKPolyline *polyline) {
-        if (polyline)
-            [self.mapView addOverlay:polyline];
+        if (polyline) [self.mapView addOverlay:polyline];
     }];
 
     [RACObserve(self.model, stopAnnotations) subscribeNext:^(NSDictionary *annotations) {
         if (annotations) {
-            for (id key in annotations)
-                [self.mapView addAnnotation:(StopAnnotation *)[annotations objectForKey:key]];
+            for (id key in annotations) [self.mapView addAnnotation:(StopAnnotation *)[annotations objectForKey:key]];
+        }
+    }];
+    
+    [RACObserve(self.model, busAnnotations) subscribeNext:^(NSDictionary *annotations) {
+        if (annotations) {
+            for (id key in annotations) [self.mapView addAnnotation:(BusAnnotation *)[annotations objectForKey:key]];
         }
     }];
     
@@ -61,6 +65,16 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self.tabBarController.tabBar setTintColor:[UIColor colorWithHexString:self.arrival.busRouteColor]];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [self.model beginFetchingBuses];
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    [self.model endFetchingBuses];
 }
 
 - (void)purgeMapMemory {
@@ -142,20 +156,24 @@
 - (void)displayTray {
     [UIView animateWithDuration:0.5
                      animations:^ {
-                         self.stopTray.frame = CGRectMake(0,
+                         self.stopTray.frame = CGRectMake(
+                                                          0,
                                                           self.view.frame.size.height - self.tabBarController.tabBar.frame.size.height - self.stopTray.frame.size.height,
                                                           self.stopTray.frame.size.width,
-                                                          self.stopTray.frame.size.height);
+                                                          self.stopTray.frame.size.height
+                                                          );
                      }];
 }
 
 - (void)dismissTray {
     [UIView animateWithDuration:0.5
                      animations:^ {
-                         self.stopTray.frame = CGRectMake(0,
+                         self.stopTray.frame = CGRectMake(
+                                                          0,
                                                           self.view.frame.size.height - self.tabBarController.tabBar.frame.size.height + self.stopTray.frame.size.height,
                                                           self.stopTray.frame.size.width,
-                                                          self.stopTray.frame.size.height);
+                                                          self.stopTray.frame.size.height
+                                                          );
                      } completion:NULL];
 }
 
@@ -178,7 +196,8 @@
     if ([annotation isKindOfClass:[MKUserLocation class]]) return nil;
     
     if ([annotation class] == [BusAnnotation class]) {
-        SVPulsingAnnotationView *pin = [[SVPulsingAnnotationView alloc] initWithAnnotation:(BusAnnotation *)annotation reuseIdentifier:@"BusPin"];
+        SVPulsingAnnotationView *pin = [[SVPulsingAnnotationView alloc] initWithAnnotation:(BusAnnotation *)annotation
+                                                                           reuseIdentifier:@"BusPin"];
         pin.annotationColor = [UIColor colorWithHexString:self.model.arrival.busRouteColor];
         
         return pin;

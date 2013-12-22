@@ -13,6 +13,8 @@
 #import "ArrivalStop.h"
 #import "TraceRoute.h"
 #import "StopAnnotation.h"
+#import "BusAnnotation.h"
+#import "Bus.h"
 
 @interface RouteMapViewControllerModel ()
 
@@ -26,6 +28,27 @@
     if (self = [super init]) {
         self.arrival = arrival;
         self.networkingSession = [[UMNetworkingSession alloc] init];
+        
+        [RACObserve([DataStore sharedManager], buses) subscribeNext:^(NSArray *buses) {
+            if (buses) {
+                NSMutableDictionary *mutableAnnotations = [NSMutableDictionary dictionaryWithDictionary:self.busAnnotations];
+                for (Bus *bus in buses) {
+                    if ([bus.routeID isEqualToString:self.arrival.id]) {
+                        if ([self.busAnnotations objectForKey:bus.id]) {
+                            [(BusAnnotation *)[mutableAnnotations objectForKey:bus.id] setCoordinate:CLLocationCoordinate2DMake([bus.latitude doubleValue], [bus.longitude doubleValue])];
+                        } else {
+                            BusAnnotation *annotation = [[BusAnnotation alloc] initWithBus:bus];
+                            [mutableAnnotations addEntriesFromDictionary:@{bus.id : annotation}];
+                        }
+                    }
+                }
+                self.busAnnotations = mutableAnnotations;
+                
+                if (self.continuouslyFetchBuses)
+                    [self fetchBuses];
+            }
+        }];
+
     }
     return self;
 }
@@ -41,6 +64,19 @@
         }
     }
     self.stopAnnotations = mutableAnnotations;
+}
+
+- (void)beginFetchingBuses {
+    self.continuouslyFetchBuses = YES;
+    [self fetchBuses];
+}
+
+- (void)endFetchingBuses {
+    self.continuouslyFetchBuses = NO;
+}
+
+- (void)fetchBuses {
+    [[DataStore sharedManager] fetchBusesWithErrorBlock:NULL];
 }
 
 - (void)fetchTraceRoute {

@@ -27,6 +27,7 @@ typedef void (^DataStoreErrorBlock)(NSError *error);
 - (void)fetchAnnouncementsWithErrorBlock:(DataStoreErrorBlock)errorBlock;
 
 - (NSArray *)persistedArrivals;
+- (NSDictionary *)persistedArrivalsDictionary;
 - (NSArray *)persistedBuses;
 - (NSArray *)persistedStops;
 - (NSArray *)persistedAnnouncements;

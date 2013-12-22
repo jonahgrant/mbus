@@ -27,6 +27,7 @@
 		AB32F9D11856B0C300FBC50D /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB32F9D01856B0C300FBC50D /* CoreData.framework */; };
 		AB32F9D31856B0C700FBC50D /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB32F9D21856B0C700FBC50D /* SystemConfiguration.framework */; };
 		AB32F9D51856B0E200FBC50D /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = AB32F9D41856B0E200FBC50D /* libz.dylib */; };
+		AB3976261866904200BF42CD /* CircleAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = AB3976251866904200BF42CD /* CircleAnnotationView.m */; };
 		AB3DF359185CD45E00942F67 /* stop-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = AB3DF357185CD45E00942F67 /* stop-icon.png */; };
 		AB3DF35A185CD45E00942F67 /* stop-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AB3DF358185CD45E00942F67 /* stop-icon@2x.png */; };
 		AB3DF35D185CDA3300942F67 /* LocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AB3DF35C185CDA3300942F67 /* LocationManager.m */; };
@@ -128,6 +129,8 @@
 		AB32F9D21856B0C700FBC50D /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		AB32F9D41856B0E200FBC50D /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		AB32F9D61856B0E900FBC50D /* libPods-UMBus-GoogleAnalytics-iOS-SDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-UMBus-GoogleAnalytics-iOS-SDK.a"; path = "Pods/build/Debug-iphoneos/libPods-UMBus-GoogleAnalytics-iOS-SDK.a"; sourceTree = "<group>"; };
+		AB3976241866904200BF42CD /* CircleAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleAnnotationView.h; sourceTree = "<group>"; };
+		AB3976251866904200BF42CD /* CircleAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleAnnotationView.m; sourceTree = "<group>"; };
 		AB3DF357185CD45E00942F67 /* stop-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stop-icon.png"; sourceTree = "<group>"; };
 		AB3DF358185CD45E00942F67 /* stop-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stop-icon@2x.png"; sourceTree = "<group>"; };
 		AB3DF35B185CDA3300942F67 /* LocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationManager.h; sourceTree = "<group>"; };
@@ -311,6 +314,8 @@
 				ABABF5571862D77A006DEAF0 /* StopViewControllerTitleView.m */,
 				AB7D4B9C186560A50035D64A /* StopTray.h */,
 				AB7D4B9D186560A50035D64A /* StopTray.m */,
+				AB3976241866904200BF42CD /* CircleAnnotationView.h */,
+				AB3976251866904200BF42CD /* CircleAnnotationView.m */,
 				AB7D4B8F18653F5E0035D64A /* ArrivalCell */,
 				ABABF57B1863C682006DEAF0 /* AddressCell */,
 				ABABF57118633AFA006DEAF0 /* ArrivalRouteCell */,
@@ -744,6 +749,7 @@
 			files = (
 				ABABF55B1862D784006DEAF0 /* StopViewControllerTitleViewModel.m in Sources */,
 				AB3DF35D185CDA3300942F67 /* LocationManager.m in Sources */,
+				AB3976261866904200BF42CD /* CircleAnnotationView.m in Sources */,
 				AB7D4B9818655CB70035D64A /* MapViewController.m in Sources */,
 				ABABF55E1862DAAA006DEAF0 /* StreetViewController.m in Sources */,
 				ABABF5451862BFF6006DEAF0 /* StopCellModel.m in Sources */,

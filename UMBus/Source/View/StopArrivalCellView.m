@@ -11,6 +11,13 @@
 #import "Arrival.h"
 #import "HexColor.h"
 
+@interface StopArrivalCellView ()
+
+@property (strong, nonatomic) UIColor *routeColor;
+@property (nonatomic, copy) NSString *arrivingInPrefix, *abbreviatedArrivalTime;
+
+@end
+
 @implementation StopArrivalCellView
 
 - (instancetype)initWithFrame:(CGRect)frame arrivalModel:(StopArrivalCellModel *)model {
@@ -21,6 +28,11 @@
         self.opaque = YES;
         
         [RACObserve(self, model) subscribeNext:^(id x) {
+            NSTimeInterval firstArrival = [self.model firstArrival];
+            self.routeColor = [UIColor colorWithHexString:self.model.arrival.busRouteColor];
+            self.arrivingInPrefix = [self.model arrivalPrefixTimeForTimeInterval:firstArrival];
+            self.abbreviatedArrivalTime = [self.model abbreviatedArrivalTimeForTimeInterval:firstArrival];
+
             [self setNeedsDisplay];
         }];
     }
@@ -35,7 +47,7 @@
     CGFloat x = 20;
     
     NSString *routeName = self.model.arrival.name;
-    UIColor *busRouteColor = [UIColor colorWithHexString:self.model.arrival.busRouteColor];
+    UIColor *busRouteColor = self.routeColor;
     
     NSDictionary *routeNameDictionary = @{ NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue" size:15],
                                            NSForegroundColorAttributeName: [UIColor blackColor]};
@@ -44,6 +56,7 @@
                                                       options:NSStringDrawingUsesLineFragmentOrigin
                                                    attributes:routeNameDictionary
                                                       context:nil].size.height;
+    
     CGRect routeNameRect = CGRectMake(40, x - 7, rect.size.width - 50, routeNameHeight);
     
     CGContextSetFillColorWithColor(context, busRouteColor.CGColor);
@@ -62,8 +75,8 @@
     
     CGContextClosePath(context);
     CGContextStrokePath(context);
-    
-    NSString *arrivingIn = [self.model arrivalPrefixTimeForTimeInterval:[self.model firstArrival]];
+
+    NSString *arrivingIn = self.arrivingInPrefix;
     
     NSMutableParagraphStyle *arrivingInParagraphStyle = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
     arrivingInParagraphStyle.lineBreakMode = NSLineBreakByTruncatingTail;
@@ -82,7 +95,7 @@
     
     [arrivingIn drawInRect:arrivingInRect withAttributes:arrivingInDictionary];
     
-    NSString *arrivingInTime = [self.model abbreviatedArrivalTimeForTimeInterval:[self.model firstArrival]];
+    NSString *arrivingInTime = self.abbreviatedArrivalTime;
     
     NSMutableParagraphStyle *arrivingInTimeParagraphStyle = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
     arrivingInTimeParagraphStyle.lineBreakMode = NSLineBreakByTruncatingTail;

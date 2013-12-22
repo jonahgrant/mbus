@@ -164,7 +164,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
 
-    if (indexPath.section == 0 && self.model.arrivalsServicingStop.count > 0) {
+    if (indexPath.section == 0) {
         Arrival *arrival = self.model.arrivalsServicingStop[indexPath.row];
 
         GCBActionSheet *actionSheet = [[GCBActionSheet alloc] initWithTitle:arrival.name delegate:nil];

@@ -19,6 +19,7 @@ static NSString * kStopsFile = @"stops.txt";
 static NSString * kBusesFile = @"buses.txt";
 static NSString * kAnnouncementsFile = @"announcements.txt";
 static NSString * kArrivalsFile = @"arrivals.txt";
+static NSString * kArrivalsDictionaryFile = @"arrivalsdictionary.txt";
 static NSString * kTraceRoutesFile = @"traceroutes.txt";
 static NSString * kPlacemarksFile = @"placemarks.txt";
 
@@ -85,6 +86,10 @@ static NSString * kPlacemarksFile = @"placemarks.txt";
     return [self persistedObjectWithFileName:kArrivalsFile];
 }
 
+- (NSDictionary *)persistedArrivalsDictionary {
+    return [self persistedObjectWithFileName:kArrivalsDictionaryFile];
+}
+
 - (NSArray *)persistedBuses {
     return [self persistedObjectWithFileName:kBusesFile];
 }
@@ -112,13 +117,13 @@ static NSString * kPlacemarksFile = @"placemarks.txt";
 #pragma Persisting
 
 - (void)persistTraceRoute:(NSArray *)traceRoute forRouteID:(NSString *)routeID {
-    NSMutableDictionary *mutableDictionary = [NSMutableDictionary dictionaryWithDictionary:[self persistedTraceRoutes]];
+    NSMutableDictionary *mutableDictionary = [NSMutableDictionary dictionaryWithDictionary:self.persistedTraceRoutes];
     [mutableDictionary addEntriesFromDictionary:@{routeID: traceRoute}];
     [self persistObject:mutableDictionary withFileName:kTraceRoutesFile];
 }
 
 - (void)persistPlacemark:(CLPlacemark *)placemark forStopID:(NSString *)stopID {
-    NSMutableDictionary *mutableDictionary = [NSMutableDictionary dictionaryWithDictionary:[self persistedPlacemarks]];
+    NSMutableDictionary *mutableDictionary = [NSMutableDictionary dictionaryWithDictionary:self.persistedPlacemarks];
     [mutableDictionary addEntriesFromDictionary:@{stopID: placemark}];
     [self persistObject:mutableDictionary withFileName:kPlacemarksFile];
 }
@@ -136,6 +141,7 @@ static NSString * kPlacemarksFile = @"placemarks.txt";
             [mutableDictionary addEntriesFromDictionary:@{arrival.id: arrival}];
         }
         self.arrivalsDictionary = mutableDictionary;
+        [self persistObject:mutableDictionary withFileName:kArrivalsDictionaryFile];
     } errorBlock:^(NSError *error) {
         self.arrivalsTimestamp = [NSDate date];
         if (errorBlock) {
@@ -266,11 +272,11 @@ static NSString * kPlacemarksFile = @"placemarks.txt";
 }
 
 - (Arrival *)arrivalForID:(NSString *)arrivalID {
-    return [self.arrivalsDictionary objectForKey:arrivalID];
+    return [self.persistedArrivalsDictionary objectForKey:arrivalID];
 }
 
 - (BOOL)hasTraceRouteForRouteID:(NSString *)routeID {
-    if ([[self persistedTraceRoutes] objectForKey:routeID]) {
+    if ([self.persistedTraceRoutes objectForKey:routeID]) {
         return YES;
     }
     
@@ -278,11 +284,11 @@ static NSString * kPlacemarksFile = @"placemarks.txt";
 }
 
 - (NSArray *)traceRouteForRouteID:(NSString *)routeID {
-    return [[self persistedTraceRoutes] objectForKey:routeID];
+    return [self.persistedTraceRoutes objectForKey:routeID];
 }
 
 - (BOOL)hasPlacemarkForStopID:(NSString *)stopID {
-    if ([[self persistedPlacemarks] objectForKey:stopID]) {
+    if ([self.persistedPlacemarks objectForKey:stopID]) {
         return YES;
     }
     
@@ -290,7 +296,7 @@ static NSString * kPlacemarksFile = @"placemarks.txt";
 }
 
 - (CLPlacemark *)placemarkForStopID:(NSString *)stopID {
-    return [[self persistedPlacemarks] objectForKey:stopID];
+    return [self.persistedPlacemarks objectForKey:stopID];
 }
 
 @end
