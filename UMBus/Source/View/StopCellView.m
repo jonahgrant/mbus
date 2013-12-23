@@ -53,8 +53,6 @@
 - (void)drawRect:(CGRect)rect {
     [super drawRect:rect];
     
-    CGContextRef context = UIGraphicsGetCurrentContext();
-
     CGFloat x = rect.size.height / 3 + 10;
     
     NSString *routeName = self.model.stop.humanName;
@@ -73,19 +71,6 @@
     CGRect subtitleRect = CGRectMake(10, x + (self.routeNameHeight / 2) + 5, rect.size.width - 50, subtitleHeight);
 
     [subtitle drawInRect:subtitleRect withAttributes:self.subtitleDictionary];
-
-    // Divider line
-    CGContextSetStrokeColorWithColor(context, [UIColor colorWithRed:0.882855 green:0.882855 blue:0.882855 alpha:1.0000].CGColor);
-    CGContextSetLineWidth(context, 1.0);
-    
-    CGContextBeginPath(context);
-    CGContextMoveToPoint(context, self.bounds.origin.x, rect.size.height);
-    CGContextAddLineToPoint(context, self.bounds.size.width, rect.size.height);
-    
-    CGContextClosePath(context);
-    CGContextStrokePath(context);
-    
-    CGContextSetRGBFillColor(context, 0,0,0,0.75);
 }
 
 @end

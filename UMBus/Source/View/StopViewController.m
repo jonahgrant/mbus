@@ -96,14 +96,6 @@
     return 50;
 }
 
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    if (section == 0) {
-        return @"Routes servicing this stop";
-    }
-    
-    return nil;
-}
-
 - (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section {
     if (section == 0) {
         return [NSString stringWithFormat:@"Last updated %@", [self.model timeSinceRoutesRefresh]];
@@ -130,9 +122,7 @@
             return cell;
         } else {
             StopArrivalCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-            
-            Arrival *arrival = self.model.arrivalsServicingStop[indexPath.row];
-            StopArrivalCellModel *arrivalCellModel = [[StopArrivalCellModel alloc] initWithArrival:arrival stop:self.model.stop];
+            StopArrivalCellModel *arrivalCellModel = self.model.arrivalsServicingStopCellModels[indexPath.row];
             cell.model = arrivalCellModel;
             
             return cell;

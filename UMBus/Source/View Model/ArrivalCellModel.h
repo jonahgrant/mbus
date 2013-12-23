@@ -14,6 +14,8 @@
 
 @property (strong, nonatomic) ArrivalStop *stop;
 @property (strong, nonatomic) Arrival *arrival;
+@property (nonatomic) NSTimeInterval firstArrival;
+@property (nonatomic, copy) NSString *firstArrivalSuffix, *firstArrivalString;
 
 - (instancetype)initWithStop:(ArrivalStop *)stop forArrival:(Arrival *)arrival;
 

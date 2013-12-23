@@ -43,25 +43,7 @@
     
     NSString *routeName = self.model.stop.name2;
     
-    NSTimeInterval toa = 0;
-    if ([[DataStore sharedManager] arrivalHasBus1WithArrivalID:self.model.arrival.id] &&
-        [[DataStore sharedManager] arrivalHasBus2WithArrivalID:self.model.arrival.id]) {
-        if (self.model.stop.timeOfArrival >= self.model.stop.timeOfArrival2) {
-            toa = self.model.stop.timeOfArrival2;
-        } else {
-            toa = self.model.stop.timeOfArrival;
-        }
-    } else if ([[DataStore sharedManager] arrivalHasBus1WithArrivalID:self.model.arrival.id] &&
-               ![[DataStore sharedManager] arrivalHasBus2WithArrivalID:self.model.arrival.id]) {
-        toa = self.model.stop.timeOfArrival;
-    } else if (![[DataStore sharedManager] arrivalHasBus1WithArrivalID:self.model.arrival.id] &&
-               [[DataStore sharedManager] arrivalHasBus2WithArrivalID:self.model.arrival.id]) {
-        toa = self.model.stop.timeOfArrival2;
-    } else {
-        toa = -1;
-    }
-    
-    NSString *routeTimeOfArrival = [self.model abbreviatedArrivalTimeForTimeInterval:toa];
+    NSString *routeTimeOfArrival = self.model.firstArrivalString;
     
     NSString *eta = [@"Bus 1 arriving at " stringByAppendingString:[self.model timeOfArrivalForTimeInterval:self.model.stop.timeOfArrival]];
 

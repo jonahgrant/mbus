@@ -14,7 +14,7 @@
 @interface StopArrivalCellView ()
 
 @property (strong, nonatomic) UIColor *routeColor;
-@property (nonatomic, copy) NSString *arrivingInPrefix, *abbreviatedArrivalTime;
+@property (nonatomic, copy) NSString *abbreviatedArrivalTime, *arrivalTimeSuffix;
 
 @end
 
@@ -28,11 +28,10 @@
         self.opaque = YES;
         
         [RACObserve(self, model) subscribeNext:^(id x) {
-            NSTimeInterval firstArrival = [self.model firstArrival];
             self.routeColor = [UIColor colorWithHexString:self.model.arrival.busRouteColor];
-            self.arrivingInPrefix = [self.model arrivalPrefixTimeForTimeInterval:firstArrival];
-            self.abbreviatedArrivalTime = [self.model abbreviatedArrivalTimeForTimeInterval:firstArrival];
-
+            self.abbreviatedArrivalTime = self.model.firstArrivalString;
+            self.arrivalTimeSuffix = self.model.firstArrivalSuffix;
+            
             [self setNeedsDisplay];
         }];
     }
@@ -47,7 +46,6 @@
     CGFloat x = 20;
     
     NSString *routeName = self.model.arrival.name;
-    UIColor *busRouteColor = self.routeColor;
     
     NSDictionary *routeNameDictionary = @{ NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue" size:15],
                                            NSForegroundColorAttributeName: [UIColor blackColor]};
@@ -57,11 +55,11 @@
                                                    attributes:routeNameDictionary
                                                       context:nil].size.height;
     
-    CGRect routeNameRect = CGRectMake(40, x - 7, rect.size.width - 50, routeNameHeight);
+    CGRect routeNameRect = CGRectMake(20, x - 7, rect.size.width - 50, routeNameHeight);
     
-    CGContextSetFillColorWithColor(context, busRouteColor.CGColor);
-    CGRect circlePoint = CGRectMake(10, x - 7, 15, 15);
-    CGContextFillEllipseInRect(context, circlePoint);
+    // Route color rect
+    CGContextSetFillColorWithColor(context, self.routeColor.CGColor);
+    CGContextFillRect(context, CGRectMake(0, 0, 10, rect.size.height));
     
     [routeName drawInRect:routeNameRect withAttributes:routeNameDictionary];
     
@@ -71,55 +69,45 @@
     
     CGContextBeginPath(context);
     CGContextMoveToPoint(context, 10, x + routeNameHeight + 5);
-    CGContextAddLineToPoint(context, self.bounds.size.width - 20, x + routeNameHeight + 5);
+    CGContextAddLineToPoint(context, self.bounds.size.width, x + routeNameHeight + 5);
     
     CGContextClosePath(context);
     CGContextStrokePath(context);
 
-    NSString *arrivingIn = self.arrivingInPrefix;
-    
-    NSMutableParagraphStyle *arrivingInParagraphStyle = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
-    arrivingInParagraphStyle.lineBreakMode = NSLineBreakByTruncatingTail;
-    arrivingInParagraphStyle.alignment = NSTextAlignmentCenter;
-    
-    NSDictionary *arrivingInDictionary = @{ NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue-Light" size:13],
-                                            NSForegroundColorAttributeName: [UIColor darkGrayColor],
-                                            NSParagraphStyleAttributeName: arrivingInParagraphStyle};
-    
-    CGRect arrivingInTextRec = [arrivingIn boundingRectWithSize:CGSizeMake(320, MAXFLOAT)
-                                                        options:NSStringDrawingUsesLineFragmentOrigin
-                                                     attributes:arrivingInDictionary
-                                                        context:nil];
-    
-    CGRect arrivingInRect = CGRectMake(0, 70, 320, arrivingInTextRec.size.height);
-    
-    [arrivingIn drawInRect:arrivingInRect withAttributes:arrivingInDictionary];
-    
     NSString *arrivingInTime = self.abbreviatedArrivalTime;
     
-    NSMutableParagraphStyle *arrivingInTimeParagraphStyle = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
-    arrivingInTimeParagraphStyle.lineBreakMode = NSLineBreakByTruncatingTail;
-    arrivingInTimeParagraphStyle.alignment = NSTextAlignmentCenter;
-
-    NSDictionary *arrivingInTimeDictionary = @{ NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue" size:17],
-                                                NSForegroundColorAttributeName: [UIColor redColor],
-                                                NSParagraphStyleAttributeName: arrivingInTimeParagraphStyle};
+    NSDictionary *arrivingInTimeDictionary = @{ NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue-UltraLight" size:70],
+                                                NSForegroundColorAttributeName: [UIColor blackColor]};
     
-    CGFloat arrivingInTimeHeight = [routeName boundingRectWithSize:CGSizeMake(rect.size.width - 50, MAXFLOAT)
-                                                       options:NSStringDrawingUsesLineFragmentOrigin
-                                                    attributes:arrivingInTimeDictionary
-                                                       context:nil].size.height;
+    CGRect arrivingInTimeHeight = [arrivingInTime boundingRectWithSize:CGSizeMake(MAXFLOAT, MAXFLOAT)
+                                                               options:NSStringDrawingUsesLineFragmentOrigin
+                                                            attributes:arrivingInTimeDictionary
+                                                               context:nil];
     
-    CGRect arrivingInTimeRect = CGRectMake(0, 85, 320, arrivingInTimeHeight);
+    CGRect arrivingInTimeRect = CGRectMake(20, 50, arrivingInTimeHeight.size.width, arrivingInTimeHeight.size.height);
     
     [arrivingInTime drawInRect:arrivingInTimeRect withAttributes:arrivingInTimeDictionary];
+    
+    NSString *arrivingInSuffix = self.arrivalTimeSuffix;
+    
+    NSDictionary *arrivingInSuffixDictionary = @{ NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue-UltraLight" size:30],
+                                                NSForegroundColorAttributeName: [UIColor grayColor]};
+    
+    CGFloat arrivingInSuffixHeight = [arrivingInSuffix boundingRectWithSize:CGSizeMake(MAXFLOAT, MAXFLOAT)
+                                                                    options:NSStringDrawingUsesLineFragmentOrigin
+                                                                 attributes:arrivingInSuffixDictionary
+                                                                    context:nil].size.height;
+    
+    CGRect arrivingInSuffixRect = CGRectMake(arrivingInTimeRect.size.width + arrivingInTimeRect.origin.x + 7, 90, 320, arrivingInSuffixHeight);
+    
+    [arrivingInSuffix drawInRect:arrivingInSuffixRect withAttributes:arrivingInSuffixDictionary];
 
     // Cell seperator
     CGContextSetStrokeColorWithColor(context, [UIColor colorWithRed:0.882855 green:0.882855 blue:0.882855 alpha:1.0000].CGColor);
     CGContextSetLineWidth(context, 1.0);
     
     CGContextBeginPath(context);
-    CGContextMoveToPoint(context, self.bounds.origin.x, rect.size.height);
+    CGContextMoveToPoint(context, 10, rect.size.height);
     CGContextAddLineToPoint(context, self.bounds.size.width, rect.size.height);
     
     CGContextClosePath(context);

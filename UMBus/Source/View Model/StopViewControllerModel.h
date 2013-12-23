@@ -13,7 +13,7 @@
 @interface StopViewControllerModel : NSObject
 
 @property (strong, nonatomic) Stop *stop;
-@property (strong, nonatomic) NSArray *arrivalsServicingStop;
+@property (strong, nonatomic) NSArray *arrivalsServicingStop, *arrivalsServicingStopCellModels;
 
 - (instancetype)initWithStop:(Stop *)stop;
 

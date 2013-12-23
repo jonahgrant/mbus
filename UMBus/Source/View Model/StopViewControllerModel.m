@@ -12,6 +12,7 @@
 #import "ArrivalStop.h"
 #import "DataStore.h"
 #import "TTTTimeIntervalFormatter.h"
+#import "StopArrivalCellModel.h"
 
 @interface StopViewControllerModel ()
 
@@ -24,8 +25,6 @@
 - (instancetype)initWithStop:(Stop *)stop {
     if (self = [super init]) {
         self.stop = stop;
-        [self updateArrivals];
-        
         self.timeIntervalFormatter = [[TTTTimeIntervalFormatter alloc] init];
 
         [RACObserve([DataStore sharedManager], arrivals) subscribeNext:^(NSArray *arrivals) {
@@ -36,7 +35,14 @@
 }
 
 - (void)updateArrivals {
-    self.arrivalsServicingStop = [[DataStore sharedManager] arrivalsContainingStopName:self.stop.uniqueName];
+    NSArray *arrivals = [[DataStore sharedManager] arrivalsContainingStopName:self.stop.uniqueName];
+    NSMutableArray *mutableArray = [NSMutableArray array];
+    for (Arrival *arrival in arrivals) {
+        StopArrivalCellModel *arrivalCellModel = [[StopArrivalCellModel alloc] initWithArrival:arrival stop:self.stop];
+        [mutableArray addObject:arrivalCellModel];
+    }
+    self.arrivalsServicingStopCellModels = mutableArray;
+    self.arrivalsServicingStop = arrivals;
 }
 
 - (void)fetchData {

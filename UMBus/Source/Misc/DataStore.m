@@ -272,7 +272,7 @@ static NSString * kPlacemarksFile = @"placemarks.txt";
 }
 
 - (Arrival *)arrivalForID:(NSString *)arrivalID {
-    return [self.persistedArrivalsDictionary objectForKey:arrivalID];
+    return [self.arrivalsDictionary objectForKey:arrivalID];
 }
 
 - (BOOL)hasTraceRouteForRouteID:(NSString *)routeID {
