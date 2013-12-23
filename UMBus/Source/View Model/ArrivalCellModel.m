@@ -22,8 +22,8 @@
     if (self = [super init]) {
         self.stop = stop;
         self.arrival = arrival;
-
-        self.arrivalStop = [[DataStore sharedManager] arrivalStopForRouteID:self.arrival.id stopName:self.stop.name2];
+        
+        self.arrivalStop = stop;
         self.firstArrival = [self firstBusArrival];
         self.firstArrivalString = [self abbreviatedArrivalTimeForTimeInterval:self.firstArrival];
     }
@@ -52,6 +52,8 @@
 
 - (NSTimeInterval)firstBusArrival {
     NSTimeInterval toa = 0;
+    NSLog(@"1: %f 2: %f", self.arrivalStop.timeOfArrival, self.arrivalStop.timeOfArrival2);
+
     if ([[DataStore sharedManager] arrivalHasBus1WithArrivalID:self.arrival.id] &&
         [[DataStore sharedManager] arrivalHasBus2WithArrivalID:self.arrival.id]) {
         if (self.arrivalStop.timeOfArrival >= self.arrivalStop.timeOfArrival2) {
