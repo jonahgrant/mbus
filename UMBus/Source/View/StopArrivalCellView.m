@@ -38,6 +38,7 @@
     return self;
 }
 
+// this is very dirty, I'm so, so sorry.
 - (void)drawRect:(CGRect)rect {
     [super drawRect:rect];
     
@@ -76,7 +77,11 @@
 
     NSString *arrivingInTime = self.abbreviatedArrivalTime;
     
-    NSDictionary *arrivingInTimeDictionary = @{ NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue-UltraLight" size:70],
+    int arrivingInTimeFontSize = ([arrivingInTime isEqualToString:@"Arriving Now"]) ? 40 : 70;
+    int arrivingInTimeY = ([arrivingInTime isEqualToString:@"Arriving Now"]) ? 80 : 50;
+
+    NSDictionary *arrivingInTimeDictionary = @{ NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue-UltraLight"
+                                                                                     size:arrivingInTimeFontSize],
                                                 NSForegroundColorAttributeName: [UIColor blackColor]};
     
     CGRect arrivingInTimeHeight = [arrivingInTime boundingRectWithSize:CGSizeMake(MAXFLOAT, MAXFLOAT)
@@ -84,7 +89,7 @@
                                                             attributes:arrivingInTimeDictionary
                                                                context:nil];
     
-    CGRect arrivingInTimeRect = CGRectMake(20, 50, arrivingInTimeHeight.size.width, arrivingInTimeHeight.size.height);
+    CGRect arrivingInTimeRect = CGRectMake(20, arrivingInTimeY, arrivingInTimeHeight.size.width, arrivingInTimeHeight.size.height);
     
     [arrivingInTime drawInRect:arrivingInTimeRect withAttributes:arrivingInTimeDictionary];
     
