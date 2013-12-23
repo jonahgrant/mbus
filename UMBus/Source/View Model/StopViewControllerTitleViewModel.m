@@ -8,7 +8,7 @@
 
 #import "StopViewControllerTitleViewModel.h"
 #import "TTTLocationFormatter.h"
-#import "LocationManager.h"
+#import "DataStore.h"
 #import "Stop.h"
 
 @interface StopViewControllerTitleViewModel ()
@@ -31,11 +31,11 @@
 }
 
 - (NSString *)distance {
-    if (![[LocationManager sharedManager] currentLocation]) {
+    if (![DataStore sharedManager].lastKnownLocation) {
         return @"Unknown distance";
     }
     
-    return [self.locationFormatter stringFromDistanceFromLocation:[[LocationManager sharedManager] currentLocation]
+    return [self.locationFormatter stringFromDistanceFromLocation:[DataStore sharedManager].lastKnownLocation
                                                        toLocation:[[CLLocation alloc] initWithLatitude:[self.stop.latitude doubleValue] longitude:[self.stop.longitude doubleValue]]];
 }
 

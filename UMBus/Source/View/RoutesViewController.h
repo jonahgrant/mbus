@@ -2,7 +2,7 @@
 //  RoutesViewController.h
 //  UMBus
 //
-//  Created by Jonah Grant on 12/7/13.
+//  Created by Jonah Grant on 12/19/13.
 //  Copyright (c) 2013 Jonah Grant. All rights reserved.
 //
 
@@ -10,7 +10,7 @@
 
 @class RoutesViewControllerModel;
 
-@interface RoutesViewController : UIViewController
+@interface RoutesViewController : UITableViewController
 
 @property (strong, nonatomic) RoutesViewControllerModel *model;
 

@@ -2,7 +2,7 @@
 //  RouteMapViewController.m
 //  UMBus
 //
-//  Created by Jonah Grant on 12/7/13.
+//  Created by Jonah Grant on 12/20/13.
 //  Copyright (c) 2013 Jonah Grant. All rights reserved.
 //
 
@@ -10,22 +10,18 @@
 #import "RouteMapViewControllerModel.h"
 #import "TraceRoute.h"
 #import "Arrival.h"
-#import "ArrivalStop.h"
 #import "HexColor.h"
-#import "Bus.h"
-#import "BusAnnotation.h"
 #import "StopAnnotation.h"
-#import "CircleAnnotationView.h"
+#import "BusAnnotation.h"
 #import "SVPulsingAnnotationView.h"
+#import "StreetViewController.h"
 #import "StopTray.h"
 #import "StopTrayModel.h"
-#import "StreetViewController.h"
 
-@interface RouteMapViewController () <MKMapViewDelegate>
+@interface RouteMapViewController ()
 
 @property (strong, nonatomic) IBOutlet MKMapView *mapView;
 @property (strong, nonatomic) MKPolyline *polyline;
-@property (strong, nonatomic) BusAnnotation *busAnnotation;
 @property (strong, nonatomic) StopTray *stopTray;
 
 @end
@@ -34,42 +30,32 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+
     self.model = [[RouteMapViewControllerModel alloc] initWithArrival:self.arrival];
     [self.model fetchTraceRoute];
-    [self.model beginBusFetching];
+    [self.model fetchStopAnnotations];
     
-    self.title = @"Route";
+    self.stopTray = [[StopTray alloc] initWithTintColor:[UIColor colorWithHexString:self.model.arrival.busRouteColor]];
+    self.stopTray.frame = CGRectMake(0, self.view.frame.size.height + 44, self.stopTray.frame.size.width, self.stopTray.frame.size.height);
+    self.stopTray.target = self;
+    [self.view insertSubview:self.stopTray aboveSubview:self.mapView];
+
     
-    _stopTray = [[StopTray alloc] initWithTintColor:[UIColor colorWithHexString:self.model.arrival.busRouteColor]];
-    _stopTray.frame = CGRectMake(0, self.view.frame.size.height + 44, _stopTray.frame.size.width, _stopTray.frame.size.height);
-    _stopTray.target = self;
-    [self.view insertSubview:_stopTray aboveSubview:self.mapView];
+    self.title = self.model.arrival.name;
     
-    [RACObserve(self.model, traceRoutes) subscribeNext:^(NSArray *traceRoute) {
-        if (traceRoute) {
-            NSMutableArray *locations = [NSMutableArray array];
-            for (TraceRoute *route in self.model.traceRoutes) {
-                CLLocation *location = [[CLLocation alloc] initWithLatitude:[route.latitude doubleValue] longitude:[route.longitude doubleValue]];
-                [locations addObject:location];
-            }
-            [self drawRouteWithLocations:locations];
+    [RACObserve(self.model, polyline) subscribeNext:^(MKPolyline *polyline) {
+        if (polyline) [self.mapView addOverlay:polyline];
+    }];
+
+    [RACObserve(self.model, stopAnnotations) subscribeNext:^(NSDictionary *annotations) {
+        if (annotations) {
+            for (id key in annotations) [self.mapView addAnnotation:(StopAnnotation *)[annotations objectForKey:key]];
         }
     }];
     
     [RACObserve(self.model, busAnnotations) subscribeNext:^(NSDictionary *annotations) {
         if (annotations) {
-            for (id key in annotations) {
-                [self.mapView addAnnotation:(BusAnnotation *)[annotations objectForKey:key]];
-            }
-        }
-    }];
-    
-    [RACObserve(self.model, stopAnnotations) subscribeNext:^(NSDictionary *annotations) {
-        if (annotations) {
-            for (id key in annotations) {
-                [self.mapView addAnnotation:(StopAnnotation *)[annotations objectForKey:key]];
-            }
+            for (id key in annotations) [self.mapView addAnnotation:(BusAnnotation *)[annotations objectForKey:key]];
         }
     }];
     
@@ -83,15 +69,21 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    [self.model beginBusFetching];
+    [self.model beginFetchingBuses];
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
-    [self.model endBusFetching];
+    [self.model endFetchingBuses];
 }
 
-- (void)drawRouteWithLocations:(NSArray *)locations {
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+}
+
+#pragma Map
+
+- (void)drawPolylineWithLocations:(NSArray *)locations {
     CLLocationCoordinate2D coordinates[locations.count];
     
     for (int i = 0; i < locations.count; i++) {
@@ -107,8 +99,10 @@
 - (void)zoom {
     if (self.polyline) {
         [self zoomToFitPolyline];
-    } else {
+    } else if (self.mapView.annotations.count >= 1) {
         [self zoomToFitAnnotations];
+    } else {
+        [self zoomToCampus];
     }
 }
 
@@ -134,6 +128,18 @@
     [self.mapView setVisibleMapRect:zoomRect animated:NO];
 }
 
+- (void)zoomToCampus {
+    MKCoordinateRegion region;
+    region.center = CLLocationCoordinate2DMake(42.282707, -83.740196);
+    
+    MKCoordinateSpan span;
+    span.latitudeDelta = 0.05;
+    span.longitudeDelta = 0.05;
+    region.span = span;
+    
+    [_mapView setRegion:region animated:YES];
+}
+
 - (void)displayStreetViewForAnnotation:(NSObject<MKAnnotation> *)annotation {
     StreetViewController *streetViewController = [[StreetViewController alloc] initWithAnnotation:annotation];
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:streetViewController];
@@ -143,20 +149,24 @@
 - (void)displayTray {
     [UIView animateWithDuration:0.5
                      animations:^ {
-                         _stopTray.frame = CGRectMake(0,
-                                                      self.view.frame.size.height - self.tabBarController.tabBar.frame.size.height - _stopTray.frame.size.height,
-                                                      _stopTray.frame.size.width,
-                                                      _stopTray.frame.size.height);
+                         self.stopTray.frame = CGRectMake(
+                                                          0,
+                                                          self.view.frame.size.height - self.tabBarController.tabBar.frame.size.height - self.stopTray.frame.size.height,
+                                                          self.stopTray.frame.size.width,
+                                                          self.stopTray.frame.size.height
+                                                          );
                      }];
 }
 
 - (void)dismissTray {
     [UIView animateWithDuration:0.5
                      animations:^ {
-                         _stopTray.frame = CGRectMake(0,
-                                                      self.view.frame.size.height - self.tabBarController.tabBar.frame.size.height + _stopTray.frame.size.height,
-                                                      _stopTray.frame.size.width,
-                                                      _stopTray.frame.size.height);
+                         self.stopTray.frame = CGRectMake(
+                                                          0,
+                                                          self.view.frame.size.height - self.tabBarController.tabBar.frame.size.height + self.stopTray.frame.size.height,
+                                                          self.stopTray.frame.size.width,
+                                                          self.stopTray.frame.size.height
+                                                          );
                      } completion:NULL];
 }
 
@@ -166,20 +176,21 @@
 
 #pragma MKMapView
 
-- (MKOverlayView *)mapView:(MKMapView *)mapView viewForOverlay:(id <MKOverlay>)overlay {
-    MKPolylineView *polylineView = [[MKPolylineView alloc] initWithPolyline:overlay];
-    polylineView.strokeColor = [UIColor colorWithHexString:self.model.arrival.busRouteColor];
-    polylineView.lineWidth = 10.0;
-    polylineView.alpha = 0.8;
+- (MKOverlayRenderer *)mapView:(MKMapView *)mapView rendererForOverlay:(id<MKOverlay>)overlay{
+    MKPolylineRenderer *renderer = [[MKPolylineRenderer alloc] initWithPolyline:overlay];
+    renderer.strokeColor = [UIColor colorWithHexString:self.model.arrival.busRouteColor];
+    renderer.lineWidth = 6.0;
+    renderer.alpha = 0.8;
     
-    return polylineView;
+    return renderer;
 }
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
     if ([annotation isKindOfClass:[MKUserLocation class]]) return nil;
     
     if ([annotation class] == [BusAnnotation class]) {
-        SVPulsingAnnotationView *pin = [[SVPulsingAnnotationView alloc] initWithAnnotation:(BusAnnotation *)annotation reuseIdentifier:@"BusPin"];
+        SVPulsingAnnotationView *pin = [[SVPulsingAnnotationView alloc] initWithAnnotation:(BusAnnotation *)annotation
+                                                                           reuseIdentifier:@"BusPin"];
         pin.annotationColor = [UIColor colorWithHexString:self.model.arrival.busRouteColor];
         
         return pin;
@@ -188,7 +199,6 @@
                                                                        reuseIdentifier:@"Stop"];
         pinView.canShowCallout = YES;
         pinView.pinColor = MKPinAnnotationColorRed;
-        
         return pinView;
     }
     
@@ -203,7 +213,7 @@
     NSObject<MKAnnotation> *annotation = view.annotation;
     if ([annotation class] == [StopAnnotation class]) {
         StopAnnotation *stopAnnotation = (StopAnnotation *)annotation;
-        _stopTray.model.stopAnnotation = stopAnnotation;
+        self.stopTray.model.stopAnnotation = stopAnnotation;
         [self detailInformationForStopAnnotation:stopAnnotation];
     }
 }

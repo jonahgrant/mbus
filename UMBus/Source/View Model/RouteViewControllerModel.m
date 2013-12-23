@@ -1,23 +1,17 @@
 //
-//  ArrivalsViewControllerModel.m
+//  RouteViewControllerModel.m
 //  UMBus
 //
-//  Created by Jonah Grant on 12/7/13.
+//  Created by Jonah Grant on 12/19/13.
 //  Copyright (c) 2013 Jonah Grant. All rights reserved.
 //
 
-#import "ArrivalsViewControllerModel.h"
+#import "RouteViewControllerModel.h"
 #import "Arrival.h"
 #import "ArrivalStop.h"
 #import "DataStore.h"
 
-@interface ArrivalsViewControllerModel ()
-
-@property (strong, nonatomic) NSArray *arrivals;
-
-@end
-
-@implementation ArrivalsViewControllerModel
+@implementation RouteViewControllerModel
 
 - (instancetype)initWithArrival:(Arrival *)arrival {
     if (self = [super init]) {
@@ -26,7 +20,7 @@
         [RACObserve([DataStore sharedManager], arrivals) subscribeNext:^(NSArray *arrivals) {
             if (arrivals) {
                 Arrival *arrival = [[DataStore sharedManager] arrivalForID:self.arrival.id];
-                self.sortedArrivalStops = [self stopsOrderedByTimeOfArrivalWithStops:arrival.stops];
+                self.sortedStops = [self stopsOrderedByTimeOfArrivalWithStops:arrival.stops];
             }
         }];
     }
@@ -34,7 +28,7 @@
 }
 
 - (NSArray *)stopsOrderedByTimeOfArrivalWithStops:(NSArray *)stops {
-     return [stops sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+    return [stops sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
         ArrivalStop *a = obj1;
         ArrivalStop *b = obj2;
         
@@ -51,5 +45,6 @@
 - (NSString *)mmssForTimeInterval:(NSTimeInterval)timeInterval {
     return [NSString stringWithFormat:@"%02i:%02i", ((NSInteger)timeInterval / 60) % 60, (NSInteger)timeInterval % 60];
 }
+
 
 @end

@@ -2,7 +2,7 @@
 //  AnnouncementsViewController.m
 //  UMBus
 //
-//  Created by Jonah Grant on 12/8/13.
+//  Created by Jonah Grant on 12/20/13.
 //  Copyright (c) 2013 Jonah Grant. All rights reserved.
 //
 
@@ -11,102 +11,80 @@
 #import "DataStore.h"
 #import "Announcement.h"
 
-@interface AnnouncementsViewController () <UITableViewDataSource, UITableViewDelegate>
-
-@property (strong, nonatomic) IBOutlet UITableView *tableView;
-@property (strong, nonatomic) UIRefreshControl *refreshControl;
-
-@end
-
 @implementation AnnouncementsViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    self.navigationItem.title = @"University of Michigan";
-    
     self.model = [[AnnouncementsViewControllerModel alloc] init];
-    [self.model fetchAnnouncements];
+    self.title = @"Announcements";
     
-    self.refreshControl = [[UIRefreshControl alloc] init];
-    [self.refreshControl addTarget:self.model action:@selector(fetchAnnouncements) forControlEvents:UIControlEventValueChanged];
-    [self.tableView addSubview:self.refreshControl];
+    if (![DataStore sharedManager].announcements) {
+        [self.model fetchData];
+    }
     
-    [RACObserve([DataStore sharedManager], announcements) subscribeNext:^(NSArray *announcements) {
-        if (announcements) {
-            [self.refreshControl endRefreshing];
-            [self.tableView reloadData];
-        } else {
-            self.tableView.separatorStyle = UITableViewCellSelectionStyleNone;
-        }
-    }];
-    
-    [RACObserve(self.model, fetchAnnouncementsError) subscribeNext:^(NSError *error) {
+    [RACObserve(self.model, announcements) subscribeNext:^(NSArray *announcements) {
         [self.refreshControl endRefreshing];
+        [self.tableView reloadData];
     }];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    [self.tableView reloadData];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
     [self.navigationController.navigationBar setTintColor:nil];
     [self.tabBarController.tabBar setTintColor:nil];
 }
 
-#pragma UITableView data source
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+}
+
+- (IBAction)refresh:(id)sender {
+    [self.model fetchData];
+}
+
+#pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if ([[DataStore sharedManager] announcements].count > 0) {
-        return [[DataStore sharedManager] announcements].count;
-    }
-
-    return 1;
+    return self.model.announcements.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if ([[DataStore sharedManager] announcements].count > 0) {
-        Announcement *announcement = [[DataStore sharedManager] announcements][indexPath.row];
-        return [announcement.text boundingRectWithSize:CGSizeMake(320, MAXFLOAT)
-                                               options:NSStringDrawingUsesLineFragmentOrigin
-                                            attributes:@{ NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue-Light" size:17],
-                                                          NSForegroundColorAttributeName: [UIColor lightGrayColor]}
-                                               context:nil].size.height + 80;
-    }
-    
-    return self.view.frame.size.height / 2;
+    return [self.model heightForAnnouncement:[DataStore sharedManager].announcements[indexPath.row]
+                                       width:self.view.frame.size.width
+                                        font:[UIFont fontWithName:@"HelveticaNeue" size:14]];
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    return [self.model headerString];
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section {
+    return [self.model footerString];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if ([[DataStore sharedManager] announcements].count > 0) {
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-        
-        Announcement *announcement = [[DataStore sharedManager] announcements][indexPath.row];
-        cell.textLabel.text = announcement.text;
-        cell.textLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:17];
-        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-        
-        return cell;
-    }
+    static NSString *CellIdentifier = @"Cell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+    Announcement *announcement = [DataStore sharedManager].announcements[indexPath.row];
     
-    cell.textLabel.text = @"NO ANNOUNCEMENTS AT THIS TIME";
+    cell.textLabel.text = announcement.text;
     cell.textLabel.numberOfLines = 0;
-    cell.textLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:17];
-    cell.textLabel.textColor = [UIColor lightGrayColor];
-    cell.textLabel.textAlignment = NSTextAlignmentCenter;
+    cell.textLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:14];
+    cell.textLabel.textColor = [UIColor blackColor];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     return cell;
-}
-
-#pragma UITableView delegate
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-   
 }
 
 @end

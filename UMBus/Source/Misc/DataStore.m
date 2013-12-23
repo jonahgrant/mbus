@@ -8,14 +8,25 @@
 
 #import "DataStore.h"
 #import "UMNetworkingSession.h"
+#import "LocationManager.h"
 #import "Arrival.h"
 #import "ArrivalStop.h"
 #import "Bus.h"
 #import "Stop.h"
 
+static NSString * kLastKnownLocation = @"lastKnownLocation.txt";
+static NSString * kStopsFile = @"stops.txt";
+static NSString * kBusesFile = @"buses.txt";
+static NSString * kAnnouncementsFile = @"announcements.txt";
+static NSString * kArrivalsFile = @"arrivals.txt";
+static NSString * kArrivalsDictionaryFile = @"arrivalsdictionary.txt";
+static NSString * kTraceRoutesFile = @"traceroutes.txt";
+static NSString * kPlacemarksFile = @"placemarks.txt";
+
 @interface DataStore ()
 
 @property (strong, nonatomic) UMNetworkingSession *networkingSession;
+@property (strong, nonatomic) NSDictionary *arrivalsDictionary;
 
 @end
 
@@ -35,6 +46,13 @@
 - (instancetype)init {
     if (self = [super init]) {
         _networkingSession = [[UMNetworkingSession alloc] init];
+        
+        [RACObserve([LocationManager sharedManager], currentLocation) subscribeNext:^(CLLocation *location) {
+            if (location) {
+                self.lastKnownLocation = location;
+                [self persistObject:@[location] withFileName:kLastKnownLocation];
+            }
+        }];
     }
     return self;
 }
@@ -43,18 +61,89 @@
     NSLog(@"Error: %@", error.localizedDescription);
 }
 
+- (void)persistObject:(id)object withFileName:(NSString *)fileName {
+    [[NSKeyedArchiver archivedDataWithRootObject:object] writeToFile:[self filePathWithName:fileName] atomically:YES];
+}
+
+- (NSString *)filePathWithName:(NSString *)fileName {
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    return [documentsDirectory stringByAppendingPathComponent:fileName];
+}
+
+- (id)persistedObjectWithFileName:(NSString *)fileName {
+    NSData *data = [NSData dataWithContentsOfFile:[self filePathWithName:fileName]];
+    if (!data) {
+        return nil;
+    }
+    
+    return [NSKeyedUnarchiver unarchiveObjectWithData:data];
+}
+
+#pragma Properties
+
+- (NSArray *)persistedArrivals {
+    return [self persistedObjectWithFileName:kArrivalsFile];
+}
+
+- (NSDictionary *)persistedArrivalsDictionary {
+    return [self persistedObjectWithFileName:kArrivalsDictionaryFile];
+}
+
+- (NSArray *)persistedBuses {
+    return [self persistedObjectWithFileName:kBusesFile];
+}
+
+- (NSArray *)persistedStops {
+    return [self persistedObjectWithFileName:kStopsFile];
+}
+
+- (NSArray *)persistedAnnouncements {
+    return [self persistedObjectWithFileName:kAnnouncementsFile];
+}
+
+- (NSDictionary *)persistedTraceRoutes {
+    return [self persistedObjectWithFileName:kTraceRoutesFile];
+}
+
+- (NSDictionary *)persistedPlacemarks {
+    return [self persistedObjectWithFileName:kPlacemarksFile];
+}
+
+- (CLLocation *)persistedLastKnownLocation {
+    return [self persistedObjectWithFileName:kLastKnownLocation][0];
+}
+
+#pragma Persisting
+
+- (void)persistTraceRoute:(NSArray *)traceRoute forRouteID:(NSString *)routeID {
+    NSMutableDictionary *mutableDictionary = [NSMutableDictionary dictionaryWithDictionary:self.persistedTraceRoutes];
+    [mutableDictionary addEntriesFromDictionary:@{routeID: traceRoute}];
+    [self persistObject:mutableDictionary withFileName:kTraceRoutesFile];
+}
+
+- (void)persistPlacemark:(CLPlacemark *)placemark forStopID:(NSString *)stopID {
+    NSMutableDictionary *mutableDictionary = [NSMutableDictionary dictionaryWithDictionary:self.persistedPlacemarks];
+    [mutableDictionary addEntriesFromDictionary:@{stopID: placemark}];
+    [self persistObject:mutableDictionary withFileName:kPlacemarksFile];
+}
+
 #pragma Fetch
 
 - (void)fetchArrivalsWithErrorBlock:(DataStoreErrorBlock)errorBlock {
     [self.networkingSession fetchArrivalsWithSuccessBlock:^(NSArray *arrivals) {
+        self.arrivalsTimestamp = [NSDate date];
+        [self persistObject:arrivals withFileName:kArrivalsFile];
         self.arrivals = arrivals;
-
+        
         NSMutableDictionary *mutableDictionary = [NSMutableDictionary dictionary];
         for (Arrival *arrival in arrivals) {
             [mutableDictionary addEntriesFromDictionary:@{arrival.id: arrival}];
         }
         self.arrivalsDictionary = mutableDictionary;
+        [self persistObject:mutableDictionary withFileName:kArrivalsDictionaryFile];
     } errorBlock:^(NSError *error) {
+        self.arrivalsTimestamp = [NSDate date];
         if (errorBlock) {
             errorBlock(error);
         }
@@ -64,14 +153,11 @@
 
 - (void)fetchBusesWithErrorBlock:(DataStoreErrorBlock)errorBlock {
     [self.networkingSession fetchBusesWithSuccessBlock:^(NSArray *buses) {
+        self.busesTimestamp = [NSDate date];
+        [self persistObject:buses withFileName:kBusesFile];
         self.buses = buses;
-        
-        NSMutableDictionary *mutableDictionary = [NSMutableDictionary dictionary];
-        for (Bus *bus in buses) {
-            [mutableDictionary addEntriesFromDictionary:@{bus.routeID: bus}];
-        }
-        self.busesForRoutesDictionary = mutableDictionary;
-    } errorBlock:^(NSError *error) {
+        } errorBlock:^(NSError *error) {
+            self.busesTimestamp = [NSDate date];
           if (errorBlock) {
             errorBlock(error);
         };
@@ -81,8 +167,11 @@
 
 - (void)fetchStopsWithErrorBlock:(DataStoreErrorBlock)errorBlock {
     [self.networkingSession fetchStopsWithSuccessBlock:^(NSArray *stops) {
+        self.stopsTimestamp = [NSDate date];
+        [self persistObject:stops withFileName:kStopsFile];
         self.stops = stops;
     } errorBlock:^(NSError *error) {
+        self.stopsTimestamp = [NSDate date];
           if (errorBlock) {
             errorBlock(error);
         };
@@ -92,23 +181,56 @@
 
 - (void)fetchAnnouncementsWithErrorBlock:(DataStoreErrorBlock)errorBlock {
     [self.networkingSession fetchAnnouncementsWithSuccessBlock:^(NSArray *announcements) {
+        self.announcementsTimestamp = [NSDate date];
+        [self persistObject:announcements withFileName:kAnnouncementsFile];
         self.announcements = announcements;
     } errorBlock:^(NSError *error) {
-          if (errorBlock) {
+        self.announcementsTimestamp = [NSDate date];
+        if (errorBlock) {
             errorBlock(error);
         };
         [self handleError:error];
     }];
 }
 
-#pragma 
+#pragma mark -
 
-- (Arrival *)arrivalForID:(NSString *)arrivalID {
-    return [self.arrivalsDictionary objectForKey:arrivalID];
+- (NSArray *)stopsBeingServicedInArray:(NSArray *)stops {
+    if ([self arrivals] == nil) {
+        NSLog(@"No arrivals have been pulled yet.  Call -fetchArrivals before calling this method again.");
+        return nil;
+    }
+    
+    NSMutableArray *mutableArray = [NSMutableArray array];
+    for (Stop *stop in stops) {
+        for (Arrival *arrival in self.arrivals) {
+            for (ArrivalStop *arrivalStop in arrival.stops) {
+                if ([arrivalStop.name isEqualToString:stop.uniqueName] && ![mutableArray containsObject:stop]) {
+                    [mutableArray addObject:stop];
+                }
+            }
+        }
+    }
+    
+    return mutableArray;
 }
 
-- (Bus *)busOperatingRouteID:(NSString *)routeID {
-    return [self.busesForRoutesDictionary objectForKey:routeID];
+- (NSArray *)arrivalsContainingStopName:(NSString *)name {
+    if ([self arrivals] == nil) {
+        NSLog(@"No arrivals have been pulled yet.  Call -fetchArrivals before calling this method again.");
+        return nil;
+    }
+    
+    NSMutableArray *mutableArray = [NSMutableArray array];
+    for (Arrival *arrival in self.arrivals) {
+        for (ArrivalStop *stop in arrival.stops) {
+            if ([stop.name isEqualToString:name]) {
+                [mutableArray addObject:arrival];
+            }
+        }
+    }
+    
+    return mutableArray;
 }
 
 - (ArrivalStop *)arrivalStopForRouteID:(NSString *)routeID stopName:(NSString *)stopName {
@@ -123,57 +245,6 @@
     }
     
     return nil;
-}
-
-- (NSArray *)arrivalStopsForStopID:(NSString *)stopID {
-    if ([self arrivals] == nil) {
-        NSLog(@"No arrivals have been pulled yet.  Call -fetchArrivals before calling this method again.");
-        return nil;
-    }
-    
-    NSMutableArray *mutableArray = [NSMutableArray array];
-    for (Arrival *arrival in self.arrivals) {
-        for (ArrivalStop *stop in arrival.stops) {
-            if ([stop.id1 isEqualToString:stopID]) {
-                [mutableArray addObject:stop];
-            }
-        }
-    }
-    
-    return mutableArray;
-}
-
-- (NSArray *)arrivalsContainingStopName:(NSString *)stopName {
-    if ([self arrivals] == nil) {
-        NSLog(@"No arrivals have been pulled yet.  Call -fetchArrivals before calling this method again.");
-        return nil;
-    }
-    
-    NSMutableArray *mutableArray = [NSMutableArray array];
-    for (Arrival *arrival in self.arrivals) {
-        for (ArrivalStop *stop in arrival.stops) {
-            if ([stop.name isEqualToString:stopName]) {
-                [mutableArray addObject:arrival];
-            }
-        }
-    }
-    
-    return mutableArray;
-}
-
-- (NSArray *)allArrivalStops {
-    if ([self arrivals] == nil) {
-        NSLog(@"No arrivals have been pulled yet.  Call -fetchArrivals before calling this method again.");
-        return nil;
-    }
-    
-    NSMutableArray *mutableArray = [NSMutableArray array];
-    for (Arrival *arrival in self.arrivals) {
-        for (ArrivalStop *stop in arrival.stops) {
-            [mutableArray addObject:stop];
-        }
-    }
-    return mutableArray;
 }
 
 - (BOOL)arrivalHasBus1WithArrivalID:(NSString *)arrivalID {
@@ -200,24 +271,32 @@
     return (busIndex > 0);
 }
 
-- (NSArray *)stopsBeingServiced {
-    if ([self arrivals] == nil) {
-        NSLog(@"No arrivals have been pulled yet.  Call -fetchArrivals before calling this method again.");
-        return nil;
+- (Arrival *)arrivalForID:(NSString *)arrivalID {
+    return [self.arrivalsDictionary objectForKey:arrivalID];
+}
+
+- (BOOL)hasTraceRouteForRouteID:(NSString *)routeID {
+    if ([self.persistedTraceRoutes objectForKey:routeID]) {
+        return YES;
     }
     
-    NSMutableArray *mutableArray = [NSMutableArray array];
-    for (Stop *stop in self.stops) {
-        for (Arrival *arrival in self.arrivals) {
-            for (ArrivalStop *arrivalStop in arrival.stops) {
-                if ([arrivalStop.name isEqualToString:stop.uniqueName] && ![mutableArray containsObject:stop]) {
-                    [mutableArray addObject:stop];
-                }
-            }
-        }
+    return NO;
+}
+
+- (NSArray *)traceRouteForRouteID:(NSString *)routeID {
+    return [self.persistedTraceRoutes objectForKey:routeID];
+}
+
+- (BOOL)hasPlacemarkForStopID:(NSString *)stopID {
+    if ([self.persistedPlacemarks objectForKey:stopID]) {
+        return YES;
     }
     
-    return mutableArray;
+    return NO;
+}
+
+- (CLPlacemark *)placemarkForStopID:(NSString *)stopID {
+    return [self.persistedPlacemarks objectForKey:stopID];
 }
 
 @end

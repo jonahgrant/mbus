@@ -18,6 +18,9 @@
     if (self = [super init]) {
         self.stop = stop;
         self.arrival = arrival;
+        self.firstArrival = [self firstBusArrival];
+        self.firstArrivalSuffix = [self arrivalSuffixTimeForTimeInterval:self.firstArrival];
+        self.firstArrivalString = [self abbreviatedArrivalTimeForTimeInterval:self.firstArrival];
     }
     return self;
 }
@@ -28,31 +31,35 @@
 
 - (NSString *)abbreviatedArrivalTimeForTimeInterval:(NSTimeInterval)timeInterval {
     if (timeInterval == -1) {
-        return @"unknown time";
-    }
-    
-    int minutes = ((NSInteger)timeInterval / 60) % 60;
-    if (minutes == 00) {
-        return @"now";
-    }
-    
-    return [NSString stringWithFormat:@"%02i minutes", minutes];
-}
-
-- (NSString *)arrivalPrefixTimeForTimeInterval:(NSTimeInterval)timeInterval {
-    if (timeInterval == -1) {
         return @"--";
     }
     
     int minutes = ((NSInteger)timeInterval / 60) % 60;
     if (minutes == 00) {
-        return @"Arriving";
+        return @"Arriving Now";
     }
     
-    return @"Arriving in";
+    return [NSString stringWithFormat:@"%02i", minutes];
 }
 
-- (NSTimeInterval)firstArrival {
+- (NSString *)arrivalSuffixTimeForTimeInterval:(NSTimeInterval)timeInterval {
+    if (timeInterval == -1) {
+        return @"";
+    }
+    
+    int minutes = ((NSInteger)timeInterval / 60) % 60;
+    if (minutes == 00) {
+        return @"";
+    }
+    
+    if (timeInterval > 60) {
+        return @"minutes";
+    }
+
+    return @"minute";
+}
+
+- (NSTimeInterval)firstBusArrival {
     NSTimeInterval toa = 0;
     if ([[DataStore sharedManager] arrivalHasBus1WithArrivalID:self.arrival.id] &&
         [[DataStore sharedManager] arrivalHasBus2WithArrivalID:self.arrival.id]) {

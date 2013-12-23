@@ -10,15 +10,40 @@
 #import "StopCellModel.h"
 #import "Stop.h"
 
+@interface StopCellView ()
+
+@property (nonatomic) CGFloat routeNameHeight, subtitleHeight;
+@property (strong, nonatomic) NSDictionary *subtitleDictionary, *routeNameDictionary;
+
+@end
+
 @implementation StopCellView
 
 - (instancetype)initWithFrame:(CGRect)frame arrivalModel:(StopCellModel *)model {
     self = [super initWithFrame:frame];
     if (self) {
         self.model = model;
-        self.backgroundColor = [UIColor clearColor];
+        self.backgroundColor = [UIColor whiteColor];
+        self.opaque = YES;
         
+        self.subtitleDictionary = @{ NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue-Light" size:14],
+                                     NSForegroundColorAttributeName: [UIColor lightGrayColor]};
+
+        self.routeNameDictionary = @{ NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue-Light" size:17],
+                                      NSForegroundColorAttributeName: [UIColor blackColor]};
+
         [RACObserve(self, model) subscribeNext:^(id x) {
+            self.subtitleHeight = [self.model.stop.uniqueName boundingRectWithSize:CGSizeMake(self.frame.size.width - 50, MAXFLOAT)
+                                                                           options:NSStringDrawingUsesLineFragmentOrigin
+                                                                        attributes:self.subtitleDictionary
+                                                                           context:nil].size.height;
+
+            self.routeNameHeight = [self.model.stop.humanName boundingRectWithSize:CGSizeMake(self.frame.size.width - 50, MAXFLOAT)
+                                                                           options:NSStringDrawingUsesLineFragmentOrigin
+                                                                        attributes:self.routeNameDictionary
+                                                                           context:nil].size.height;
+
+            
             [self setNeedsDisplay];
         }];
     }
@@ -28,50 +53,24 @@
 - (void)drawRect:(CGRect)rect {
     [super drawRect:rect];
     
-    CGContextRef context = UIGraphicsGetCurrentContext();
-
     CGFloat x = rect.size.height / 3 + 10;
     
     NSString *routeName = self.model.stop.humanName;
     
-    NSDictionary *routeNameDictionary = @{ NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue-Light" size:17],
-                                           NSForegroundColorAttributeName: [UIColor blackColor]};
+    CGRect routeNameRect = CGRectMake(10, x - (self.routeNameHeight / 2), rect.size.width - 50, self.routeNameHeight);
     
-    CGFloat routeNameHeight = [routeName boundingRectWithSize:CGSizeMake(rect.size.width - 50, MAXFLOAT)
-                                                      options:NSStringDrawingUsesLineFragmentOrigin
-                                                   attributes:routeNameDictionary
-                                                      context:nil].size.height;
-    
-    CGRect routeNameRect = CGRectMake(10, x - (routeNameHeight / 2), rect.size.width - 50, routeNameHeight);
-    
-    [routeName drawInRect:routeNameRect withAttributes:routeNameDictionary];
+    [routeName drawInRect:routeNameRect withAttributes:self.routeNameDictionary];
     
     NSString *subtitle = self.model.stop.uniqueName;
     
-    NSDictionary *subtitleDictionary = @{ NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue-Light" size:14],
-                                           NSForegroundColorAttributeName: [UIColor lightGrayColor]};
-    
     CGFloat subtitleHeight = [subtitle boundingRectWithSize:CGSizeMake(rect.size.width - 50, MAXFLOAT)
                                                       options:NSStringDrawingUsesLineFragmentOrigin
-                                                   attributes:subtitleDictionary
+                                                   attributes:self.subtitleDictionary
                                                       context:nil].size.height;
     
-    CGRect subtitleRect = CGRectMake(10, x + (routeNameHeight / 2) + 5, rect.size.width - 50, subtitleHeight);
+    CGRect subtitleRect = CGRectMake(10, x + (self.routeNameHeight / 2) + 5, rect.size.width - 50, subtitleHeight);
 
-    [subtitle drawInRect:subtitleRect withAttributes:subtitleDictionary];
-
-    // Divider line
-    CGContextSetStrokeColorWithColor(context, [UIColor colorWithRed:0.882855 green:0.882855 blue:0.882855 alpha:1.0000].CGColor);
-    CGContextSetLineWidth(context, 1.0);
-    
-    CGContextBeginPath(context);
-    CGContextMoveToPoint(context, self.bounds.origin.x, rect.size.height);
-    CGContextAddLineToPoint(context, self.bounds.size.width, rect.size.height);
-    
-    CGContextClosePath(context);
-    CGContextStrokePath(context);
-    
-    CGContextSetRGBFillColor(context, 0,0,0,0.75);
+    [subtitle drawInRect:subtitleRect withAttributes:self.subtitleDictionary];
 }
 
 @end

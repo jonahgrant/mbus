@@ -2,26 +2,26 @@
 //  RouteMapViewControllerModel.h
 //  UMBus
 //
-//  Created by Jonah Grant on 12/7/13.
+//  Created by Jonah Grant on 12/20/13.
 //  Copyright (c) 2013 Jonah Grant. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <MapKit/MapKit.h>
 
-@class Arrival, BusAnnotation;
+@class Arrival;
 
 @interface RouteMapViewControllerModel : NSObject
 
+@property (nonatomic) BOOL continuouslyFetchBuses;
 @property (strong, nonatomic) Arrival *arrival;
-@property (strong, nonatomic) NSDictionary *busAnnotations, *stopAnnotations;
-@property (strong, nonatomic) NSArray *traceRoutes;
-@property (strong, nonatomic) NSError *fetchBusesError, *fetchTraceRouteError;
+@property (strong, nonatomic) MKPolyline *polyline;
+@property (strong, nonatomic) NSDictionary *stopAnnotations, *busAnnotations;
 
 - (instancetype)initWithArrival:(Arrival *)arrival;
 
 - (void)fetchTraceRoute;
-
-- (void)beginBusFetching;
-- (void)endBusFetching;
+- (void)fetchStopAnnotations;
+- (void)beginFetchingBuses;
+- (void)endFetchingBuses;
 
 @end

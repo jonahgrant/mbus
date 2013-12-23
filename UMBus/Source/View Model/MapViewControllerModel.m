@@ -2,7 +2,7 @@
 //  MapViewControllerModel.m
 //  UMBus
 //
-//  Created by Jonah Grant on 12/8/13.
+//  Created by Jonah Grant on 12/20/13.
 //  Copyright (c) 2013 Jonah Grant. All rights reserved.
 //
 
@@ -10,53 +10,44 @@
 #import "DataStore.h"
 #import "Bus.h"
 #import "BusAnnotation.h"
-#import "Stop.h"
-#import "StopAnnotation.h"
-#import "Route.h"
 
 @implementation MapViewControllerModel
 
 - (instancetype)init {
     if (self = [super init]) {
-        [self manageBusAnnotations];
-        
         [RACObserve([DataStore sharedManager], buses) subscribeNext:^(NSArray *buses) {
             if (buses) {
                 self.buses = buses;
-            }
-            
-            if (self.continuouslyUpdating) {
-                [self fetchBuses];
-            }
-        }];
                 
-        [RACObserve(self, buses) subscribeNext:^(NSArray *buses) {
-            if (buses) {
-                [self manageBusAnnotations];
+                if (self.fetchingContinuously)
+                    [self fetchBuses];
             }
         }];
+        
+        [RACObserve(self, buses) subscribeNext:^(NSArray *buses) {
+            if (buses) [self manageBusAnnotations];
+        }];
+
     }
     return self;
 }
 
-- (void)beginFetchingBuses {
+- (void)refreshData {
+    self.busAnnotations = nil;
     [self fetchBuses];
-    self.continuouslyUpdating = YES;
 }
 
-- (void)endFetchingBuses {
-    self.continuouslyUpdating = NO;
+- (void)beginContinuousFetching {
+    self.fetchingContinuously = YES;
+    [self fetchBuses];
+}
+
+- (void)endContinuousFetching {
+    self.fetchingContinuously = NO;
 }
 
 - (void)fetchBuses {
-    [[DataStore sharedManager] fetchBusesWithErrorBlock:^(NSError *error) {
-        self.fetchBusesError = error;
-    }];
-}
-
-- (void)refresh {
-    self.busAnnotations = nil;
-    [self fetchBuses];
+    [[DataStore sharedManager] fetchBusesWithErrorBlock:NULL];
 }
 
 - (void)manageBusAnnotations {
@@ -74,6 +65,5 @@
     }
     self.busAnnotations = mutableAnnotations;
 }
-
 
 @end

@@ -1,8 +1,8 @@
 //
-//  ArrivalsViewControllerModel.h
+//  RouteViewControllerModel.h
 //  UMBus
 //
-//  Created by Jonah Grant on 12/7/13.
+//  Created by Jonah Grant on 12/19/13.
 //  Copyright (c) 2013 Jonah Grant. All rights reserved.
 //
 
@@ -10,10 +10,10 @@
 
 @class Arrival;
 
-@interface ArrivalsViewControllerModel : NSObject
+@interface RouteViewControllerModel : NSObject
 
 @property (strong, nonatomic) Arrival *arrival;
-@property (strong, nonatomic) NSArray *sortedArrivalStops;
+@property (strong, nonatomic) NSArray *sortedStops;
 
 - (instancetype)initWithArrival:(Arrival *)arrival;
 

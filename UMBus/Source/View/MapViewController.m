@@ -2,19 +2,16 @@
 //  MapViewController.m
 //  UMBus
 //
-//  Created by Jonah Grant on 12/8/13.
+//  Created by Jonah Grant on 12/20/13.
 //  Copyright (c) 2013 Jonah Grant. All rights reserved.
 //
 
 #import <MapKit/MapKit.h>
 #import "MapViewController.h"
 #import "MapViewControllerModel.h"
-#import "Bus.h"
 #import "BusAnnotation.h"
 #import "CircleAnnotationView.h"
-#import "HexColor.h"
-#import "Arrival.h"
-#import "DataStore.h"
+#import "Bus.h"
 
 @interface MapViewController () <MKMapViewDelegate>
 
@@ -26,16 +23,17 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-    self.navigationItem.title = @"University of Michigan";
-
-    [self.tabBarController.tabBar setTranslucent:YES];
     
     self.model = [[MapViewControllerModel alloc] init];
-    [self.model beginFetchingBuses];
+    [self.model beginContinuousFetching];
+    self.title = @"Map";
     
-    UIBarButtonItem *refreshButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self.model action:@selector(refresh)];
+    UIBarButtonItem *refreshButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh
+                                                                                   target:self.model
+                                                                                   action:@selector(refreshData)];
     self.navigationItem.rightBarButtonItem = refreshButton;
+    
+    [self zoomToCampus];
     
     [RACObserve(self, model.busAnnotations) subscribeNext:^(NSDictionary *annotations) {
         if (annotations) {
@@ -45,31 +43,29 @@
                 [self.mapView addAnnotation:annotation];
                 [annotationArray addObject:annotation];
             }
-           
-            // Remove buses no longer running
+            
+            // Remove buses no longer in service
             NSMutableArray *intermediate = [NSMutableArray arrayWithArray:self.mapView.annotations];
             [intermediate removeObjectsInArray:annotationArray];
             [self.mapView removeAnnotations:intermediate];
         }
     }];
-    
-    [RACObserve(self.model, fetchBusesError) subscribeNext:^(NSError *error) {
-        // error fetching buses
-    }];
-    
-    [self zoomToCampus];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    [self.model beginFetchingBuses];
     [self.navigationController.navigationBar setTintColor:nil];
     [self.tabBarController.tabBar setTintColor:nil];
+    [self.model beginContinuousFetching];
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
-    [self.model endFetchingBuses];
+    [self.model endContinuousFetching];
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
 }
 
 - (void)zoomToCampus {
@@ -87,8 +83,8 @@
 #pragma mark MKMapView delegate methods
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
-    // don't change the view for the pin that represents user's current location
-    if ([annotation isKindOfClass:[MKUserLocation class]]) return nil;
+    if ([annotation isKindOfClass:[MKUserLocation class]])
+        return nil;
     
     BusAnnotation *_annotation = (BusAnnotation *)annotation;
     
@@ -100,6 +96,5 @@
     
     return pin;
 }
-
 
 @end

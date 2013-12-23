@@ -10,14 +10,22 @@
 #import "StopArrivalCellModel.h"
 #import "StopArrivalCellView.h"
 
+@interface StopArrivalCell ()
+
+@property (strong, nonatomic) StopArrivalCellView *cellView;
+
+@end
+
 @implementation StopArrivalCell
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
     if (self = [super initWithCoder:aDecoder]) {
-        StopArrivalCellView *cellView = [[StopArrivalCellView alloc] initWithFrame:self.frame arrivalModel:self.model];
-        [self addSubview:cellView];
+        if (!self.cellView) {
+            self.cellView = [[StopArrivalCellView alloc] initWithFrame:self.frame arrivalModel:self.model];
+            [self addSubview:self.cellView];
+        }
         
-        RAC(cellView, model) = RACObserve(self, model);
+        RAC(self.cellView, model) = RACObserve(self, model);
     }
     return self;
 }

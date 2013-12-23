@@ -17,7 +17,8 @@
     self = [super initWithFrame:frame];
     if (self) {
         self.model = model;
-        self.backgroundColor = [UIColor clearColor];
+        self.backgroundColor = [UIColor whiteColor];
+        self.opaque = YES;
         
         [RACObserve(self, model) subscribeNext:^(id x) {
             [self setNeedsDisplay];
@@ -34,34 +35,20 @@
     CGFloat x = rect.size.height / 2;
     
     NSString *routeName = self.model.arrival.name;
-    UIColor *busRouteColor = [UIColor colorWithHexString:self.model.arrival.busRouteColor];
     
     NSDictionary *routeNameDictionary = @{ NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue-Light" size:17],
                                            NSForegroundColorAttributeName: [UIColor blackColor]};
-    CGFloat routeNameHeight = [routeName boundingRectWithSize:CGSizeMake(rect.size.width - 50, MAXFLOAT)
+    CGFloat routeNameHeight = [routeName boundingRectWithSize:CGSizeMake(rect.size.width - 20, MAXFLOAT)
                                                       options:NSStringDrawingUsesLineFragmentOrigin
                                                    attributes:routeNameDictionary
                                                       context:nil].size.height;
-    CGRect routeNameRect = CGRectMake(40, x - (routeNameHeight / 2), rect.size.width - 50, routeNameHeight);
-
-    CGContextSetFillColorWithColor(context, busRouteColor.CGColor);
-    CGRect circlePoint = CGRectMake(10, x - 10, 20, 20);
-    CGContextFillEllipseInRect(context, circlePoint);
+    CGRect routeNameRect = CGRectMake(20, x - (routeNameHeight / 2), rect.size.width - 50, routeNameHeight);
     
     [routeName drawInRect:routeNameRect withAttributes:routeNameDictionary];
-    
-    // Divider line
-    CGContextSetStrokeColorWithColor(context, [UIColor colorWithRed:0.882855 green:0.882855 blue:0.882855 alpha:1.0000].CGColor);
-    CGContextSetLineWidth(context, 1.0);
-    
-    CGContextBeginPath(context);
-    CGContextMoveToPoint(context, self.bounds.origin.x, rect.size.height);
-    CGContextAddLineToPoint(context, self.bounds.size.width, rect.size.height);
-    
-    CGContextClosePath(context);
-    CGContextStrokePath(context);
-    
-    CGContextSetRGBFillColor(context, 0,0,0,0.75);
+
+    // Route color rect
+    CGContextSetFillColorWithColor(context, [UIColor colorWithHexString:self.model.arrival.busRouteColor].CGColor);
+    CGContextFillRect(context, CGRectMake(0, 0, 10, rect.size.height));
 }
 
 @end

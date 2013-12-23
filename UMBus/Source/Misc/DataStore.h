@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 Jonah Grant. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <CoreLocation/CoreLocation.h>
 
 typedef void (^DataStoreErrorBlock)(NSError *error);
 
@@ -15,7 +15,9 @@ typedef void (^DataStoreErrorBlock)(NSError *error);
 @interface DataStore : NSObject
 
 @property (strong, nonatomic) NSArray *arrivals, *buses, *stops, *announcements;
-@property (strong, nonatomic) NSDictionary *arrivalsDictionary, *busesForRoutesDictionary;
+@property (strong, nonatomic) NSDate *arrivalsTimestamp, *busesTimestamp, *stopsTimestamp, *announcementsTimestamp;
+
+@property (strong, nonatomic) CLLocation *lastKnownLocation;
 
 + (instancetype)sharedManager;
 
@@ -24,17 +26,41 @@ typedef void (^DataStoreErrorBlock)(NSError *error);
 - (void)fetchStopsWithErrorBlock:(DataStoreErrorBlock)errorBlock;
 - (void)fetchAnnouncementsWithErrorBlock:(DataStoreErrorBlock)errorBlock;
 
-- (Arrival *)arrivalForID:(NSString *)arrivalID;
-- (Bus *)busOperatingRouteID:(NSString *)routeID;
-- (ArrivalStop *)arrivalStopForRouteID:(NSString *)routeID stopName:(NSString *)stopName;
+- (NSArray *)persistedArrivals;
+- (NSDictionary *)persistedArrivalsDictionary;
+- (NSArray *)persistedBuses;
+- (NSArray *)persistedStops;
+- (NSArray *)persistedAnnouncements;
+- (NSDictionary *)persistedTraceRoutes;
+- (NSDictionary *)persistedPlacemarks;
+- (CLLocation *)persistedLastKnownLocation;
 
-- (NSArray *)arrivalStopsForStopID:(NSString *)stopID;
-- (NSArray *)arrivalsContainingStopName:(NSString *)stopName;
-- (NSArray *)allArrivalStops;
+- (void)persistTraceRoute:(NSArray *)traceRoute forRouteID:(NSString *)routeID;
+- (BOOL)hasTraceRouteForRouteID:(NSString *)routeID;
+- (NSArray *)traceRouteForRouteID:(NSString *)routeID;
+
+- (void)persistPlacemark:(CLPlacemark *)placemark forStopID:(NSString *)stopID;
+- (BOOL)hasPlacemarkForStopID:(NSString *)stopID;
+- (CLPlacemark *)placemarkForStopID:(NSString *)stopID;
+
+/*
+ Takes in an array of Stop objects and returns the ones that are being serviced
+ Requires self.arrivals to be loaded
+ */
+- (NSArray *)stopsBeingServicedInArray:(NSArray *)array;
+
+/*
+ Returns arrivals containing a stop name.  Used to determine what routes are servicing a given stop
+ */
+- (NSArray *)arrivalsContainingStopName:(NSString *)name;
+
+// TODO: DOCUMENT THE BELOW METHODS ***************************
+
+- (ArrivalStop *)arrivalStopForRouteID:(NSString *)routeID stopName:(NSString *)stopName;
 
 - (BOOL)arrivalHasBus1WithArrivalID:(NSString *)arrivalID;
 - (BOOL)arrivalHasBus2WithArrivalID:(NSString *)arrivalID;
 
-- (NSArray *)stopsBeingServiced;
+- (Arrival *)arrivalForID:(NSString *)arrivalID;
 
 @end

@@ -2,7 +2,7 @@
 //  RoutesViewControllerModel.h
 //  UMBus
 //
-//  Created by Jonah Grant on 12/7/13.
+//  Created by Jonah Grant on 12/19/13.
 //  Copyright (c) 2013 Jonah Grant. All rights reserved.
 //
 
@@ -10,8 +10,10 @@
 
 @interface RoutesViewControllerModel : NSObject
 
-@property (strong, nonatomic) NSError *fetchError;
+@property (strong, nonatomic) NSArray *routes;
 
-- (void)fetchArrivals;
+- (void)fetchData;
+
+- (NSString *)footerString;
 
 @end
