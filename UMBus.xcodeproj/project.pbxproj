@@ -49,7 +49,6 @@
 		AB7D4B9B18655CC10035D64A /* MapViewControllerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AB7D4B9A18655CC10035D64A /* MapViewControllerModel.m */; };
 		AB7D4B9E186560A50035D64A /* StopTray.m in Sources */ = {isa = PBXBuildFile; fileRef = AB7D4B9D186560A50035D64A /* StopTray.m */; };
 		AB7D4BA1186560B00035D64A /* StopTrayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AB7D4BA0186560B00035D64A /* StopTrayModel.m */; };
-		ABAB6B3C1867E536003FB5C1 /* Stars@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABAB6B3B1867E536003FB5C1 /* Stars@2x.png */; };
 		ABABF5341862A5BB006DEAF0 /* StopsViewControllerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ABABF5331862A5BB006DEAF0 /* StopsViewControllerModel.m */; };
 		ABABF53B1862BFDD006DEAF0 /* StopsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABABF53A1862BFDD006DEAF0 /* StopsViewController.m */; };
 		ABABF5401862BFE8006DEAF0 /* StopCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ABABF53D1862BFE8006DEAF0 /* StopCell.m */; };
@@ -164,7 +163,6 @@
 		AB7D4B9D186560A50035D64A /* StopTray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StopTray.m; sourceTree = "<group>"; };
 		AB7D4B9F186560B00035D64A /* StopTrayModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StopTrayModel.h; sourceTree = "<group>"; };
 		AB7D4BA0186560B00035D64A /* StopTrayModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StopTrayModel.m; sourceTree = "<group>"; };
-		ABAB6B3B1867E536003FB5C1 /* Stars@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Stars@2x.png"; sourceTree = "<group>"; };
 		ABABF5321862A5BB006DEAF0 /* StopsViewControllerModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StopsViewControllerModel.h; sourceTree = "<group>"; };
 		ABABF5331862A5BB006DEAF0 /* StopsViewControllerModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StopsViewControllerModel.m; sourceTree = "<group>"; };
 		ABABF5391862BFDD006DEAF0 /* StopsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StopsViewController.h; sourceTree = "<group>"; };
@@ -439,7 +437,6 @@
 		ABEDEB13184BDA1B00B82E59 /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				ABAB6B3B1867E536003FB5C1 /* Stars@2x.png */,
 				AB544331185696E200B65D3D /* Icon-40.png */,
 				AB544332185696E200B65D3D /* Icon-40@2x.png */,
 				AB544333185696E200B65D3D /* Icon-60.png */,
@@ -677,7 +674,6 @@
 				AB54433E185696E200B65D3D /* Icon-76@2x.png in Resources */,
 				AB54433F185696E200B65D3D /* Icon-Small.png in Resources */,
 				AB54433A185696E200B65D3D /* Icon-40@2x.png in Resources */,
-				ABAB6B3C1867E536003FB5C1 /* Stars@2x.png in Resources */,
 				ABEDEBD8184C434A00B82E59 /* info-tab@2x.png in Resources */,
 				ABEDEB2B184BDA1B00B82E59 /* Main_iPhone.storyboard in Resources */,
 				AB544339185696E200B65D3D /* Icon-40.png in Resources */,
