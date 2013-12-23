@@ -82,7 +82,7 @@
         case 0:
             return @"Route information";
         case 1:
-            return @"Stops";
+            return [NSString stringWithFormat:@"%i Stops", self.model.sortedStops.count];
             break;
         default:
             break;

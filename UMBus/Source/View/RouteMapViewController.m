@@ -77,15 +77,8 @@
     [self.model endFetchingBuses];
 }
 
-- (void)purgeMapMemory {
-    self.mapView.mapType = MKMapTypeStandard;
-    [self.mapView removeFromSuperview];
-    self.mapView = nil;
-}
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    [self purgeMapMemory];
 }
 
 #pragma Map
