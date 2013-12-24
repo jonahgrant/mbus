@@ -19,5 +19,6 @@
 
 - (NSArray *)stopsOrderedByTimeOfArrivalWithStops:(NSArray *)stops;
 - (NSString *)mmssForTimeInterval:(NSTimeInterval)timeInterval;
+- (NSString *)footerString;
 
 @end

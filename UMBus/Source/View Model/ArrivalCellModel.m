@@ -52,8 +52,6 @@
 
 - (NSTimeInterval)firstBusArrival {
     NSTimeInterval toa = 0;
-    NSLog(@"1: %f 2: %f", self.arrivalStop.timeOfArrival, self.arrivalStop.timeOfArrival2);
-
     if ([[DataStore sharedManager] arrivalHasBus1WithArrivalID:self.arrival.id] &&
         [[DataStore sharedManager] arrivalHasBus2WithArrivalID:self.arrival.id]) {
         if (self.arrivalStop.timeOfArrival >= self.arrivalStop.timeOfArrival2) {

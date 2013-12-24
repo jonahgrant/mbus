@@ -6,10 +6,6 @@ This project runs on the [MVVM](http://en.wikipedia.org/wiki/Model_View_ViewMode
 
 Additionally, this project runs using [ReactiveCocoa](https://github.com/blog/1107-reactivecocoa-for-a-better-world).  ReactiveCocoa allows us to, among other things, manage constantly updating values with an abstracted version of [KVO](https://developer.apple.com/library/Mac/documentation/Cocoa/Conceptual/KeyValueObserving/KeyValueObserving.html).  For example, this is used in ```MapViewController``` to track updating values of an NSDictionary named ```annotations``` that represents a dictionary of ```MKAnnotations```, each of which corresponding with the current location of a University of Michigan bus.  When the dictionary's value is changed, the annotations are re-plotted.
 
-## Purpose
-
-On a campus visit during classes I sat in on and tours I went on, the '[Magic Bus](http://mbus.pts.umich.edu/)' was something that was brought up repeatedly.  When I got home, I did a little bit of research on it seeing that it had easily-accessible XML feeds and an API.  
-
 # Setup
 
 If you don't already have [CocoaPods](http://cocoapods.org/), install it.

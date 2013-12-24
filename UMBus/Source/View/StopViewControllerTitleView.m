@@ -9,6 +9,7 @@
 #import "StopViewControllerTitleView.h"
 #import "StopViewControllerTitleViewModel.h"
 #import "Stop.h"
+#import "DataStore.h"
 
 @implementation StopViewControllerTitleView
 
@@ -35,6 +36,10 @@
         distanceLabel.textColor = [UIColor grayColor];
         distanceLabel.text = [[self.model distance] stringByAppendingString:@" away"];
         [self addSubview:distanceLabel];
+        
+        [RACObserve([DataStore sharedManager], lastKnownLocation) subscribeNext:^(CLLocation *location) {
+            distanceLabel.text = [[self.model distance] stringByAppendingString:@" away"];
+        }];
     }
     return self;
 }

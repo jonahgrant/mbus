@@ -10,13 +10,21 @@
 #import "Arrival.h"
 #import "ArrivalStop.h"
 #import "DataStore.h"
+#import "TTTTimeIntervalFormatter.h"
+
+@interface RouteViewControllerModel ()
+
+@property (strong, nonatomic) TTTTimeIntervalFormatter *timeIntervalFormatter;
+
+@end
 
 @implementation RouteViewControllerModel
 
 - (instancetype)initWithArrival:(Arrival *)arrival {
     if (self = [super init]) {
         self.arrival = arrival;
-        
+        self.timeIntervalFormatter = [[TTTTimeIntervalFormatter alloc] init];
+
         [RACObserve([DataStore sharedManager], arrivals) subscribeNext:^(NSArray *arrivals) {
             if (arrivals) {
                 Arrival *arrival = [[DataStore sharedManager] arrivalForID:self.arrival.id];
@@ -44,6 +52,18 @@
 
 - (NSString *)mmssForTimeInterval:(NSTimeInterval)timeInterval {
     return [NSString stringWithFormat:@"%02i:%02i", ((NSInteger)timeInterval / 60) % 60, (NSInteger)timeInterval % 60];
+}
+
+- (NSString *)timeSinceLastRefresh {
+    if (![[DataStore sharedManager] arrivalsTimestamp]) {
+        return @"never";
+    }
+    
+    return [self.timeIntervalFormatter stringForTimeInterval:[[[DataStore sharedManager] arrivalsTimestamp] timeIntervalSinceDate:[NSDate date]]];
+}
+
+- (NSString *)footerString {
+    return [NSString stringWithFormat:@"Last updated %@", [self timeSinceLastRefresh]];
 }
 
 
