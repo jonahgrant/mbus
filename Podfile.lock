@@ -22,7 +22,7 @@ PODS:
     - Mantle (~> 1.3)
     - ReactiveCocoa (~> 2.1)
     - XMLDictionary (~> 1.3)
-  - FormatterKit (1.3.1):
+  - FormatterKit (1.3.2):
     - FormatterKit/AddressFormatter
     - FormatterKit/ArrayFormatter
     - FormatterKit/ColorFormatter
@@ -31,26 +31,26 @@ PODS:
     - FormatterKit/TimeIntervalFormatter
     - FormatterKit/UnitOfInformationFormatter
     - FormatterKit/URLRequestFormatter
-  - FormatterKit/AddressFormatter (1.3.1)
-  - FormatterKit/ArrayFormatter (1.3.1)
-  - FormatterKit/ColorFormatter (1.3.1)
-  - FormatterKit/LocationFormatter (1.3.1)
-  - FormatterKit/OrdinalNumberFormatter (1.3.1)
-  - FormatterKit/TimeIntervalFormatter (1.3.1)
-  - FormatterKit/UnitOfInformationFormatter (1.3.1)
-  - FormatterKit/URLRequestFormatter (1.3.1)
+  - FormatterKit/AddressFormatter (1.3.2)
+  - FormatterKit/ArrayFormatter (1.3.2)
+  - FormatterKit/ColorFormatter (1.3.2)
+  - FormatterKit/LocationFormatter (1.3.2)
+  - FormatterKit/OrdinalNumberFormatter (1.3.2)
+  - FormatterKit/TimeIntervalFormatter (1.3.2)
+  - FormatterKit/UnitOfInformationFormatter (1.3.2)
+  - FormatterKit/URLRequestFormatter (1.3.2)
   - GCBActionSheet (1.0.0)
   - Google-Maps-iOS-SDK (1.6.1)
   - HexColors (2.2.1)
   - Mantle (1.3.1):
     - Mantle/extobjc
   - Mantle/extobjc (1.3.1)
-  - ReactiveCocoa (2.1.7):
+  - ReactiveCocoa (2.1.8):
     - ReactiveCocoa/Core
     - ReactiveCocoa/no-arc
-  - ReactiveCocoa/Core (2.1.7):
+  - ReactiveCocoa/Core (2.1.8):
     - ReactiveCocoa/no-arc
-  - ReactiveCocoa/no-arc (2.1.7)
+  - ReactiveCocoa/no-arc (2.1.8)
   - SVPulsingAnnotationView (0.3.0)
   - TTTAttributedLabel (1.7.5)
   - XMLDictionary (1.3)
@@ -70,12 +70,12 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   AFNetworking: e499052cbf3d743e9bb727bb37adb9dc2547ba15
   Fare: 7f4d5545ec5b2c50cf5a9a34194379d08ea9b22e
-  FormatterKit: 1238e7a6800c750a5f50f5fec1cc430d8e3b71e7
+  FormatterKit: 5ed85f15003614818c0f13f42db97bc13a3b0f82
   GCBActionSheet: 69a49cb78d072899164a4c5e2c42e92127b9b1a3
   Google-Maps-iOS-SDK: 29876f757dd2c9b61236a0940e629005ad3ad811
   HexColors: 3a68db077cd6572a8f7d4aa1add284dd2436a934
   Mantle: abc3b0c81bc66eb624cf9cebb8640e377d5a44ae
-  ReactiveCocoa: 1117f7968c8667d2ca00b5aa47156fabcb56af75
+  ReactiveCocoa: 0db710a0afa1c627a64470e5c912a3870d4854ae
   SVPulsingAnnotationView: ce58bcff7c1aeb15022a1db6c26f88981c05b91c
   TTTAttributedLabel: 1eb635d4d844cb7abce4d839faefca2a3409950d
   XMLDictionary: 27390d3517062694ccb307a7750250e1b687571d

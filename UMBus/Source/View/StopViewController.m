@@ -96,6 +96,14 @@
     return 50;
 }
 
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    if (section == 0) {
+        return @"Routes servicing this stop";
+    }
+    
+    return nil;
+}
+
 - (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section {
     if (section == 0) {
         return [NSString stringWithFormat:@"Last updated %@", [self.model timeSinceRoutesRefresh]];
