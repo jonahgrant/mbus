@@ -11,4 +11,5 @@ target "UMBus" do
     pod 'HexColors', '~> 2.2.1'
     pod 'Fare', '~> 1.0.3'
     pod 'GCBActionSheet', '~> 1.0.0'
+    pod 'MarqueeLabel', '~> 1.3'
 end

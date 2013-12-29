@@ -10,6 +10,7 @@
 #import "StopViewControllerTitleViewModel.h"
 #import "Stop.h"
 #import "DataStore.h"
+#import "MarqueeLabel.h"
 
 @implementation StopViewControllerTitleView
 
@@ -19,7 +20,8 @@
         self.model = [[StopViewControllerTitleViewModel alloc] initWithStop:stop];
         self.opaque = YES;
         
-        UILabel *stopLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 5, 180, 22)];
+        MarqueeLabel *stopLabel = [[MarqueeLabel alloc] initWithFrame:CGRectMake(0, 5, 180, 22) rate:80.0 andFadeLength:10.0f];
+        stopLabel.tapToScroll = YES;
         stopLabel.backgroundColor = [UIColor clearColor];
         stopLabel.numberOfLines = 1;
         stopLabel.font = [UIFont boldSystemFontOfSize:17];
