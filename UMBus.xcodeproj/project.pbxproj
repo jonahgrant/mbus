@@ -50,6 +50,8 @@
 		AB7D4B9B18655CC10035D64A /* MapViewControllerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AB7D4B9A18655CC10035D64A /* MapViewControllerModel.m */; };
 		AB7D4B9E186560A50035D64A /* StopTray.m in Sources */ = {isa = PBXBuildFile; fileRef = AB7D4B9D186560A50035D64A /* StopTray.m */; };
 		AB7D4BA1186560B00035D64A /* StopTrayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AB7D4BA0186560B00035D64A /* StopTrayModel.m */; };
+		AB7FBF5D186FECB70071E7FD /* NotificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB7FBF5C186FECB70071E7FD /* NotificationViewController.m */; };
+		AB7FBF60186FECC50071E7FD /* NotificationViewControllerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AB7FBF5F186FECC50071E7FD /* NotificationViewControllerModel.m */; };
 		ABABF5341862A5BB006DEAF0 /* StopsViewControllerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ABABF5331862A5BB006DEAF0 /* StopsViewControllerModel.m */; };
 		ABABF53B1862BFDD006DEAF0 /* StopsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABABF53A1862BFDD006DEAF0 /* StopsViewController.m */; };
 		ABABF5401862BFE8006DEAF0 /* StopCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ABABF53D1862BFE8006DEAF0 /* StopCell.m */; };
@@ -165,6 +167,10 @@
 		AB7D4B9D186560A50035D64A /* StopTray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StopTray.m; sourceTree = "<group>"; };
 		AB7D4B9F186560B00035D64A /* StopTrayModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StopTrayModel.h; sourceTree = "<group>"; };
 		AB7D4BA0186560B00035D64A /* StopTrayModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StopTrayModel.m; sourceTree = "<group>"; };
+		AB7FBF5B186FECB70071E7FD /* NotificationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationViewController.h; sourceTree = "<group>"; };
+		AB7FBF5C186FECB70071E7FD /* NotificationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationViewController.m; sourceTree = "<group>"; };
+		AB7FBF5E186FECC50071E7FD /* NotificationViewControllerModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationViewControllerModel.h; sourceTree = "<group>"; };
+		AB7FBF5F186FECC50071E7FD /* NotificationViewControllerModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationViewControllerModel.m; sourceTree = "<group>"; };
 		ABABF5321862A5BB006DEAF0 /* StopsViewControllerModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StopsViewControllerModel.h; sourceTree = "<group>"; };
 		ABABF5331862A5BB006DEAF0 /* StopsViewControllerModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StopsViewControllerModel.m; sourceTree = "<group>"; };
 		ABABF5391862BFDD006DEAF0 /* StopsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StopsViewController.h; sourceTree = "<group>"; };
@@ -312,6 +318,8 @@
 				AB7D4B9718655CB70035D64A /* MapViewController.m */,
 				AB7D4B83186535690035D64A /* AnnouncementsViewController.h */,
 				AB7D4B84186535690035D64A /* AnnouncementsViewController.m */,
+				AB7FBF5B186FECB70071E7FD /* NotificationViewController.h */,
+				AB7FBF5C186FECB70071E7FD /* NotificationViewController.m */,
 				ABABF5561862D77A006DEAF0 /* StopViewControllerTitleView.h */,
 				ABABF5571862D77A006DEAF0 /* StopViewControllerTitleView.m */,
 				AB7D4B9C186560A50035D64A /* StopTray.h */,
@@ -554,6 +562,8 @@
 				AB7D4B87186535750035D64A /* AnnouncementsViewControllerModel.m */,
 				AB7D4B93186540260035D64A /* RouteMapViewControllerModel.h */,
 				AB7D4B94186540260035D64A /* RouteMapViewControllerModel.m */,
+				AB7FBF5E186FECC50071E7FD /* NotificationViewControllerModel.h */,
+				AB7FBF5F186FECC50071E7FD /* NotificationViewControllerModel.m */,
 				AB7D4B9F186560B00035D64A /* StopTrayModel.h */,
 				AB7D4BA0186560B00035D64A /* StopTrayModel.m */,
 				AB7D4B9918655CC10035D64A /* MapViewControllerModel.h */,
@@ -785,7 +795,9 @@
 				AB7D4B88186535750035D64A /* AnnouncementsViewControllerModel.m in Sources */,
 				ABABF57418633B08006DEAF0 /* ArrivalRouteCellModel.m in Sources */,
 				ABABF5551862D6DA006DEAF0 /* StopArrivalCellModel.m in Sources */,
+				AB7FBF60186FECC50071E7FD /* NotificationViewControllerModel.m in Sources */,
 				AB7D4B95186540260035D64A /* RouteMapViewControllerModel.m in Sources */,
+				AB7FBF5D186FECB70071E7FD /* NotificationViewController.m in Sources */,
 				ABABF5631862DAF0006DEAF0 /* BusAnnotation.m in Sources */,
 				AB3006E41852F9E4007A4E29 /* DataStore.m in Sources */,
 				ABABF5401862BFE8006DEAF0 /* StopCell.m in Sources */,
@@ -924,7 +936,7 @@
 				GCC_PREFIX_HEADER = "UMBus/Source/Misc/UMBus-Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/UMBus/Resources/Misc/UMBus-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "A9882A93-8E44-48AA-B8A2-DCE61C341A82";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
@@ -944,7 +956,7 @@
 				GCC_PREFIX_HEADER = "UMBus/Source/Misc/UMBus-Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/UMBus/Resources/Misc/UMBus-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "A9882A93-8E44-48AA-B8A2-DCE61C341A82";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
