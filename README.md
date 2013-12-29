@@ -6,6 +6,18 @@ This project runs on the [MVVM](http://en.wikipedia.org/wiki/Model_View_ViewMode
 
 Additionally, this project runs using [ReactiveCocoa](https://github.com/blog/1107-reactivecocoa-for-a-better-world).  ReactiveCocoa allows us to, among other things, manage constantly updating values with an abstracted version of [KVO](https://developer.apple.com/library/Mac/documentation/Cocoa/Conceptual/KeyValueObserving/KeyValueObserving.html).  For example, this is used in ```MapViewController``` to track updating values of an NSDictionary named ```annotations``` that represents a dictionary of ```MKAnnotations```, each of which corresponding with the current location of a University of Michigan bus.  When the dictionary's value is changed, the annotations are re-plotted.
 
+### Features
+
++  See nearby stops in service 
++ See when the routes that are servicing a specific stop will arrive 
++ Get a notification before your bus arrives 
++ See a map of all buses moving in realtime 
++ See all routes that are in service 
++ See the stops that a route services and when the bus will arrive at each 
++ See a map of a route with the buses that are servicing it 
++ See all bus-related announcements 
++ Easily call Safe Rides if no routes are in service
+
 # Setup
 
 If you don't already have [CocoaPods](http://cocoapods.org/), install it.
