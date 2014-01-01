@@ -21,6 +21,7 @@
 #import "NotificationManager.h"
 #import "DataStore.h"
 #import "RouteViewController.h"
+#import "Constants.h"
 
 @interface StopViewController ()
 
@@ -98,7 +99,7 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     if (section == 0) {
-        return @"Routes servicing this stop";
+        return kTableHeaderRoutesServicingStop;
     }
     
     return nil;
@@ -110,7 +111,7 @@
     }
     
     if (section == 2) {
-        return @"The system behind MBus is under development.  Riders are encouraged to use it, but reliable and accurate information is not garunteed.";
+        return kTableFooterUnderDevelopment;
     }
     
     return nil;
@@ -177,7 +178,7 @@
     
     if (indexPath.section == 2) {
         if (indexPath.row == 0) {
-            NSString *address = [NSString stringWithFormat:@"http://maps.apple.com/maps?daddr=%1.6f,%1.6f&saddr=Posizione attuale", self.model.stop.coordinate.latitude, self.model.stop.coordinate.longitude];
+            NSString *address = [NSString stringWithFormat:kFormattedStringAppleMapsDirections, self.model.stop.coordinate.latitude, self.model.stop.coordinate.longitude];
             NSURL *url = [[NSURL alloc] initWithString:[address stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
             [[UIApplication sharedApplication] openURL:url];
         }

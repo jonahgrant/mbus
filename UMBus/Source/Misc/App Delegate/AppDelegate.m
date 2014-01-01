@@ -9,7 +9,9 @@
 #import <GoogleMaps/GoogleMaps.h>
 #import "AppDelegate.h"
 #import "DataStore.h"
+#import "TTTLocationFormatter.h"
 #import "LocationManager.h"
+#import "Constants.h"
 
 @implementation AppDelegate
 
@@ -18,8 +20,8 @@
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    [GMSServices provideAPIKey:@"AIzaSyCCBKyJMm7zWhVxukAy8k-_ejMlc5t8ugo"];
-        
+    [GMSServices provideAPIKey:kKeyGoogleMapsAPI];
+    
     [[DataStore sharedManager] fetchArrivalsWithErrorBlock:^(NSError *error) {}];
     [[DataStore sharedManager] fetchAnnouncementsWithErrorBlock:^(NSError *error){}];
     
@@ -30,6 +32,10 @@
     
     [[LocationManager sharedManager] fetchLocation];
 
+    self.locationFormatter = [[TTTLocationFormatter alloc] init];
+    [self.locationFormatter.numberFormatter setMaximumSignificantDigits:1];
+    [self.locationFormatter setUnitSystem:TTTImperialSystem];
+    
     return YES;
 }
 

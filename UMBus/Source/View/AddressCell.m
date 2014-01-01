@@ -8,6 +8,7 @@
 
 #import "AddressCell.h"
 #import "AddressCellModel.h"
+#import "Constants.h"
 
 @implementation AddressCell
 
@@ -15,7 +16,7 @@
     if (self = [super initWithCoder:aDecoder]) {
         self.selectionStyle = UITableViewCellSelectionStyleNone;
 
-        self.textLabel.text = @" ";
+        self.textLabel.text = kBlankString;
         self.textLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:17];
         self.textLabel.textColor = [UIColor lightGrayColor];
         self.textLabel.numberOfLines = 0;
@@ -32,7 +33,7 @@
             if (placemark) {
                 [self endLoading];
                 
-                self.textLabel.text = [NSString stringWithFormat:@"%@ %@\n%@, %@ %@", placemark.subThoroughfare, placemark.thoroughfare, placemark.locality, placemark.administrativeArea, placemark.postalCode];
+                self.textLabel.text = [NSString stringWithFormat:kFormattedStringAddress, placemark.subThoroughfare, placemark.thoroughfare, placemark.locality, placemark.administrativeArea, placemark.postalCode];
             }
         }];
     }
@@ -40,12 +41,12 @@
 }
 
 - (void)beginLoading {
-    self.textLabel.text = @"Loading address...";
+    self.textLabel.text = kLoadingAddress;
     self.textLabel.textAlignment = NSTextAlignmentCenter;
 }
 
 - (void)endLoading {
-    self.textLabel.text = @" ";
+    self.textLabel.text = kBlankString;
     self.textLabel.textAlignment = NSTextAlignmentLeft;
 }
 

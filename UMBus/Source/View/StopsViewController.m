@@ -12,6 +12,7 @@
 #import "Stop.h"
 #import "StopCell.h"
 #import "StopCellModel.h"
+#import "Constants.h"
 
 @implementation StopsViewController
 
@@ -20,7 +21,7 @@
 
     self.model = [[StopsViewControllerModel alloc] init];
     
-    self.navigationItem.title = @"University of Michigan";
+    self.navigationItem.title = kUniversityOfMichigan;
     
     [self.refreshControl addTarget:self.model action:@selector(fetchData) forControlEvents:UIControlEventValueChanged];
     
@@ -70,7 +71,7 @@
     if (self.model.stops.count == 0) {
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"NoneCell" forIndexPath:indexPath];
         
-        cell.textLabel.text = @"NO STOPS BEING SERVICED";
+        cell.textLabel.text = kErrorNoStopsInService;
         cell.textLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:17];
         cell.textLabel.textColor = [UIColor lightGrayColor];
         cell.textLabel.textAlignment = NSTextAlignmentCenter;

@@ -12,6 +12,7 @@
 #import "BusAnnotation.h"
 #import "Bus.h"
 #import "Stop.h"
+#import "Constants.h"
 
 @interface StreetViewController ()
 
@@ -46,7 +47,7 @@
     if (_heading) panoView.camera = [GMSPanoramaCamera cameraWithHeading:_heading pitch:-10 zoom:1];
     self.view = panoView;
     
-    UIBarButtonItem *closeBarButton = [[UIBarButtonItem alloc] initWithTitle:@"Dismiss" style:UIBarButtonItemStyleDone target:self action:@selector(dismiss)];
+    UIBarButtonItem *closeBarButton = [[UIBarButtonItem alloc] initWithTitle:kDismiss style:UIBarButtonItemStyleDone target:self action:@selector(dismiss)];
     self.navigationItem.leftBarButtonItem = closeBarButton;
 }
 

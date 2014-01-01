@@ -14,6 +14,7 @@
 #import "ArrivalCellModel.h"
 #import "HexColor.h"
 #import "DataStore.h"
+#import "Constants.h"
 
 @interface RouteViewController ()
 
@@ -80,7 +81,7 @@
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     switch (section) {
         case 0:
-            return @"Route information";
+            return kTableHeaderRouteInformation;
         case 1:
             return [NSString stringWithFormat:@"%i Stops", self.model.sortedStops.count];
             break;

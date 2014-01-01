@@ -6,8 +6,6 @@
 //  Copyright (c) 2013 Jonah Grant. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-
 @class Stop, StopViewControllerModel;
 
 @interface StopViewController : UITableViewController

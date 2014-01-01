@@ -12,6 +12,7 @@
 #import "BusAnnotation.h"
 #import "CircleAnnotationView.h"
 #import "Bus.h"
+#import "Constants.h"
 
 @interface MapViewController () <MKMapViewDelegate>
 
@@ -26,7 +27,7 @@
     
     self.model = [[MapViewControllerModel alloc] init];
     [self.model beginContinuousFetching];
-    self.title = @"Map";
+    self.title = kMap;
     
     UIBarButtonItem *refreshButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh
                                                                                    target:self.model

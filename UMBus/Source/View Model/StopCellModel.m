@@ -9,34 +9,28 @@
 #import "StopCellModel.h"
 #import "TTTLocationFormatter.h"
 #import "LocationManager.h"
+#import "AppDelegate.h"
 #import "Stop.h"
-
-@interface StopCellModel ()
-
-@property (strong, nonatomic) TTTLocationFormatter *locationFormatter;
-
-@end
+#import "Constants.h"
 
 @implementation StopCellModel
 
 - (instancetype)initWithStop:(Stop *)stop {
     if (self = [super init]) {
         self.stop = stop;
-        
-        self.locationFormatter = [[TTTLocationFormatter alloc] init];
-        [self.locationFormatter.numberFormatter setMaximumSignificantDigits:1];
-        [self.locationFormatter setUnitSystem:TTTImperialSystem];
     }
     return self;
 }
 
 - (NSString *)distance {
     if (![[LocationManager sharedManager] currentLocation]) {
-        return @"Unknown distance";
+        return kErrorUnknownDistance;
     }
     
-    return [self.locationFormatter stringFromDistanceFromLocation:[[LocationManager sharedManager] currentLocation]
-                                                       toLocation:[[CLLocation alloc] initWithLatitude:[self.stop.latitude doubleValue] longitude:[self.stop.longitude doubleValue]]];
+    CLLocation *location = [[CLLocation alloc] initWithLatitude:[self.stop.latitude doubleValue] longitude:[self.stop.longitude doubleValue]];
+    
+    return [[AppDelegate sharedInstance].locationFormatter stringFromDistanceFromLocation:[[LocationManager sharedManager] currentLocation]
+                                                                               toLocation:location];
 }
 
 @end

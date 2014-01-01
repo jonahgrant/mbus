@@ -6,11 +6,12 @@
 //  Copyright (c) 2013 Jonah Grant. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+@class TTTLocationFormatter;
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+@property (strong, nonatomic) TTTLocationFormatter *locationFormatter;
 
 + (instancetype)sharedInstance;
 

@@ -15,6 +15,7 @@
 #import "StopAnnotation.h"
 #import "Stop.h"
 #import "Bus.h"
+#import "Constants.h"
 
 @interface StopTray ()
 
@@ -45,7 +46,7 @@
         [self addSubview:_subtitleLabel];
         
         _streetViewButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-        [_streetViewButton setTitle:@"Street View" forState:UIControlStateNormal];
+        [_streetViewButton setTitle:kButtonTitleStreetView forState:UIControlStateNormal];
         _streetViewButton.tintColor = color;
         _streetViewButton.frame = CGRectMake(10, 10, 140, 30);
         _streetViewButton.layer.cornerRadius = 3;
@@ -55,7 +56,7 @@
         [self addSubview:_streetViewButton];
         
         _directionsButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-        [_directionsButton setTitle:@"Directions" forState:UIControlStateNormal];
+        [_directionsButton setTitle:kButtonTitleDirections forState:UIControlStateNormal];
         _directionsButton.tintColor = color;
         _directionsButton.frame = CGRectMake(170, 10, 140, 30);
         _directionsButton.layer.cornerRadius = 3;
@@ -77,7 +78,7 @@
 }
 
 - (void)directions {
-    NSString *address = [NSString stringWithFormat:@"http://maps.apple.com/maps?daddr=%1.6f,%1.6f&saddr=Posizione attuale", _model.stopAnnotation.coordinate.latitude, _model.stopAnnotation.coordinate.longitude];
+    NSString *address = [NSString stringWithFormat:kFormattedStringAppleMapsDirections, _model.stopAnnotation.coordinate.latitude, _model.stopAnnotation.coordinate.longitude];
     NSURL *url = [[NSURL alloc] initWithString:[address stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
     [[UIApplication sharedApplication] openURL:url];
 }

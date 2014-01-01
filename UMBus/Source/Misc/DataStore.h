@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 Jonah Grant. All rights reserved.
 //
 
-#import <CoreLocation/CoreLocation.h>
+@import CoreLocation;
 
 typedef void (^DataStoreErrorBlock)(NSError *error);
 
@@ -27,12 +27,12 @@ typedef void (^DataStoreErrorBlock)(NSError *error);
 - (void)fetchAnnouncementsWithErrorBlock:(DataStoreErrorBlock)errorBlock;
 
 - (NSArray *)persistedArrivals;
-- (NSDictionary *)persistedArrivalsDictionary;
 - (NSArray *)persistedBuses;
 - (NSArray *)persistedStops;
 - (NSArray *)persistedAnnouncements;
 - (NSDictionary *)persistedTraceRoutes;
 - (NSDictionary *)persistedPlacemarks;
+- (NSDictionary *)persistedArrivalsDictionary;
 - (CLLocation *)persistedLastKnownLocation;
 
 - (void)persistTraceRoute:(NSArray *)traceRoute forRouteID:(NSString *)routeID;
@@ -54,13 +54,24 @@ typedef void (^DataStoreErrorBlock)(NSError *error);
  */
 - (NSArray *)arrivalsContainingStopName:(NSString *)name;
 
-// TODO: DOCUMENT THE BELOW METHODS ***************************
-
+/*
+ Searches through all ArrivalStop objects to find the one that matches a given stop name on a given route
+ */
 - (ArrivalStop *)arrivalStopForRouteID:(NSString *)routeID stopName:(NSString *)stopName;
 
+/*
+ Returns TRUE if an Arrival object has a "bus1" servicing it.  This is determined by the Magic Bus API
+ */
 - (BOOL)arrivalHasBus1WithArrivalID:(NSString *)arrivalID;
+
+/*
+ Returns TRUE if an Arrival object has a "bus2" servicing it.  This is determined by the Magic Bus API
+ */
 - (BOOL)arrivalHasBus2WithArrivalID:(NSString *)arrivalID;
 
+/*
+ Takes an arrival id and returns it's Arrival object
+ */
 - (Arrival *)arrivalForID:(NSString *)arrivalID;
 
 @end

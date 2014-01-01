@@ -12,13 +12,14 @@
 #import "ArrivalRouteCellModel.h"
 #import "RouteViewController.h"
 #import "Arrival.h"
+#import "Constants.h"
 
 @implementation RoutesViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    self.navigationItem.title = @"University of Michigan";
+    self.navigationItem.title = kUniversityOfMichigan;
     
     self.model = [[RoutesViewControllerModel alloc] init];
     
@@ -69,7 +70,7 @@
         if (indexPath.row == 0) {
             UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"NoneCell" forIndexPath:indexPath];
             
-            cell.textLabel.text = @"NO ROUTES OPERATING";
+            cell.textLabel.text = kErrorNoRoutesInService;
             cell.textLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:17];
             cell.textLabel.textColor = [UIColor lightGrayColor];
             cell.textLabel.textAlignment = NSTextAlignmentCenter;
@@ -79,7 +80,7 @@
         } else {
             UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"NoneCell" forIndexPath:indexPath];
             
-            cell.textLabel.text = @"Call Safe Rides";
+            cell.textLabel.text = kCallSafeRides;
             cell.textLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:17];
             cell.textLabel.textColor = [UIColor blackColor];
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
@@ -99,7 +100,7 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     if (section == 0) {
-        return @"Routes in service";
+        return kTableHeaderRoutesInService;
     }
     
     return nil;
@@ -112,7 +113,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (self.model.routes.count == 0) {
         if (indexPath.row == 1) {
-            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"tel://7346478000"]];
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:kSafeRidesTel]];
             [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
         }
     } else {

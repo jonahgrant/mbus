@@ -13,6 +13,7 @@
 #import "DataStore.h"
 #import "TTTTimeIntervalFormatter.h"
 #import "StopArrivalCellModel.h"
+#import "Constants.h"
 
 @interface StopViewControllerModel ()
 
@@ -91,7 +92,7 @@
 
 - (NSString *)timeSinceRoutesRefresh {
     if (![[DataStore sharedManager] arrivalsTimestamp]) {
-        return @"never";
+        return kNever;
     }
     
     return [self.timeIntervalFormatter stringForTimeInterval:[[[DataStore sharedManager] arrivalsTimestamp] timeIntervalSinceDate:[NSDate date]]];

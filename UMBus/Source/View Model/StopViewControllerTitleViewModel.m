@@ -10,22 +10,13 @@
 #import "TTTLocationFormatter.h"
 #import "DataStore.h"
 #import "Stop.h"
-
-@interface StopViewControllerTitleViewModel ()
-
-@property (strong, nonatomic) TTTLocationFormatter *locationFormatter;
-
-@end
+#import "AppDelegate.h"
 
 @implementation StopViewControllerTitleViewModel
 
 - (instancetype)initWithStop:(Stop *)stop {
     if (self = [super init]) {
         self.stop = stop;
-        
-        self.locationFormatter = [[TTTLocationFormatter alloc] init];
-        [self.locationFormatter.numberFormatter setMaximumSignificantDigits:1];
-        [self.locationFormatter setUnitSystem:TTTImperialSystem];
     }
     return self;
 }
@@ -35,8 +26,10 @@
         return @"Unknown distance";
     }
     
-    return [self.locationFormatter stringFromDistanceFromLocation:[DataStore sharedManager].lastKnownLocation
-                                                       toLocation:[[CLLocation alloc] initWithLatitude:[self.stop.latitude doubleValue] longitude:[self.stop.longitude doubleValue]]];
+    CLLocation *location = [[CLLocation alloc] initWithLatitude:[self.stop.latitude doubleValue] longitude:[self.stop.longitude doubleValue]];
+    
+    return [[AppDelegate sharedInstance].locationFormatter stringFromDistanceFromLocation:[DataStore sharedManager].lastKnownLocation
+                                                       toLocation:location];
 }
 
 @end

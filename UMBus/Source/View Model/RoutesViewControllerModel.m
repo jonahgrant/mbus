@@ -9,6 +9,7 @@
 #import "RoutesViewControllerModel.h"
 #import "TTTTimeIntervalFormatter.h"
 #import "DataStore.h"
+#import "Constants.h"
 
 @interface RoutesViewControllerModel ()
 
@@ -42,14 +43,14 @@
 
 - (NSString *)timeSinceLastRefresh {
     if (![[DataStore sharedManager] arrivalsTimestamp]) {
-        return @"never";
+        return kNever;
     }
     
     return [self.timeIntervalFormatter stringForTimeInterval:[[[DataStore sharedManager] arrivalsTimestamp] timeIntervalSinceDate:[NSDate date]]];
 }
 
 - (NSString *)footerString {
-    return [NSString stringWithFormat:@"Last updated %@", [self timeSinceLastRefresh]];
+    return [NSString stringWithFormat:kFormattedStringLastUpdated, [self timeSinceLastRefresh]];
 }
 
 @end

@@ -10,6 +10,7 @@
 #import "TTTTimeIntervalFormatter.h"
 #import "DataStore.h"
 #import "Announcement.h"
+#import "Constants.h"
 
 @interface AnnouncementsViewControllerModel ()
 
@@ -38,18 +39,18 @@
 
 - (NSString *)timeSinceLastRefresh {
     if (![[DataStore sharedManager] arrivalsTimestamp]) {
-        return @"never";
+        return kNever;
     }
     
     return [self.timeIntervalFormatter stringForTimeInterval:[[[DataStore sharedManager] announcementsTimestamp] timeIntervalSinceDate:[NSDate date]]];
 }
 
 - (NSString *)footerString {
-    return [NSString stringWithFormat:@"Last updated %@", [self timeSinceLastRefresh]];
+    return [NSString stringWithFormat:kFormattedStringLastUpdated, [self timeSinceLastRefresh]];
 }
 
 - (NSString *)headerString {
-    return [NSString stringWithFormat:@"%i announcements", [DataStore sharedManager].announcements.count];
+    return [NSString stringWithFormat:kFormattedStringXAnnouncements, [DataStore sharedManager].announcements.count];
 }
 
 - (CGFloat)heightForAnnouncement:(Announcement *)announcement width:(CGFloat)width font:(UIFont *)font {

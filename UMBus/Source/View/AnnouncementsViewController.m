@@ -10,6 +10,7 @@
 #import "AnnouncementsViewControllerModel.h"
 #import "DataStore.h"
 #import "Announcement.h"
+#import "Constants.h"
 
 @implementation AnnouncementsViewController
 
@@ -17,7 +18,7 @@
     [super viewDidLoad];
 
     self.model = [[AnnouncementsViewControllerModel alloc] init];
-    self.title = @"Announcements";
+    self.title = kAnnouncements;
     
     if (![DataStore sharedManager].announcements) {
         [self.model fetchData];
@@ -73,7 +74,7 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *CellIdentifier = @"Cell";
+    static NSString *CellIdentifier = @"AnnouncementCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     Announcement *announcement = [DataStore sharedManager].announcements[indexPath.row];

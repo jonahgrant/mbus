@@ -21,7 +21,6 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		AB0B9BC5186A1A8000ED311E /* public_feed.xml in Resources */ = {isa = PBXBuildFile; fileRef = AB0B9BC4186A1A8000ED311E /* public_feed.xml */; };
 		AB2C4C27184D49A5001E2EA2 /* street-view-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = AB2C4C25184D49A5001E2EA2 /* street-view-icon.png */; };
 		AB2C4C28184D49A5001E2EA2 /* street-view-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AB2C4C26184D49A5001E2EA2 /* street-view-icon@2x.png */; };
 		AB3006E41852F9E4007A4E29 /* DataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = AB3006E31852F9E4007A4E29 /* DataStore.m */; };
@@ -123,7 +122,6 @@
 /* Begin PBXFileReference section */
 		50576764A2E345BF9F69305F /* libPods-UMBus.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-UMBus.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A3F6F18FC78B47FB969ACFE4 /* Pods-UMBus.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UMBus.xcconfig"; path = "Pods/Pods-UMBus.xcconfig"; sourceTree = "<group>"; };
-		AB0B9BC4186A1A8000ED311E /* public_feed.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = public_feed.xml; sourceTree = "<group>"; };
 		AB2C4C25184D49A5001E2EA2 /* street-view-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "street-view-icon.png"; sourceTree = "<group>"; };
 		AB2C4C26184D49A5001E2EA2 /* street-view-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "street-view-icon@2x.png"; sourceTree = "<group>"; };
 		AB2C4C29184D5516001E2EA2 /* AnnArbor.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = AnnArbor.gpx; sourceTree = "<group>"; };
@@ -147,6 +145,7 @@
 		AB544336185696E200B65D3D /* Icon-76@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-76@2x.png"; sourceTree = "<group>"; };
 		AB544337185696E200B65D3D /* Icon-Small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small.png"; sourceTree = "<group>"; };
 		AB544338185696E200B65D3D /* Icon-Small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small@2x.png"; sourceTree = "<group>"; };
+		AB56F24B1874A07000761893 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		AB7D4B83186535690035D64A /* AnnouncementsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnnouncementsViewController.h; sourceTree = "<group>"; };
 		AB7D4B84186535690035D64A /* AnnouncementsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnnouncementsViewController.m; sourceTree = "<group>"; };
 		AB7D4B86186535750035D64A /* AnnouncementsViewControllerModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnnouncementsViewControllerModel.h; sourceTree = "<group>"; };
@@ -297,6 +296,13 @@
 				AB7D4B8C18653F5A0035D64A /* ArrivalCellView.m */,
 			);
 			name = ArrivalCell;
+			sourceTree = "<group>";
+		};
+		AB56F24E1874B51400761893 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Categories;
 			sourceTree = "<group>";
 		};
 		ABABF5381862BFDD006DEAF0 /* View */ = {
@@ -490,7 +496,6 @@
 		ABEDEB18184BDA1B00B82E59 /* Misc */ = {
 			isa = PBXGroup;
 			children = (
-				AB0B9BC4186A1A8000ED311E /* public_feed.xml */,
 				ABEDEB19184BDA1B00B82E59 /* InfoPlist.strings */,
 				ABEDEB1B184BDA1B00B82E59 /* UMBus-Info.plist */,
 				AB2C4C29184D5516001E2EA2 /* AnnArbor.gpx */,
@@ -501,6 +506,7 @@
 		ABEDEB7B184C103B00B82E59 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				AB56F24E1874B51400761893 /* Categories */,
 				ABEDEB7C184C103B00B82E59 /* Misc */,
 				ABEDEB82184C103B00B82E59 /* Model */,
 				ABABF5381862BFDD006DEAF0 /* View */,
@@ -523,6 +529,7 @@
 				ABABF57F1863D3F3006DEAF0 /* NotificationManager.h */,
 				ABABF5801863D3F3006DEAF0 /* NotificationManager.m */,
 				ABE1AE60185316540065C329 /* SegueIdentifiers.h */,
+				AB56F24B1874A07000761893 /* Constants.h */,
 			);
 			path = Misc;
 			sourceTree = "<group>";
@@ -693,7 +700,6 @@
 				ABEDEBD3184C42ED00B82E59 /* bus-tab.png in Resources */,
 				ABEDEBAC184C266D00B82E59 /* bus0.png in Resources */,
 				AB54433D185696E200B65D3D /* Icon-76.png in Resources */,
-				AB0B9BC5186A1A8000ED311E /* public_feed.xml in Resources */,
 				ABBCE9E01855573400DEFA9E /* map-icon.png in Resources */,
 				AB3DF359185CD45E00942F67 /* stop-icon.png in Resources */,
 				AB54433C185696E200B65D3D /* Icon-60@2x.png in Resources */,

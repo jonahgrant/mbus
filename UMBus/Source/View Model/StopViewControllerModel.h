@@ -6,8 +6,6 @@
 //  Copyright (c) 2013 Jonah Grant. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-
 @class Stop, Arrival;
 
 @interface StopViewControllerModel : NSObject
