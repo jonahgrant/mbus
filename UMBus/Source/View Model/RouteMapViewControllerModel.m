@@ -99,7 +99,7 @@
 
 - (void)createPolylineFromTraceRoute:(NSArray *)traceRoute {
     CLLocationCoordinate2D coordinates[traceRoute.count];
-    for (int i = 0; i < traceRoute.count; i++) {
+    for (int i = 0, n = traceRoute.count; i < n; i++) {
         TraceRoute *route = traceRoute[i];
         coordinates[i] = CLLocationCoordinate2DMake([route.latitude doubleValue], [route.longitude doubleValue]);
     }

@@ -86,7 +86,7 @@
 - (void)drawPolylineWithLocations:(NSArray *)locations {
     CLLocationCoordinate2D coordinates[locations.count];
     
-    for (int i = 0; i < locations.count; i++) {
+    for (int i = 0, n = locations.count; i < n; i++) {
         CLLocation *location = locations[i];
         coordinates[i] = location.coordinate;
     }
