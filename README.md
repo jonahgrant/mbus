@@ -55,4 +55,4 @@ Run the project
 ## License
 Copyright 2014 Jonah Grant
 
-Licensed under the MIT License.
+Available under the MIT License.
