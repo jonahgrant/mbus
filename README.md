@@ -1,6 +1,6 @@
 # MBus
 [![githalytics.com alpha](https://cruel-carlota.pagodabox.com/0fe6bae62d6859d30f7f447fb3b2b188 "githalytics.com")](http://githalytics.com/jonahgrant/um-magic-bus)
-<img align="right" height="341" src="/icons/Masked-Icon-1024.png">
+<img align="right" height="341" src="/Icons/Masked-Icon-1024.png">
 The University of Michigan has an awesome [live bus tracking system](http://mbus.pts.umich.edu/) for students.  This is an iOS implementation of it.
 
 This project runs on the [MVVM](http://en.wikipedia.org/wiki/Model_View_ViewModel) architecture, allowing abstraction of data-heavy code that would typically live in the view controller.
