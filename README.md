@@ -5,7 +5,7 @@ The University of Michigan has an awesome [live bus tracking system](http://mbus
 
 This project runs on the [MVVM](http://en.wikipedia.org/wiki/Model_View_ViewModel) architecture, allowing abstraction of data-heavy code that would typically live in the view controller.
 
-Additionally, this project runs using [ReactiveCocoa](https://github.com/blog/1107-reactivecocoa-for-a-better-world).  ReactiveCocoa allows us to, among other things, manage constantly updating values with an abstracted version of [KVO](https://developer.apple.com/library/Mac/documentation/Cocoa/Conceptual/KeyValueObserving/KeyValueObserving.html).  For example, this is used in ```MapViewController``` to track updating values of an NSDictionary named ```annotations``` that represents a dictionary of ```MKAnnotations```, each of which corresponding with the current location of a University of Michigan bus.  When the dictionary's value is changed, the annotations are re-plotted.
+Additionally, this project runs using [ReactiveCocoa](https://github.com/blog/1107-reactivecocoa-for-a-better-world).  ReactiveCocoa allows us to, among other things, manage constantly updating values with an abstracted version of [KVO](https://developer.apple.com/library/Mac/documentation/Cocoa/Conceptual/KeyValueObserving/KeyValueObserving.html).
 
 ### Features
 
@@ -19,7 +19,7 @@ Additionally, this project runs using [ReactiveCocoa](https://github.com/blog/11
 + See all bus-related announcements 
 + Easily call Safe Rides if no routes are in service
 
-# Setup
+### Setup
 
 If you don't already have [CocoaPods](http://cocoapods.org/), install it.
 
@@ -28,11 +28,11 @@ If you don't already have [CocoaPods](http://cocoapods.org/), install it.
         
 Clone this repository.
 
-		git clone git@github.com:jonahgrant/um-magic-bus.git
+		git clone git@github.com:jonahgrant/mbus.git
 
 Install it's dependencies
 		
-		cd um-bus
+		cd mbus
 		pod install
 
 Open the workspace (not the project)
@@ -44,10 +44,15 @@ Run the project
 		Select 'UMBus' target
 		Run
 		
-# Interface
+### Interface
 ![Stop](https://dl.dropboxusercontent.com/u/2177718/Screen%20Shot%202013-12-23%20at%2011.42.24%20AM.png "Stop")
 ![Routes](https://dl.dropboxusercontent.com/u/2177718/Screen%20Shot%202013-12-23%20at%2011.42.29%20AM.png "Routes")
 ![Route](https://dl.dropboxusercontent.com/u/2177718/Screen%20Shot%202013-12-23%20at%2011.50.19%20AM.png "Route")
 ![Route map](https://dl.dropboxusercontent.com/u/2177718/Screen%20Shot%202013-12-23%20at%2011.50.27%20AM.png "Route map")
 ![Live bus](https://dl.dropboxusercontent.com/u/2177718/Screen%20Shot%202013-12-23%20at%2011.50.38%20AM.png "Live bus")
 ![Announcmenets](https://dl.dropboxusercontent.com/u/2177718/Screen%20Shot%202013-12-23%20at%2011.50.40%20AM.png "Announcements")
+
+### License
+Copyright 2014 Jonah Grant
+
+Licensed under the MIT License.
