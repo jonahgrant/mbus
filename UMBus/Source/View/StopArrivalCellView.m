@@ -78,7 +78,7 @@
     NSString *arrivingInTime = self.abbreviatedArrivalTime;
     
     int arrivingInTimeFontSize = ([arrivingInTime isEqualToString:@"Arriving Now"]) ? 40 : 70;
-    int arrivingInTimeY = ([arrivingInTime isEqualToString:@"Arriving Now"]) ? 80 : 50;
+    int arrivingInTimeY = ([arrivingInTime isEqualToString:@"Arriving Now"]) ? 80 : 53;
 
     NSDictionary *arrivingInTimeDictionary = @{ NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue-UltraLight"
                                                                                      size:arrivingInTimeFontSize],
@@ -96,7 +96,7 @@
     NSString *arrivingInSuffix = self.arrivalTimeSuffix;
     
     NSDictionary *arrivingInSuffixDictionary = @{ NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue-UltraLight" size:30],
-                                                NSForegroundColorAttributeName: [UIColor grayColor]};
+                                                  NSForegroundColorAttributeName: [UIColor grayColor]};
     
     CGFloat arrivingInSuffixHeight = [arrivingInSuffix boundingRectWithSize:CGSizeMake(MAXFLOAT, MAXFLOAT)
                                                                     options:NSStringDrawingUsesLineFragmentOrigin

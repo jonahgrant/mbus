@@ -9,6 +9,8 @@
 #import "ArrivalCellView.h"
 #import "ArrivalCellModel.h"
 #import "ArrivalStop.h"
+#import "HexColor.h"
+#import "Arrival.h"
 
 @implementation ArrivalCellView
 
@@ -79,18 +81,20 @@
     
     // ABBREVIATED FIRST ARRIVAL TIME
     NSString *firstTimeOfArrival = self.model.abbreviatedFirstArrivalString;
-    NSDictionary *arrivalTimeDictionary = @{ NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue-Bold" size:12],
-                                             NSForegroundColorAttributeName: [UIColor colorWithRed:0.576660 green:0.576660 blue:0.576660 alpha:1.0000]};
-    
-    CGRect routeTimeOfArrivalRect = [firstTimeOfArrival boundingRectWithSize:CGSizeMake(MAXFLOAT, MAXFLOAT)
+    UIColor *firstTimeOfArrivalColor = [firstTimeOfArrival isEqualToString:@"Arr"] ?
+                                        [UIColor colorWithHexString:self.model.arrival.busRouteColor] :
+                                        [UIColor colorWithRed:0.576660 green:0.576660 blue:0.576660 alpha:1.0000];
+    NSDictionary *firstTimeOfArrivalDictionary = @{ NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue-Bold" size:12],
+                                                    NSForegroundColorAttributeName: firstTimeOfArrivalColor};
+    CGRect firstTimeOfArrivalRect = [firstTimeOfArrival boundingRectWithSize:CGSizeMake(MAXFLOAT, MAXFLOAT)
                                                                      options:NSStringDrawingUsesLineFragmentOrigin
-                                                                  attributes:arrivalTimeDictionary
+                                                                  attributes:firstTimeOfArrivalDictionary
                                                                      context:nil];
-    CGRect arrivalTimeRect = CGRectMake(circleRect.origin.x + ((circleRect.size.width - routeTimeOfArrivalRect.size.width) / 2),
-                                        circleRect.origin.y + (circleRect.size.height - (routeTimeOfArrivalRect.size.height * 2)),
-                                        routeTimeOfArrivalRect.size.width,
-                                        routeTimeOfArrivalRect.size.height);
-    [firstTimeOfArrival drawInRect:arrivalTimeRect withAttributes:arrivalTimeDictionary];
+    CGRect arrivalTimeRect = CGRectMake(circleRect.origin.x + ((circleRect.size.width - firstTimeOfArrivalRect.size.width) / 2),
+                                        circleRect.origin.y + (circleRect.size.height - (firstTimeOfArrivalRect.size.height * 2)),
+                                        firstTimeOfArrivalRect.size.width,
+                                        firstTimeOfArrivalRect.size.height);
+    [firstTimeOfArrival drawInRect:arrivalTimeRect withAttributes:firstTimeOfArrivalDictionary];
 }
 
 @end

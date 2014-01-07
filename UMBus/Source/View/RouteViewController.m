@@ -30,7 +30,6 @@
     RAC(self, title) = RACObserve(self.arrival, name);
     
     self.model = [[RouteViewControllerModel alloc] initWithArrival:self.arrival];
-    
     self.informationCells = @[@"Map"];
     
     [self.refreshControl addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];

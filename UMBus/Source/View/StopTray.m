@@ -68,11 +68,6 @@
     return self;
 }
 
-- (void)reset {
-    [_titleLabel setText:nil];
-    [_subtitleLabel setText:nil];
-}
-
 - (void)displayStreetView {
     [(RouteMapViewController *)_target displayStreetViewForAnnotation:(NSObject<MKAnnotation> *)_model.stopAnnotation];
 }
