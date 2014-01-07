@@ -7,7 +7,7 @@ This project runs on the [MVVM](http://en.wikipedia.org/wiki/Model_View_ViewMode
 
 Additionally, this project runs using [ReactiveCocoa](https://github.com/blog/1107-reactivecocoa-for-a-better-world).  ReactiveCocoa allows us to, among other things, manage constantly updating values with an abstracted version of [KVO](https://developer.apple.com/library/Mac/documentation/Cocoa/Conceptual/KeyValueObserving/KeyValueObserving.html).
 
-### Features
+## Features
 
 +  See nearby stops in service 
 + See when the routes that are servicing a specific stop will arrive 
@@ -19,7 +19,7 @@ Additionally, this project runs using [ReactiveCocoa](https://github.com/blog/11
 + See all bus-related announcements 
 + Easily call Safe Rides if no routes are in service
 
-### Setup
+## Setup
 
 If you don't already have [CocoaPods](http://cocoapods.org/), install it.
 
@@ -44,7 +44,7 @@ Run the project
 		Select 'UMBus' target
 		Run
 		
-### Interface
+## Interface
 ![Stop](https://dl.dropboxusercontent.com/u/2177718/Screen%20Shot%202013-12-23%20at%2011.42.24%20AM.png "Stop")
 ![Routes](https://dl.dropboxusercontent.com/u/2177718/Screen%20Shot%202013-12-23%20at%2011.42.29%20AM.png "Routes")
 ![Route](https://dl.dropboxusercontent.com/u/2177718/Screen%20Shot%202013-12-23%20at%2011.50.19%20AM.png "Route")
@@ -52,7 +52,7 @@ Run the project
 ![Live bus](https://dl.dropboxusercontent.com/u/2177718/Screen%20Shot%202013-12-23%20at%2011.50.38%20AM.png "Live bus")
 ![Announcmenets](https://dl.dropboxusercontent.com/u/2177718/Screen%20Shot%202013-12-23%20at%2011.50.40%20AM.png "Announcements")
 
-### License
+## License
 Copyright 2014 Jonah Grant
 
 Licensed under the MIT License.
