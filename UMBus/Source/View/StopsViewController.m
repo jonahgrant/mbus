@@ -26,11 +26,13 @@
     [self.refreshControl addTarget:self.model action:@selector(fetchData) forControlEvents:UIControlEventValueChanged];
     
     [RACObserve(self.model, stops) subscribeNext:^(NSArray *stops) {
-        if (self.refreshControl.isRefreshing)
+        if (self.refreshControl.isRefreshing) {
             [self.refreshControl endRefreshing];
+        }
         
-        if (stops)
+        if (stops) {
             [self.tableView reloadData];
+        }
     }];
 }
 
@@ -43,10 +45,6 @@
     [super viewDidAppear:animated];
     [self.navigationController.navigationBar setTintColor:nil];
     [self.tabBarController.tabBar setTintColor:nil];
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
 }
 
 #pragma mark - Table view data source

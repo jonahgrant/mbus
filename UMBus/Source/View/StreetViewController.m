@@ -8,34 +8,23 @@
 
 #import <GoogleMaps/GoogleMaps.h>
 #import "StreetViewController.h"
-#import "StopAnnotation.h"
-#import "BusAnnotation.h"
-#import "Bus.h"
-#import "Stop.h"
 #import "Constants.h"
 
 @interface StreetViewController ()
 
 @property (nonatomic) CLLocationCoordinate2D coordinate;
 @property (nonatomic) NSUInteger heading;
+@property (nonatomic, copy) NSString *locationTitle;
 
 @end
 
 @implementation StreetViewController
 
-- (instancetype)initWithAnnotation:(NSObject<MKAnnotation> *)annotation {
+- (instancetype)initWithCoordinate:(CLLocationCoordinate2D)coordinate heading:(NSUInteger)heading title:(NSString *)title {
     if (self = [super init]) {
-        _coordinate = annotation.coordinate;
-        self.title = annotation.title;
-    }
-    return self;
-}
-
-- (instancetype)initWithStop:(Stop *)stop {
-    if (self = [super init]) {
-        _coordinate = stop.coordinate;
-        _heading = (NSUInteger)stop.heading;
-        self.title = stop.humanName;
+        _coordinate = coordinate;
+        _heading = heading;
+        _locationTitle = title;
     }
     return self;
 }
@@ -43,9 +32,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    GMSPanoramaView *panoView = [GMSPanoramaView panoramaWithFrame:CGRectZero nearCoordinate:_coordinate];
-    if (_heading) panoView.camera = [GMSPanoramaCamera cameraWithHeading:_heading pitch:-10 zoom:1];
-    self.view = panoView;
+    self.title = _locationTitle;
+    
+    self.view = ({
+        GMSPanoramaView *panoView = [GMSPanoramaView panoramaWithFrame:CGRectZero nearCoordinate:_coordinate];
+        if (_heading > 0) {
+            panoView.camera = [GMSPanoramaCamera cameraWithHeading:_heading pitch:-10 zoom:1];
+        }
+        panoView;
+    });
     
     UIBarButtonItem *closeBarButton = [[UIBarButtonItem alloc] initWithTitle:kDismiss style:UIBarButtonItemStyleDone target:self action:@selector(dismiss)];
     self.navigationItem.leftBarButtonItem = closeBarButton;
@@ -53,10 +48,6 @@
 
 - (void)dismiss {
     [self dismissViewControllerAnimated:YES completion:NULL];
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
 }
 
 @end

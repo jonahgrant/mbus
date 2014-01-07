@@ -50,10 +50,6 @@
     [self.tabBarController.tabBar setTintColor:[UIColor colorWithHexString:self.arrival.busRouteColor]];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-}
-
 - (void)refresh {
     [[DataStore sharedManager] fetchArrivalsWithErrorBlock:NULL];
 }
@@ -139,10 +135,6 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
         [self performSegueWithIdentifier:UMSegueRouteMap sender:self];
-    }
-    
-    if (indexPath.section == 1) {
-        
     }
 }
 

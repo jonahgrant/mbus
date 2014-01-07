@@ -65,10 +65,6 @@
     [self.model endContinuousFetching];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-}
-
 - (void)zoomToCampus {
     MKCoordinateRegion region;
     region.center = CLLocationCoordinate2DMake(42.282707, -83.740196);
@@ -84,11 +80,11 @@
 #pragma mark MKMapView delegate methods
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
-    if ([annotation isKindOfClass:[MKUserLocation class]])
+    if ([annotation isKindOfClass:[MKUserLocation class]]) {
         return nil;
+    }
     
     BusAnnotation *_annotation = (BusAnnotation *)annotation;
-    
     CircleAnnotationView *pin = [[CircleAnnotationView alloc] initWithAnnotation:_annotation
                                                                  reuseIdentifier:@"Pin"
                                                                            color:_annotation.color

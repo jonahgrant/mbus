@@ -8,14 +8,7 @@
 
 #import "ArrivalRouteCell.h"
 #import "ArrivalCellModel.h"
-#import "Arrival.h"
 #import "ArrivalRouteCellView.h"
-
-@interface ArrivalRouteCell ()
-
-@property (strong, nonatomic) UILabel *routeNameLabel;
-
-@end
 
 @implementation ArrivalRouteCell
 

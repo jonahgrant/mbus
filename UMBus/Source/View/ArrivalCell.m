@@ -8,12 +8,11 @@
 
 #import "ArrivalCell.h"
 #import "ArrivalCellModel.h"
-#import "Arrival.h"
 #import "ArrivalCellView.h"
 
 @interface ArrivalCell ()
 
-@property (strong, nonatomic) UILabel *routeNameLabel;
+@property (strong, nonatomic) ArrivalCellView *cellView;
 
 @end
 
@@ -21,10 +20,10 @@
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
     if (self = [super initWithCoder:aDecoder]) {
-        ArrivalCellView *cellView = [[ArrivalCellView alloc] initWithFrame:self.frame arrivalModel:self.model];
-        [self addSubview:cellView];
+        _cellView = [[ArrivalCellView alloc] initWithFrame:self.frame arrivalModel:self.model];
+        [self addSubview:_cellView];
 
-        RAC(cellView, model) = RACObserve(self, model);
+        RAC(_cellView, model) = RACObserve(self, model);
 
         self.selectionStyle = UITableViewCellSelectionStyleNone;
     }

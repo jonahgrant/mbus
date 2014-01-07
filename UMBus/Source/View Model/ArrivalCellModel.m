@@ -10,22 +10,23 @@
 #import "DataStore.h"
 #import "ArrivalStop.h"
 #import "Arrival.h"
+#import "TTTArrayFormatter.h"
 
 @interface ArrivalCellModel ()
 
 @property (strong, nonatomic) ArrivalStop *arrivalStop;
+@property (strong, nonatomic) TTTArrayFormatter *arrayFormatter;
 
 @end
+
 @implementation ArrivalCellModel
 
 - (instancetype)initWithStop:(ArrivalStop *)stop forArrival:(Arrival *)arrival {
     if (self = [super init]) {
         self.stop = stop;
         self.arrival = arrival;
-        
         self.arrivalStop = stop;
-        self.firstArrival = [self firstBusArrival];
-        self.firstArrivalString = [self abbreviatedArrivalTimeForTimeInterval:self.firstArrival];
+        self.arrayFormatter = [[TTTArrayFormatter alloc] init];
     }
     return self;
 }
@@ -51,25 +52,52 @@
 }
 
 - (NSTimeInterval)firstBusArrival {
-    NSTimeInterval toa = 0;
-    if ([[DataStore sharedManager] arrivalHasBus1WithArrivalID:self.arrival.id] &&
-        [[DataStore sharedManager] arrivalHasBus2WithArrivalID:self.arrival.id]) {
-        if (self.arrivalStop.timeOfArrival >= self.arrivalStop.timeOfArrival2) {
-            toa = self.arrivalStop.timeOfArrival2;
+    BOOL hasBusOne = [[DataStore sharedManager] arrivalHasBus1WithArrivalID:self.arrival.id];
+    BOOL hasBusTwo = [[DataStore sharedManager] arrivalHasBus2WithArrivalID:self.arrival.id];
+    
+    NSTimeInterval busOneInterval = self.arrivalStop.timeOfArrival;
+    NSTimeInterval busTwoInterval = self.arrivalStop.timeOfArrival2;
+    
+    if (hasBusOne && hasBusTwo) {
+        if (busOneInterval >= busTwoInterval) {
+            return busTwoInterval;
         } else {
-            toa = self.arrivalStop.timeOfArrival;
+            return busOneInterval;
         }
-    } else if ([[DataStore sharedManager] arrivalHasBus1WithArrivalID:self.arrival.id] &&
-               ![[DataStore sharedManager] arrivalHasBus2WithArrivalID:self.arrival.id]) {
-        toa = self.arrivalStop.timeOfArrival;
-    } else if (![[DataStore sharedManager] arrivalHasBus1WithArrivalID:self.arrival.id] &&
-               [[DataStore sharedManager] arrivalHasBus2WithArrivalID:self.arrival.id]) {
-        toa = self.arrivalStop.timeOfArrival2;
+    } else if (hasBusOne && !hasBusTwo) {
+        return busOneInterval;
+    } else if (!hasBusOne && hasBusTwo) {
+        return busTwoInterval;
     } else {
-        toa = -1;
+        return -1;
+    }
+}
+
+- (NSArray *)timesOfArrival {
+    BOOL hasBusOne = [[DataStore sharedManager] arrivalHasBus1WithArrivalID:self.arrival.id];
+    BOOL hasBusTwo = [[DataStore sharedManager] arrivalHasBus2WithArrivalID:self.arrival.id];
+    
+    NSMutableArray *mutableArray = [NSMutableArray array];
+
+    if (hasBusOne) {
+        [mutableArray addObject:[self timeOfArrivalForTimeInterval:self.arrivalStop.timeOfArrival]];
     }
     
-    return toa;
+    if (hasBusTwo) {
+        [mutableArray addObject:[self timeOfArrivalForTimeInterval:self.arrivalStop.timeOfArrival2]];
+    }
+    
+    return mutableArray;
+}
+
+#pragma Public
+
+- (NSString *)abbreviatedFirstArrivalString {
+    return [self abbreviatedArrivalTimeForTimeInterval:[self firstBusArrival]];
+}
+
+- (NSString *)formattedTimesOfArrival {
+    return [self.arrayFormatter stringFromArray:[self timesOfArrival]];
 }
 
 @end

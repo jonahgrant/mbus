@@ -64,7 +64,7 @@
 }
 
 - (NSString *)footerString {
-    return [NSString stringWithFormat:kFormattedStringLastUpdated, [self timeSinceLastRefresh]];
+    return [NSString stringWithFormat:kFormattedStringAsOf, [self timeSinceLastRefresh]];
 }
 
 

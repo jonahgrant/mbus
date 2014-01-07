@@ -141,7 +141,7 @@
 }
 
 - (void)displayStreetViewForAnnotation:(NSObject<MKAnnotation> *)annotation {
-    StreetViewController *streetViewController = [[StreetViewController alloc] initWithAnnotation:annotation];
+    StreetViewController *streetViewController = [[StreetViewController alloc] initWithCoordinate:annotation.coordinate heading:0 title:annotation.title];
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:streetViewController];
     [self presentViewController:navigationController animated:YES completion:NULL];
 }

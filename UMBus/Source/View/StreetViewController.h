@@ -12,7 +12,8 @@
 
 @interface StreetViewController : UIViewController
 
-- (instancetype)initWithAnnotation:(NSObject<MKAnnotation> *)annotation;
-- (instancetype)initWithStop:(Stop *)stop;
+- (instancetype)initWithCoordinate:(CLLocationCoordinate2D)coordinate
+                           heading:(NSUInteger)heading
+                             title:(NSString *)title;
 
 @end

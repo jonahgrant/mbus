@@ -33,6 +33,7 @@
 
 - (void)fetchData {
     [[DataStore sharedManager] fetchAnnouncementsWithErrorBlock:^(NSError *error) {
+        // this will force the UITableView to reload it's data, showing that no announcements are available
         self.announcements = self.announcements;
     }];
 }

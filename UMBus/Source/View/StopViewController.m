@@ -7,20 +7,19 @@
 //
 
 #import "StopViewController.h"
+#import "StreetViewController.h"
+#import "RouteViewController.h"
 #import "StopViewControllerModel.h"
 #import "StopViewControllerTitleView.h"
-#import "Stop.h"
 #import "StopArrivalCell.h"
 #import "StopArrivalCellModel.h"
 #import "AddressCell.h"
 #import "AddressCellModel.h"
-#import "StreetViewController.h"
 #import "GCBActionSheet.h"
 #import "Arrival.h"
 #import "Stop.h"
 #import "NotificationManager.h"
 #import "DataStore.h"
-#import "RouteViewController.h"
 #import "Constants.h"
 
 @interface StopViewController ()
@@ -158,8 +157,6 @@
 #pragma UITableView delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
-
     if (indexPath.section == 0) {
         Arrival *arrival = self.model.arrivalsServicingStop[indexPath.row];
 
@@ -184,7 +181,9 @@
         }
         
         if (indexPath.row == 1) {
-            StreetViewController *controller = [[StreetViewController alloc] initWithStop:self.model.stop];
+            StreetViewController *controller = [[StreetViewController alloc] initWithCoordinate:self.model.stop.coordinate
+                                                                                        heading:[self.model.stop.heading integerValue]
+                                                                                          title:self.model.stop.humanName];
             UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:controller];
             [self presentViewController:navController animated:YES completion:NULL];
         }

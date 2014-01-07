@@ -23,6 +23,7 @@ static NSString * kButtonTitleStreetView = @"Street View";
 static NSString * kFormattedStringAppleMapsDirections = @"http://maps.apple.com/maps?daddr=%1.6f,%1.6f&saddr=Posizione attuale";
 static NSString * kFormattedStringAddress = @"%@ %@\n%@, %@ %@";
 static NSString * kFormattedStringLastUpdated = @"Last updated %@";
+static NSString * kFormattedStringAsOf = @"As of %@";
 static NSString * kFormattedStringXAnnouncements = @"%i announcements";
 
 #pragma Errors
