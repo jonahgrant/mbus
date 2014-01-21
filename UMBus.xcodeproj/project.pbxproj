@@ -238,13 +238,6 @@
 			name = ArrivalCell;
 			sourceTree = "<group>";
 		};
-		AB56F24E1874B51400761893 /* Categories */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Categories;
-			sourceTree = "<group>";
-		};
 		ABABF5381862BFDD006DEAF0 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -417,7 +410,6 @@
 		ABEDEB7B184C103B00B82E59 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				AB56F24E1874B51400761893 /* Categories */,
 				ABEDEB7C184C103B00B82E59 /* Misc */,
 				ABEDEB82184C103B00B82E59 /* Model */,
 				ABABF5381862BFDD006DEAF0 /* View */,

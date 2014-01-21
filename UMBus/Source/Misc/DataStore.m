@@ -27,6 +27,9 @@ static NSString * kPlacemarksFile = @"placemarks.txt";
 
 @property (strong, nonatomic) UMNetworkingSession *networkingSession;
 @property (strong, nonatomic) NSDictionary *arrivalsDictionary;
+@property (strong, nonatomic) NSArray *localPersistedArrivals, *localPersistedBuses, *localPersistedStops, *localPersistedAnnouncements;
+@property (strong, nonatomic) NSDictionary *localPersistedTraceRoutes, *localPersistedPlacemarks, *localPersistedArrivalsDictionary;
+@property (strong, nonatomic) CLLocation *localPersistedLastKnownLocation;
 
 @end
 
@@ -46,6 +49,8 @@ static NSString * kPlacemarksFile = @"placemarks.txt";
 - (instancetype)init {
     if (self = [super init]) {
         _networkingSession = [[UMNetworkingSession alloc] init];
+        
+        [self fetchPersistedObjects];
         
         [RACObserve([LocationManager sharedManager], currentLocation) subscribeNext:^(CLLocation *location) {
             if (location) {
@@ -80,38 +85,49 @@ static NSString * kPlacemarksFile = @"placemarks.txt";
     return [NSKeyedUnarchiver unarchiveObjectWithData:data];
 }
 
+- (void)fetchPersistedObjects {
+    self.localPersistedArrivals             = [self persistedObjectWithFileName:kArrivalsFile];
+    self.localPersistedArrivalsDictionary   = [self persistedObjectWithFileName:kArrivalsDictionaryFile];
+    self.localPersistedBuses                = [self persistedObjectWithFileName:kBusesFile];
+    self.localPersistedStops                = [self persistedObjectWithFileName:kStopsFile];
+    self.localPersistedAnnouncements        = [self persistedObjectWithFileName:kAnnouncementsFile];
+    self.localPersistedTraceRoutes          = [self persistedObjectWithFileName:kTraceRoutesFile];
+    self.localPersistedPlacemarks           = [self persistedObjectWithFileName:kPlacemarksFile];
+    self.localPersistedLastKnownLocation    = [self persistedObjectWithFileName:kLastKnownLocation][0];
+}
+
 #pragma Properties
 
 - (NSArray *)persistedArrivals {
-    return [self persistedObjectWithFileName:kArrivalsFile];
+    return self.localPersistedArrivals;
 }
 
 - (NSDictionary *)persistedArrivalsDictionary {
-    return [self persistedObjectWithFileName:kArrivalsDictionaryFile];
+    return self.localPersistedArrivalsDictionary;
 }
 
 - (NSArray *)persistedBuses {
-    return [self persistedObjectWithFileName:kBusesFile];
+    return self.localPersistedBuses;
 }
 
 - (NSArray *)persistedStops {
-    return [self persistedObjectWithFileName:kStopsFile];
+    return self.localPersistedStops;
 }
 
 - (NSArray *)persistedAnnouncements {
-    return [self persistedObjectWithFileName:kAnnouncementsFile];
+    return self.localPersistedAnnouncements;
 }
 
 - (NSDictionary *)persistedTraceRoutes {
-    return [self persistedObjectWithFileName:kTraceRoutesFile];
+    return self.localPersistedTraceRoutes;
 }
 
 - (NSDictionary *)persistedPlacemarks {
-    return [self persistedObjectWithFileName:kPlacemarksFile];
+    return self.localPersistedPlacemarks;
 }
 
 - (CLLocation *)persistedLastKnownLocation {
-    return [self persistedObjectWithFileName:kLastKnownLocation][0];
+    return self.localPersistedLastKnownLocation;
 }
 
 #pragma Persisting

@@ -40,7 +40,6 @@
     self.stopTray.target = self;
     [self.view insertSubview:self.stopTray aboveSubview:self.mapView];
 
-    
     self.title = self.model.arrival.name;
     
     [RACObserve(self.model, polyline) subscribeNext:^(MKPolyline *polyline) {
@@ -84,16 +83,22 @@
 #pragma Map
 
 - (void)drawPolylineWithLocations:(NSArray *)locations {
-    CLLocationCoordinate2D coordinates[locations.count];
     
-    for (int i = 0, n = locations.count; i < n; i++) {
-        CLLocation *location = locations[i];
-        coordinates[i] = location.coordinate;
-    }
-    
-    self.polyline = [MKPolyline polylineWithCoordinates:coordinates count:locations.count];
-    [self.mapView addOverlay:self.polyline];
-    [self zoom];
+    /*
+    dispatch_async(dispatch_get_main_queue(), ^{
+
+        CLLocationCoordinate2D coordinates[locations.count];
+        
+        for (int i = 0, n = locations.count; i < n; i++) {
+            CLLocation *location = locations[i];
+            coordinates[i] = location.coordinate;
+        }
+        
+        self.polyline = [MKPolyline polylineWithCoordinates:coordinates count:locations.count];
+        [self.mapView addOverlay:self.polyline];
+        [self zoom];
+        
+    });*/
 }
 
 - (void)zoom {

@@ -26,7 +26,7 @@
     [[DataStore sharedManager] fetchAnnouncementsWithErrorBlock:^(NSError *error){}];
     
     // as long as we have stops, we don't need to reload them until the user requests it
-    if ([[DataStore sharedManager] persistedStops] == nil) {
+    if (![[DataStore sharedManager] persistedStops]) {
         [[DataStore sharedManager] fetchStopsWithErrorBlock:^(NSError *error) {}];
     }
     

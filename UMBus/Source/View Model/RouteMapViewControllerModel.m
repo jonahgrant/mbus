@@ -44,8 +44,9 @@
                 }
                 self.busAnnotations = mutableAnnotations;
                 
-                if (self.continuouslyFetchBuses)
+                if (self.continuouslyFetchBuses) {
                     [self fetchBuses];
+                }
             }
         }];
 
@@ -98,12 +99,14 @@
 }
 
 - (void)createPolylineFromTraceRoute:(NSArray *)traceRoute {
-    CLLocationCoordinate2D coordinates[traceRoute.count];
-    for (int i = 0, n = traceRoute.count; i < n; i++) {
-        TraceRoute *route = traceRoute[i];
-        coordinates[i] = CLLocationCoordinate2DMake([route.latitude doubleValue], [route.longitude doubleValue]);
-    }
-    self.polyline = [MKPolyline polylineWithCoordinates:coordinates count:traceRoute.count];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        CLLocationCoordinate2D coordinates[traceRoute.count];
+        for (int i = 0, n = traceRoute.count; i < n; i++) {
+            TraceRoute *route = traceRoute[i];
+            coordinates[i] = CLLocationCoordinate2DMake([route.latitude doubleValue], [route.longitude doubleValue]);
+        }
+        self.polyline = [MKPolyline polylineWithCoordinates:coordinates count:traceRoute.count];
+    });
 }
 
 @end

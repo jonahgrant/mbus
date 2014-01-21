@@ -86,7 +86,8 @@
         return nil;
     }
     
-    return [NSDate dateWithTimeInterval:(timeInterval > 300) ? timeInterval - 120 : timeInterval // notify two minutes before the bus arrives
+    // notify two minutes before the bus arrives, if over five minutes remaining
+    return [NSDate dateWithTimeInterval:(timeInterval > 300) ? timeInterval - 120 : timeInterval
                               sinceDate:[[DataStore sharedManager] arrivalsTimestamp]];
 }
 
