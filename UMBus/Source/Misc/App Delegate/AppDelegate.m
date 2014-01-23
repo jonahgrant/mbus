@@ -13,7 +13,7 @@
 #import "LocationManager.h"
 #import "Constants.h"
 #import "GAI.h"
-#import "GAIDictionaryBuilder.h"
+#import "Appirater.h"
 
 @implementation AppDelegate
 
@@ -42,8 +42,19 @@
     [[GAI sharedInstance] trackerWithTrackingId:@"UA-46248477-1"];
     [GAI sharedInstance].trackUncaughtExceptions = YES;
     [GAI sharedInstance].dispatchInterval = 20;
-
+    
+    //appirater
+    [Appirater setAppId:@"552035781"];
+    [Appirater setDaysUntilPrompt:3];
+    [Appirater setUsesUntilPrompt:7];
+    [Appirater setTimeBeforeReminding:7];
+    [Appirater appLaunched:YES];
+    
     return YES;
+}
+
+- (void)applicationWillEnterForeground:(UIApplication *)application {
+    [Appirater appEnteredForeground:YES];
 }
 
 @end

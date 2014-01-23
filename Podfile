@@ -12,4 +12,5 @@ target "UMBus" do
     pod 'Fare', '~> 1.0.3'
     pod 'GCBActionSheet', '~> 1.0.0'
     pod 'MarqueeLabel', '~> 1.3'
+    pod 'Appirater', '~> 2.0.2'
 end
