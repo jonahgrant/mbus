@@ -39,6 +39,8 @@
             [self.tableView reloadData];
         }
     }];
+    
+    SendPage(@"RouteViewController");
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -50,6 +52,7 @@
 }
 
 - (void)refresh {
+    SendEvent(@"refresh_route_data");
     [[DataStore sharedManager] fetchArrivalsWithErrorBlock:NULL];
 }
 
@@ -133,6 +136,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
+        SendEvent(@"view_route_map");
         [self performSegueWithIdentifier:UMSegueRouteMap sender:self];
     }
 }

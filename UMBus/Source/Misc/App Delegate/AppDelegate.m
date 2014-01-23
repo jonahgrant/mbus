@@ -12,6 +12,8 @@
 #import "TTTLocationFormatter.h"
 #import "LocationManager.h"
 #import "Constants.h"
+#import "GAI.h"
+#import "GAIDictionaryBuilder.h"
 
 @implementation AppDelegate
 
@@ -36,6 +38,11 @@
     [self.locationFormatter.numberFormatter setMaximumSignificantDigits:1];
     [self.locationFormatter setUnitSystem:TTTImperialSystem];
     
+    // analytics
+    [[GAI sharedInstance] trackerWithTrackingId:@"UA-46248477-1"];
+    [GAI sharedInstance].trackUncaughtExceptions = YES;
+    [GAI sharedInstance].dispatchInterval = 20;
+
     return YES;
 }
 

@@ -69,10 +69,14 @@
 }
 
 - (void)displayStreetView {
+    SendEvent(@"stop_tray_street_view");
+    
     [(RouteMapViewController *)_target displayStreetViewForAnnotation:(NSObject<MKAnnotation> *)_model.stopAnnotation];
 }
 
 - (void)directions {
+    SendEvent(@"stop_tray_directions");
+    
     NSString *address = [NSString stringWithFormat:kFormattedStringAppleMapsDirections, _model.stopAnnotation.coordinate.latitude, _model.stopAnnotation.coordinate.longitude];
     NSURL *url = [[NSURL alloc] initWithString:[address stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
     [[UIApplication sharedApplication] openURL:url];

@@ -46,6 +46,8 @@
     }];
     
     self.navigationItem.titleView = [[StopViewControllerTitleView alloc] initWithStop:self.model.stop];
+    
+    SendPage(@"StopViewController");
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -164,25 +166,31 @@
 
         GCBActionSheet *actionSheet = [[GCBActionSheet alloc] initWithTitle:arrival.name delegate:nil];
         [actionSheet addButtonWithTitle:@"Notify before arrival" handler:^ {
+            SendEvent(@"stop_arrival_notify");
             NotificationManager *notificationManager = [[NotificationManager alloc] init];
             [notificationManager scheduleNotificationWithFireDate:[self.model firstArrivalDateForArrival:arrival]
                                                           message:[NSString stringWithFormat:@"The %@ bus is arriving at %@ soon!", arrival.name, self.model.stop.humanName]];
         }];
         [actionSheet addButtonWithTitle:@"See route" handler:^ {
+            SendEvent(@"stop_arrival_view_route");
             [self performSegueWithIdentifier:UMSegueRoute sender:self];
         }];
-        [actionSheet addCancelButtonWithTitle:@"Dismiss" handler:NULL];
+        [actionSheet addCancelButtonWithTitle:@"Dismiss" handler:^ {
+            SendEvent(@"stop_arrival_dismiss");
+        }];
         [actionSheet showFromTabBar:self.tabBarController.tabBar];
     }
     
     if (indexPath.section == 2) {
         if (indexPath.row == 0) {
+            SendEvent(@"stop_directions");
             NSString *address = [NSString stringWithFormat:kFormattedStringAppleMapsDirections, self.model.stop.coordinate.latitude, self.model.stop.coordinate.longitude];
             NSURL *url = [[NSURL alloc] initWithString:[address stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
             [[UIApplication sharedApplication] openURL:url];
         }
         
         if (indexPath.row == 1) {
+            SendEvent(@"stop_street_view");
             StreetViewController *controller = [[StreetViewController alloc] initWithCoordinate:self.model.stop.coordinate
                                                                                         heading:[self.model.stop.heading integerValue]
                                                                                           title:self.model.stop.humanName];

@@ -29,6 +29,8 @@
         [self.tableView reloadData];
         [self.refreshControl endRefreshing];
     }];
+    
+    SendPage(@"RoutesViewController");
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -109,6 +111,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (self.model.routes.count == 0) {
         if (indexPath.row == 1) {
+            SendEvent(@"called_safe_rides");
             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:kSafeRidesTel]];
             [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
         }

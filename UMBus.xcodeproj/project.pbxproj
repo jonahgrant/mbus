@@ -37,6 +37,8 @@
 		AB7D4B9B18655CC10035D64A /* MapViewControllerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AB7D4B9A18655CC10035D64A /* MapViewControllerModel.m */; };
 		AB7D4B9E186560A50035D64A /* StopTray.m in Sources */ = {isa = PBXBuildFile; fileRef = AB7D4B9D186560A50035D64A /* StopTray.m */; };
 		AB7D4BA1186560B00035D64A /* StopTrayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AB7D4BA0186560B00035D64A /* StopTrayModel.m */; };
+		ABA33DB01890C97E00E78514 /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ABA33DAF1890C97E00E78514 /* libGoogleAnalyticsServices.a */; };
+		ABA33DB21890CA2900E78514 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABA33DB11890CA2900E78514 /* AdSupport.framework */; };
 		ABABF5341862A5BB006DEAF0 /* StopsViewControllerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ABABF5331862A5BB006DEAF0 /* StopsViewControllerModel.m */; };
 		ABABF53B1862BFDD006DEAF0 /* StopsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABABF53A1862BFDD006DEAF0 /* StopsViewController.m */; };
 		ABABF5401862BFE8006DEAF0 /* StopCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ABABF53D1862BFE8006DEAF0 /* StopCell.m */; };
@@ -125,6 +127,14 @@
 		AB7D4B9D186560A50035D64A /* StopTray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StopTray.m; sourceTree = "<group>"; };
 		AB7D4B9F186560B00035D64A /* StopTrayModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StopTrayModel.h; sourceTree = "<group>"; };
 		AB7D4BA0186560B00035D64A /* StopTrayModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StopTrayModel.m; sourceTree = "<group>"; };
+		ABA33DA91890C87400E78514 /* GAI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAI.h; sourceTree = "<group>"; };
+		ABA33DAA1890C87400E78514 /* GAIDictionaryBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIDictionaryBuilder.h; sourceTree = "<group>"; };
+		ABA33DAB1890C87400E78514 /* GAIFields.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIFields.h; sourceTree = "<group>"; };
+		ABA33DAC1890C87400E78514 /* GAILogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAILogger.h; sourceTree = "<group>"; };
+		ABA33DAD1890C87400E78514 /* GAITrackedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITrackedViewController.h; sourceTree = "<group>"; };
+		ABA33DAE1890C87400E78514 /* GAITracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITracker.h; sourceTree = "<group>"; };
+		ABA33DAF1890C97E00E78514 /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAnalyticsServices.a; sourceTree = "<group>"; };
+		ABA33DB11890CA2900E78514 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		ABABF5321862A5BB006DEAF0 /* StopsViewControllerModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StopsViewControllerModel.h; sourceTree = "<group>"; };
 		ABABF5331862A5BB006DEAF0 /* StopsViewControllerModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StopsViewControllerModel.m; sourceTree = "<group>"; };
 		ABABF5391862BFDD006DEAF0 /* StopsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StopsViewController.h; sourceTree = "<group>"; };
@@ -203,8 +213,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ABA33DB21890CA2900E78514 /* AdSupport.framework in Frameworks */,
 				AB32F9D51856B0E200FBC50D /* libz.dylib in Frameworks */,
 				AB32F9D31856B0C700FBC50D /* SystemConfiguration.framework in Frameworks */,
+				ABA33DB01890C97E00E78514 /* libGoogleAnalyticsServices.a in Frameworks */,
 				AB32F9D11856B0C300FBC50D /* CoreData.framework in Frameworks */,
 				ABEDEB36184BDC0A00B82E59 /* MapKit.framework in Frameworks */,
 				ABEDEADA184BD90D00B82E59 /* CoreGraphics.framework in Frameworks */,
@@ -236,6 +248,28 @@
 				AB7D4B8C18653F5A0035D64A /* ArrivalCellView.m */,
 			);
 			name = ArrivalCell;
+			sourceTree = "<group>";
+		};
+		ABA33DA71890C87400E78514 /* 3rdParty */ = {
+			isa = PBXGroup;
+			children = (
+				ABA33DA81890C87400E78514 /* Google Analytics */,
+			);
+			path = 3rdParty;
+			sourceTree = "<group>";
+		};
+		ABA33DA81890C87400E78514 /* Google Analytics */ = {
+			isa = PBXGroup;
+			children = (
+				ABA33DAF1890C97E00E78514 /* libGoogleAnalyticsServices.a */,
+				ABA33DA91890C87400E78514 /* GAI.h */,
+				ABA33DAA1890C87400E78514 /* GAIDictionaryBuilder.h */,
+				ABA33DAB1890C87400E78514 /* GAIFields.h */,
+				ABA33DAC1890C87400E78514 /* GAILogger.h */,
+				ABA33DAD1890C87400E78514 /* GAITrackedViewController.h */,
+				ABA33DAE1890C87400E78514 /* GAITracker.h */,
+			);
+			path = "Google Analytics";
 			sourceTree = "<group>";
 		};
 		ABABF5381862BFDD006DEAF0 /* View */ = {
@@ -338,6 +372,7 @@
 		ABEDEAD6184BD90D00B82E59 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				ABA33DB11890CA2900E78514 /* AdSupport.framework */,
 				AB32F9D61856B0E900FBC50D /* libPods-UMBus-GoogleAnalytics-iOS-SDK.a */,
 				AB32F9D41856B0E200FBC50D /* libz.dylib */,
 				AB32F9D21856B0C700FBC50D /* SystemConfiguration.framework */,
@@ -410,6 +445,7 @@
 		ABEDEB7B184C103B00B82E59 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				ABA33DA71890C87400E78514 /* 3rdParty */,
 				ABEDEB7C184C103B00B82E59 /* Misc */,
 				ABEDEB82184C103B00B82E59 /* Model */,
 				ABABF5381862BFDD006DEAF0 /* View */,
@@ -813,6 +849,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "UMBus/Source/Misc/UMBus-Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/UMBus/Resources/Misc/UMBus-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/jonahgrant/um/mbus/UMBus/Source/3rdParty/Google\\ Analytics",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -833,6 +873,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "UMBus/Source/Misc/UMBus-Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/UMBus/Resources/Misc/UMBus-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/jonahgrant/um/mbus/UMBus/Source/3rdParty/Google\\ Analytics",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;

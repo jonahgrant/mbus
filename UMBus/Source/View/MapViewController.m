@@ -51,6 +51,8 @@
             [self.mapView removeAnnotations:intermediate];
         }
     }];
+    
+    SendPage(@"MapViewController");
 }
 
 - (void)viewDidAppear:(BOOL)animated {

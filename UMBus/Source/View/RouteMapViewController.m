@@ -59,6 +59,8 @@
     }];
     
     [self zoom];
+    
+    SendPage(@"RouteMapViewController");
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -81,25 +83,6 @@
 }
 
 #pragma Map
-
-- (void)drawPolylineWithLocations:(NSArray *)locations {
-    
-    /*
-    dispatch_async(dispatch_get_main_queue(), ^{
-
-        CLLocationCoordinate2D coordinates[locations.count];
-        
-        for (int i = 0, n = locations.count; i < n; i++) {
-            CLLocation *location = locations[i];
-            coordinates[i] = location.coordinate;
-        }
-        
-        self.polyline = [MKPolyline polylineWithCoordinates:coordinates count:locations.count];
-        [self.mapView addOverlay:self.polyline];
-        [self zoom];
-        
-    });*/
-}
 
 - (void)zoom {
     if (self.polyline) {
@@ -215,6 +198,8 @@
 }
 
 - (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view {
+    SendEvent(@"selected_stop_annotation");
+    
     NSObject<MKAnnotation> *annotation = view.annotation;
     if ([annotation class] == [StopAnnotation class]) {
         StopAnnotation *stopAnnotation = (StopAnnotation *)annotation;

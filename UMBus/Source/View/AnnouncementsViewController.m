@@ -28,6 +28,8 @@
         [self.refreshControl endRefreshing];
         [self.tableView reloadData];
     }];
+    
+    SendPage(@"AnnouncementsViewController");
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -46,6 +48,7 @@
 }
 
 - (IBAction)refresh:(id)sender {
+    SendEvent(@"refresh_announcements_data");
     [self.model fetchData];
 }
 

@@ -44,6 +44,8 @@
     
     UIBarButtonItem *closeBarButton = [[UIBarButtonItem alloc] initWithTitle:kDismiss style:UIBarButtonItemStyleDone target:self action:@selector(dismiss)];
     self.navigationItem.leftBarButtonItem = closeBarButton;
+    
+    SendPage(@"StreetViewController");
 }
 
 - (void)dismiss {

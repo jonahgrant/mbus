@@ -36,6 +36,8 @@
             });
         }
     }];
+    
+    SendPage(@"StopsViewController");
 }
 
 - (void)viewWillAppear:(BOOL)animated {
