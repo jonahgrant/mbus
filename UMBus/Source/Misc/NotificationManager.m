@@ -11,7 +11,7 @@
 @implementation NotificationManager
 
 - (void)scheduleNotificationWithFireDate:(NSDate *)date message:(NSString *)message {
-    SendEvent(@"scheduleNotification");
+    SendEvent(@"schedule_notification");
     
     UILocalNotification *localNotification = [[UILocalNotification alloc] init];
     localNotification.fireDate = date;

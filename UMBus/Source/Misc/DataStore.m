@@ -147,7 +147,7 @@ static NSString * kPlacemarksFile = @"placemarks.txt";
 #pragma Fetch
 
 - (void)fetchArrivalsWithErrorBlock:(DataStoreErrorBlock)errorBlock {
-    SendEvent(@"fetchArrivals");
+    SendEvent(@"fetch_arrivals");
     [self.networkingSession fetchArrivalsWithSuccessBlock:^(NSArray *arrivals) {
         self.arrivalsTimestamp = [NSDate date];
         [self persistObject:arrivals withFileName:kArrivalsFile];
@@ -169,7 +169,7 @@ static NSString * kPlacemarksFile = @"placemarks.txt";
 }
 
 - (void)fetchBusesWithErrorBlock:(DataStoreErrorBlock)errorBlock {
-    SendEvent(@"fetchBuses");
+    SendEvent(@"fetch_arrivals");
     [self.networkingSession fetchBusesWithSuccessBlock:^(NSArray *buses) {
         self.busesTimestamp = [NSDate date];
         [self persistObject:buses withFileName:kBusesFile];
@@ -184,7 +184,7 @@ static NSString * kPlacemarksFile = @"placemarks.txt";
 }
 
 - (void)fetchStopsWithErrorBlock:(DataStoreErrorBlock)errorBlock {
-    SendEvent(@"fetchStops");
+    SendEvent(@"fetch_stops");
     [self.networkingSession fetchStopsWithSuccessBlock:^(NSArray *stops) {
         self.stopsTimestamp = [NSDate date];
         [self persistObject:stops withFileName:kStopsFile];
@@ -199,7 +199,7 @@ static NSString * kPlacemarksFile = @"placemarks.txt";
 }
 
 - (void)fetchAnnouncementsWithErrorBlock:(DataStoreErrorBlock)errorBlock {
-    SendEvent(@"fetchAnnouncements");
+    SendEvent(@"fetch_announcements");
     [self.networkingSession fetchAnnouncementsWithSuccessBlock:^(NSArray *announcements) {
         self.announcementsTimestamp = [NSDate date];
         [self persistObject:announcements withFileName:kAnnouncementsFile];
