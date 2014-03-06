@@ -1,0 +1,32 @@
+//
+//  Prefix header
+//
+//  The contents of this file are implicitly included at the beginning of every source file.
+//
+
+#import <Availability.h>
+
+#import "GAI.h"
+#import "GAIDictionaryBuilder.h"
+#import "GAITracker.h"
+#import "GAIFields.h"
+
+#ifndef __IPHONE_5_0
+#warning "This project uses features only available in iOS SDK 5.0 and later."
+#endif
+
+#ifdef __OBJC__
+    @import UIKit;
+    @import Foundation;
+    #import <ReactiveCocoa/ReactiveCocoa.h>
+    #import "EXTScope.h"
+#endif
+
+#define SendEvent(event) [[[GAI sharedInstance] defaultTracker] send:[[GAIDictionaryBuilder createEventWithCategory:@"event" action:event label:@"event" value:nil] build]];
+
+#define SendError(class, error) [[[GAI sharedInstance] defaultTracker] send:[[GAIDictionaryBuilder createEventWithCategory:@"application_error" action:NSStringFromClass(class) label:error value:nil] build]];
+
+#define SendPage(page) \
+id tracker = [[GAI sharedInstance] defaultTracker]; \
+[tracker set:kGAIScreenName value:page]; \
+[tracker send:[[GAIDictionaryBuilder createAppView] build]];
