@@ -44,6 +44,7 @@ NSString * const FORMATTED_MORE_STOPS_CELL_TEXT = @"%u MORE STOPS";
 NSString * const NONE = @"NONE";
 NSString * const UNKNOWN_LOCATION = @"Uknown location";
 NSString * const UNKNOWN = @"unknown";
+NSString * const FORMATTED_APPLE_MAPS_PIN = @"http://maps.apple.com/?q=%f,%f";
 
 #pragma mark - Analytics
 

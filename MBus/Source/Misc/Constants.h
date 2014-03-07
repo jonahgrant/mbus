@@ -43,6 +43,7 @@ extern NSString * const FORMATTED_MORE_STOPS_CELL_TEXT;
 extern NSString * const NONE;
 extern NSString * const UNKNOWN_DISTANCE;
 extern NSString * const UNKNOWN;
+extern NSString * const FORMATTED_APPLE_MAPS_PIN;
 
 #pragma mark - Analytics
 

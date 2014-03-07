@@ -12,7 +12,7 @@
 
 @class Stop;
 
-@interface StreetViewController : UMTableViewController
+@interface StreetViewController : UMViewController
 
 - (instancetype)initWithCoordinate:(CLLocationCoordinate2D)coordinate
                            heading:(NSUInteger)heading

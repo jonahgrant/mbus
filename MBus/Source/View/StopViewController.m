@@ -21,6 +21,7 @@
 #import "UMAdditions+UIFont.h"
 #import "GCBActionSheet.h"
 #import "Arrival.h"
+#import "NotificationManager.h"
 
 @interface StopViewController ()
 
@@ -157,7 +158,17 @@
         [actionSheet addButtonWithTitle:@"Notify before arrival" handler:^ {
             SendEvent(ANALYTICS_STOP_ARRIVAL_NOTIFY);
             
-            NSLog(@"TODO: NOTIFY!!!!!!!!!!!!!!");
+            NSString *message = [NSString stringWithFormat:@"The %@ bus is arriving at %@ soon", arrival.name, self.model.stop.humanName];
+
+            NotificationManager *notificationManager = [[NotificationManager alloc] init];
+            [notificationManager scheduleNotificationWithFireDate:[self.model firstArrivalDateForArrival:arrival] message:message];
+            
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Success!"
+                                                            message:[NSString stringWithFormat:@"You'll be notified when the %@ bus is almost at %@", arrival.name, self.model.stop.humanName]
+                                                           delegate:nil
+                                                  cancelButtonTitle:nil
+                                                  otherButtonTitles:@"Dismiss", nil];
+            [alert show];
         }];
         
         [actionSheet addCancelButtonWithTitle:@"Dismiss" handler:^ {
@@ -169,7 +180,7 @@
         SendEvent(ANALYTICS_STOP_ADDRESS);
         
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:
-                                                                         @"http://maps.apple.com/?q=%f,%f",
+                                                                         FORMATTED_APPLE_MAPS_PIN,
                                                                          self.model.stop.coordinate.latitude,
                                                                          self.model.stop.coordinate.longitude]]];
     } else if (indexPath.section == SectionMisc) {
