@@ -40,6 +40,8 @@ NSString * NSStringFromCell(Cell cell) {
             return @"Map";
         case CellAnnouncements:
             return [NSString stringWithFormat:@"%lu announcements", (unsigned long)[DataStore sharedManager].announcements.count];
+        case CellSource:
+            return @"Open sourced on Github";
         default:
             return nil;
     }
@@ -71,6 +73,8 @@ extern NSInteger NSIntegerForCell(Cell cell) {
             return 0;
         case CellAbout:
             return 1;
+        case CellSource:
+            return 2;
         default:
             return 0;
     }
@@ -112,7 +116,8 @@ extern NSInteger NSIntegerForSection(Section section) {
                        self.sections[1]: @[NSStringFromCell(CellSupport),
                                            NSStringFromCell(CellContact)],
                        self.sections[2]: @[NSStringFromCell(CellReview),
-                                           NSStringFromCell(CellAbout)],
+                                           NSStringFromCell(CellAbout),
+                                           NSStringFromCell(CellSource)],
                        self.sections[3]: @[NSStringFromCell(CellAcknowledgements)]};
     }
     return self;

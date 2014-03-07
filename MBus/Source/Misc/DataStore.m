@@ -14,6 +14,7 @@
 #import "Bus.h"
 #import "Stop.h"
 #import "UMAdditions+UIColor.h"
+#import "Constants.h"
 
 static NSString * const kLastKnownLocation      = @"lastKnownLocation.txt";
 static NSString * const kStopsFile              = @"stops.txt";
@@ -158,8 +159,7 @@ static NSString * const kPlacemarksFile         = @"placemarks.txt";
 #pragma Fetch
 
 - (void)fetchArrivalsWithErrorBlock:(DataStoreErrorBlock)errorBlock {
-    SendEvent(@"fetch_arrivals");
-   
+    SendEvent(ANALYTICS_FETCH_ARRIVALS);
     [self.networkingSession fetchArrivalsWithSuccessBlock:^(NSArray *arrivals) {
         self.arrivalsTimestamp = [NSDate date];
         [self persistObject:arrivals withFileName:kArrivalsFile];
@@ -184,8 +184,7 @@ static NSString * const kPlacemarksFile         = @"placemarks.txt";
 }
 
 - (void)fetchBusesWithErrorBlock:(DataStoreErrorBlock)errorBlock {
-    SendEvent(@"fetch_buses");
-   
+    SendEvent(ANALYTICS_FETCH_BUSES);
     [self.networkingSession fetchBusesWithSuccessBlock:^(NSArray *buses) {
         self.busesTimestamp = [NSDate date];
         self.buses = buses;
@@ -203,17 +202,16 @@ static NSString * const kPlacemarksFile         = @"placemarks.txt";
 }
 
 - (void)fetchStopsWithErrorBlock:(DataStoreErrorBlock)errorBlock {
-    SendEvent(@"fetch_stops");
-
+    SendEvent(ANALYTICS_FETCH_STOPS);
     [self.networkingSession fetchStopsWithSuccessBlock:^(NSArray *stops) {
         self.stopsTimestamp = [NSDate date];
         
         for (Stop *stop in stops) {
-            [self setColorsForStopWithUniqueName:stop.uniqueName colors:[UIColor gradientForStyle:arc4random_uniform(16)]];
+            [self setColorsForStopWithUniqueName:stop.uniqueName
+                                          colors:[UIColor gradientForStyle:arc4random_uniform(16)]];
         }
         
         self.stops = stops;
-
         [self persistObject:stops withFileName:kStopsFile];
     } errorBlock:^(NSError *error) {
         self.stopsTimestamp = [NSDate date];
@@ -227,12 +225,10 @@ static NSString * const kPlacemarksFile         = @"placemarks.txt";
 }
 
 - (void)fetchAnnouncementsWithErrorBlock:(DataStoreErrorBlock)errorBlock {
-    SendEvent(@"fetch_announcements");
-   
+    SendEvent(ANALYTICS_FETCH_ANNOUNCEMENTS);
     [self.networkingSession fetchAnnouncementsWithSuccessBlock:^(NSArray *announcements) {
         self.announcementsTimestamp = [NSDate date];
         self.announcements = announcements;
-        
         [self persistObject:announcements withFileName:kAnnouncementsFile];
     } errorBlock:^(NSError *error) {
         self.announcementsTimestamp = [NSDate date];

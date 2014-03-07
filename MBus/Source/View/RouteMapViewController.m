@@ -17,6 +17,7 @@
 #import "StreetViewController.h"
 #import "StopTray.h"
 #import "StopTrayModel.h"
+#import "Constants.h"
 
 @interface RouteMapViewController ()
 
@@ -42,19 +43,25 @@
 
     self.title = self.model.arrival.name;
     
-    [RACObserve(self.model, polyline) subscribeNext:^(MKPolyline *polyline) {
-        if (polyline) [self.mapView addOverlay:polyline];
+    [[RACObserve(self.model, polyline) filter:^BOOL(MKPolyline *polyline) {
+        return (polyline) ? YES : NO;
+    }] subscribeNext:^(MKPolyline *polyline) {
+        [self.mapView addOverlay:polyline];
     }];
 
-    [RACObserve(self.model, stopAnnotations) subscribeNext:^(NSDictionary *annotations) {
-        if (annotations) {
-            for (id key in annotations) [self.mapView addAnnotation:(StopAnnotation *)[annotations objectForKey:key]];
+    [[RACObserve(self.model, stopAnnotations) filter:^BOOL(NSDictionary *annotations) {
+        return (annotations.count > 0);
+    }] subscribeNext:^(NSDictionary *annotations) {
+        for (id key in annotations) {
+            [self.mapView addAnnotation:(StopAnnotation *)[annotations objectForKey:key]];
         }
     }];
     
-    [RACObserve(self.model, busAnnotations) subscribeNext:^(NSDictionary *annotations) {
-        if (annotations) {
-            for (id key in annotations) [self.mapView addAnnotation:(BusAnnotation *)[annotations objectForKey:key]];
+    [[RACObserve(self.model, busAnnotations) filter:^BOOL(NSDictionary *annotations) {
+        return (annotations.count > 0);
+    }] subscribeNext:^(NSDictionary *annotations) {
+        for (id key in annotations) {
+            [self.mapView addAnnotation:(BusAnnotation *)[annotations objectForKey:key]];
         }
     }];
     
@@ -75,10 +82,6 @@
 - (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
     [self.model endFetchingBuses];
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
 }
 
 #pragma Map
@@ -112,6 +115,7 @@
             }
         }
     }
+    
     [self.mapView setVisibleMapRect:zoomRect animated:NO];
 }
 
@@ -134,6 +138,8 @@
 }
 
 - (void)displayTray {
+    SendEvent(ANALYTICS_DISPLAY_STOP_ANNOTATION_TRAY);
+    
     [UIView animateWithDuration:0.5
                      animations:^ {
                          self.stopTray.frame = CGRectMake(
@@ -146,6 +152,8 @@
 }
 
 - (void)dismissTray {
+    SendEvent(ANALYTICS_HIDE_STOP_ANNOTATION_TRAY);
+    
     [UIView animateWithDuration:0.5
                      animations:^ {
                          self.stopTray.frame = CGRectMake(
@@ -197,7 +205,7 @@
 }
 
 - (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view {
-    SendEvent(@"selected_stop_annotation");
+    SendEvent(ANALYTICS_SELECT_STOP_ANNOTATION);
     
     NSObject<MKAnnotation> *annotation = view.annotation;
     if ([annotation class] == [StopAnnotation class]) {

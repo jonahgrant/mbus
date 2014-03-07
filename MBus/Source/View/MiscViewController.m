@@ -72,12 +72,18 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == SectionMore) {
         if (indexPath.row == NSIntegerForCell(CellMap)) {
+            SendEvent(ANALYTICS_MISC_MAP);
+            
             [self performSegueWithIdentifier:UMSegueMap sender:self];
         } else if (indexPath.row == NSIntegerForCell(CellAnnouncements)) {
+            SendEvent(ANALYTICS_MISC_ANNOUNCEMENTS);
+            
             [self performSegueWithIdentifier:UMSegueAnnouncements sender:self];
         }
     } else if (indexPath.section == NSIntegerForSection(SectionLegal)) {
         if (indexPath.row == NSIntegerForCell(CellAcknowledgements)) {
+            SendEvent(ANALYTICS_MISC_ACKNOWLEDGEMENTS);
+            
             NSString *path = [[NSBundle mainBundle] pathForResource:ACKNOWLEDGEMENTS_PLIST_PATH ofType:ACKNOWLEDGEMENTS_PLIST_TYPE];
             VTAcknowledgementsViewController *viewController = [[VTAcknowledgementsViewController alloc] initWithAcknowledgementsPlistPath:path];
             viewController.licenseTextViewFont = [UIFont helveticaNeueWithWeight:TypeWeightLight size:17.0f];
@@ -85,11 +91,15 @@
         }
     } else if (indexPath.section == NSIntegerForSection(SectionContact)) {
         if (indexPath.row == NSIntegerForCell(CellSupport)) {
+            SendEvent(ANALYTICS_MISC_CONTACT_SUPPORT);
+            
             UIViewController *viewController = [CGLMailHelper supportMailViewControllerWithRecipient:SUPPORT_EMAIL_ADDRESS
                                                                                      subject:SUPPORT_EMAIL_SUBJECT
                                                                                   completion:nil];
             [self presentViewController:viewController animated:YES completion:NULL];
         } else if (indexPath.row == NSIntegerForCell(CellContact)) {
+            SendEvent(ANALYTICS_MISC_CONTACT_DEVELOPER);
+            
             UIViewController *viewController = [CGLMailHelper mailViewControllerWithRecipients:@[DEVELOPER_EMAIL_ADDRESS]
                                                                                        subject:DEVELOPER_EMAIL_SUBJECT
                                                                                        message:nil
@@ -100,23 +110,20 @@
         }
     } else if (indexPath.section == NSIntegerForSection(SectionMisc)) {
         if (indexPath.row == NSIntegerForCell(CellReview)) {
+            SendEvent(ANALYTICS_MISC_REVIEW);
+            
             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:RATE_APP_URL]];
             [tableView deselectRowAtIndexPath:indexPath animated:YES];
         } else if (indexPath.row == NSIntegerForCell(CellAbout)) {
+            SendEvent(ANALYTICS_MISC_ABOUT);
+            
             WebViewController *viewController = [[WebViewController alloc] initWithURL:[NSURL URLWithString:@"http://mbus.pts.umich.edu/about-us/"]];
+            [self.navigationController pushViewController:viewController animated:YES];
+        } else if (indexPath.row == NSIntegerForCell(CellSource)) {
+            WebViewController *viewController = [[WebViewController alloc] initWithURL:[NSURL URLWithString:@"http://github.com/jonahgrant/mbus/"]];
             [self.navigationController pushViewController:viewController animated:YES];
         }
     }
 }
-
-/*
-#pragma mark - Navigation
-
-// In a story board-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

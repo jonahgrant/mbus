@@ -18,6 +18,9 @@
 #import "UMSegueIdentifiers.h"
 #import "RouteViewController.h"
 #import "Constants.h"
+#import "UMAdditions+UIFont.h"
+#import "GCBActionSheet.h"
+#import "Arrival.h"
 
 @interface StopViewController ()
 
@@ -39,7 +42,6 @@
             [self.tableView reloadData];
         });
     };
-    //[self.model fetchData];
     
     self.navigationItem.titleView = [[StopViewControllerTitleView alloc] initWithStop:self.model.stop];
 }
@@ -90,7 +92,7 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section {
     if (section == SectionRoutes) {
-        return [NSString stringWithFormat:@"Last updated %@", [self.model timeSinceRoutesRefresh]];
+        return [NSString stringWithFormat:FORMATTED_LAST_UPDATED, [self.model timeSinceRoutesRefresh]];
     }
     
     return nil;
@@ -101,8 +103,8 @@
         if (self.model.arrivalsServicingStop.count == 0) {
             UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"NoneCell" forIndexPath:indexPath];
             
-            cell.textLabel.text = @"NONE";
-            cell.textLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:17];
+            cell.textLabel.text = NONE;
+            cell.textLabel.font = [UIFont helveticaNeueWithWeight:TypeWeightLight size:17.0f];
             cell.textLabel.textColor = [UIColor lightGrayColor];
             cell.textLabel.textAlignment = NSTextAlignmentCenter;
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -126,7 +128,7 @@
     } else if (indexPath.section == SectionMisc) {
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"InfoCell" forIndexPath:indexPath];
         cell.textLabel.text = self.model.miscCells[indexPath.row];
-        cell.textLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:17];
+        cell.textLabel.font = [UIFont helveticaNeueWithWeight:TypeWeightLight size:17.0f];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         
         return cell;
@@ -143,18 +145,43 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 
     if (indexPath.section == SectionRoutes) {
-        [self performSegueWithIdentifier:UMSegueRoute sender:self];
+        Arrival *arrival = self.model.arrivalsServicingStop[self.activeIndexPath.row];
+        
+        GCBActionSheet *actionSheet = [[GCBActionSheet alloc] initWithTitle:arrival.name delegate:nil];
+        
+        [actionSheet addButtonWithTitle:@"View route" handler:^ {
+            SendEvent(ANALYTICS_STOP_ARRIVAL_VIEW_ROUTE);
+            [self performSegueWithIdentifier:UMSegueRoute sender:self];
+        }];
+        
+        [actionSheet addButtonWithTitle:@"Notify before arrival" handler:^ {
+            SendEvent(ANALYTICS_STOP_ARRIVAL_NOTIFY);
+            
+            NSLog(@"TODO: NOTIFY!!!!!!!!!!!!!!");
+        }];
+        
+        [actionSheet addCancelButtonWithTitle:@"Dismiss" handler:^ {
+            SendEvent(ANALYTICS_STOP_ARRIVAL_DISMISS);
+        }];
+        
+        [actionSheet showFromTabBar:self.tabBarController.tabBar];
     } else if (indexPath.section == SectionAddress) {
+        SendEvent(ANALYTICS_STOP_ADDRESS);
+        
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:
                                                                          @"http://maps.apple.com/?q=%f,%f",
                                                                          self.model.stop.coordinate.latitude,
                                                                          self.model.stop.coordinate.longitude]]];
     } else if (indexPath.section == SectionMisc) {
         if (indexPath.row == MiscCellDirections) {
+            SendEvent(ANALYTICS_STOP_DIRECTIONS);
+
             NSString *address = [NSString stringWithFormat:FORMATTED_APPLE_MAPS_DIRECTIONS, self.model.stop.coordinate.latitude, self.model.stop.coordinate.longitude];
             NSURL *url = [[NSURL alloc] initWithString:[address stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
             [[UIApplication sharedApplication] openURL:url];
         } else if (indexPath.row == MiscCellStreetView) {
+            SendEvent(ANALYTICS_STOP_STREET_VIEW);
+
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
                 StreetViewController *controller = [[StreetViewController alloc] initWithCoordinate:self.model.stop.coordinate
                                                                                             heading:[self.model.stop.heading integerValue]

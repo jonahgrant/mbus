@@ -15,7 +15,8 @@ typedef NS_ENUM(NSInteger, Cell) {
     CellReview,
     CellAbout,
     CellMap,
-    CellAnnouncements
+    CellAnnouncements,
+    CellSource
 };
 
 typedef NS_ENUM(NSInteger, Section) {

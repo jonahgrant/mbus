@@ -22,7 +22,6 @@
 - (instancetype)init {
     if (self = [super init]) {
         self.timeIntervalFormatter = [[TTTTimeIntervalFormatter alloc] init];
-
     
         [[RACObserve([DataStore sharedManager], arrivals) filter:^BOOL(NSArray *arrivals) {
             return (arrivals.count > 0 && self.dataUpdatedBlock);

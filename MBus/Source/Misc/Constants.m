@@ -41,6 +41,40 @@ NSString * const FORMATTED_ANNOUNCEMENTS_COUNT = @"%i announcements";
 NSString * const NEARBY_STOPS = @"Nearby stops";
 NSString * const NEARBY_STOPS_IN_SERVICE = @"Nearby stops in service";
 NSString * const FORMATTED_MORE_STOPS_CELL_TEXT = @"%u MORE STOPS";
+NSString * const NONE = @"NONE";
+NSString * const UNKNOWN_LOCATION = @"Uknown location";
+NSString * const UNKNOWN = @"unknown";
+
+#pragma mark - Analytics
+
+NSString * const ANALYTICS_FETCH_STOPS = @"fetch_stops";
+NSString * const ANALYTICS_FETCH_ARRIVALS = @"fetch_arrivals";
+NSString * const ANALYTICS_FETCH_BUSES = @"fetch_buses";
+NSString * const ANALYTICS_FETCH_ANNOUNCEMENTS = @"fetch_announcements";
+NSString * const ANALYTICS_APP_OPENED = @"app_opened";
+NSString * const ANALYTICS_APP_RECEIVED_LOCAL_NOTIFICATION = @"app_received_local_notification";
+NSString * const ANALYTICS_APP_RECEIVED_MEMORY_WARNING = @"app_received_memory_warning";
+NSString * const ANALYTICS_STOP_ARRIVAL_NOTIFY = @"stop_arrival_notify";
+NSString * const ANALYTICS_STOP_ARRIVAL_VIEW_ROUTE = @"stop_arrival_view_route";
+NSString * const ANALYTICS_STOP_ARRIVAL_DISMISS = @"stop_arrival_dismiss";
+NSString * const ANALYTICS_STOP_DIRECTIONS = @"stop_directions";
+NSString * const ANALYTICS_STOP_STREET_VIEW = @"stop_street_view";
+NSString * const ANALYTICS_STOP_ADDRESS = @"stop_address";
+NSString * const ANALYTICS_BEGAN_STOPS_SEARCH = @"began_stop_search";
+NSString * const ANALYTICS_ENDED_STOPS_SEARCH = @"ended_stop_search";
+NSString * const ANALYTICS_CALL_SAFE_RIDES = @"called_safe_rides";
+NSString * const ANALYTICS_MISC_MAP = @"view_map";
+NSString * const ANALYTICS_MISC_ANNOUNCEMENTS = @"view_announcements";
+NSString * const ANALYTICS_MISC_ACKNOWLEDGEMENTS = @"view_acknowledgements";
+NSString * const ANALYTICS_MISC_CONTACT_SUPPORT = @"contact_support";
+NSString * const ANALYTICS_MISC_CONTACT_DEVELOPER = @"contact_developer";
+NSString * const ANALYTICS_MISC_REVIEW = @"review_app";
+NSString * const ANALYTICS_MISC_ABOUT = @"view_about_magic_bus";
+NSString * const ANALYTICS_VIEW_ROUTE_MAP = @"view_route_map";
+NSString * const ANALYTICS_SELECT_STOP_ANNOTATION = @"selected_stop_annotation";
+NSString * const ANALYTICS_DISPLAY_STOP_ANNOTATION_TRAY = @"display_stop_annotation_tray";
+NSString * const ANALYTICS_HIDE_STOP_ANNOTATION_TRAY = @"hide_stop_annotation_tray";
+NSString * const ANALYTICS_FETCH_STOP_ADDRESS = @"fetch_stop_address";
 
 extern NSString * NSStringForUIViewController(UIViewController *viewController) {
     NSString *class = NSStringFromClass([viewController class]);

@@ -11,6 +11,7 @@
 #import "DataStore.h"
 #import "Announcement.h"
 #import "Constants.h"
+#import "UMAdditions+UIFont.h"
 
 @implementation AnnouncementsViewController
 
@@ -26,7 +27,8 @@
             [self.refreshControl endRefreshing];
         });
     };
-    [self.model fetchData];
+    
+    [self.refreshControl addTarget:self.model action:@selector(fetchData) forControlEvents:UIControlEventValueChanged];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -46,11 +48,6 @@
     [super didReceiveMemoryWarning];
 }
 
-- (IBAction)refresh:(id)sender {
-    SendEvent(@"refresh_announcements_data");
-    [self.model fetchData];
-}
-
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -64,7 +61,7 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return [self.model heightForAnnouncement:[DataStore sharedManager].announcements[indexPath.row]
                                        width:self.view.frame.size.width
-                                        font:[UIFont fontWithName:@"HelveticaNeue" size:14]];
+                                        font:[UIFont helveticaNeueWithWeight:TypeWeightNormal size:14]];
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
@@ -83,7 +80,7 @@
     
     cell.textLabel.text = announcement.text;
     cell.textLabel.numberOfLines = 0;
-    cell.textLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:14];
+    cell.textLabel.font = [UIFont helveticaNeueWithWeight:TypeWeightNormal size:14];
     cell.textLabel.textColor = [UIColor blackColor];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     

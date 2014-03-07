@@ -33,7 +33,7 @@
     self.model = [[RouteViewControllerModel alloc] initWithArrival:self.arrival];
     self.informationCells = @[@"Map"];
     
-    [self.refreshControl addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
+    [self.refreshControl addTarget:self.model action:@selector(fetchData) forControlEvents:UIControlEventValueChanged];
 
     [[RACObserve(self.model, sortedStops) filter:^BOOL(NSArray *stops) {
         return (stops.count > 0);
@@ -49,13 +49,6 @@
     [self setInterfaceWithColor:[UIColor colorWithHexString:self.arrival.busRouteColor]];
     
     [self.tableView deselectRowAtIndexPath:[[self.tableView indexPathsForSelectedRows] firstObject] animated:YES];
-}
-
-- (void)refresh {
-    SendEvent(@"refresh_route_data");
-    [[DataStore sharedManager] fetchArrivalsWithErrorBlock:^(NSError *error) {
-        [self.refreshControl endRefreshing];
-    }];
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle {
@@ -125,9 +118,7 @@
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         
         return cell;
-    }
-    
-    if (indexPath.section == 1) {
+    } else if (indexPath.section == 1) {
         ArrivalCell *cell = [tableView dequeueReusableCellWithIdentifier:@"StopCell" forIndexPath:indexPath];
         
         ArrivalStop *stop = self.model.sortedStops[indexPath.row];
@@ -143,7 +134,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
-        SendEvent(@"view_route_map");
+        SendEvent(ANALYTICS_VIEW_ROUTE_MAP);
+        
         [self performSegueWithIdentifier:UMSegueRouteMap sender:self];
     }
 }

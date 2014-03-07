@@ -110,7 +110,8 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if ([DataStore sharedManager].arrivals.count == 0) {
         if (indexPath.row == 1) {
-            SendEvent(@"called_safe_rides");
+            SendEvent(ANALYTICS_CALL_SAFE_RIDES);
+            
             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:SAFE_RIDES_TEL]];
             [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
         }

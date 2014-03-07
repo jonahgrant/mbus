@@ -34,7 +34,7 @@
         self.circleColors = (colors) ? colors : @[[UIColor blackColor]];
                 
         if (![[LocationManager sharedManager] currentLocation]) {
-            self.distance = @"unknown";
+            self.distance = UNKNOWN;
         } else {
             CLLocation *location = [[CLLocation alloc] initWithLatitude:[self.stop.latitude doubleValue] longitude:[self.stop.longitude doubleValue]];
             

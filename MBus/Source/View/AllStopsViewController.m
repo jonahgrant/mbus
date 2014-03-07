@@ -12,6 +12,7 @@
 #import "UMSegueIdentifiers.h"
 #import "StopViewController.h"
 #import "StopViewControllerModel.h"
+#import "Constants.h"
 
 static CGFloat kStopCellHeight = 100.0f;
 
@@ -50,6 +51,14 @@ static CGFloat kStopCellHeight = 100.0f;
 }
 
 #pragma mark - UISearchDisplayController
+
+- (void)searchDisplayControllerDidBeginSearch {
+    SendEvent(ANALYTICS_BEGAN_STOPS_SEARCH);
+}
+
+- (void)searchDisplayControllerDidEndSearch {
+    SendEvent(ANALYTICS_ENDED_STOPS_SEARCH);
+}
 
 - (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString {
     self.searchResults = [self.model.stops filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(humanName contains[c] %@) OR (uniqueName contains[c] %@)", searchString, searchString]];
