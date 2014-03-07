@@ -43,6 +43,7 @@
             [self.tableView reloadData];
         });
     };
+    [self.model fetchData];
     
     self.navigationItem.titleView = [[StopViewControllerTitleView alloc] initWithStop:self.model.stop];
 }
