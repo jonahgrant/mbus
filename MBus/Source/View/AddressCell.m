@@ -18,11 +18,15 @@ static const CGFloat CAMERA_ALTITUDE = 1000.0f;
 static const CGFloat CAMERA_PITCH = 0.0f;
 static const CGFloat CAMERA_HEADING = 0.0f;
 
+static NSInteger const TINT_ALPHA = 0.6;
+
 @interface AddressCell () <MKMapViewDelegate>
 
 @property (strong, nonatomic, readwrite) MKMapView *mapView;
 @property (nonatomic) CLLocationCoordinate2D coordinate;
+@property (strong, nonatomic) UIView *tintView;
 @property (nonatomic) BOOL loaded;
+@property (strong, nonatomic) UIActivityIndicatorView *activityIndicator;
 
 @end
 
@@ -40,17 +44,24 @@ static const CGFloat CAMERA_HEADING = 0.0f;
         self.textLabel.layer.shadowOffset = CGSizeMake(0.0, 1.0);
         self.textLabel.layer.shadowOpacity = 1;
         self.textLabel.layer.shadowRadius = 0.1;
+        self.textLabel.alpha = 0;
         
-        UIView *tintView = [[UIView alloc] initWithFrame:self.frame];
-        tintView.backgroundColor = [UIColor blackColor];
-        tintView.alpha = 0.6;
-        [self insertSubview:tintView atIndex:0];
+        _tintView = [[UIView alloc] initWithFrame:self.frame];
+        _tintView.backgroundColor = [UIColor blackColor];
+        _tintView.alpha = 1;
+        [self insertSubview:_tintView atIndex:0];
         
         _mapView = [[MKMapView alloc] initWithFrame:CGRectMake(0, -40, CGRectGetWidth(self.frame) + 180, CGRectGetHeight(self.frame) + 120)];
         _mapView.mapType = MKMapTypeStandard;
         _mapView.delegate = self;
         _mapView.showsBuildings = YES;
         [self insertSubview:_mapView atIndex:0];
+        
+        _activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+        _activityIndicator.center = CGPointMake(CGRectGetWidth(self.frame) / 2, CGRectGetHeight(self.frame) / 2);
+        _activityIndicator.hidesWhenStopped = YES;
+        [self addSubview:_activityIndicator];
+        [_activityIndicator startAnimating];
         
         UIInterpolatingMotionEffect *mapHorizontalEffect = [[UIInterpolatingMotionEffect alloc] initWithKeyPath:@"center.x" type:UIInterpolatingMotionEffectTypeTiltAlongHorizontalAxis];
         mapHorizontalEffect.minimumRelativeValue = @(-PARALLAX_LEEWAY_VALUE);
@@ -74,6 +85,14 @@ static const CGFloat CAMERA_HEADING = 0.0f;
             return (placemark != nil);
         }] subscribeNext:^(CLPlacemark *placemark) {
             [self endLoading];
+            
+            [_activityIndicator stopAnimating];
+            
+            [UIView animateWithDuration:0.5
+                             animations:^ {
+                                 _tintView.alpha = 0.69;
+                                 self.textLabel.alpha = 1;
+                             }];
             
             self.loaded = YES;
             
