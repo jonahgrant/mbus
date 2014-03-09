@@ -118,4 +118,20 @@ static const CGFloat CAMERA_HEADING = 0.0f;
     self.textLabel.textAlignment = NSTextAlignmentLeft;
 }
 
+#pragma mark - MKMapView
+
+- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
+    MKPinAnnotationView *pin = (MKPinAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier: @"annotation_ID"];
+    if (pin == nil) {
+        pin = [[MKPinAnnotationView alloc] initWithAnnotation: annotation reuseIdentifier: @"annotation_ID"];
+    } else {
+        pin.annotation = annotation;
+    }
+    
+    pin.pinColor = MKPinAnnotationColorRed;
+    pin.animatesDrop = YES;
+    
+    return pin;
+}
+
 @end

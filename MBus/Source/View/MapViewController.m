@@ -38,7 +38,11 @@
     };
     [self.model beginContinuousFetching];
     
-    [self zoomToCampus];
+    if (self.startCoordinate.latitude != 0 && self.startCoordinate.longitude != 0) {
+        [self dropAndZoomToPinWithCoordinate:self.startCoordinate];
+    } else {
+        [self zoomToCampus];
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -63,6 +67,14 @@
     
     // remove buses no longer in service
     NSMutableArray *intermediate = [NSMutableArray arrayWithArray:self.mapView.annotations];
+    
+    for (int i = 0, j = self.mapView.annotations.count; i < j; i++) {
+        if ([intermediate[i] isKindOfClass:[MKPointAnnotation class]]) {
+            [intermediate removeObject:intermediate[i]];
+            break;
+        }
+    }
+    
     [intermediate removeObjectsInArray:annotationArray];
     [self.mapView removeAnnotations:intermediate];
 }
@@ -79,21 +91,48 @@
     [self.mapView setRegion:region animated:YES];
 }
 
+- (void)dropAndZoomToPinWithCoordinate:(CLLocationCoordinate2D)coordinate {
+    MKPointAnnotation *annotation = [[MKPointAnnotation alloc] init];
+    annotation.coordinate = coordinate;
+    [_mapView addAnnotation:annotation];
+    
+    MKMapCamera *camera = [MKMapCamera new];
+    camera.centerCoordinate = coordinate;
+    camera.heading = 0;
+    camera.pitch = 0;
+    camera.altitude = 5000;
+    [self.mapView setCamera:camera animated:NO];
+}
+
 #pragma mark MKMapView delegate methods
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
     if ([annotation isKindOfClass:[MKUserLocation class]]) {
         return nil;
+    } else if ([annotation isKindOfClass:[MKPointAnnotation class]]) {
+        MKPinAnnotationView *pin = (MKPinAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier: @"annotation_ID"];
+        if (pin == nil) {
+            pin = [[MKPinAnnotationView alloc] initWithAnnotation: annotation reuseIdentifier: @"annotation_ID"];
+        } else {
+            pin.annotation = annotation;
+        }
+        
+        pin.pinColor = MKPinAnnotationColorRed;
+        pin.animatesDrop = YES;
+        
+        return pin;
+    } else if ([annotation isKindOfClass:[BusAnnotation class]]) {
+        BusAnnotation *_annotation = (BusAnnotation *)annotation;
+        CircleAnnotationView *pin = [[CircleAnnotationView alloc] initWithAnnotation:_annotation
+                                                                     reuseIdentifier:@"Pin"
+                                                                               color:_annotation.color
+                                                                        outlineColor:[UIColor whiteColor]];
+        pin.canShowCallout = YES;
+        
+        return pin;
     }
     
-    BusAnnotation *_annotation = (BusAnnotation *)annotation;
-    CircleAnnotationView *pin = [[CircleAnnotationView alloc] initWithAnnotation:_annotation
-                                                                 reuseIdentifier:@"Pin"
-                                                                           color:_annotation.color
-                                                                    outlineColor:[UIColor whiteColor]];
-    pin.canShowCallout = YES;
-    
-    return pin;
+    return nil;
 }
 
 @end

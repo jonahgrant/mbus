@@ -10,4 +10,6 @@
 
 @interface MapViewController : UMViewController
 
+@property (nonatomic) CLLocationCoordinate2D startCoordinate;
+
 @end

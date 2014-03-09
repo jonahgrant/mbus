@@ -22,6 +22,7 @@
 #import "GCBActionSheet.h"
 #import "Arrival.h"
 #import "NotificationManager.h"
+#import "MapViewController.h"
 
 @interface StopViewController ()
 
@@ -179,11 +180,8 @@
         [actionSheet showFromTabBar:self.tabBarController.tabBar];
     } else if (indexPath.section == SectionAddress) {
         SendEvent(ANALYTICS_STOP_ADDRESS);
-                
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:
-                                                                         FORMATTED_APPLE_MAPS_PIN,
-                                                                         self.model.stop.coordinate.latitude,
-                                                                         self.model.stop.coordinate.longitude]]];
+        
+        [self performSegueWithIdentifier:UMSegueMap sender:self];
     } else if (indexPath.section == SectionMisc) {
         if (indexPath.row == MiscCellDirections) {
             SendEvent(ANALYTICS_STOP_DIRECTIONS);
@@ -215,6 +213,9 @@
         Arrival *arrival = self.model.arrivalsServicingStop[self.activeIndexPath.row];
         RouteViewController *routeController = (RouteViewController *)segue.destinationViewController;
         routeController.arrival = arrival;
+    } else if ([segue.identifier isEqual:UMSegueMap]) {
+        MapViewController *viewController = (MapViewController *)segue.destinationViewController;
+        viewController.startCoordinate = self.model.stop.coordinate;
     }
 }
 

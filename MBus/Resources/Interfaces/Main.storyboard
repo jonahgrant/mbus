@@ -238,6 +238,7 @@
                     <connections>
                         <segue destination="14C-2h-EYz" kind="push" identifier="UMSegueRouteMap" id="Dmd-ku-M7g"/>
                         <segue destination="jRG-vS-ixX" kind="push" identifier="UMSegueRoute" id="2A8-0r-zia"/>
+                        <segue destination="O2p-4l-1E7" kind="push" identifier="UMSegueMap" id="BNS-GN-Fsn"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m7r-Km-Xkj" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -457,7 +458,8 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="ULz-IM-lDQ"/>
-        <segue reference="Dmd-ku-M7g"/>
+        <segue reference="BNS-GN-Fsn"/>
         <segue reference="2A8-0r-zia"/>
+        <segue reference="Dmd-ku-M7g"/>
     </inferredMetricsTieBreakers>
 </document>
