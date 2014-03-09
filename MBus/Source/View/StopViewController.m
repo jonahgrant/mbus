@@ -27,6 +27,7 @@
 
 @property (nonatomic, strong, readwrite) StopViewControllerModel *model;
 @property (nonatomic, strong, readwrite) NSIndexPath *activeIndexPath;
+@property (nonatomic) AddressCell *addressCell;
 
 @end
 
@@ -43,7 +44,6 @@
             [self.tableView reloadData];
         });
     };
-    [self.model fetchData];
     
     self.navigationItem.titleView = [[StopViewControllerTitleView alloc] initWithStop:self.model.stop];
 }
@@ -123,10 +123,10 @@
         AddressCellModel *cellModel = [[AddressCellModel alloc] initWithLocation:[[CLLocation alloc] initWithLatitude:self.model.stop.coordinate.latitude
                                                                                                             longitude:self.model.stop.coordinate.longitude]
                                                                           stopID:self.model.stop.id];
-        AddressCell *cell = [tableView dequeueReusableCellWithIdentifier:@"AddressCell" forIndexPath:indexPath];
-        cell.model = cellModel;
+        self.addressCell = [tableView dequeueReusableCellWithIdentifier:@"AddressCell" forIndexPath:indexPath];
+        self.addressCell.model = cellModel;
         
-        return cell;
+        return self.addressCell;
     } else if (indexPath.section == SectionMisc) {
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"InfoCell" forIndexPath:indexPath];
         cell.textLabel.text = self.model.miscCells[indexPath.row];
@@ -179,7 +179,7 @@
         [actionSheet showFromTabBar:self.tabBarController.tabBar];
     } else if (indexPath.section == SectionAddress) {
         SendEvent(ANALYTICS_STOP_ADDRESS);
-        
+                
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:
                                                                          FORMATTED_APPLE_MAPS_PIN,
                                                                          self.model.stop.coordinate.latitude,

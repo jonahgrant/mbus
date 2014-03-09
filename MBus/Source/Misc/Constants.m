@@ -12,7 +12,7 @@ NSInteger const ARRIVALS_REFRESH_INTERVAL                  = 60; // one minute
 
 NSString * const GOOGLE_MAPS_API_KEY                       = @"AIzaSyCCBKyJMm7zWhVxukAy8k-_ejMlc5t8ugo";
 NSString * const DISCLAIMER                                = @"The system behind MBus is under development.  Riders are encouraged to use it, but reliable and accurate information is not garunteed";
-NSString * const RATE_APP_URL                              = @"itms-apps: //itunes.apple.com/app/id777435172";
+NSString * const RATE_APP_URL                              = @"itms-apps://itunes.apple.com/app/id777435172";
 NSString * const ACKNOWLEDGEMENTS_PLIST_PATH               = @"Pods-MBus-acknowledgements";
 NSString * const ACKNOWLEDGEMENTS_PLIST_TYPE               = @"plist";
 double const CAMPUS_CENTER_LAT                             = 42.282707;
@@ -33,10 +33,10 @@ NSString * const UNIVERSITY_OF_MICHIGAN                    = @"University of Mic
 NSString * const NO_ROUTES_IN_SERVICE                      = @"NO ROUTES IN SERVICE";
 NSString * const CALL_SAFE_RIDES                           = @"Call Safe Rides";
 NSString * const ROUTES_IN_SERVICE                         = @"Routes in service";
-NSString * const SAFE_RIDES_TEL                            = @"tel: //7346478000";
+NSString * const SAFE_RIDES_TEL                            = @"tel://7346478000";
 NSString * const STREET_VIEW                               = @"Street View";
 NSString * const DIRECTIONS                                = @"Directions";
-NSString * const FORMATTED_APPLE_MAPS_DIRECTIONS           = @"http: //maps.apple.com/maps?daddr=%1.6f,%1.6f&saddr=Posizione attuale";
+NSString * const FORMATTED_APPLE_MAPS_DIRECTIONS           = @"http://maps.apple.com/maps?daddr=%1.6f,%1.6f&saddr=Posizione attuale";
 NSString * const FORMATTED_ANNOUNCEMENTS_COUNT             = @"%i announcements";
 NSString * const NEARBY_STOPS                              = @"Nearby stops";
 NSString * const NEARBY_STOPS_IN_SERVICE                   = @"Nearby stops in service";
@@ -44,7 +44,7 @@ NSString * const FORMATTED_MORE_STOPS_CELL_TEXT            = @"%u MORE STOPS";
 NSString * const NONE                                      = @"NONE";
 NSString * const UNKNOWN_LOCATION                          = @"Uknown location";
 NSString * const UNKNOWN                                   = @"unknown";
-NSString * const FORMATTED_APPLE_MAPS_PIN                  = @"http: //maps.apple.com/?q=%f,%f";
+NSString * const FORMATTED_APPLE_MAPS_PIN                  = @"http://maps.apple.com/?q=%f,%f";
 
 #pragma mark - Analytics
 

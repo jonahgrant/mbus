@@ -767,7 +767,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Jonah Grant (LB4MBV72FH)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MBus/Source/Misc/MBus-Prefix.pch";
 				INFOPLIST_FILE = "MBus/Resources/Misc/MBus-Info.plist";
@@ -776,7 +776,7 @@
 					"/Users/jonahgrant/code/umich/new/MBus/MBus/Source/3rdParty/Google\\ Analytics",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "A9882A93-8E44-48AA-B8A2-DCE61C341A82";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -787,7 +787,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Jonah Grant (LB4MBV72FH)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MBus/Source/Misc/MBus-Prefix.pch";
 				INFOPLIST_FILE = "MBus/Resources/Misc/MBus-Info.plist";
@@ -796,7 +796,7 @@
 					"/Users/jonahgrant/code/umich/new/MBus/MBus/Source/3rdParty/Google\\ Analytics",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "A9882A93-8E44-48AA-B8A2-DCE61C341A82";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
