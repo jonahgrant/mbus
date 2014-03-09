@@ -71,6 +71,7 @@ NSString * NSStringForMiscCell(MiscCell cell) {
     return self;
 }
 
+
 #pragma mark - ViewControllerModelBase
 
 - (void)fetchData {

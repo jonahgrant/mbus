@@ -56,6 +56,18 @@
     [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
 }
 
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    
+    [self.addressCell purgeMapMemory];
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    
+    [self.addressCell purgeMapMemory];
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -125,6 +137,9 @@
                                                                                                             longitude:self.model.stop.coordinate.longitude]
                                                                           stopID:self.model.stop.id];
         self.addressCell = [tableView dequeueReusableCellWithIdentifier:@"AddressCell" forIndexPath:indexPath];
+        if (self.addressCell == nil) {
+            self.addressCell = [[AddressCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"AddressCell"];
+        }
         self.addressCell.model = cellModel;
         
         return self.addressCell;

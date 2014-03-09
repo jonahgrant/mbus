@@ -112,6 +112,12 @@ static NSInteger const TINT_ALPHA = 0.6;
     return self;
 }
 
+- (void)purgeMapMemory {
+    _mapView.mapType = MKMapTypeSatellite;
+    [_mapView removeFromSuperview];
+    _mapView = nil;
+}
+
 - (void)zoomToCoordinate:(CLLocationCoordinate2D)coordinate {
     MKMapCamera *camera = [MKMapCamera new];
     camera.centerCoordinate = CLLocationCoordinate2DMake(coordinate.latitude, coordinate.longitude - 0.0005);

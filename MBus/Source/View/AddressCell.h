@@ -12,4 +12,6 @@
 
 @property (strong, nonatomic) AddressCellModel *model;
 
+- (void)purgeMapMemory;
+
 @end
