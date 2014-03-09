@@ -36,7 +36,6 @@
         @strongify(self);
         [self loadAnnotations];
     };
-    [self.model beginContinuousFetching];
     
     if (self.startCoordinate.latitude != 0 && self.startCoordinate.longitude != 0) {
         [self dropAndZoomToPinWithCoordinate:self.startCoordinate];
@@ -48,6 +47,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
+    [self.model beginContinuousFetching];
     [self resetInterface];
 }
 
