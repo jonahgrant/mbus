@@ -29,6 +29,7 @@
 @property (nonatomic, strong, readwrite) StopViewControllerModel *model;
 @property (nonatomic, strong, readwrite) NSIndexPath *activeIndexPath;
 @property (nonatomic) AddressCell *addressCell;
+@property (nonatomic, getter = isVisitingMap) BOOL visitingMap;
 
 @end
 
@@ -52,6 +53,8 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
+    self.visitingMap = NO;
+    
     [self resetInterface];
     [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
 }
@@ -59,7 +62,9 @@
 - (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
     
-    [self.addressCell purgeMapMemory];
+    if (!self.isVisitingMap) {
+        [self.addressCell purgeMapMemory];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -229,6 +234,8 @@
         RouteViewController *routeController = (RouteViewController *)segue.destinationViewController;
         routeController.arrival = arrival;
     } else if ([segue.identifier isEqual:UMSegueMap]) {
+        _visitingMap = YES;
+        
         MapViewController *viewController = (MapViewController *)segue.destinationViewController;
         viewController.startCoordinate = self.model.stop.coordinate;
     }
