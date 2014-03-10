@@ -90,7 +90,7 @@ static NSInteger const TINT_ALPHA = 0.6;
             
             [UIView animateWithDuration:0.5
                              animations:^ {
-                                 _tintView.alpha = 0.69;
+                                 _tintView.alpha = 0.69; // lol
                                  self.textLabel.alpha = 1;
                              }];
             

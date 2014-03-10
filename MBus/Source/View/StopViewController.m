@@ -29,7 +29,7 @@
 @property (nonatomic, strong, readwrite) StopViewControllerModel *model;
 @property (nonatomic, strong, readwrite) NSIndexPath *activeIndexPath;
 @property (nonatomic) AddressCell *addressCell;
-@property (nonatomic, getter = isVisitingMap) BOOL visitingMap;
+@property (nonatomic) BOOL shouldPurgeMap;
 
 @end
 
@@ -53,7 +53,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    self.visitingMap = NO;
+    self.shouldPurgeMap = YES;
     
     [self resetInterface];
     [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
@@ -62,7 +62,7 @@
 - (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
     
-    if (!self.isVisitingMap) {
+    if (self.shouldPurgeMap) {
         [self.addressCell purgeMapMemory];
     }
 }
@@ -209,8 +209,12 @@
             NSString *address = [NSString stringWithFormat:FORMATTED_APPLE_MAPS_DIRECTIONS, self.model.stop.coordinate.latitude, self.model.stop.coordinate.longitude];
             NSURL *url = [[NSURL alloc] initWithString:[address stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
             [[UIApplication sharedApplication] openURL:url];
+            
+            self.shouldPurgeMap = NO;
         } else if (indexPath.row == MiscCellStreetView) {
             SendEvent(ANALYTICS_STOP_STREET_VIEW);
+
+            self.shouldPurgeMap = NO;
 
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
                 StreetViewController *controller = [[StreetViewController alloc] initWithCoordinate:self.model.stop.coordinate
@@ -219,7 +223,9 @@
                 UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:controller];
                 
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    [self presentViewController:navController animated:YES completion:NULL];
+                    [self presentViewController:navController animated:YES completion:^ {
+                        self.shouldPurgeMap = YES;
+                    }];
                 });
             });
         }
@@ -229,13 +235,13 @@
 #pragma UIStoryboard
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    self.shouldPurgeMap = NO;
+
     if ([segue.identifier isEqual:UMSegueRoute]) {
         Arrival *arrival = self.model.arrivalsServicingStop[self.activeIndexPath.row];
         RouteViewController *routeController = (RouteViewController *)segue.destinationViewController;
         routeController.arrival = arrival;
     } else if ([segue.identifier isEqual:UMSegueMap]) {
-        _visitingMap = YES;
-        
         MapViewController *viewController = (MapViewController *)segue.destinationViewController;
         viewController.startCoordinate = self.model.stop.coordinate;
     }
