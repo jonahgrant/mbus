@@ -12,6 +12,7 @@
 #import "AddressCellModel.h"
 #import "Constants.h"
 #import "UMAdditions+UIFont.h"
+#import "AddressCellMapView.h"
 
 static const CGFloat PARALLAX_LEEWAY_VALUE = 20.0f;
 static const CGFloat CAMERA_ALTITUDE = 1000.0f;
@@ -20,9 +21,8 @@ static const CGFloat CAMERA_HEADING = 0.0f;
 
 static NSInteger const TINT_ALPHA = 0.6;
 
-@interface AddressCell () <MKMapViewDelegate>
+@interface AddressCell ()
 
-@property (strong, nonatomic, readwrite) MKMapView *mapView;
 @property (nonatomic) CLLocationCoordinate2D coordinate;
 @property (strong, nonatomic) UIView *tintView;
 @property (nonatomic) BOOL loaded;
@@ -51,11 +51,7 @@ static NSInteger const TINT_ALPHA = 0.6;
         _tintView.alpha = 1;
         [self insertSubview:_tintView atIndex:0];
         
-        _mapView = [[MKMapView alloc] initWithFrame:CGRectMake(0, -40, CGRectGetWidth(self.frame) + 180, CGRectGetHeight(self.frame) + 120)];
-        _mapView.mapType = MKMapTypeStandard;
-        _mapView.delegate = self;
-        _mapView.showsBuildings = YES;
-        [self insertSubview:_mapView atIndex:0];
+        [self insertSubview:[AddressCellMapView sharedInstance] atIndex:0];
         
         _activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
         _activityIndicator.center = CGPointMake(CGRectGetWidth(self.frame) / 2, CGRectGetHeight(self.frame) / 2);
@@ -66,12 +62,12 @@ static NSInteger const TINT_ALPHA = 0.6;
         UIInterpolatingMotionEffect *mapHorizontalEffect = [[UIInterpolatingMotionEffect alloc] initWithKeyPath:@"center.x" type:UIInterpolatingMotionEffectTypeTiltAlongHorizontalAxis];
         mapHorizontalEffect.minimumRelativeValue = @(-PARALLAX_LEEWAY_VALUE);
         mapHorizontalEffect.maximumRelativeValue = @(PARALLAX_LEEWAY_VALUE);
-        [_mapView addMotionEffect:mapHorizontalEffect];
+        [[AddressCellMapView sharedInstance].mapView addMotionEffect:mapHorizontalEffect];
         
         UIInterpolatingMotionEffect *mapVerticalEffect = [[UIInterpolatingMotionEffect alloc] initWithKeyPath:@"center.y" type:UIInterpolatingMotionEffectTypeTiltAlongVerticalAxis];
         mapVerticalEffect.minimumRelativeValue = @(-PARALLAX_LEEWAY_VALUE);
         mapVerticalEffect.maximumRelativeValue = @(PARALLAX_LEEWAY_VALUE);
-        [_mapView addMotionEffect:mapVerticalEffect];
+        [[AddressCellMapView sharedInstance].mapView addMotionEffect:mapVerticalEffect];
         
         [self beginLoading];
         
@@ -113,9 +109,7 @@ static NSInteger const TINT_ALPHA = 0.6;
 }
 
 - (void)purgeMapMemory {
-    _mapView.mapType = MKMapTypeSatellite;
-    [_mapView removeFromSuperview];
-    _mapView = nil;
+    [[AddressCellMapView sharedInstance] purge];
 }
 
 - (void)zoomToCoordinate:(CLLocationCoordinate2D)coordinate {
@@ -124,13 +118,13 @@ static NSInteger const TINT_ALPHA = 0.6;
     camera.heading = CAMERA_HEADING;
     camera.pitch = CAMERA_PITCH;
     camera.altitude = CAMERA_ALTITUDE;
-    [_mapView setCamera:camera animated:NO];
+    [[AddressCellMapView sharedInstance].mapView setCamera:camera animated:NO];
 }
 
 - (void)dropPinWithCoordinate:(CLLocationCoordinate2D)coordinate {
     MKPointAnnotation *annotation = [[MKPointAnnotation alloc] init];
     annotation.coordinate = coordinate;
-    [_mapView addAnnotation:annotation];
+    [[AddressCellMapView sharedInstance].mapView addAnnotation:annotation];
 }
 
 - (void)beginLoading {
@@ -141,22 +135,6 @@ static NSInteger const TINT_ALPHA = 0.6;
 - (void)endLoading {
     self.textLabel.text = BLANK_STRING;
     self.textLabel.textAlignment = NSTextAlignmentLeft;
-}
-
-#pragma mark - MKMapView
-
-- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
-    MKPinAnnotationView *pin = (MKPinAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier: @"annotation_ID"];
-    if (pin == nil) {
-        pin = [[MKPinAnnotationView alloc] initWithAnnotation: annotation reuseIdentifier: @"annotation_ID"];
-    } else {
-        pin.annotation = annotation;
-    }
-    
-    pin.pinColor = MKPinAnnotationColorRed;
-    pin.animatesDrop = YES;
-    
-    return pin;
 }
 
 @end

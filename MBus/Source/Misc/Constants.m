@@ -46,6 +46,8 @@ NSString * const UNKNOWN_LOCATION                          = @"Uknown location";
 NSString * const UNKNOWN                                   = @"unknown";
 NSString * const FORMATTED_APPLE_MAPS_PIN                  = @"http://maps.apple.com/?q=%f,%f";
 
+NSInteger const ADDRESS_CELL_HEIGHT = 80.0f;
+
 #pragma mark - Analytics
 
 NSString * const ANALYTICS_FETCH_STOPS                     = @"fetch_stops";

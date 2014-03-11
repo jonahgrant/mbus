@@ -61,8 +61,8 @@
 
 - (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
-    
-    if (self.shouldPurgeMap) {
+
+    if (self.shouldPurgeMap && self.parentViewController == nil) {
         [self.addressCell purgeMapMemory];
     }
 }
@@ -98,7 +98,7 @@
     if (indexPath.section == SectionRoutes) {
         return 130.0f;
     } else if (indexPath.section == SectionAddress) {
-        return 80.0f;
+        return ADDRESS_CELL_HEIGHT;
     } else if (indexPath.section == SectionMisc) {
         return 50.0f;
     }

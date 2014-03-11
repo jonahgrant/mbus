@@ -12,6 +12,7 @@
 #import "LocationManager.h"
 #import "DataStore.h"
 #import "Constants.h"
+#import "AddressCellMapView.h"
 
 @implementation AppDelegate
 
@@ -47,6 +48,8 @@
     [[GAI sharedInstance] trackerWithTrackingId:@"UA-46248477-1"];
     [GAI sharedInstance].trackUncaughtExceptions = YES;
     [GAI sharedInstance].dispatchInterval = 20;
+    
+    [AddressCellMapView sharedInstance];
     
     return YES;
 }

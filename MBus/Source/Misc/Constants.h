@@ -45,6 +45,8 @@ extern NSString * const UNKNOWN_DISTANCE;
 extern NSString * const UNKNOWN;
 extern NSString * const FORMATTED_APPLE_MAPS_PIN;
 
+extern NSInteger const ADDRESS_CELL_HEIGHT;
+
 #pragma mark - Analytics
 
 extern NSString * const ANALYTICS_FETCH_STOPS;
