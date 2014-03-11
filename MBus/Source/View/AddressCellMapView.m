@@ -45,9 +45,8 @@
 - (void)purge {
     [_mapView removeAnnotations:_mapView.annotations];
     
-    //[AddressCellMapView sharedInstance].mapView.mapType = MKMapTypeSatellite;
-    //[[AddressCellMapView sharedInstance].mapView removeFromSuperview];
-    //[AddressCellMapView sharedInstance].mapView = nil;
+    _mapView.mapType = MKMapTypeSatellite;
+    _mapView.mapType = MKMapTypeStandard;
 }
 
 #pragma mark - MKMapView
