@@ -59,6 +59,10 @@ static NSInteger const TINT_ALPHA = 0.6;
         [self addSubview:_activityIndicator];
         [_activityIndicator startAnimating];
         
+        for (UIInterpolatingMotionEffect *motionEffect in [AddressCellMapView sharedInstance].mapView.motionEffects) {
+            [[AddressCellMapView sharedInstance].mapView removeMotionEffect:motionEffect];
+        }
+        
         UIInterpolatingMotionEffect *mapHorizontalEffect = [[UIInterpolatingMotionEffect alloc] initWithKeyPath:@"center.x" type:UIInterpolatingMotionEffectTypeTiltAlongHorizontalAxis];
         mapHorizontalEffect.minimumRelativeValue = @(-PARALLAX_LEEWAY_VALUE);
         mapHorizontalEffect.maximumRelativeValue = @(PARALLAX_LEEWAY_VALUE);
