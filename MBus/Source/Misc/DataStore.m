@@ -154,6 +154,10 @@ static NSString * const kPlacemarksFile         = @"placemarks.txt";
     NSMutableDictionary *mutableDictionary = [NSMutableDictionary dictionaryWithDictionary:self.persistedPlacemarks];
     [mutableDictionary addEntriesFromDictionary:@{stopID: placemark}];
     [self persistObject:mutableDictionary withFileName:kPlacemarksFile];
+
+    NSMutableDictionary *localMutableDictionary = [NSMutableDictionary dictionaryWithDictionary:self.persistedPlacemarks];
+    [localMutableDictionary addEntriesFromDictionary:@{stopID: placemark}];
+    self.localPersistedPlacemarks = localMutableDictionary;
 }
 
 #pragma Fetch
