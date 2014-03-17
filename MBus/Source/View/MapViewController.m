@@ -52,35 +52,12 @@ static int ROUTE_SCROLL_VIEW_HEIGHT = 80;
         [self loadAnnotations];
     };
     
-    CGRect scrollViewFrame = CGRectMake(0,
-                                        CGRectGetHeight(self.view.frame) - ROUTE_SCROLL_VIEW_HEIGHT - TAB_BAR_HEIGHT,
-                                        CGRectGetWidth([[UIApplication sharedApplication] keyWindow].frame),
-                                        ROUTE_SCROLL_VIEW_HEIGHT);
-    self.routeScrollView = [[UIScrollView alloc] initWithFrame:scrollViewFrame];
-    self.routeScrollView.pagingEnabled = YES;
-    self.routeScrollView.backgroundColor = [UIColor whiteColor];
-    self.routeScrollView.showsHorizontalScrollIndicator = NO;
-    self.routeScrollView.delegate = self;
-    [self.view addSubview:self.routeScrollView];
-    
-    RouteMapView *initialView = [[RouteMapView alloc] initWithTitle:@"Routes"
-                                                           subtitle:@"Swipe left to choose a route"
-                                                    backgroundColor:[UIColor whiteColor]
-                                                          textColor:[UIColor blackColor]
-                                                              frame:CGRectMake(0, 0, CGRectGetWidth(scrollViewFrame), ROUTE_SCROLL_VIEW_HEIGHT)];
-    [self.routeScrollView addSubview:initialView];
-    
     if (self.startCoordinate.latitude != 0 && self.startCoordinate.longitude != 0) {
         [self dropAndZoomToPinWithCoordinate:self.startCoordinate];
     } else {
         [self zoomToCampus];
+        [self setupScrollView];
     }
-    
-    [[RACObserve([DataStore sharedManager], arrivals) filter:^BOOL(NSArray *arrivals) {
-        return (arrivals.count > 0);
-    }] subscribeNext:^(id x) {
-        [self updateScrollView];
-    }];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -144,6 +121,32 @@ static int ROUTE_SCROLL_VIEW_HEIGHT = 80;
 }
 
 #pragma mark UIScrollView
+
+- (void)setupScrollView {
+    CGRect scrollViewFrame = CGRectMake(0,
+                                        CGRectGetHeight(self.view.frame) - ROUTE_SCROLL_VIEW_HEIGHT - TAB_BAR_HEIGHT,
+                                        CGRectGetWidth([[UIApplication sharedApplication] keyWindow].frame),
+                                        ROUTE_SCROLL_VIEW_HEIGHT);
+    self.routeScrollView = [[UIScrollView alloc] initWithFrame:scrollViewFrame];
+    self.routeScrollView.pagingEnabled = YES;
+    self.routeScrollView.backgroundColor = [UIColor whiteColor];
+    self.routeScrollView.showsHorizontalScrollIndicator = NO;
+    self.routeScrollView.delegate = self;
+    [self.view addSubview:self.routeScrollView];
+    
+    [[RACObserve([DataStore sharedManager], arrivals) filter:^BOOL(NSArray *arrivals) {
+        return (arrivals.count > 0);
+    }] subscribeNext:^(id x) {
+        [self updateScrollView];
+    }];
+    
+    RouteMapView *initialView = [[RouteMapView alloc] initWithTitle:@"Routes"
+                                                           subtitle:@"Swipe left to choose a route"
+                                                    backgroundColor:[UIColor whiteColor]
+                                                          textColor:[UIColor blackColor]
+                                                              frame:CGRectMake(0, 0, CGRectGetWidth(scrollViewFrame), ROUTE_SCROLL_VIEW_HEIGHT)];
+    [self.routeScrollView addSubview:initialView];
+}
 
 - (void)updateScrollView {
     self.routeScrollView.contentSize = CGSizeMake(([DataStore sharedManager].arrivals.count + 1) * CGRectGetWidth([[UIApplication sharedApplication] keyWindow].frame) + 1,
