@@ -103,9 +103,14 @@ static NSString * const kPlacemarksFile         = @"placemarks.txt";
     self.localPersistedBuses                = [self persistedObjectWithFileName:kBusesFile];
     self.localPersistedStops                = [self persistedObjectWithFileName:kStopsFile];
     self.localPersistedAnnouncements        = [self persistedObjectWithFileName:kAnnouncementsFile];
-    self.localPersistedTraceRoutes          = [self persistedObjectWithFileName:kTraceRoutesFile];
     self.localPersistedPlacemarks           = [self persistedObjectWithFileName:kPlacemarksFile];
     self.localPersistedLastKnownLocation    = [self persistedObjectWithFileName:kLastKnownLocation][0];
+    
+    [self fetchPersistedTraceRoutes];
+}
+
+- (void)fetchPersistedTraceRoutes {
+    self.localPersistedTraceRoutes = [self persistedObjectWithFileName:kTraceRoutesFile];
 }
 
 #pragma Properties
@@ -148,6 +153,8 @@ static NSString * const kPlacemarksFile         = @"placemarks.txt";
     NSMutableDictionary *mutableDictionary = [NSMutableDictionary dictionaryWithDictionary:self.persistedTraceRoutes];
     [mutableDictionary addEntriesFromDictionary:@{routeID: traceRoute}];
     [self persistObject:mutableDictionary withFileName:kTraceRoutesFile];
+    
+    [self fetchPersistedTraceRoutes];
 }
 
 - (void)persistPlacemark:(CLPlacemark *)placemark forStopID:(NSString *)stopID {

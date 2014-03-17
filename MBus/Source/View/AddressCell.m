@@ -19,7 +19,7 @@ static const CGFloat CAMERA_ALTITUDE = 1000.0f;
 static const CGFloat CAMERA_PITCH = 0.0f;
 static const CGFloat CAMERA_HEADING = 0.0f;
 
-static NSInteger const TINT_ALPHA = 0.6;
+static CGFloat const TINT_ALPHA = 0.69; // lol
 
 @interface AddressCell ()
 
@@ -90,7 +90,7 @@ static NSInteger const TINT_ALPHA = 0.6;
             
             [UIView animateWithDuration:0.5
                              animations:^ {
-                                 _tintView.alpha = 0.69; // lol
+                                 _tintView.alpha = TINT_ALPHA;
                                  self.textLabel.alpha = 1;
                              }];
             

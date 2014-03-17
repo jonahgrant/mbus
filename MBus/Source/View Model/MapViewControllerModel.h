@@ -12,6 +12,7 @@
 
 @property (nonatomic, strong, readonly) NSDictionary *busAnnotations;
 @property (nonatomic, readonly, getter=isFetchingBuses) BOOL fetchingContinuously;
+@property (nonatomic, strong, readonly) NSArray *routes;
 
 - (void)beginContinuousFetching;
 - (void)endContinuousFetching;

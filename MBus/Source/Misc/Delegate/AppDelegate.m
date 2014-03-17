@@ -43,7 +43,7 @@
     }];
     
     [[LocationManager sharedManager] fetchLocation];
-
+    
     // analytics
     [[GAI sharedInstance] trackerWithTrackingId:@"UA-46248477-1"];
     [GAI sharedInstance].trackUncaughtExceptions = YES;

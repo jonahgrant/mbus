@@ -78,9 +78,9 @@ PODS:
     - libextobjc/RuntimeExtensions
   - libextobjc/RuntimeExtensions (0.4)
   - libextobjc/UmbrellaHeader (0.4)
-  - Mantle (1.4):
+  - Mantle (1.4.1):
     - Mantle/extobjc
-  - Mantle/extobjc (1.4)
+  - Mantle/extobjc (1.4.1)
   - MarqueeLabel (1.4.0)
   - ReactiveCocoa (2.2.3):
     - ReactiveCocoa/Core
@@ -89,6 +89,7 @@ PODS:
     - ReactiveCocoa/no-arc
   - ReactiveCocoa/no-arc (2.2.3)
   - SAMGradientView (0.2.1)
+  - SLParallaxController (1.0.1)
   - SVPulsingAnnotationView (0.3.0)
   - TTTAttributedLabel (1.7.5)
   - UIColor-HexString (1.0.1)
@@ -106,6 +107,7 @@ DEPENDENCIES:
   - MarqueeLabel (~> 1.3)
   - ReactiveCocoa (~> 2.1)
   - SAMGradientView (~> 0.2.1)
+  - SLParallaxController
   - SVPulsingAnnotationView (~> 0.3.0)
   - TTTAttributedLabel (~> 1.7.5)
   - UIColor-HexString (~> 1.0.1)
@@ -120,10 +122,11 @@ SPEC CHECKSUMS:
   Google-Maps-iOS-SDK: ce1cffe3dca21af85c4bf9d9cb2778083d8fd6f5
   HexColors: 3a68db077cd6572a8f7d4aa1add284dd2436a934
   libextobjc: 2c9fc8226f0f38e562587f65172f93f0c9b4a47a
-  Mantle: de026e86c183c5adfd453c1d8419babb787fea97
+  Mantle: 0714cdb2b8559d9e6c2410d6a8529e3307bff189
   MarqueeLabel: 8218e3d88198edbf2b676a3daeea1beec4ad9dfe
   ReactiveCocoa: b3cb6ebd50f1a0f2e39c6fd7ce3c428b6efcb22b
   SAMGradientView: ab5543a14a69ecf5fc10239091740291c50b328c
+  SLParallaxController: 273539c13851ad1e9ead58c00194d8fa22cdbc36
   SVPulsingAnnotationView: ce58bcff7c1aeb15022a1db6c26f88981c05b91c
   TTTAttributedLabel: 1eb635d4d844cb7abce4d839faefca2a3409950d
   UIColor-HexString: 8a3f512f71b6d94a2cf6bdeabcad2f3532f31b5a

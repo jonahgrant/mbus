@@ -92,11 +92,7 @@
             [self.networkingSession fetchTraceRouteForRouteID:self.arrival.id
                                              withSuccessBlock:^(NSArray *traceRoute) {
                                                  [self createPolylineFromTraceRoute:traceRoute];
-                                                 
-                                                 if (traceRoute) {
-                                                     [[DataStore sharedManager] persistTraceRoute:traceRoute forRouteID:self.arrival.id];
-                                                 }
-                                                 
+                                                 [[DataStore sharedManager] persistTraceRoute:traceRoute forRouteID:self.arrival.id];
                                              } errorBlock:^(NSError *error) {
                                                  self.polyline = self.polyline;
                                              }];

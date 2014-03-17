@@ -9,12 +9,14 @@
 #import "MapViewControllerModel.h"
 #import "DataStore.h"
 #import "Bus.h"
+#import "Arrival.h"
 #import "BusAnnotation.h"
 
 @interface MapViewControllerModel ()
 
 @property (nonatomic, strong, readwrite) NSDictionary *busAnnotations;
 @property (nonatomic, readwrite, getter=isFetchingBuses) BOOL fetchingContinuously;
+@property (nonatomic, strong, readwrite) NSArray *routes;
 
 - (void)refreshData;
 - (void)manageBusAnnotations;
@@ -42,7 +44,6 @@
         }] subscribeNext:^(NSDictionary *annotations) {
             self.dataUpdatedBlock();
         }];
-
     }
     return self;
 }
