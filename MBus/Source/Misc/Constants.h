@@ -44,8 +44,9 @@ extern NSString * const NONE;
 extern NSString * const UNKNOWN_DISTANCE;
 extern NSString * const UNKNOWN;
 extern NSString * const FORMATTED_APPLE_MAPS_PIN;
-
 extern NSInteger const ADDRESS_CELL_HEIGHT;
+extern NSString * const ABOUT_MAGIC_BUS_URL;
+extern NSString * const MBUS_GITHUB_URL;
 
 #pragma mark - Analytics
 

@@ -264,7 +264,7 @@ static NSString * const kPlacemarksFile         = @"placemarks.txt";
         for (Arrival *arrival in self.arrivals) {
             for (ArrivalStop *arrivalStop in arrival.stops) {
                 if ([arrivalStop.name isEqualToString:stop.uniqueName] && ![mutableArray containsObject:stop]) {
-                    [mutableArray addObject:stop];
+                    [mutableArray push:stop];
                 }
             }
         }
@@ -282,7 +282,7 @@ static NSString * const kPlacemarksFile         = @"placemarks.txt";
     for (Arrival *arrival in self.arrivals) {
         for (ArrivalStop *stop in arrival.stops) {
             if ([stop.name isEqualToString:name]) {
-                [mutableArray addObject:arrival];
+                [mutableArray push:arrival];
             }
         }
     }
@@ -306,54 +306,44 @@ static NSString * const kPlacemarksFile         = @"placemarks.txt";
 
 - (BOOL)arrivalHasBus1WithArrivalID:(NSString *)arrivalID {
     Arrival *arrival = [self arrivalForID:arrivalID];
-    NSInteger busIndex = 0;
     for (ArrivalStop *stop in arrival.stops) {
         if (stop.timeOfArrival > 0) {
-            busIndex++;
+            return YES;
         }
     }
     
-    return (busIndex > 0);
+    return NO;
 }
 
 - (BOOL)arrivalHasBus2WithArrivalID:(NSString *)arrivalID {
     Arrival *arrival = [self arrivalForID:arrivalID];
-    NSInteger busIndex = 0;
     for (ArrivalStop *stop in arrival.stops) {
         if (stop.timeOfArrival2 > 0) {
-            busIndex++;
+            return YES;
         }
     }
     
-    return (busIndex > 0);
+    return NO;
 }
 
 - (Arrival *)arrivalForID:(NSString *)arrivalID {
-    return [self.arrivalsDictionary objectForKey:arrivalID];
+    return self.arrivalsDictionary[arrivalID];
 }
 
 - (BOOL)hasTraceRouteForRouteID:(NSString *)routeID {
-    if ([self.persistedTraceRoutes objectForKey:routeID]) {
-        return YES;
-    }
-    
-    return NO;
+    return (self.persistedTraceRoutes[routeID] != nil);
 }
 
 - (NSArray *)traceRouteForRouteID:(NSString *)routeID {
-    return [self.persistedTraceRoutes objectForKey:routeID];
+    return self.persistedTraceRoutes[routeID];
 }
 
 - (BOOL)hasPlacemarkForStopID:(NSString *)stopID {
-    if ([self.persistedPlacemarks objectForKey:stopID]) {
-        return YES;
-    }
-    
-    return NO;
+    return (self.persistedPlacemarks[stopID] != nil);
 }
 
 - (CLPlacemark *)placemarkForStopID:(NSString *)stopID {
-    return [self.persistedPlacemarks objectForKey:stopID];
+    return self.persistedPlacemarks[stopID];
 }
 
 - (void)setColorsForStopWithUniqueName:(NSString *)uniqueName colors:(NSArray *)colors {
@@ -363,7 +353,7 @@ static NSString * const kPlacemarksFile         = @"placemarks.txt";
 }
 
 - (NSArray *)fetchColorsForStopWithUniqueName:(NSString *)uniqueName {
-    return [self.stopColorsDictionary objectForKey:uniqueName];
+    return self.stopColorsDictionary[uniqueName];
 }
 
 @end

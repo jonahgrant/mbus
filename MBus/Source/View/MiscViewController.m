@@ -13,7 +13,6 @@
 #import "UMAdditions+UIFont.h"
 #import "CGLMailHelper.h"
 #import "WebViewController.h"
-#import "UMSegueIdentifiers.h"
 
 @interface MiscViewController ()
 
@@ -42,7 +41,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [[self.model.cells objectForKey:self.model.sections[section]] count];
+    return [self.model.cells[self.model.sections[section]] count];
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
@@ -50,11 +49,7 @@
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section {
-    if (section == self.model.sections.count - 1) {
-        return DISCLAIMER;
-    }
-    
-    return nil;
+    return (section == self.model.sections.count - 1) ? DISCLAIMER : nil;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -75,12 +70,16 @@
             SendEvent(ANALYTICS_MISC_MAP);
             
             [self performSegueWithIdentifier:UMSegueMap sender:self];
-        } else if (indexPath.row == NSIntegerForCell(CellAnnouncements)) {
+        }
+        
+        else if (indexPath.row == NSIntegerForCell(CellAnnouncements)) {
             SendEvent(ANALYTICS_MISC_ANNOUNCEMENTS);
             
             [self performSegueWithIdentifier:UMSegueAnnouncements sender:self];
         }
-    } else if (indexPath.section == NSIntegerForSection(SectionLegal)) {
+    }
+    
+    else if (indexPath.section == NSIntegerForSection(SectionLegal)) {
         if (indexPath.row == NSIntegerForCell(CellAcknowledgements)) {
             SendEvent(ANALYTICS_MISC_ACKNOWLEDGEMENTS);
             
@@ -89,7 +88,9 @@
             viewController.licenseTextViewFont = [UIFont helveticaNeueWithWeight:TypeWeightLight size:17.0f];
             [self.navigationController pushViewController:viewController animated:YES];
         }
-    } else if (indexPath.section == NSIntegerForSection(SectionContact)) {
+    }
+    
+    else if (indexPath.section == NSIntegerForSection(SectionContact)) {
         if (indexPath.row == NSIntegerForCell(CellSupport)) {
             SendEvent(ANALYTICS_MISC_CONTACT_SUPPORT);
             
@@ -97,7 +98,9 @@
                                                                                      subject:SUPPORT_EMAIL_SUBJECT
                                                                                   completion:nil];
             [self presentViewController:viewController animated:YES completion:NULL];
-        } else if (indexPath.row == NSIntegerForCell(CellContact)) {
+        }
+        
+        else if (indexPath.row == NSIntegerForCell(CellContact)) {
             SendEvent(ANALYTICS_MISC_CONTACT_DEVELOPER);
             
             UIViewController *viewController = [CGLMailHelper mailViewControllerWithRecipients:@[DEVELOPER_EMAIL_ADDRESS]
@@ -108,19 +111,25 @@
                                                                                     completion:NULL];
             [self presentViewController:viewController animated:YES completion:NULL];
         }
-    } else if (indexPath.section == NSIntegerForSection(SectionMisc)) {
+    }
+    
+    else if (indexPath.section == NSIntegerForSection(SectionMisc)) {
         if (indexPath.row == NSIntegerForCell(CellReview)) {
             SendEvent(ANALYTICS_MISC_REVIEW);
             
             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:RATE_APP_URL]];
             [tableView deselectRowAtIndexPath:indexPath animated:YES];
-        } else if (indexPath.row == NSIntegerForCell(CellAbout)) {
+        }
+        
+        else if (indexPath.row == NSIntegerForCell(CellAbout)) {
             SendEvent(ANALYTICS_MISC_ABOUT);
             
-            WebViewController *viewController = [[WebViewController alloc] initWithURL:[NSURL URLWithString:@"http://mbus.pts.umich.edu/about-us/"]];
+            WebViewController *viewController = [[WebViewController alloc] initWithURL:[NSURL URLWithString:ABOUT_MAGIC_BUS_URL]];
             [self.navigationController pushViewController:viewController animated:YES];
-        } else if (indexPath.row == NSIntegerForCell(CellSource)) {
-            WebViewController *viewController = [[WebViewController alloc] initWithURL:[NSURL URLWithString:@"http://github.com/jonahgrant/mbus/"]];
+        }
+        
+        else if (indexPath.row == NSIntegerForCell(CellSource)) {
+            WebViewController *viewController = [[WebViewController alloc] initWithURL:[NSURL URLWithString:MBUS_GITHUB_URL]];
             [self.navigationController pushViewController:viewController animated:YES];
         }
     }

@@ -13,16 +13,14 @@
 #import "StopCellModel.h"
 #import "StopViewController.h"
 #import "StopViewControllerModel.h"
-#import "UMSegueIdentifiers.h"
 #import "Stop.h"
 #import "AllStopsViewController.h"
 #import "UMAdditions+UIFont.h"
-#import "Constants.h"
 
 static CGFloat STOP_CELL_HEIGHT = 100.0f;
 static CGFloat ALL_STOPS_CELL_HEIGHT = 80.0f;
 
-static NSInteger MAXIMUM_STOPS = 5;
+static NSInteger MAXIMUM_STOPS = 5; // this represents the amount of stops that are shown
 static NSInteger ALL_STOPS_CELL = 5;
 
 @interface StopsViewController ()
@@ -68,11 +66,7 @@ static NSInteger ALL_STOPS_CELL = 5;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (self.model.stops.count > MAXIMUM_STOPS && indexPath.row == ALL_STOPS_CELL) {
-        return ALL_STOPS_CELL_HEIGHT;
-    }
-    
-    return STOP_CELL_HEIGHT;
+    return (self.model.stops.count > MAXIMUM_STOPS && indexPath.row == ALL_STOPS_CELL) ? ALL_STOPS_CELL_HEIGHT : STOP_CELL_HEIGHT;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {

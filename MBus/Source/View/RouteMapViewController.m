@@ -19,6 +19,8 @@
 #import "StopTrayModel.h"
 #import "Constants.h"
 
+static NSTimeInterval const TRAY_ANIMATION_DURATION = 0.5f;
+
 @interface RouteMapViewController ()
 
 @property (strong, nonatomic) IBOutlet MKMapView *mapView;
@@ -108,11 +110,7 @@
         if (![annotation isKindOfClass:[MKUserLocation class]]) {
             MKMapPoint annotationPoint = MKMapPointForCoordinate(annotation.coordinate);
             MKMapRect pointRect = MKMapRectMake(annotationPoint.x, annotationPoint.y, 10, 10);
-            if (MKMapRectIsNull(zoomRect)) {
-                zoomRect = pointRect;
-            } else {
-                zoomRect = MKMapRectUnion(zoomRect, pointRect);
-            }
+            zoomRect = (MKMapRectIsNull(zoomRect)) ? pointRect : MKMapRectUnion(zoomRect, pointRect);
         }
     }
     
@@ -140,36 +138,30 @@
 - (void)displayTray {
     SendEvent(ANALYTICS_DISPLAY_STOP_ANNOTATION_TRAY);
     
-    [UIView animateWithDuration:0.5
-                     animations:^ {
-                         self.stopTray.frame = CGRectMake(
-                                                          0,
-                                                          self.view.frame.size.height - self.tabBarController.tabBar.frame.size.height - self.stopTray.frame.size.height,
-                                                          self.stopTray.frame.size.width,
-                                                          self.stopTray.frame.size.height
-                                                          );
-                     }];
+    [UIView animateWithDuration:TRAY_ANIMATION_DURATION animations:^ {
+        self.stopTray.frame = CGRectMake(0,
+                                         self.view.frame.size.height - self.tabBarController.tabBar.frame.size.height - self.stopTray.frame.size.height,
+                                         self.stopTray.frame.size.width,
+                                         self.stopTray.frame.size.height);
+    }];
 }
 
 - (void)dismissTray {
     SendEvent(ANALYTICS_HIDE_STOP_ANNOTATION_TRAY);
     
-    [UIView animateWithDuration:0.5
-                     animations:^ {
-                         self.stopTray.frame = CGRectMake(
-                                                          0,
-                                                          self.view.frame.size.height - self.tabBarController.tabBar.frame.size.height + self.stopTray.frame.size.height,
-                                                          self.stopTray.frame.size.width,
-                                                          self.stopTray.frame.size.height
-                                                          );
-                     } completion:NULL];
+    [UIView animateWithDuration:TRAY_ANIMATION_DURATION animations:^ {
+        self.stopTray.frame = CGRectMake(0,
+                                         self.view.frame.size.height - self.tabBarController.tabBar.frame.size.height + self.stopTray.frame.size.height,
+                                         self.stopTray.frame.size.width,
+                                         self.stopTray.frame.size.height);
+    } completion:NULL];
 }
 
 - (void)detailInformationForStopAnnotation:(StopAnnotation *)annotation {
     [self displayTray];
 }
 
-#pragma MKMapView
+#pragma mark - MKMapView
 
 - (MKOverlayRenderer *)mapView:(MKMapView *)mapView rendererForOverlay:(id<MKOverlay>)overlay{
     MKPolylineRenderer *renderer = [[MKPolylineRenderer alloc] initWithPolyline:overlay];

@@ -9,12 +9,11 @@
 #import "AllStopsViewController.h"
 #import "StopsViewControllerModel.h"
 #import "StopCell.h"
-#import "UMSegueIdentifiers.h"
 #import "StopViewController.h"
 #import "StopViewControllerModel.h"
 #import "Constants.h"
 
-static CGFloat kStopCellHeight = 100.0f;
+static CGFloat const STOP_CELL_HEIGHT = 100.0f;
 
 @interface AllStopsViewController ()
 
@@ -61,7 +60,8 @@ static CGFloat kStopCellHeight = 100.0f;
 }
 
 - (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString {
-    self.searchResults = [self.model.stops filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(humanName contains[c] %@) OR (uniqueName contains[c] %@)", searchString, searchString]];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(humanName contains[c] %@) OR (uniqueName contains[c] %@)", searchString, searchString];
+    self.searchResults = [self.model.stops filteredArrayUsingPredicate:predicate];
     
     return YES;
 }
@@ -83,7 +83,7 @@ static CGFloat kStopCellHeight = 100.0f;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return kStopCellHeight;
+    return STOP_CELL_HEIGHT;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {

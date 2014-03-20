@@ -13,7 +13,6 @@
 #import "RouteViewController.h"
 #import "Arrival.h"
 #import "Constants.h"
-#import "UMSegueIdentifiers.h"
 #import "DataStore.h"
 
 @implementation RoutesViewController
@@ -51,11 +50,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if ([DataStore sharedManager].arrivals.count == 0) {
-        return 2;
-    }
-    
-    return [DataStore sharedManager].arrivals.count;
+    return ([DataStore sharedManager].arrivals.count == 0) ? 2 : [DataStore sharedManager].arrivals.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -104,17 +99,15 @@
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section {
-    return [self.model footerString];
+    return self.model.footerString;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    if ([DataStore sharedManager].arrivals.count == 0) {
-        if (indexPath.row == 1) {
-            SendEvent(ANALYTICS_CALL_SAFE_RIDES);
-            
-            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:SAFE_RIDES_TEL]];
-            [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
-        }
+    if ([DataStore sharedManager].arrivals.count == 0 && (indexPath.row == 1)) {
+        SendEvent(ANALYTICS_CALL_SAFE_RIDES);
+        
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:SAFE_RIDES_TEL]];
+        [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
     } else {
         [self performSegueWithIdentifier:UMSegueRoute sender:self];
     }

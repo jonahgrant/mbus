@@ -82,6 +82,7 @@ PODS:
     - Mantle/extobjc
   - Mantle/extobjc (1.4.1)
   - MarqueeLabel (1.4.0)
+  - ObjectiveSugar (1.1.0)
   - ReactiveCocoa (2.2.3):
     - ReactiveCocoa/Core
     - ReactiveCocoa/no-arc
@@ -89,7 +90,6 @@ PODS:
     - ReactiveCocoa/no-arc
   - ReactiveCocoa/no-arc (2.2.3)
   - SAMGradientView (0.2.1)
-  - SLParallaxController (1.0.1)
   - SVPulsingAnnotationView (0.3.0)
   - TTTAttributedLabel (1.7.5)
   - UIColor-HexString (1.0.1)
@@ -105,9 +105,9 @@ DEPENDENCIES:
   - HexColors (~> 2.2)
   - libextobjc (~> 0.4)
   - MarqueeLabel (~> 1.3)
+  - ObjectiveSugar
   - ReactiveCocoa (~> 2.1)
   - SAMGradientView (~> 0.2.1)
-  - SLParallaxController
   - SVPulsingAnnotationView (~> 0.3.0)
   - TTTAttributedLabel (~> 1.7.5)
   - UIColor-HexString (~> 1.0.1)
@@ -124,9 +124,9 @@ SPEC CHECKSUMS:
   libextobjc: 2c9fc8226f0f38e562587f65172f93f0c9b4a47a
   Mantle: 0714cdb2b8559d9e6c2410d6a8529e3307bff189
   MarqueeLabel: 8218e3d88198edbf2b676a3daeea1beec4ad9dfe
+  ObjectiveSugar: fed588577bcf9733546aeaa089de444e4bab9a52
   ReactiveCocoa: b3cb6ebd50f1a0f2e39c6fd7ce3c428b6efcb22b
   SAMGradientView: ab5543a14a69ecf5fc10239091740291c50b328c
-  SLParallaxController: 273539c13851ad1e9ead58c00194d8fa22cdbc36
   SVPulsingAnnotationView: ce58bcff7c1aeb15022a1db6c26f88981c05b91c
   TTTAttributedLabel: 1eb635d4d844cb7abce4d839faefca2a3409950d
   UIColor-HexString: 8a3f512f71b6d94a2cf6bdeabcad2f3532f31b5a

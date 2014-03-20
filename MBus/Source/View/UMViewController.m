@@ -15,7 +15,6 @@
 
 - (void)setViewControllerTitle {
     self.title = NSStringForUIViewController(self);
-    SendPage(NSStringFromClass([self class]));
 }
 
 - (void)_resetInterface {
@@ -69,6 +68,10 @@
     [self setViewControllerTitle];
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    SendPage(NSStringFromClass([self class]));
+}
+
 - (void)resetInterface {
     [self _resetInterface];
 }
@@ -83,6 +86,10 @@
 
 - (void)viewDidLoad {
     [self setViewControllerTitle];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    SendPage(NSStringFromClass([self class]));
 }
 
 - (void)resetInterface {

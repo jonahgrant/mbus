@@ -1,4 +1,5 @@
 platform :ios, "7.0"
+inhibit_all_warnings!
 
 target "MBus" do
     pod 'Fare', '~> 1.0.3'
@@ -15,5 +16,5 @@ target "MBus" do
     pod 'Google-Maps-iOS-SDK', '~> 1.6.0'
     pod 'SVPulsingAnnotationView', '~> 0.3.0'
     pod 'GCBActionSheet', '~> 1.0.0'
-    pod 'SLParallaxController'
+    pod 'ObjectiveSugar'
 end

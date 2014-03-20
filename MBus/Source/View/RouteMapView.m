@@ -11,7 +11,11 @@
 
 @implementation RouteMapView
 
-- (instancetype)initWithTitle:(NSString *)title subtitle:(NSString *)subtitle backgroundColor:(UIColor *)backgroundColor textColor:(UIColor *)textColor frame:(CGRect)frame {
+- (instancetype)initWithTitle:(NSString *)title
+                     subtitle:(NSString *)subtitle
+              backgroundColor:(UIColor *)backgroundColor
+                    textColor:(UIColor *)textColor
+                        frame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
         self.backgroundColor = backgroundColor;

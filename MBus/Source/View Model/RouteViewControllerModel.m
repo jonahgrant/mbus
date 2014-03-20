@@ -54,7 +54,7 @@
 }
 
 - (NSString *)mmssForTimeInterval:(NSTimeInterval)timeInterval {
-    return [NSString stringWithFormat:@"%02i:%02i", ((NSInteger)timeInterval / 60) % 60, (NSInteger)timeInterval % 60];
+    return [NSString stringWithFormat:@"%02li:%02li", ((NSInteger)timeInterval / 60) % 60, (NSInteger)timeInterval % 60];
 }
 
 - (NSString *)timeSinceLastRefresh {

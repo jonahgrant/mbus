@@ -14,8 +14,6 @@
 #import "ArrivalCellModel.h"
 #import "HexColor.h"
 #import "DataStore.h"
-#import "Constants.h"
-#import "UMSegueIdentifiers.h"
 
 @interface RouteViewController ()
 
@@ -45,9 +43,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-
     [self setInterfaceWithColor:[UIColor colorWithHexString:self.arrival.busRouteColor]];
-    
     [self.tableView deselectRowAtIndexPath:[[self.tableView indexPathsForSelectedRows] firstObject] animated:YES];
 }
 
@@ -65,14 +61,11 @@
     switch (section) {
         case 0:
             return self.informationCells.count;
-            break;
         case 1:
             return self.model.sortedStops.count;
         default:
-            break;
+            return 0;
     }
-    
-    return 0;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
@@ -81,34 +74,24 @@
             return ROUTE_INFORMATION;
         case 1:
             return [NSString stringWithFormat:@"%lu Stops", (unsigned long)self.model.sortedStops.count];
-            break;
         default:
-            break;
+            return nil;
     }
-    
-    return nil;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     switch (indexPath.section) {
         case 0:
             return 50;
-            break;
         case 1:
             return 100;
         default:
-            break;
+            return 0;
     }
-    
-    return 0;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section {
-    if (section == 1) {
-        return [self.model footerString];
-    }
-    
-    return nil;
+    return (section == 1) ? self.model.footerString : nil;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {

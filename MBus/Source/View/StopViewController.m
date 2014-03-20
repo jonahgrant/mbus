@@ -15,9 +15,7 @@
 #import "StreetViewController.h"
 #import "StopArrivalCell.h"
 #import "StopArrivalCellModel.h"
-#import "UMSegueIdentifiers.h"
 #import "RouteViewController.h"
-#import "Constants.h"
 #import "UMAdditions+UIFont.h"
 #import "GCBActionSheet.h"
 #import "Arrival.h"
@@ -73,6 +71,37 @@
     [self.addressCell purgeMapMemory];
 }
 
+- (void)presentRouteActionChooserForArrival:(Arrival *)arrival {
+    GCBActionSheet *actionSheet = [[GCBActionSheet alloc] initWithTitle:arrival.name delegate:nil];
+    
+    [actionSheet addButtonWithTitle:@"View route" handler:^ {
+        SendEvent(ANALYTICS_STOP_ARRIVAL_VIEW_ROUTE);
+        [self performSegueWithIdentifier:UMSegueRoute sender:self];
+    }];
+    
+    [actionSheet addButtonWithTitle:@"Notify before arrival" handler:^ {
+        SendEvent(ANALYTICS_STOP_ARRIVAL_NOTIFY);
+        
+        NSString *message = [NSString stringWithFormat:@"The %@ bus is arriving at %@ soon", arrival.name, self.model.stop.humanName];
+        
+        NotificationManager *notificationManager = [[NotificationManager alloc] init];
+        [notificationManager scheduleNotificationWithFireDate:[self.model firstArrivalDateForArrival:arrival] message:message];
+        
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Success!"
+                                                        message:[NSString stringWithFormat:@"You'll be notified when the %@ bus is almost at %@", arrival.name, self.model.stop.humanName]
+                                                       delegate:nil
+                                              cancelButtonTitle:nil
+                                              otherButtonTitles:@"Dismiss", nil];
+        [alert show];
+    }];
+    
+    [actionSheet addCancelButtonWithTitle:@"Dismiss" handler:^ {
+        SendEvent(ANALYTICS_STOP_ARRIVAL_DISMISS);
+    }];
+    
+    [actionSheet showFromTabBar:self.tabBarController.tabBar];
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -90,20 +119,19 @@
         default:
             return 0;
     }
-    
-    return 0;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.section == SectionRoutes) {
-        return 130.0f;
-    } else if (indexPath.section == SectionAddress) {
-        return ADDRESS_CELL_HEIGHT;
-    } else if (indexPath.section == SectionMisc) {
-        return 50.0f;
+    switch (indexPath.section) {
+        case SectionRoutes:
+            return 130.0f;
+        case SectionAddress:
+            return ADDRESS_CELL_HEIGHT;
+        case SectionMisc:
+            return 50.0f;
+        default:
+            return 44.0f;
     }
-    
-    return 44.0f;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
@@ -168,41 +196,17 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 
     if (indexPath.section == SectionRoutes) {
-        Arrival *arrival = self.model.arrivalsServicingStop[self.activeIndexPath.row];
-        
-        GCBActionSheet *actionSheet = [[GCBActionSheet alloc] initWithTitle:arrival.name delegate:nil];
-        
-        [actionSheet addButtonWithTitle:@"View route" handler:^ {
-            SendEvent(ANALYTICS_STOP_ARRIVAL_VIEW_ROUTE);
-            [self performSegueWithIdentifier:UMSegueRoute sender:self];
-        }];
-        
-        [actionSheet addButtonWithTitle:@"Notify before arrival" handler:^ {
-            SendEvent(ANALYTICS_STOP_ARRIVAL_NOTIFY);
-            
-            NSString *message = [NSString stringWithFormat:@"The %@ bus is arriving at %@ soon", arrival.name, self.model.stop.humanName];
-
-            NotificationManager *notificationManager = [[NotificationManager alloc] init];
-            [notificationManager scheduleNotificationWithFireDate:[self.model firstArrivalDateForArrival:arrival] message:message];
-            
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Success!"
-                                                            message:[NSString stringWithFormat:@"You'll be notified when the %@ bus is almost at %@", arrival.name, self.model.stop.humanName]
-                                                           delegate:nil
-                                                  cancelButtonTitle:nil
-                                                  otherButtonTitles:@"Dismiss", nil];
-            [alert show];
-        }];
-        
-        [actionSheet addCancelButtonWithTitle:@"Dismiss" handler:^ {
-            SendEvent(ANALYTICS_STOP_ARRIVAL_DISMISS);
-        }];
-        
-        [actionSheet showFromTabBar:self.tabBarController.tabBar];
-    } else if (indexPath.section == SectionAddress) {
+        [self presentRouteActionChooserForArrival:self.model.arrivalsServicingStop[self.activeIndexPath.row]];
+    }
+    
+    else if (indexPath.section == SectionAddress) {
         SendEvent(ANALYTICS_STOP_ADDRESS);
         
         [self performSegueWithIdentifier:UMSegueMap sender:self];
-    } else if (indexPath.section == SectionMisc) {
+    }
+    
+    else if (indexPath.section == SectionMisc) {
+        
         if (indexPath.row == MiscCellDirections) {
             SendEvent(ANALYTICS_STOP_DIRECTIONS);
 
@@ -211,7 +215,9 @@
             [[UIApplication sharedApplication] openURL:url];
             
             self.shouldPurgeMap = NO;
-        } else if (indexPath.row == MiscCellStreetView) {
+        }
+        
+        else if (indexPath.row == MiscCellStreetView) {
             SendEvent(ANALYTICS_STOP_STREET_VIEW);
 
             self.shouldPurgeMap = NO;

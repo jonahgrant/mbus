@@ -22,8 +22,8 @@
 #import "RouteMapView.h"
 #import "HexColor.h"
 
-static int TAB_BAR_HEIGHT = 49;
-static int ROUTE_SCROLL_VIEW_HEIGHT = 80;
+static int const TAB_BAR_HEIGHT = 49;
+static int const ROUTE_SCROLL_VIEW_HEIGHT = 80;
 
 @interface MapViewController () <UIScrollViewDelegate>
 
@@ -84,7 +84,7 @@ static int ROUTE_SCROLL_VIEW_HEIGHT = 80;
     // remove buses no longer in service
     NSMutableArray *intermediate = [NSMutableArray arrayWithArray:self.mapView.annotations];
     
-    for (int i = 0, j = self.mapView.annotations.count; i < j; i++) {
+    for (int i = 0, j = (int)self.mapView.annotations.count; i < j; i++) {
         if ([intermediate[i] isKindOfClass:[MKPointAnnotation class]]) {
             [intermediate removeObject:intermediate[i]];
             break;
@@ -152,10 +152,10 @@ static int ROUTE_SCROLL_VIEW_HEIGHT = 80;
     self.routeScrollView.contentSize = CGSizeMake(([DataStore sharedManager].arrivals.count + 1) * CGRectGetWidth([[UIApplication sharedApplication] keyWindow].frame) + 1,
                                                   ROUTE_SCROLL_VIEW_HEIGHT);
     
-    for (int i = 0, j = [DataStore sharedManager].arrivals.count; i < j; i++) {
+    for (int i = 0, j = (int)[DataStore sharedManager].arrivals.count; i < j; i++) {
         Arrival *arrival = [DataStore sharedManager].arrivals[i];
         RouteMapView *view = [[RouteMapView alloc] initWithTitle:arrival.name
-                                                        subtitle:[NSString stringWithFormat:@"%i stops", arrival.stops.count]
+                                                        subtitle:[NSString stringWithFormat:@"%lu stops", (unsigned long)arrival.stops.count]
                                                  backgroundColor:[UIColor colorWithHexString:arrival.busRouteColor]
                                                        textColor:[UIColor whiteColor]
                                                            frame:CGRectMake((i + 1) * CGRectGetWidth(self.routeScrollView.frame),
@@ -178,24 +178,28 @@ static int ROUTE_SCROLL_VIEW_HEIGHT = 80;
                                    animated:YES];
         });
     } else {
-        [self.networkingSession fetchTraceRouteForRouteID:arrivalID
-                                         withSuccessBlock:^(NSArray *traceRoute) {
-                                             if (traceRoute) {
-                                                 dispatch_async(dispatch_get_main_queue(), ^{
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            [self.networkingSession fetchTraceRouteForRouteID:arrivalID
+                                             withSuccessBlock:^(NSArray *traceRoute) {
+                                                 if (traceRoute) {
                                                      MKPolyline *polyline = [self polylineFromTraceRoute:traceRoute];
-                                                     [self.mapView addOverlay:polyline];
-                                                     [self.mapView setVisibleMapRect:[polyline boundingMapRect]
-                                                                         edgePadding:UIEdgeInsetsMake(20, 20, 20, 20)
-                                                                            animated:YES];
+                                                     dispatch_async(dispatch_get_main_queue(), ^{
+                                                         [self.mapView addOverlay:polyline];
+                                                         [self.mapView setVisibleMapRect:[polyline boundingMapRect]
+                                                                             edgePadding:UIEdgeInsetsMake(20, 20, 20, 20)
+                                                                                animated:YES];
+                                                     });
                                                      [[DataStore sharedManager] persistTraceRoute:traceRoute forRouteID:arrivalID];
-                                                 });
-                                             } else {
-                                                 [self resetActiveArrival];
-                                             }
-                                         } errorBlock:^(NSError *error) {
+                                                 } else {
+                                                     dispatch_async(dispatch_get_main_queue(), ^{
+                                                         [self resetActiveArrival];
+                                                     });
+                                                 }
+                                             } errorBlock:^(NSError *error) {
+                                                 
+                                             }];
 
-                                         }];
-
+        });
     }
     
     //[self loadAnnotationsForActiveArrival];
@@ -203,7 +207,7 @@ static int ROUTE_SCROLL_VIEW_HEIGHT = 80;
 
 - (void)loadAnnotationsForActiveArrival {
     NSMutableArray *mutableArray = [NSMutableArray array];
-    for (int i = 0, j = self.activeArrival.stops.count; i < j; i++) {
+    for (int i = 0, j = (int)self.activeArrival.stops.count; i < j; i++) {
         ArrivalStop *arrivalStop = self.activeArrival.stops[i];
         MKPointAnnotation *annotation = [[MKPointAnnotation alloc] init];
         annotation.coordinate = arrivalStop.coordinate;
@@ -213,13 +217,13 @@ static int ROUTE_SCROLL_VIEW_HEIGHT = 80;
     }
 
     self.activeArrivalAnnotations = mutableArray;
-     [self.mapView addAnnotations:self.activeArrivalAnnotations];
+    [self.mapView addAnnotations:self.activeArrivalAnnotations];
 }
 
 - (MKPolyline *)polylineFromTraceRoute:(NSArray *)traceRoute {
     CLLocationCoordinate2D coordinates[traceRoute.count];
     
-    for (int i = 0, n = traceRoute.count; i < n; i++) {
+    for (int i = 0, n = (int)traceRoute.count; i < n; i++) {
         TraceRoute *route = traceRoute[i];
         coordinates[i] = CLLocationCoordinate2DMake([route.latitude doubleValue], [route.longitude doubleValue]);
     }
@@ -295,6 +299,5 @@ static int ROUTE_SCROLL_VIEW_HEIGHT = 80;
     
     return renderer;
 }
-
 
 @end
