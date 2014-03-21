@@ -100,19 +100,15 @@ NSString * NSStringForMiscCell(MiscCell cell) {
 - (NSTimeInterval)firstArrivalTimeIntervalForArrival:(Arrival *)arrival {
     ArrivalStop *arrivalStop = [self arrivalStopForArrival:arrival];
     
+    BOOL hasBus1 = [[DataStore sharedManager] arrivalHasBus1WithArrivalID:arrival.id];
+    BOOL hasBus2 = [[DataStore sharedManager] arrivalHasBus2WithArrivalID:arrival.id];
+    
     NSTimeInterval toa = 0;
-    if ([[DataStore sharedManager] arrivalHasBus1WithArrivalID:arrival.id] &&
-        [[DataStore sharedManager] arrivalHasBus2WithArrivalID:arrival.id]) {
-        if (arrivalStop.timeOfArrival >= arrivalStop.timeOfArrival2) {
-            toa = arrivalStop.timeOfArrival2;
-        } else {
-            toa = arrivalStop.timeOfArrival;
-        }
-    } else if ([[DataStore sharedManager] arrivalHasBus1WithArrivalID:arrival.id] &&
-               ![[DataStore sharedManager] arrivalHasBus2WithArrivalID:arrival.id]) {
+    if (hasBus1 && hasBus2) {
+        toa = (arrivalStop.timeOfArrival >= arrivalStop.timeOfArrival2) ? arrivalStop.timeOfArrival2 : arrivalStop.timeOfArrival;
+    } else if (hasBus1 && !hasBus2) {
         toa = arrivalStop.timeOfArrival;
-    } else if (![[DataStore sharedManager] arrivalHasBus1WithArrivalID:arrival.id] &&
-               [[DataStore sharedManager] arrivalHasBus2WithArrivalID:arrival.id]) {
+    } else if (!hasBus1 && hasBus2) {
         toa = arrivalStop.timeOfArrival2;
     } else {
         toa = -1;
@@ -135,11 +131,9 @@ NSString * NSStringForMiscCell(MiscCell cell) {
 }
 
 - (NSString *)timeSinceRoutesRefresh {
-    if (![[DataStore sharedManager] arrivalsTimestamp]) {
-        return NEVER;
-    }
-    
-    return [self.timeIntervalFormatter stringForTimeInterval:[[[DataStore sharedManager] arrivalsTimestamp] timeIntervalSinceDate:[NSDate date]]];
+    return (![[DataStore sharedManager] arrivalsTimestamp]) ?
+    NEVER :
+    [self.timeIntervalFormatter stringForTimeInterval:[[[DataStore sharedManager] arrivalsTimestamp] timeIntervalSinceDate:[NSDate date]]];
 }
 
 @end

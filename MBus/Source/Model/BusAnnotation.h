@@ -8,11 +8,12 @@
 
 @import MapKit;
 
-@class Bus;
+@class Bus, Arrival;
 
 @interface BusAnnotation : NSObject <MKAnnotation>
 
 @property (strong, nonatomic) Bus *bus;
+@property (strong, nonatomic, readonly) Arrival *arrival;
 @property (nonatomic) CGFloat heading;
 @property (strong, nonatomic) NSString *id;
 @property (strong, nonatomic) UIColor *color;

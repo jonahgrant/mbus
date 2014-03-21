@@ -19,20 +19,16 @@
 #import "DataStore.h"
 #import "BusAnnotation.h"
 #import "CircleAnnotationView.h"
-#import "RouteMapView.h"
 #import "HexColor.h"
-
-static int const TAB_BAR_HEIGHT = 49;
-static int const ROUTE_SCROLL_VIEW_HEIGHT = 80;
 
 @interface MapViewController () <UIScrollViewDelegate>
 
 @property (nonatomic, strong, readwrite) UMNetworkingSession *networkingSession;
 @property (nonatomic, strong, readwrite) MapViewControllerModel *model;
 @property (nonatomic, strong, readwrite) IBOutlet MKMapView *mapView;
-@property (nonatomic, strong, readwrite) UIScrollView *routeScrollView;
 @property (nonatomic, strong, readwrite) Arrival *activeArrival;
 @property (nonatomic, strong, readwrite) NSArray *activeArrivalAnnotations;
+@property (nonatomic, strong, readwrite) UIButton *eyeballButton;
 
 - (void)loadAnnotations;
 
@@ -56,8 +52,11 @@ static int const ROUTE_SCROLL_VIEW_HEIGHT = 80;
         [self dropAndZoomToPinWithCoordinate:self.startCoordinate];
     } else {
         [self zoomToCampus];
-        [self setupScrollView];
     }
+    
+    self.eyeballButton = [UIButton buttonWithType:UIButtonTypeInfoDark];
+    self.eyeballButton.frame = CGRectMake(0, 0, 50, 50);
+    [self.mapView addSubview:self.eyeballButton];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -91,8 +90,26 @@ static int const ROUTE_SCROLL_VIEW_HEIGHT = 80;
         }
     }
     
+    
     [intermediate removeObjectsInArray:annotationArray];
+    [intermediate removeObjectsInArray:self.activeArrivalAnnotations];
     [self.mapView removeAnnotations:intermediate];
+}
+
+- (void)loadStopAnnotationsForActiveArrival {
+    [self.mapView removeAnnotations:self.activeArrivalAnnotations];
+    
+    NSMutableArray *mutableArray = [NSMutableArray array];
+    for (ArrivalStop *stop in self.activeArrival.stops) {
+        MKPointAnnotation *annotation = [[MKPointAnnotation alloc] init];
+        annotation.coordinate = stop.coordinate;
+        annotation.title = stop.name2;
+        annotation.subtitle = stop.name;
+        [mutableArray push:annotation];
+    }
+    
+    self.activeArrivalAnnotations = mutableArray;
+    [self.mapView addAnnotations:self.activeArrivalAnnotations];
 }
 
 - (void)zoomToCampus {
@@ -105,6 +122,10 @@ static int const ROUTE_SCROLL_VIEW_HEIGHT = 80;
     region.span = span;
     
     [self.mapView setRegion:region animated:YES];
+}
+
+- (void)zoomToTopOverlay {
+    [self.mapView setVisibleMapRect:[self.mapView.overlays[0] boundingMapRect] edgePadding:UIEdgeInsetsMake(20, 20, 20, 20) animated:YES];
 }
 
 - (void)dropAndZoomToPinWithCoordinate:(CLLocationCoordinate2D)coordinate {
@@ -120,52 +141,6 @@ static int const ROUTE_SCROLL_VIEW_HEIGHT = 80;
     [self.mapView setCamera:camera animated:NO];
 }
 
-#pragma mark UIScrollView
-
-- (void)setupScrollView {
-    CGRect scrollViewFrame = CGRectMake(0,
-                                        CGRectGetHeight(self.view.frame) - ROUTE_SCROLL_VIEW_HEIGHT - TAB_BAR_HEIGHT,
-                                        CGRectGetWidth([[UIApplication sharedApplication] keyWindow].frame),
-                                        ROUTE_SCROLL_VIEW_HEIGHT);
-    self.routeScrollView = [[UIScrollView alloc] initWithFrame:scrollViewFrame];
-    self.routeScrollView.pagingEnabled = YES;
-    self.routeScrollView.backgroundColor = [UIColor whiteColor];
-    self.routeScrollView.showsHorizontalScrollIndicator = NO;
-    self.routeScrollView.delegate = self;
-    [self.view addSubview:self.routeScrollView];
-    
-    [[RACObserve([DataStore sharedManager], arrivals) filter:^BOOL(NSArray *arrivals) {
-        return (arrivals.count > 0);
-    }] subscribeNext:^(id x) {
-        [self updateScrollView];
-    }];
-    
-    RouteMapView *initialView = [[RouteMapView alloc] initWithTitle:@"Routes"
-                                                           subtitle:@"Swipe left to choose a route"
-                                                    backgroundColor:[UIColor whiteColor]
-                                                          textColor:[UIColor blackColor]
-                                                              frame:CGRectMake(0, 0, CGRectGetWidth(scrollViewFrame), ROUTE_SCROLL_VIEW_HEIGHT)];
-    [self.routeScrollView addSubview:initialView];
-}
-
-- (void)updateScrollView {
-    self.routeScrollView.contentSize = CGSizeMake(([DataStore sharedManager].arrivals.count + 1) * CGRectGetWidth([[UIApplication sharedApplication] keyWindow].frame) + 1,
-                                                  ROUTE_SCROLL_VIEW_HEIGHT);
-    
-    for (int i = 0, j = (int)[DataStore sharedManager].arrivals.count; i < j; i++) {
-        Arrival *arrival = [DataStore sharedManager].arrivals[i];
-        RouteMapView *view = [[RouteMapView alloc] initWithTitle:arrival.name
-                                                        subtitle:[NSString stringWithFormat:@"%lu stops", (unsigned long)arrival.stops.count]
-                                                 backgroundColor:[UIColor colorWithHexString:arrival.busRouteColor]
-                                                       textColor:[UIColor whiteColor]
-                                                           frame:CGRectMake((i + 1) * CGRectGetWidth(self.routeScrollView.frame),
-                                                                            0,
-                                                                            CGRectGetWidth(self.routeScrollView.frame),
-                                                                            CGRectGetHeight(self.routeScrollView.frame))];
-        [self.routeScrollView addSubview:view];
-    }
-}
-
 - (void)loadTraceRouteForArrivalID:(NSString *)arrivalID {
     [self.mapView removeOverlays:self.mapView.overlays];
 
@@ -173,9 +148,6 @@ static int const ROUTE_SCROLL_VIEW_HEIGHT = 80;
         dispatch_async(dispatch_get_main_queue(), ^{
             MKPolyline *polyline = [self polylineFromTraceRoute:[[DataStore sharedManager] traceRouteForRouteID:arrivalID]];
             [self.mapView addOverlay:polyline];
-            [self.mapView setVisibleMapRect:[polyline boundingMapRect]
-                                edgePadding:UIEdgeInsetsMake(20, 20, 20, 20)
-                                   animated:YES];
         });
     } else {
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
@@ -185,9 +157,6 @@ static int const ROUTE_SCROLL_VIEW_HEIGHT = 80;
                                                      MKPolyline *polyline = [self polylineFromTraceRoute:traceRoute];
                                                      dispatch_async(dispatch_get_main_queue(), ^{
                                                          [self.mapView addOverlay:polyline];
-                                                         [self.mapView setVisibleMapRect:[polyline boundingMapRect]
-                                                                             edgePadding:UIEdgeInsetsMake(20, 20, 20, 20)
-                                                                                animated:YES];
                                                      });
                                                      [[DataStore sharedManager] persistTraceRoute:traceRoute forRouteID:arrivalID];
                                                  } else {
@@ -195,29 +164,9 @@ static int const ROUTE_SCROLL_VIEW_HEIGHT = 80;
                                                          [self resetActiveArrival];
                                                      });
                                                  }
-                                             } errorBlock:^(NSError *error) {
-                                                 
-                                             }];
-
+                                             } errorBlock:NULL];
         });
     }
-    
-    //[self loadAnnotationsForActiveArrival];
-}
-
-- (void)loadAnnotationsForActiveArrival {
-    NSMutableArray *mutableArray = [NSMutableArray array];
-    for (int i = 0, j = (int)self.activeArrival.stops.count; i < j; i++) {
-        ArrivalStop *arrivalStop = self.activeArrival.stops[i];
-        MKPointAnnotation *annotation = [[MKPointAnnotation alloc] init];
-        annotation.coordinate = arrivalStop.coordinate;
-        annotation.title = arrivalStop.name2;
-        annotation.subtitle = arrivalStop.name;
-        [mutableArray addObject:annotation];
-    }
-
-    self.activeArrivalAnnotations = mutableArray;
-    [self.mapView addAnnotations:self.activeArrivalAnnotations];
 }
 
 - (MKPolyline *)polylineFromTraceRoute:(NSArray *)traceRoute {
@@ -231,31 +180,12 @@ static int const ROUTE_SCROLL_VIEW_HEIGHT = 80;
     return [MKPolyline polylineWithCoordinates:coordinates count:traceRoute.count];
 }
 
-
 - (void)resetActiveArrival {
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         [self zoomToCampus];
         [self.mapView removeOverlays:self.mapView.overlays];
         [self.mapView removeAnnotations:self.activeArrivalAnnotations];
     });
-}
-
-#pragma mark UIScrollView delegate
-
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    static NSInteger previousPage = 0;
-    NSInteger page = lround(scrollView.contentOffset.x / CGRectGetWidth([[UIApplication sharedApplication] keyWindow].frame));
-   
-    if (previousPage != page) {
-        previousPage = page;
-        
-        if (page == 0) {
-            [self resetActiveArrival];
-        } else {
-            self.activeArrival = [DataStore sharedManager].arrivals[page - 1];
-            [self loadTraceRouteForArrivalID:self.activeArrival.id];
-        }
-    }
 }
 
 #pragma mark MKMapView delegate methods
@@ -272,7 +202,8 @@ static int const ROUTE_SCROLL_VIEW_HEIGHT = 80;
         }
         
         pin.pinColor = MKPinAnnotationColorRed;
-        pin.animatesDrop = YES;
+        pin.animatesDrop = (self.startCoordinate.latitude != 0 && self.startCoordinate.longitude != 0) ? YES : NO;
+        pin.canShowCallout = YES;
         
         return pin;
     } else if ([annotation isKindOfClass:[BusAnnotation class]]) {
@@ -287,6 +218,17 @@ static int const ROUTE_SCROLL_VIEW_HEIGHT = 80;
     }
     
     return nil;
+}
+
+- (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view {
+    if ([view.annotation isKindOfClass:[BusAnnotation class]]) {
+        if ([(BusAnnotation *)view.annotation arrival].id != self.activeArrival.id) {
+            self.activeArrival = [(BusAnnotation *)view.annotation arrival];
+            [self loadTraceRouteForArrivalID:self.activeArrival.id];
+            [self loadStopAnnotationsForActiveArrival];
+        }
+    }
+
 }
 
 #pragma MKMapView

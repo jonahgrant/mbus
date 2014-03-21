@@ -63,7 +63,6 @@
 		AB4C12D018C2FC3800485234 /* AnnouncementsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB4C12CF18C2FC3800485234 /* AnnouncementsViewController.m */; };
 		AB612DF518CA61D00074D6B7 /* NotificationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AB612DF418CA61D00074D6B7 /* NotificationManager.m */; };
 		AB6A1FD118CFA7E00036F88D /* AddressCellMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = AB6A1FD018CFA7E00036F88D /* AddressCellMapView.m */; };
-		AB7E855A18D6B09200791934 /* RouteMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = AB7E855918D6B09200791934 /* RouteMapView.m */; };
 		AB8C7C5818BD5E88007806C3 /* AllStopsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB8C7C5718BD5E88007806C3 /* AllStopsViewController.m */; };
 		AB98129018BC015000EFDEE7 /* InitialedCircleView.m in Sources */ = {isa = PBXBuildFile; fileRef = AB98128F18BC015000EFDEE7 /* InitialedCircleView.m */; };
 		AB98129318BC37E700EFDEE7 /* DistanceTagView.m in Sources */ = {isa = PBXBuildFile; fileRef = AB98129218BC37E700EFDEE7 /* DistanceTagView.m */; };
@@ -191,8 +190,6 @@
 		AB612DF418CA61D00074D6B7 /* NotificationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationManager.m; sourceTree = "<group>"; };
 		AB6A1FCF18CFA7E00036F88D /* AddressCellMapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressCellMapView.h; sourceTree = "<group>"; };
 		AB6A1FD018CFA7E00036F88D /* AddressCellMapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressCellMapView.m; sourceTree = "<group>"; };
-		AB7E855818D6B09200791934 /* RouteMapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RouteMapView.h; sourceTree = "<group>"; };
-		AB7E855918D6B09200791934 /* RouteMapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RouteMapView.m; sourceTree = "<group>"; };
 		AB8C7C5618BD5E88007806C3 /* AllStopsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AllStopsViewController.h; sourceTree = "<group>"; };
 		AB8C7C5718BD5E88007806C3 /* AllStopsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AllStopsViewController.m; sourceTree = "<group>"; };
 		AB98128E18BC015000EFDEE7 /* InitialedCircleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InitialedCircleView.h; sourceTree = "<group>"; };
@@ -392,8 +389,6 @@
 				AB4C12C318C2EEB100485234 /* StopTray.m */,
 				AB3A741818C9287900A2891E /* CircleAnnotationView.h */,
 				AB3A741918C9287900A2891E /* CircleAnnotationView.m */,
-				AB7E855818D6B09200791934 /* RouteMapView.h */,
-				AB7E855918D6B09200791934 /* RouteMapView.m */,
 				AB4C12C118C2EE7000485234 /* ArrivalCell */,
 				AB4C12A518C2EE0500485234 /* ArrivalRouteCell */,
 				AB4C129518C2E80400485234 /* StopArrivalCell */,
@@ -667,7 +662,6 @@
 				AB4C129E18C2EDF100485234 /* RoutesViewController.m in Sources */,
 				AB467E6618B4729100AF1076 /* StopCell.m in Sources */,
 				AB467E0218B44B0700AF1076 /* StopsViewController.m in Sources */,
-				AB7E855A18D6B09200791934 /* RouteMapView.m in Sources */,
 				ABDB5B4A18C0114A005AA38B /* MiscViewController.m in Sources */,
 				AB467E0518B44B1100AF1076 /* StopsViewControllerModel.m in Sources */,
 				AB4C129B18C2EDE500485234 /* RoutesViewControllerModel.m in Sources */,

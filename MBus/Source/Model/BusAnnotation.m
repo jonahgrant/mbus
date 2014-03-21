@@ -16,6 +16,7 @@
 @interface BusAnnotation ()
 
 @property (nonatomic) CLLocationCoordinate2D coordinate;
+@property (nonatomic, strong, readwrite) Arrival *arrival;
 
 @end
 
@@ -41,7 +42,8 @@
     _id = bus.id;
     _coordinate = CLLocationCoordinate2DMake([bus.latitude doubleValue], [bus.longitude doubleValue]);
     _heading = [bus.heading floatValue];
-    _color = [UIColor colorWithHexString:[[DataStore sharedManager] arrivalForID:_bus.routeID].busRouteColor];
+    _arrival = [[DataStore sharedManager] arrivalForID:_bus.routeID];
+    _color = [UIColor colorWithHexString:_arrival.busRouteColor];
 }
 
 - (NSString *)title {
