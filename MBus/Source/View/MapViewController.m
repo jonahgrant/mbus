@@ -82,14 +82,12 @@
     
     // remove buses no longer in service
     NSMutableArray *intermediate = [NSMutableArray arrayWithArray:self.mapView.annotations];
-    
     for (int i = 0, j = (int)self.mapView.annotations.count; i < j; i++) {
         if ([intermediate[i] isKindOfClass:[MKPointAnnotation class]]) {
             [intermediate removeObject:intermediate[i]];
             break;
         }
     }
-    
     
     [intermediate removeObjectsInArray:annotationArray];
     [intermediate removeObjectsInArray:self.activeArrivalAnnotations];
@@ -225,7 +223,7 @@
         if ([(BusAnnotation *)view.annotation arrival].id != self.activeArrival.id) {
             self.activeArrival = [(BusAnnotation *)view.annotation arrival];
             [self loadTraceRouteForArrivalID:self.activeArrival.id];
-            [self loadStopAnnotationsForActiveArrival];
+            //[self loadStopAnnotationsForActiveArrival];
         }
     }
 

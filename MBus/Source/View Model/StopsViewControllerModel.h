@@ -11,7 +11,8 @@
 @interface StopsViewControllerModel : ViewControllerModelBase
 
 @property (nonatomic, strong, readonly) NSArray *stops, *stopCellModels;
-@property (nonatomic, copy, readonly) NSString *sectionHeaderText;
+@property (nonatomic, copy, readonly) NSString *sectionHeaderText, *announcementsCellText;
+@property (nonatomic, readonly, getter = hasAnnouncements) BOOL announcements;
 
 - (void)reloadData;
 

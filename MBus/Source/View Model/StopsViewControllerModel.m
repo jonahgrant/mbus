@@ -16,7 +16,8 @@
 @interface StopsViewControllerModel ()
 
 @property (nonatomic, strong, readwrite) NSArray *stops, *stopCellModels;
-@property (nonatomic, copy, readwrite) NSString *sectionHeaderText;
+@property (nonatomic, copy, readwrite) NSString *sectionHeaderText, *announcementsCellText;
+@property (nonatomic, readwrite, getter = hasAnnouncements) BOOL announcements;
 
 @end
 
@@ -95,6 +96,16 @@
                 NSArray *array = ([DataStore sharedManager].stops) ? [DataStore sharedManager].stops : [[DataStore sharedManager] persistedStops];
                 self.stops = [self sortedStopsByDistanceWithArray:array location:location];
             }
+        }];
+        
+        [[RACObserve([DataStore sharedManager], announcements) filter:^BOOL(NSArray *announcements) {
+            return (self.dataUpdatedBlock != nil);
+        }] subscribeNext:^(NSArray *announcements) {
+            NSUInteger announcementsCount = [DataStore sharedManager].announcements.count;
+            self.announcements = (announcementsCount > 0);
+            self.announcementsCellText = [[NSString stringWithFormat:@"%lu", (unsigned long)[DataStore sharedManager].announcements.count]
+                                          stringByAppendingString:(announcementsCount > 1) ? @" announcements" : @" announcement"];
+            self.dataUpdatedBlock();
         }];
     }
     return self;
