@@ -50,6 +50,8 @@
     int minutes = ((NSInteger)timeInterval / 60) % 60;
     if (minutes == 00) {
         return @"";
+    } else if (minutes == 1) {
+        return @"minute";
     }
     
     if (timeInterval > 60) {
@@ -61,18 +63,18 @@
 
 - (NSTimeInterval)firstBusArrival {
     NSTimeInterval toa = 0;
-    if ([[DataStore sharedManager] arrivalHasBus1WithArrivalID:self.arrival.id] &&
-        [[DataStore sharedManager] arrivalHasBus2WithArrivalID:self.arrival.id]) {
+    BOOL hasBus1 = [[DataStore sharedManager] arrivalHasBus1WithArrivalID:self.arrival.id];
+    BOOL hasBus2 = [[DataStore sharedManager] arrivalHasBus2WithArrivalID:self.arrival.id];
+    
+    if (hasBus1 && hasBus2) {
         if ([self arrivalStop].timeOfArrival >= [self arrivalStop].timeOfArrival2) {
             toa = [self arrivalStop].timeOfArrival2;
         } else {
             toa = [self arrivalStop].timeOfArrival;
         }
-    } else if ([[DataStore sharedManager] arrivalHasBus1WithArrivalID:self.arrival.id] &&
-               ![[DataStore sharedManager] arrivalHasBus2WithArrivalID:self.arrival.id]) {
+    } else if (hasBus1 && !hasBus2) {
         toa = [self arrivalStop].timeOfArrival;
-    } else if (![[DataStore sharedManager] arrivalHasBus1WithArrivalID:self.arrival.id] &&
-               [[DataStore sharedManager] arrivalHasBus2WithArrivalID:self.arrival.id]) {
+    } else if (!hasBus1 && hasBus2) {
         toa = [self arrivalStop].timeOfArrival2;
     } else {
         toa = -1;

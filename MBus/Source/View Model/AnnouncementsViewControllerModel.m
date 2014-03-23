@@ -52,7 +52,8 @@
 }
 
 - (NSString *)headerString {
-    return [NSString stringWithFormat:FORMATTED_ANNOUNCEMENTS_COUNT, [DataStore sharedManager].announcements.count];
+    int announcementsCount = [DataStore sharedManager].announcements.count;
+    return [NSString stringWithFormat:FORMATTED_ANNOUNCEMENTS_COUNT, announcementsCount, (announcementsCount > 1) ? @"s" : @""];
 }
 
 - (CGFloat)heightForAnnouncement:(Announcement *)announcement width:(CGFloat)width font:(UIFont *)font {

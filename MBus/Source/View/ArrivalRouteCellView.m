@@ -20,12 +20,16 @@
         self.backgroundColor = [UIColor whiteColor];
         self.opaque = YES;
         
-        [RACObserve(self, model) subscribeNext:^(id x) {
+        [[RACObserve(self, model) filter:^BOOL(ArrivalRouteCellModel *model) {
+            return (model != nil);
+        }] subscribeNext:^(id x) {
             [self setNeedsDisplay];
         }];
     }
     return self;
 }
+
+
 
 - (void)drawRect:(CGRect)rect {
     [super drawRect:rect];
@@ -42,7 +46,7 @@
                                                       options:NSStringDrawingUsesLineFragmentOrigin
                                                    attributes:routeNameDictionary
                                                       context:nil].size.height;
-    CGRect routeNameRect = CGRectMake(20, x - (routeNameHeight / 2), rect.size.width - 50, routeNameHeight);
+    CGRect routeNameRect = CGRectMake(18, x - (routeNameHeight / 2), rect.size.width - 50, routeNameHeight);
     
     [routeName drawInRect:routeNameRect withAttributes:routeNameDictionary];
 

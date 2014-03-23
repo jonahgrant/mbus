@@ -37,7 +37,7 @@ NSString * const SAFE_RIDES_TEL                            = @"tel://7346478000"
 NSString * const STREET_VIEW                               = @"Street View";
 NSString * const DIRECTIONS                                = @"Directions";
 NSString * const FORMATTED_APPLE_MAPS_DIRECTIONS           = @"http://maps.apple.com/maps?daddr=%1.6f,%1.6f&saddr=Posizione attuale";
-NSString * const FORMATTED_ANNOUNCEMENTS_COUNT             = @"%i announcements";
+NSString * const FORMATTED_ANNOUNCEMENTS_COUNT             = @"%i announcement%@";
 NSString * const NEARBY_STOPS                              = @"Nearby stops";
 NSString * const NEARBY_STOPS_IN_SERVICE                   = @"Nearby stops in service";
 NSString * const FORMATTED_MORE_STOPS_CELL_TEXT            = @"%u MORE STOPS";

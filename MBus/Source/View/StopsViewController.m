@@ -86,12 +86,13 @@ static NSInteger ALL_STOPS_CELL = 5;
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (self.model.hasAnnouncements && indexPath.section == 0) {
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"AnnouncementsCell" forIndexPath:indexPath];
-        cell.textLabel.textColor = [UIColor colorWithRed:0.941177 green:0.678431 blue:0.305882 alpha:1.0000];
+        cell.textLabel.textColor = [UIColor colorWithRed:0.580392 green:0.494118 blue:0.333333 alpha:1.0000];
         cell.textLabel.text = @"Attention";
         cell.textLabel.font = [UIFont helveticaNeueWithWeight:TypeWeightNormal size:18.0f];
         cell.detailTextLabel.text = self.model.announcementsCellText;
         cell.detailTextLabel.font = [UIFont helveticaNeueWithWeight:TypeWeightLight size:14.0f];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        cell.backgroundColor = [UIColor colorWithRed:0.988235 green:0.972549 blue:0.890196 alpha:1.0000];
         
         UIView *sidebarView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 5, CGRectGetHeight(cell.frame))];
         sidebarView.backgroundColor = [UIColor colorWithRed:0.941177 green:0.678431 blue:0.305882 alpha:1.0000];
