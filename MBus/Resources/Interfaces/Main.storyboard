@@ -460,9 +460,6 @@
                     <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="SfL-gx-EXW">
                         <autoresizingMask key="autoresizingMask"/>
                         <attributedString key="attributedTitle"/>
-                        <connections>
-                            <action selector="refresh:" destination="Ak3-sB-bbS" eventType="valueChanged" id="skI-q5-v06"/>
-                        </connections>
                     </refreshControl>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w8f-Rm-dnL" userLabel="First Responder" sceneMemberID="firstResponder"/>
