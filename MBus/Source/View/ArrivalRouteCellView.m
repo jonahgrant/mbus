@@ -48,7 +48,7 @@
 
     // Route color rect
     CGContextSetFillColorWithColor(context, [UIColor colorWithHexString:self.model.arrival.busRouteColor].CGColor);
-    CGContextFillRect(context, CGRectMake(0, 0, 10, rect.size.height));
+    CGContextFillRect(context, CGRectMake(0, 0, 5, rect.size.height));
 }
 
 @end

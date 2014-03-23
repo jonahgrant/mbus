@@ -20,6 +20,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self.tableView setSeparatorInset:UIEdgeInsetsMake(0, 5.0, 0, 0)];
+
     self.model = [[RoutesViewControllerModel alloc] init];
     @weakify(self);
     self.model.dataUpdatedBlock = ^ {
@@ -92,7 +94,7 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     if (section == 0) {
-        return ROUTES_IN_SERVICE;
+        return [@"   " stringByAppendingString:ROUTES_IN_SERVICE];
     }
     
     return nil;

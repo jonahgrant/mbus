@@ -32,10 +32,19 @@
             Arrival *arrival = [[DataStore sharedManager] arrivalForID:self.arrival.id];
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
                 self.sortedStops = [self stopsOrderedByTimeOfArrivalWithStops:arrival.stops];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    self.dataUpdatedBlock();
+                });
             });
         }];
     }
     return self;
+}
+
+- (void)fetchData {
+    [[DataStore sharedManager] fetchArrivalsWithErrorBlock:^(NSError *error) {
+        self.dataUpdatedBlock();
+    }];
 }
 
 - (NSArray *)stopsOrderedByTimeOfArrivalWithStops:(NSArray *)stops {
@@ -54,7 +63,7 @@
 }
 
 - (NSString *)mmssForTimeInterval:(NSTimeInterval)timeInterval {
-    return [NSString stringWithFormat:@"%02li:%02li", ((NSInteger)timeInterval / 60) % 60, (NSInteger)timeInterval % 60];
+    return [NSString stringWithFormat:@"%02i:%02i", ((NSInteger)timeInterval / 60) % 60, (NSInteger)timeInterval % 60];
 }
 
 - (NSString *)timeSinceLastRefresh {

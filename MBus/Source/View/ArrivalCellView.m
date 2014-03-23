@@ -58,7 +58,7 @@
     
     // VERTICAL LINE
     CGContextSetStrokeColorWithColor(context, [UIColor colorWithRed:0.811630 green:0.811630 blue:0.811630 alpha:1.0000].CGColor);
-    CGContextSetLineWidth(context, 3.0);
+    CGContextSetLineWidth(context, 2.0);
     
     CGContextBeginPath(context);
     CGContextMoveToPoint(context, 30, 0);
@@ -75,7 +75,7 @@
     CGContextSetFillColorWithColor(context, [UIColor whiteColor].CGColor);
     CGContextFillEllipseInRect(context, circleRect);
     
-    CGContextSetLineWidth(context, 3.0f);
+    CGContextSetLineWidth(context, 2.0f);
     CGContextSetStrokeColorWithColor(context, [UIColor colorWithRed:0.811630 green:0.811630 blue:0.811630 alpha:1.0000].CGColor);
     CGContextStrokeEllipseInRect(context, circleRect);
     

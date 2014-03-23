@@ -29,16 +29,18 @@
     RAC(self, title) = RACObserve(self.arrival, name);
     
     self.model = [[RouteViewControllerModel alloc] initWithArrival:self.arrival];
+    @weakify(self);
+    self.model.dataUpdatedBlock = ^ {
+        @strongify(self);
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.tableView reloadData];
+            [self.refreshControl endRefreshing];
+        });
+    };
+    
     self.informationCells = @[@"Map"];
     
     [self.refreshControl addTarget:self.model action:@selector(fetchData) forControlEvents:UIControlEventValueChanged];
-
-    [[RACObserve(self.model, sortedStops) filter:^BOOL(NSArray *stops) {
-        return (stops.count > 0);
-    }] subscribeNext:^(NSArray *stops) {
-        [self.refreshControl endRefreshing];
-        [self.tableView reloadData];
-    }];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
