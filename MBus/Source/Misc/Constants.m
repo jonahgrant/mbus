@@ -47,7 +47,7 @@ NSString * const UNKNOWN                                   = @"unknown";
 NSString * const FORMATTED_APPLE_MAPS_PIN                  = @"http://maps.apple.com/?q=%f,%f";
 NSInteger const ADDRESS_CELL_HEIGHT = 80.0f;
 NSString * const ABOUT_MAGIC_BUS_URL = @"http://mbus.pts.umich.edu/about-us/";
-NSString * const MBUS_GITHUB_URL = @"http://mbus.pts.umich.edu/about-us/";
+NSString * const MBUS_GITHUB_URL = @"http://github.com/jonahgrant/mbus/";
 
 #pragma mark - Analytics
 
