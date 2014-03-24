@@ -36,15 +36,20 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
+    [self.tableView addSubview:refreshControl];
+    
     self.model = [[StopViewControllerModel alloc] initWithStop:self.stop];
     @weakify(self);
     self.model.dataUpdatedBlock = ^ {
         @strongify(self);
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.tableView reloadData];
+            [refreshControl endRefreshing];
         });
     };
     
+    [refreshControl addTarget:self.model action:@selector(fetchData) forControlEvents:UIControlEventValueChanged];
     self.navigationItem.titleView = [[StopViewControllerTitleView alloc] initWithStop:self.model.stop];
 }
 

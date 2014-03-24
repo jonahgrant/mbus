@@ -22,14 +22,20 @@
     
     [self.tableView setSeparatorInset:UIEdgeInsetsMake(0, 5.0, 0, 0)];
 
+    UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
+    [self.tableView addSubview:refreshControl];
+
     self.model = [[RoutesViewControllerModel alloc] init];
     @weakify(self);
     self.model.dataUpdatedBlock = ^ {
         @strongify(self);
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.tableView reloadData];
+            [refreshControl endRefreshing];
         });
     };
+    
+    [refreshControl addTarget:self.model action:@selector(fetchData) forControlEvents:UIControlEventValueChanged];
 }
 
 - (void)viewWillAppear:(BOOL)animated {

@@ -374,9 +374,6 @@
                     </tableView>
                     <tabBarItem key="tabBarItem" title="Routes" image="bus-tab.png" id="7jF-cg-ejT"/>
                     <navigationItem key="navigationItem" id="hXd-2u-epl"/>
-                    <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="VEQ-ko-kdg">
-                        <autoresizingMask key="autoresizingMask"/>
-                    </refreshControl>
                     <connections>
                         <segue destination="jRG-vS-ixX" kind="push" identifier="UMSegueRoute" id="bon-Vg-o8E"/>
                     </connections>
@@ -479,10 +476,10 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="ULz-IM-lDQ"/>
+        <segue reference="bon-Vg-o8E"/>
         <segue reference="jC7-Nk-4xw"/>
+        <segue reference="ULz-IM-lDQ"/>
         <segue reference="BNS-GN-Fsn"/>
         <segue reference="Dmd-ku-M7g"/>
-        <segue reference="2A8-0r-zia"/>
     </inferredMetricsTieBreakers>
 </document>
