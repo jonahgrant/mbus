@@ -47,7 +47,7 @@
 }
 
 - (NSString *)footerString {
-    return [NSString stringWithFormat:FORMATTED_LAST_UPDATED, [self timeSinceLastRefresh]];
+    return [@"  " stringByAppendingString:[NSString stringWithFormat:FORMATTED_LAST_UPDATED, [self timeSinceLastRefresh]]];
 }
 
 @end

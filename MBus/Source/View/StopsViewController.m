@@ -69,7 +69,7 @@ static NSInteger ALL_STOPS_CELL = 5;
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (self.model.hasAnnouncements && indexPath.section == 0) {
-        return 80.0f;
+        return 70.0f;
     }
     
     return (self.model.stops.count > MAXIMUM_STOPS && indexPath.row == ALL_STOPS_CELL) ? ALL_STOPS_CELL_HEIGHT : STOP_CELL_HEIGHT;
