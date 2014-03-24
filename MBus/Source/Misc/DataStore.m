@@ -79,7 +79,9 @@ static NSString * const kPlacemarksFile         = @"placemarks.txt";
 }
 
 - (void)persistObject:(id)object withFileName:(NSString *)fileName {
-    [[NSKeyedArchiver archivedDataWithRootObject:object] writeToFile:[self filePathWithName:fileName] atomically:YES];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        [[NSKeyedArchiver archivedDataWithRootObject:object] writeToFile:[self filePathWithName:fileName] atomically:YES];
+    });
 }
 
 - (NSString *)filePathWithName:(NSString *)fileName {
@@ -89,12 +91,15 @@ static NSString * const kPlacemarksFile         = @"placemarks.txt";
 }
 
 - (id)persistedObjectWithFileName:(NSString *)fileName {
-    NSData *data = [NSData dataWithContentsOfFile:[self filePathWithName:fileName]];
-    if (!data) {
-        return nil;
-    }
+    dispatch_queue_t concurrentQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    __block id returnedData = nil;
     
-    return [NSKeyedUnarchiver unarchiveObjectWithData:data];
+    dispatch_sync(concurrentQueue, ^ {
+        NSData *localData = [NSData dataWithContentsOfFile:[self filePathWithName:fileName]];
+        returnedData = (!localData) ? nil : [NSKeyedUnarchiver unarchiveObjectWithData:localData];
+    });
+    
+    return returnedData;
 }
 
 - (void)fetchPersistedObjects {
