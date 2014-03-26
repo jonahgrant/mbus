@@ -33,10 +33,10 @@
         return @"Unknown distance";
     }
     
-    CLLocation *location = [[CLLocation alloc] initWithLatitude:[self.stop.latitude doubleValue] longitude:[self.stop.longitude doubleValue]];
+    CLLocation *location = [[CLLocation alloc] initWithLatitude:self.stop.latitude longitude:self.stop.longitude];
     
     return [[AppDelegate sharedInstance].locationFormatter stringFromDistanceFromLocation:[DataStore sharedManager].lastKnownLocation
-                                                       toLocation:location];
+                                                                               toLocation:location];
 }
 
 @end

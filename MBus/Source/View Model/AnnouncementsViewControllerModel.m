@@ -52,7 +52,7 @@
 }
 
 - (NSString *)headerString {
-    int announcementsCount = [DataStore sharedManager].announcements.count;
+    NSUInteger announcementsCount = [DataStore sharedManager].announcements.count;
     return [NSString stringWithFormat:FORMATTED_ANNOUNCEMENTS_COUNT, announcementsCount, (announcementsCount > 1) ? @"s" : @""];
 }
 

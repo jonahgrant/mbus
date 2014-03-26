@@ -67,7 +67,7 @@
     for (Bus *bus in [DataStore sharedManager].buses) {
         if ([self.busAnnotations objectForKey:bus.id]) {
             // OLD BUS: update it's properties
-            [(BusAnnotation *)[mutableAnnotations objectForKey:bus.id] setCoordinate:CLLocationCoordinate2DMake([bus.latitude doubleValue], [bus.longitude doubleValue])];
+            [(BusAnnotation *)[mutableAnnotations objectForKey:bus.id] setCoordinate:bus.coordinate];
             [(BusAnnotation *)[mutableAnnotations objectForKey:bus.id] setHeading:[bus.heading floatValue]];
         } else {
             // NEW BUS: create annotation and add to dictionary

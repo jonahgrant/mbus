@@ -40,8 +40,8 @@ NSString * NSStringFromCell(Cell cell) {
             return @"Map";
         case CellAnnouncements:
         {
-            int announcementsCount = [DataStore sharedManager].announcements.count;
-            return [[NSString stringWithFormat:@"%i", announcementsCount] stringByAppendingString:(announcementsCount > 1) ? @" announcements" : @" announcement"];
+            NSUInteger announcementsCount = [DataStore sharedManager].announcements.count;
+            return [[NSString stringWithFormat:@"%lu", (unsigned long)announcementsCount] stringByAppendingString:(announcementsCount > 1) ? @" announcements" : @" announcement"];
         }
         case CellSource:
             return @"Open sourced on Github";

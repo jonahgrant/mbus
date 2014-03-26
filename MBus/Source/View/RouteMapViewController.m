@@ -38,7 +38,7 @@ static NSTimeInterval const TRAY_ANIMATION_DURATION = 0.5f;
     [self.model fetchTraceRoute];
     [self.model fetchStopAnnotations];
     
-    self.stopTray = [[StopTray alloc] initWithTintColor:[UIColor colorWithHexString:self.model.arrival.busRouteColor]];
+    self.stopTray = [[StopTray alloc] initWithTintColor:self.model.arrival.routeColor];
     self.stopTray.frame = CGRectMake(0, self.view.frame.size.height + 44, self.stopTray.frame.size.width, self.stopTray.frame.size.height);
     self.stopTray.target = self;
     [self.view insertSubview:self.stopTray aboveSubview:self.mapView];
@@ -73,7 +73,7 @@ static NSTimeInterval const TRAY_ANIMATION_DURATION = 0.5f;
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    [self setInterfaceWithColor:[UIColor colorWithHexString:self.arrival.busRouteColor]];
+    [self setInterfaceWithColor:self.arrival.routeColor];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -165,7 +165,7 @@ static NSTimeInterval const TRAY_ANIMATION_DURATION = 0.5f;
 
 - (MKOverlayRenderer *)mapView:(MKMapView *)mapView rendererForOverlay:(id<MKOverlay>)overlay{
     MKPolylineRenderer *renderer = [[MKPolylineRenderer alloc] initWithPolyline:overlay];
-    renderer.strokeColor = [UIColor colorWithHexString:self.model.arrival.busRouteColor];
+    renderer.strokeColor = self.model.arrival.routeColor;
     renderer.lineWidth = 6.0;
     renderer.alpha = 0.8;
     
@@ -178,7 +178,7 @@ static NSTimeInterval const TRAY_ANIMATION_DURATION = 0.5f;
     if ([annotation class] == [BusAnnotation class]) {
         SVPulsingAnnotationView *pin = [[SVPulsingAnnotationView alloc] initWithAnnotation:(BusAnnotation *)annotation
                                                                            reuseIdentifier:@"BusPin"];
-        pin.annotationColor = [UIColor colorWithHexString:self.model.arrival.busRouteColor];
+        pin.annotationColor = self.model.arrival.routeColor;
         
         return pin;
     } else if ([annotation class] == [StopAnnotation class] ) {

@@ -172,7 +172,7 @@
     
     for (int i = 0, n = (int)traceRoute.count; i < n; i++) {
         TraceRoute *route = traceRoute[i];
-        coordinates[i] = CLLocationCoordinate2DMake([route.latitude doubleValue], [route.longitude doubleValue]);
+        coordinates[i] = route.coordinate;
     }
     
     return [MKPolyline polylineWithCoordinates:coordinates count:traceRoute.count];
@@ -233,7 +233,7 @@
 
 - (MKOverlayRenderer *)mapView:(MKMapView *)mapView rendererForOverlay:(id<MKOverlay>)overlay{
     MKPolylineRenderer *renderer = [[MKPolylineRenderer alloc] initWithPolyline:overlay];
-    renderer.strokeColor = [UIColor colorWithHexString:self.activeArrival.busRouteColor];
+    renderer.strokeColor = self.activeArrival.routeColor;
     renderer.lineWidth = 6.0;
     renderer.alpha = 0.8;
     

@@ -27,14 +27,14 @@
         self.backgroundColor = [UIColor whiteColor];
         self.opaque = YES;
         
-        [RACObserve(self, model) subscribeNext:^(StopArrivalCellModel *model) {
-            if (model) {
-                self.routeColor = [UIColor colorWithHexString:self.model.arrival.busRouteColor];
-                self.abbreviatedArrivalTime = self.model.firstArrivalString;
-                self.arrivalTimeSuffix = self.model.firstArrivalSuffix;
-                
-                [self setNeedsDisplay];
-            }
+        [[RACObserve(self, model) filter:^BOOL(StopArrivalCellModel *model) {
+            return (model);
+        }] subscribeNext:^(StopArrivalCellModel *model) {
+            self.routeColor = self.model.arrival.routeColor;
+            self.abbreviatedArrivalTime = self.model.firstArrivalString;
+            self.arrivalTimeSuffix = self.model.firstArrivalSuffix;
+            
+            [self setNeedsDisplay];
         }];
     }
     return self;

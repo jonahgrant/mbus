@@ -36,8 +36,8 @@
         if (![[LocationManager sharedManager] currentLocation]) {
             self.distance = UNKNOWN;
         } else {
-            CLLocation *location = [[CLLocation alloc] initWithLatitude:[self.stop.latitude doubleValue] longitude:[self.stop.longitude doubleValue]];
-            
+            CLLocation *location = [[CLLocation alloc] initWithLatitude:self.stop.latitude longitude:self.stop.longitude];
+
             NSString *distance = [[AppDelegate sharedInstance].locationFormatter stringFromDistanceFromLocation:[[LocationManager sharedManager] currentLocation]
                                                                                                      toLocation:location];
             distance = [distance stringByReplacingOccurrencesOfString:@"miles" withString:@"mi"];

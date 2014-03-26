@@ -125,8 +125,8 @@
         Stop *stopA = a;
         Stop *stopB = b;
         
-        CLLocation *aLocation = [[CLLocation alloc] initWithLatitude:[stopA.latitude doubleValue] longitude:[stopA.longitude doubleValue]];
-        CLLocation *bLocation = [[CLLocation alloc] initWithLatitude:[stopB.latitude doubleValue] longitude:[stopB.longitude doubleValue]];
+        CLLocation *aLocation = [[CLLocation alloc] initWithLatitude:stopA.latitude longitude:stopA.longitude];
+        CLLocation *bLocation = [[CLLocation alloc] initWithLatitude:stopB.latitude longitude:stopB.longitude];
         
         CLLocationDistance distanceA = [aLocation distanceFromLocation:location];
         CLLocationDistance distanceB = [bLocation distanceFromLocation:location];

@@ -45,7 +45,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [self setInterfaceWithColor:[UIColor colorWithHexString:self.arrival.busRouteColor]];
+    [self setInterfaceWithColor:self.arrival.routeColor];
     [self.tableView deselectRowAtIndexPath:[[self.tableView indexPathsForSelectedRows] firstObject] animated:YES];
 }
 

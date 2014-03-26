@@ -19,7 +19,7 @@
 
 - (instancetype)initWithArrivalStop:(ArrivalStop *)stop {
     if (self = [super init]) {
-        _coordinate = CLLocationCoordinate2DMake([stop.latitude doubleValue], [stop.longitude doubleValue]);
+        _coordinate = stop.coordinate;
         _stop = stop;
     }
     return self;

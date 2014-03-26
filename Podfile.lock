@@ -83,22 +83,22 @@ PODS:
   - Mantle/extobjc (1.4.1)
   - MarqueeLabel (1.4.0)
   - ObjectiveSugar (1.1.0)
-  - ReactiveCocoa (2.2.3):
+  - ReactiveCocoa (2.2.4):
     - ReactiveCocoa/Core
     - ReactiveCocoa/no-arc
-  - ReactiveCocoa/Core (2.2.3):
+  - ReactiveCocoa/Core (2.2.4):
     - ReactiveCocoa/no-arc
-  - ReactiveCocoa/no-arc (2.2.3)
+  - ReactiveCocoa/no-arc (2.2.4)
   - SAMGradientView (0.2.1)
   - SVPulsingAnnotationView (0.3.0)
   - TTTAttributedLabel (1.7.5)
   - UIColor-HexString (1.0.1)
-  - VTAcknowledgementsViewController (0.9)
+  - VTAcknowledgementsViewController (0.10)
   - XMLDictionary (1.3)
 
 DEPENDENCIES:
   - CGLMail (~> 0.1)
-  - Fare (~> 1.0.3)
+  - Fare (from `/Users/jonahgrant/code/um/fare`)
   - FormatterKit (~> 1.3.1)
   - GCBActionSheet (~> 1.0.0)
   - Google-Maps-iOS-SDK (~> 1.6.0)
@@ -113,10 +113,14 @@ DEPENDENCIES:
   - UIColor-HexString (~> 1.0.1)
   - VTAcknowledgementsViewController
 
+EXTERNAL SOURCES:
+  Fare:
+    :path: /Users/jonahgrant/code/um/fare
+
 SPEC CHECKSUMS:
   AFNetworking: e499052cbf3d743e9bb727bb37adb9dc2547ba15
   CGLMail: 7aadf94de9e0c64671d72c5bb790735df7117fbc
-  Fare: 7f4d5545ec5b2c50cf5a9a34194379d08ea9b22e
+  Fare: c36cbeee276d5f09bfbff01750184897bae9f5ae
   FormatterKit: 5ed85f15003614818c0f13f42db97bc13a3b0f82
   GCBActionSheet: 69a49cb78d072899164a4c5e2c42e92127b9b1a3
   Google-Maps-iOS-SDK: ce1cffe3dca21af85c4bf9d9cb2778083d8fd6f5
@@ -125,12 +129,12 @@ SPEC CHECKSUMS:
   Mantle: 0714cdb2b8559d9e6c2410d6a8529e3307bff189
   MarqueeLabel: 8218e3d88198edbf2b676a3daeea1beec4ad9dfe
   ObjectiveSugar: fed588577bcf9733546aeaa089de444e4bab9a52
-  ReactiveCocoa: b3cb6ebd50f1a0f2e39c6fd7ce3c428b6efcb22b
+  ReactiveCocoa: 953a45dda30674fe704d1d9c77cc874141742f47
   SAMGradientView: ab5543a14a69ecf5fc10239091740291c50b328c
   SVPulsingAnnotationView: ce58bcff7c1aeb15022a1db6c26f88981c05b91c
   TTTAttributedLabel: 1eb635d4d844cb7abce4d839faefca2a3409950d
   UIColor-HexString: 8a3f512f71b6d94a2cf6bdeabcad2f3532f31b5a
-  VTAcknowledgementsViewController: 5a79dbe34513b76c28944f8a39259ad60de4e482
+  VTAcknowledgementsViewController: 76b8edcea89b58b7be15876aaa5aba7fa8b221d7
   XMLDictionary: 27390d3517062694ccb307a7750250e1b687571d
 
 COCOAPODS: 0.29.0

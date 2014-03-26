@@ -51,7 +51,7 @@
     [routeName drawInRect:routeNameRect withAttributes:routeNameDictionary];
 
     // Route color rect
-    CGContextSetFillColorWithColor(context, [UIColor colorWithHexString:self.model.arrival.busRouteColor].CGColor);
+    CGContextSetFillColorWithColor(context, self.model.arrival.routeColor.CGColor);
     CGContextFillRect(context, CGRectMake(0, 0, 5, rect.size.height));
 }
 

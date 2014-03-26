@@ -40,10 +40,10 @@
 - (void)setBus:(Bus *)bus {
     _bus = bus;
     _id = bus.id;
-    _coordinate = CLLocationCoordinate2DMake([bus.latitude doubleValue], [bus.longitude doubleValue]);
+    _coordinate = bus.coordinate;
     _heading = [bus.heading floatValue];
     _arrival = [[DataStore sharedManager] arrivalForID:_bus.routeID];
-    _color = [UIColor colorWithHexString:_arrival.busRouteColor];
+    _color = _arrival.routeColor;
 }
 
 - (NSString *)title {

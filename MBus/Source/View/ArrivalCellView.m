@@ -82,7 +82,7 @@
     // ABBREVIATED FIRST ARRIVAL TIME
     NSString *firstTimeOfArrival = self.model.abbreviatedFirstArrivalString;
     UIColor *firstTimeOfArrivalColor = [firstTimeOfArrival isEqualToString:@"Arr"] ?
-                                        [UIColor colorWithHexString:self.model.arrival.busRouteColor] :
+                                        self.model.arrival.routeColor :
                                         [UIColor colorWithRed:0.576660 green:0.576660 blue:0.576660 alpha:1.0000];
     NSDictionary *firstTimeOfArrivalDictionary = @{ NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue-Bold" size:12],
                                                     NSForegroundColorAttributeName: firstTimeOfArrivalColor};

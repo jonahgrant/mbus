@@ -37,7 +37,7 @@
             for (Bus *bus in buses) {
                 if ([bus.routeID isEqualToString:self.arrival.id]) {
                     if ([self.busAnnotations objectForKey:bus.id]) {
-                        [(BusAnnotation *)[mutableAnnotations objectForKey:bus.id] setCoordinate:CLLocationCoordinate2DMake([bus.latitude doubleValue], [bus.longitude doubleValue])];
+                        [(BusAnnotation *)[mutableAnnotations objectForKey:bus.id] setCoordinate:bus.coordinate];
                     } else {
                         BusAnnotation *annotation = [[BusAnnotation alloc] initWithBus:bus];
                         [mutableAnnotations addEntriesFromDictionary:@{bus.id : annotation}];
@@ -61,7 +61,7 @@
    
     for (ArrivalStop *stop in self.arrival.stops) {
         if ([self.stopAnnotations objectForKey:self.arrival.id]) {
-            [(StopAnnotation *)[mutableAnnotations objectForKey:stop.name] setCoordinate:CLLocationCoordinate2DMake([stop.latitude doubleValue], [stop.longitude doubleValue])];
+            [(StopAnnotation *)[mutableAnnotations objectForKey:stop.name] setCoordinate:stop.coordinate];
         } else {
             StopAnnotation *annotation = [[StopAnnotation alloc] initWithArrivalStop:stop];
             [mutableAnnotations addEntriesFromDictionary:@{stop.name : annotation}];
@@ -106,7 +106,7 @@
         
         for (int i = 0, n = (int)traceRoute.count; i < n; i++) {
             TraceRoute *route = traceRoute[i];
-            coordinates[i] = CLLocationCoordinate2DMake([route.latitude doubleValue], [route.longitude doubleValue]);
+            coordinates[i] = route.coordinate;
         }
         
         self.polyline = [MKPolyline polylineWithCoordinates:coordinates count:traceRoute.count];
