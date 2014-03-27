@@ -156,11 +156,8 @@
                                                      dispatch_async(dispatch_get_main_queue(), ^{
                                                          [self.mapView addOverlay:polyline];
                                                      });
+                                                     
                                                      [[DataStore sharedManager] persistTraceRoute:traceRoute forRouteID:arrivalID];
-                                                 } else {
-                                                     dispatch_async(dispatch_get_main_queue(), ^{
-                                                         [self resetActiveArrival];
-                                                     });
                                                  }
                                              } errorBlock:NULL];
         });

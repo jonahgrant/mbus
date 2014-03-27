@@ -62,7 +62,7 @@
     
     // Route color rect
     CGContextSetFillColorWithColor(context, self.routeColor.CGColor);
-    CGContextFillRect(context, CGRectMake(0, 0, 10, rect.size.height));
+    CGContextFillRect(context, CGRectMake(0, 0, 5, rect.size.height));
     
     [routeName drawInRect:routeNameRect withAttributes:routeNameDictionary];
     
@@ -91,7 +91,7 @@
                                                             attributes:arrivingInTimeDictionary
                                                                context:nil];
     
-    CGRect arrivingInTimeRect = CGRectMake(20, arrivingInTimeY, arrivingInTimeHeight.size.width, arrivingInTimeHeight.size.height);
+    CGRect arrivingInTimeRect = CGRectMake(15, arrivingInTimeY, arrivingInTimeHeight.size.width, arrivingInTimeHeight.size.height);
     
     [arrivingInTime drawInRect:arrivingInTimeRect withAttributes:arrivingInTimeDictionary];
     
