@@ -8,21 +8,18 @@
 
 // Based off of SVPulsingAnnotationView
 
-#import <QuartzCore/QuartzCore.h>
+@import QuartzCore;
+
 #import "CircleAnnotationView.h"
 
 @interface CircleAnnotationView ()
 
 @property (strong, nonatomic) UIColor *annotationColor, *outlineColor;
-
 @property (nonatomic, readwrite) BOOL shouldBeFlat;
-
 @property (nonatomic, strong) CALayer *shinyDotLayer;
 @property (nonatomic, strong) CALayer *glowingHaloLayer;
-
 @property (nonatomic, strong) CALayer *whiteDotLayer;
 @property (nonatomic, strong) CALayer *colorDotLayer;
-
 @property (nonatomic, strong) CAAnimationGroup *pulseAnimationGroup;
 
 @end

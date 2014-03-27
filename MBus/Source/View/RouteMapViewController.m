@@ -10,7 +10,6 @@
 #import "RouteMapViewControllerModel.h"
 #import "TraceRoute.h"
 #import "Arrival.h"
-#import "HexColor.h"
 #import "StopAnnotation.h"
 #import "BusAnnotation.h"
 #import "SVPulsingAnnotationView.h"

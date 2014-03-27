@@ -16,12 +16,13 @@
 #import "Stop.h"
 #import "AllStopsViewController.h"
 #import "UMAdditions+UIFont.h"
+#import "Constants.h"
 
-static CGFloat STOP_CELL_HEIGHT = 100.0f;
-static CGFloat ALL_STOPS_CELL_HEIGHT = 80.0f;
+static CGFloat const STOP_CELL_HEIGHT = 100.0f;
+static CGFloat const ALL_STOPS_CELL_HEIGHT = 80.0f;
 
-static NSInteger MAXIMUM_STOPS = 5; // this represents the amount of stops that are shown
-static NSInteger ALL_STOPS_CELL = 5;
+static NSInteger const MAXIMUM_STOPS = 5; // this represents the amount of stops that are shown
+static NSInteger const ALL_STOPS_CELL = 5;
 
 @interface StopsViewController ()
 
@@ -34,17 +35,22 @@ static NSInteger ALL_STOPS_CELL = 5;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    
+    UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
+    [self.tableView addSubview:refreshControl];
+    
     self.model = [[StopsViewControllerModel alloc] init];
     @weakify(self);
     self.model.dataUpdatedBlock = ^ {
         @strongify(self);
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.tableView reloadData];
+            [refreshControl endRefreshing];
         });
     };
     [self.model fetchData];
     
-    [self.refreshControl addTarget:self.model action:@selector(fetchData) forControlEvents:UIControlEventValueChanged];
+    [refreshControl addTarget:self.model action:@selector(fetchData) forControlEvents:UIControlEventValueChanged];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -120,8 +126,10 @@ static NSInteger ALL_STOPS_CELL = 5;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (self.model.hasAnnouncements && indexPath.section == 0) {
+        SendEvent(ANALYTICS_STOPS_ANNOUNCEMENTS);
         [self performSegueWithIdentifier:UMSegueAnnouncements sender:self];
     } else if (self.model.stops.count > MAXIMUM_STOPS && indexPath.row == ALL_STOPS_CELL) {
+        SendEvent(ANALYTICS_VIEW_ALL_STOPS);
         [self performSegueWithIdentifier:UMSegueAllStops sender:self];
     } else {
         [self performSegueWithIdentifier:UMSegueStop sender:self];

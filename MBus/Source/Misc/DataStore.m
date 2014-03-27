@@ -155,11 +155,13 @@ static NSString * const kPlacemarksFile         = @"placemarks.txt";
 #pragma Persisting
 
 - (void)persistTraceRoute:(NSArray *)traceRoute forRouteID:(NSString *)routeID {
-    NSMutableDictionary *mutableDictionary = [NSMutableDictionary dictionaryWithDictionary:self.persistedTraceRoutes];
-    [mutableDictionary addEntriesFromDictionary:@{routeID: traceRoute}];
-    [self persistObject:mutableDictionary withFileName:kTraceRoutesFile];
-    
-    [self fetchPersistedTraceRoutes];
+    if (traceRoute && routeID) {
+        NSMutableDictionary *mutableDictionary = [NSMutableDictionary dictionaryWithDictionary:self.persistedTraceRoutes];
+        [mutableDictionary addEntriesFromDictionary:@{routeID: traceRoute}];
+        [self persistObject:mutableDictionary withFileName:kTraceRoutesFile];
+        
+        [self fetchPersistedTraceRoutes];
+    }
 }
 
 - (void)persistPlacemark:(CLPlacemark *)placemark forStopID:(NSString *)stopID {

@@ -28,7 +28,7 @@
         self.opaque = YES;
         
         [[RACObserve(self, model) filter:^BOOL(StopArrivalCellModel *model) {
-            return (model);
+            return (model != nil);
         }] subscribeNext:^(StopArrivalCellModel *model) {
             self.routeColor = self.model.arrival.routeColor;
             self.abbreviatedArrivalTime = self.model.firstArrivalString;
@@ -71,7 +71,7 @@
     CGContextSetLineWidth(context, 1.0);
     
     CGContextBeginPath(context);
-    CGContextMoveToPoint(context, 10, x + routeNameHeight + 5);
+    CGContextMoveToPoint(context, 20, x + routeNameHeight + 5);
     CGContextAddLineToPoint(context, self.bounds.size.width, x + routeNameHeight + 5);
     
     CGContextClosePath(context);

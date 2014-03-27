@@ -6,8 +6,9 @@
 //  Copyright (c) 2013 Jonah Grant. All rights reserved.
 //
 
-#import <QuartzCore/QuartzCore.h>
-#import <MapKit/MapKit.h>
+@import QuartzCore;
+@import MapKit;
+
 #import "StopTray.h"
 #import "StopTrayModel.h"
 #import "RouteMapViewController.h"

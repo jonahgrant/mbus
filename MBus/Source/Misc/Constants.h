@@ -78,5 +78,7 @@ extern NSString * const ANALYTICS_SELECT_STOP_ANNOTATION; // selected_stop_annot
 extern NSString * const ANALYTICS_DISPLAY_STOP_ANNOTATION_TRAY;
 extern NSString * const ANALYTICS_HIDE_STOP_ANNOTATION_TRAY;
 extern NSString * const ANALYTICS_FETCH_STOP_ADDRESS;
+extern NSString * const ANALYTICS_STOPS_ANNOUNCEMENTS;
+extern NSString * const ANALYTICS_VIEW_ALL_STOPS;
 
 extern NSString * NSStringForUIViewController(UIViewController *viewController);

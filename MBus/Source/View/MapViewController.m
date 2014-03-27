@@ -19,7 +19,6 @@
 #import "DataStore.h"
 #import "BusAnnotation.h"
 #import "CircleAnnotationView.h"
-#import "HexColor.h"
 
 @interface MapViewController () <UIScrollViewDelegate>
 

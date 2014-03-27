@@ -79,6 +79,8 @@ NSString * const ANALYTICS_SELECT_STOP_ANNOTATION          = @"selected_stop_ann
 NSString * const ANALYTICS_DISPLAY_STOP_ANNOTATION_TRAY    = @"display_stop_annotation_tray";
 NSString * const ANALYTICS_HIDE_STOP_ANNOTATION_TRAY       = @"hide_stop_annotation_tray";
 NSString * const ANALYTICS_FETCH_STOP_ADDRESS              = @"fetch_stop_address";
+NSString * const ANALYTICS_STOPS_ANNOUNCEMENTS             = @"tapped_attention_announcements";
+NSString * const ANALYTICS_VIEW_ALL_STOPS                  = @"view_all_stops";
 
 extern NSString * NSStringForUIViewController(UIViewController *viewController) {
     NSString *class = NSStringFromClass([viewController class]);

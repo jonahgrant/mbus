@@ -13,7 +13,6 @@
 #import "ArrivalStop.h"
 #import "ArrivalCell.h"
 #import "ArrivalCellModel.h"
-#import "HexColor.h"
 #import "DataStore.h"
 #import "StopViewController.h"
 
