@@ -10,10 +10,12 @@
 #import "RouteViewControllerModel.h"
 #import "RouteMapViewController.h"
 #import "Arrival.h"
+#import "ArrivalStop.h"
 #import "ArrivalCell.h"
 #import "ArrivalCellModel.h"
 #import "HexColor.h"
 #import "DataStore.h"
+#import "StopViewController.h"
 
 @interface RouteViewController ()
 
@@ -122,6 +124,8 @@
         SendEvent(ANALYTICS_VIEW_ROUTE_MAP);
         
         [self performSegueWithIdentifier:UMSegueRouteMap sender:self];
+    } else {        
+        [self performSegueWithIdentifier:UMSegueStop sender:self];
     }
 }
 
@@ -131,6 +135,12 @@
     if ([segue.identifier isEqualToString:UMSegueRouteMap]) {
         RouteMapViewController *routeMap = (RouteMapViewController *)segue.destinationViewController;
         routeMap.arrival = self.model.arrival;
+    } else if ([segue.identifier isEqualToString:UMSegueStop]) {
+        ArrivalStop *arrivalStop = self.model.sortedStops[[self.tableView indexPathForSelectedRow].row];
+        Stop *stop = [[DataStore sharedManager] stopForArrivalStopName:arrivalStop.name];
+        
+        StopViewController *controller = (StopViewController *)segue.destinationViewController;
+        controller.stop = stop;
     }
 }
 

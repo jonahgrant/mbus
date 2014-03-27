@@ -83,6 +83,10 @@
     cell.textLabel.textColor = [UIColor blackColor];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
+    UIView *sidebarView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 3, CGRectGetHeight(cell.frame))];
+    sidebarView.backgroundColor = announcement.color;
+    [cell addSubview:sidebarView];
+    
     return cell;
 }
 

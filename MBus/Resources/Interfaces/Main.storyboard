@@ -427,6 +427,7 @@
                     </refreshControl>
                     <connections>
                         <segue destination="14C-2h-EYz" kind="push" identifier="UMSegueRouteMap" id="BTj-pV-R8F"/>
+                        <segue destination="aZA-ND-uki" kind="push" identifier="UMSegueStop" id="1ro-CN-ZKE"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uE2-V5-auG" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -476,10 +477,10 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="BTj-pV-R8F"/>
         <segue reference="bon-Vg-o8E"/>
         <segue reference="jC7-Nk-4xw"/>
-        <segue reference="ULz-IM-lDQ"/>
+        <segue reference="1ro-CN-ZKE"/>
         <segue reference="BNS-GN-Fsn"/>
-        <segue reference="Dmd-ku-M7g"/>
     </inferredMetricsTieBreakers>
 </document>

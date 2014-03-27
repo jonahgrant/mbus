@@ -4,7 +4,7 @@ inhibit_all_warnings!
 target "MBus" do
     pod 'Fare', 
 	 :git => 'git@github.com:jonahgrant/fare.git',
-	 :branch => 'development'
+	 :branch => 'master'
 	# :path => '/Users/jonahgrant/code/um/fare'
     pod 'ReactiveCocoa', '~> 2.1'
     pod 'FormatterKit', '~> 1.3.1'

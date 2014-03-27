@@ -47,13 +47,13 @@
 
     // TIMES OF ARRIVAL
     NSString *timesOfArrival = self.model.formattedTimesOfArrival;
-    NSDictionary *timesOfArrivalDirectory = @{ NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue-Light" size:12],
+    NSDictionary *timesOfArrivalDirectory = @{ NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue-Light" size:14],
                                                NSForegroundColorAttributeName: [UIColor lightGrayColor]};
     CGFloat timesOfArrivalHeight = [timesOfArrival boundingRectWithSize:CGSizeMake(rect.size.width - 50, MAXFLOAT)
                                                                 options:NSStringDrawingUsesLineFragmentOrigin
                                                              attributes:timesOfArrivalDirectory
                                                                 context:nil].size.height;
-    CGRect timesOfArrivalRect = CGRectMake(60, x + routeNameHeight, rect.size.width - 60, timesOfArrivalHeight);
+    CGRect timesOfArrivalRect = CGRectMake(60, x + routeNameHeight, rect.size.width - 50, timesOfArrivalHeight);
     [timesOfArrival drawInRect:timesOfArrivalRect withAttributes:timesOfArrivalDirectory];
     
     // VERTICAL LINE

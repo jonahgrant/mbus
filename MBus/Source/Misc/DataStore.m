@@ -361,4 +361,14 @@ static NSString * const kPlacemarksFile         = @"placemarks.txt";
     return self.stopColorsDictionary[uniqueName];
 }
 
+- (Stop *)stopForArrivalStopName:(NSString *)name {
+    for (Stop *stop in self.stops) {
+        if ([stop.uniqueName isEqualToString:name]) {
+            return stop;
+        }
+    }
+    
+    return nil;
+}
+
 @end
