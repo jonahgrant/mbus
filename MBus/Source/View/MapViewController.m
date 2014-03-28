@@ -27,7 +27,6 @@
 @property (nonatomic, strong, readwrite) IBOutlet MKMapView *mapView;
 @property (nonatomic, strong, readwrite) Arrival *activeArrival;
 @property (nonatomic, strong, readwrite) NSArray *activeArrivalAnnotations;
-@property (nonatomic, strong, readwrite) UIButton *eyeballButton;
 
 - (void)loadAnnotations;
 
@@ -52,10 +51,6 @@
     } else {
         [self zoomToCampus];
     }
-    
-    self.eyeballButton = [UIButton buttonWithType:UIButtonTypeInfoDark];
-    self.eyeballButton.frame = CGRectMake(0, 0, 50, 50);
-    [self.mapView addSubview:self.eyeballButton];
 }
 
 - (void)viewWillAppear:(BOOL)animated {

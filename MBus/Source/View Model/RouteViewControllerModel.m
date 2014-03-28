@@ -30,7 +30,7 @@
             return (arrivals.count > 0);
         }] subscribeNext:^(NSArray *arrivals) {
             Arrival *arrival = [[DataStore sharedManager] arrivalForID:self.arrival.id];
-            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
                 self.sortedStops = [self stopsOrderedByTimeOfArrivalWithStops:arrival.stops];
                 dispatch_async(dispatch_get_main_queue(), ^{
                     self.dataUpdatedBlock();

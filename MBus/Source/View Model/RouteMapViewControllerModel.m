@@ -101,7 +101,7 @@
 }
 
 - (void)createPolylineFromTraceRoute:(NSArray *)traceRoute {
-    dispatch_async(dispatch_get_main_queue(), ^{
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
         CLLocationCoordinate2D coordinates[traceRoute.count];
         
         for (int i = 0, n = (int)traceRoute.count; i < n; i++) {

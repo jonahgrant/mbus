@@ -37,15 +37,19 @@ static NSTimeInterval const TRAY_ANIMATION_DURATION = 0.5f;
     [self.model fetchTraceRoute];
     [self.model fetchStopAnnotations];
     
-    self.stopTray = [[StopTray alloc] initWithTintColor:self.model.arrival.routeColor];
-    self.stopTray.frame = CGRectMake(0, self.view.frame.size.height + 44, self.stopTray.frame.size.width, self.stopTray.frame.size.height);
-    self.stopTray.target = self;
+    self.stopTray = ({
+        StopTray *tray = [[StopTray alloc] initWithTintColor:self.model.arrival.routeColor];
+        tray.frame = CGRectMake(0, self.view.frame.size.height + 44, tray.frame.size.width, tray.frame.size.height);
+        tray.target = self;
+        tray;
+    });
+    
     [self.view insertSubview:self.stopTray aboveSubview:self.mapView];
 
     self.title = self.model.arrival.name;
     
     [[RACObserve(self.model, polyline) filter:^BOOL(MKPolyline *polyline) {
-        return (polyline) ? YES : NO;
+        return (polyline.pointCount > 0);
     }] subscribeNext:^(MKPolyline *polyline) {
         [self.mapView addOverlay:polyline];
     }];
