@@ -49,6 +49,18 @@
     
     if (self.startingStop.coordinate.latitude != 0 && self.startingStop.coordinate.longitude != 0) {
         [self dropAndZoomToPinWithCoordinate:self.startingStop.coordinate];
+        
+        self.title = self.startingStop.humanName;
+        
+        if (self.arrivalIDsServicingStop.count == 1) {
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                self.activeArrival = [[DataStore sharedManager] arrivalForID:self.arrivalIDsServicingStop[0]];
+                
+                dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
+                    [self loadTraceRouteForArrivalID:self.arrivalIDsServicingStop[0]];
+                });
+            });
+        }
     } else {
         [self zoomToCampus];
     }
@@ -113,7 +125,9 @@
 }
 
 - (void)zoomToTopOverlay {
-    [self.mapView setVisibleMapRect:[self.mapView.overlays[0] boundingMapRect] edgePadding:UIEdgeInsetsMake(20, 20, 20, 20) animated:YES];
+    [self.mapView setVisibleMapRect:[self.mapView.overlays[0] boundingMapRect]
+                        edgePadding:UIEdgeInsetsMake(20, 20, 20, 20)
+                           animated:NO];
 }
 
 - (void)dropAndZoomToPinWithCoordinate:(CLLocationCoordinate2D)coordinate {
@@ -145,6 +159,10 @@
                                                      MKPolyline *polyline = [self polylineFromTraceRoute:traceRoute];
                                                      dispatch_async(dispatch_get_main_queue(), ^{
                                                          [self.mapView addOverlay:polyline];
+                                                         
+                                                         if (self.arrivalIDsServicingStop.count > 1) {
+                                                             [self zoomToTopOverlay];
+                                                         }
                                                      });
                                                      
                                                      [[DataStore sharedManager] persistTraceRoute:traceRoute forRouteID:arrivalID];

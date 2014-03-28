@@ -7,7 +7,7 @@
 //
 
 #import "UMAdditions+UIColor.h"
-#import "UIColor+HexString.h"
+#import "Fare+UIColor.h"
 
 static char * const hexFormat = "#%02X%02X%02X";
 static NSInteger const gradientCount = 16;
@@ -31,53 +31,53 @@ static NSInteger const gradientCount = 16;
 + (NSArray *)gradientForStyle:(Gradient)style {
     switch (style) {
         case GradientLightRed:
-            return @[[UIColor colorWithHexString:@"FF5E3A"],
-                     [UIColor colorWithHexString:@"FF2A68"]];
+            return @[[UIColor colorFromHexString:@"FF5E3A"],
+                     [UIColor colorFromHexString:@"FF2A68"]];
         case GradientOrange:
-            return @[[UIColor colorWithHexString:@"FF9500"],
-                     [UIColor colorWithHexString:@"FF5E3A"]];
+            return @[[UIColor colorFromHexString:@"FF9500"],
+                     [UIColor colorFromHexString:@"FF5E3A"]];
         case GradientYellow:
-            return @[[UIColor colorWithHexString:@"FFDB4C"],
-                     [UIColor colorWithHexString:@"FFCD02"]];
+            return @[[UIColor colorFromHexString:@"FFDB4C"],
+                     [UIColor colorFromHexString:@"FFCD02"]];
         case GradientGreen:
-            return @[[UIColor colorWithHexString:@"87FC70"],
-                     [UIColor colorWithHexString:@"0BD318"]];
+            return @[[UIColor colorFromHexString:@"87FC70"],
+                     [UIColor colorFromHexString:@"0BD318"]];
         case GradientLightBlue:
-            return @[[UIColor colorWithHexString:@"52EDC7"],
-                     [UIColor colorWithHexString:@"5AC8FB"]];
+            return @[[UIColor colorFromHexString:@"52EDC7"],
+                     [UIColor colorFromHexString:@"5AC8FB"]];
         case GradientDarkBlue:
-            return @[[UIColor colorWithHexString:@"1AD6FD"],
-                     [UIColor colorWithHexString:@"1D62F0"]];
+            return @[[UIColor colorFromHexString:@"1AD6FD"],
+                     [UIColor colorFromHexString:@"1D62F0"]];
         case GradientDarkPurple:
-            return @[[UIColor colorWithHexString:@"C644FC"],
-                     [UIColor colorWithHexString:@"5856D6"]];
+            return @[[UIColor colorFromHexString:@"C644FC"],
+                     [UIColor colorFromHexString:@"5856D6"]];
         case GradientLightPurple:
-            return @[[UIColor colorWithHexString:@"EF4DB6"],
-                     [UIColor colorWithHexString:@"C643FC"]];
+            return @[[UIColor colorFromHexString:@"EF4DB6"],
+                     [UIColor colorFromHexString:@"C643FC"]];
         case GradientBlack:
-            return @[[UIColor colorWithHexString:@"4A4A4A"],
-                     [UIColor colorWithHexString:@"2B2B2B"]];
+            return @[[UIColor colorFromHexString:@"4A4A4A"],
+                     [UIColor colorFromHexString:@"2B2B2B"]];
         case GradientGreenToWhite:
-            return @[[UIColor colorWithHexString:@"5AD427"],
-                     [UIColor colorWithHexString:@"A4E786"]];
+            return @[[UIColor colorFromHexString:@"5AD427"],
+                     [UIColor colorFromHexString:@"A4E786"]];
         case GradientPurpleToWhite:
-            return @[[UIColor colorWithHexString:@"C86EDF"],
-                     [UIColor colorWithHexString:@"E4B7F0"]];
+            return @[[UIColor colorFromHexString:@"C86EDF"],
+                     [UIColor colorFromHexString:@"E4B7F0"]];
         case GradientLightRedInverse:
-            return @[[UIColor colorWithHexString:@"FB2B69"],
-                     [UIColor colorWithHexString:@"FF5B37"]];
+            return @[[UIColor colorFromHexString:@"FB2B69"],
+                     [UIColor colorFromHexString:@"FF5B37"]];
         case GradientLightGray:
-            return @[[UIColor colorWithHexString:@"F7F7F7"],
-                     [UIColor colorWithHexString:@"D7D7D7"]];
+            return @[[UIColor colorFromHexString:@"F7F7F7"],
+                     [UIColor colorFromHexString:@"D7D7D7"]];
         case GradientDarkBlueToLightBlue:
-            return @[[UIColor colorWithHexString:@"1D77EF"],
-                     [UIColor colorWithHexString:@"81F3FD"]];
+            return @[[UIColor colorFromHexString:@"1D77EF"],
+                     [UIColor colorFromHexString:@"81F3FD"]];
         case GradientBeige:
-            return @[[UIColor colorWithHexString:@"D6CEC3"],
-                     [UIColor colorWithHexString:@"E4DDCA"]];
+            return @[[UIColor colorFromHexString:@"D6CEC3"],
+                     [UIColor colorFromHexString:@"E4DDCA"]];
         case GradientLightGreenToLightBlue:
-            return @[[UIColor colorWithHexString:@"55EFCB"],
-                     [UIColor colorWithHexString:@"5BCAFF"]];
+            return @[[UIColor colorFromHexString:@"55EFCB"],
+                     [UIColor colorFromHexString:@"5BCAFF"]];
     }
     
     return nil;

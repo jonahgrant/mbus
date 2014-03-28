@@ -10,7 +10,6 @@
 #import "Bus.h"
 #import "DataStore.h"
 #import "Arrival.h"
-#import "HexColor.h"
 #import "Constants.h"
 
 @interface BusAnnotation ()

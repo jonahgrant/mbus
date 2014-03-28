@@ -58,6 +58,7 @@
     
     self.shouldPurgeMap = YES;
     
+    [self.tableView reloadData];
     [self resetInterface];
     [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
 }

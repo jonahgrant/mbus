@@ -9,7 +9,6 @@
 #import "ArrivalCellView.h"
 #import "ArrivalCellModel.h"
 #import "ArrivalStop.h"
-#import "HexColor.h"
 #import "Arrival.h"
 
 @implementation ArrivalCellView

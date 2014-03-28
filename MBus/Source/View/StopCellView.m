@@ -11,7 +11,6 @@
 #import "Stop.h"
 #import "UMAdditions+UIFont.h"
 #import "UMAdditions+UIColor.h"
-#import "UIColor+HexString.h"
 #import "InitialedCircleView.h"
 #import "DistanceTagView.h"
 

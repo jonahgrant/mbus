@@ -49,7 +49,7 @@ static NSTimeInterval const TRAY_ANIMATION_DURATION = 0.5f;
     self.title = self.model.arrival.name;
     
     [[RACObserve(self.model, polyline) filter:^BOOL(MKPolyline *polyline) {
-        return (polyline.pointCount > 0);
+        return (polyline != nil);
     }] subscribeNext:^(MKPolyline *polyline) {
         [self.mapView addOverlay:polyline];
     }];

@@ -33,7 +33,7 @@
 
 - (instancetype)init {
     if (self = [super initWithFrame:CGRectMake(0, 0, CGRectGetWidth([UIApplication sharedApplication].keyWindow.frame), ADDRESS_CELL_HEIGHT)]) {
-        _mapView = [[MKMapView alloc] initWithFrame:CGRectMake(0, -40, 500, 200)];
+        _mapView = [[MKMapView alloc] initWithFrame:CGRectMake(0, 0, 500, 100)];
         _mapView.mapType = MKMapTypeStandard;
         _mapView.delegate = self;
         _mapView.showsBuildings = YES;
