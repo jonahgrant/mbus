@@ -26,7 +26,7 @@ extern NSString * NSStringForSection(Section section);
 @interface StopViewControllerModel : ViewControllerModelBase
 
 @property (nonatomic, strong, readonly) Stop *stop;
-@property (nonatomic, strong, readonly) NSArray *arrivalsServicingStop, *arrivalsServicingStopCellModels, *miscCells;
+@property (nonatomic, strong, readonly) NSArray *arrivalsServicingStop, *arrivalsServicingStopCellModels, *arrivalIDsServicingStop, *miscCells;
 
 - (instancetype)initWithStop:(Stop *)stop;
 

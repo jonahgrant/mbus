@@ -14,6 +14,7 @@
 #import "Constants.h"
 #import "Bus.h"
 #import "Arrival.h"
+#import "Stop.h"
 #import "ArrivalStop.h"
 #import "TraceRoute.h"
 #import "DataStore.h"
@@ -46,8 +47,8 @@
         [self loadAnnotations];
     };
     
-    if (self.startCoordinate.latitude != 0 && self.startCoordinate.longitude != 0) {
-        [self dropAndZoomToPinWithCoordinate:self.startCoordinate];
+    if (self.startingStop.coordinate.latitude != 0 && self.startingStop.coordinate.longitude != 0) {
+        [self dropAndZoomToPinWithCoordinate:self.startingStop.coordinate];
     } else {
         [self zoomToCampus];
     }
@@ -70,8 +71,19 @@
     NSMutableArray *annotationArray = [NSMutableArray array];
     for (Bus *bus in [DataStore sharedManager].buses) {
         BusAnnotation *annotation = [self.model.busAnnotations objectForKey:bus.id];
-        [self.mapView addAnnotation:annotation];
-        [annotationArray addObject:annotation];
+        
+        if (self.startingStop != nil) {
+            for (NSString *routeID in self.arrivalIDsServicingStop) {
+                Arrival *arrival = [[DataStore sharedManager] arrivalForID:bus.routeID];
+                if ([routeID isEqualToString:arrival.id]) {
+                    [self.mapView addAnnotation:annotation];
+                    [annotationArray addObject:annotation];
+                }
+            }
+        } else {
+            [self.mapView addAnnotation:annotation];
+            [annotationArray addObject:annotation];
+        }
     }
     
     // remove buses no longer in service
@@ -86,22 +98,6 @@
     [intermediate removeObjectsInArray:annotationArray];
     [intermediate removeObjectsInArray:self.activeArrivalAnnotations];
     [self.mapView removeAnnotations:intermediate];
-}
-
-- (void)loadStopAnnotationsForActiveArrival {
-    [self.mapView removeAnnotations:self.activeArrivalAnnotations];
-    
-    NSMutableArray *mutableArray = [NSMutableArray array];
-    for (ArrivalStop *stop in self.activeArrival.stops) {
-        MKPointAnnotation *annotation = [[MKPointAnnotation alloc] init];
-        annotation.coordinate = stop.coordinate;
-        annotation.title = stop.name2;
-        annotation.subtitle = stop.name;
-        [mutableArray push:annotation];
-    }
-    
-    self.activeArrivalAnnotations = mutableArray;
-    [self.mapView addAnnotations:self.activeArrivalAnnotations];
 }
 
 - (void)zoomToCampus {
@@ -191,7 +187,7 @@
         }
         
         pin.pinColor = MKPinAnnotationColorRed;
-        pin.animatesDrop = (self.startCoordinate.latitude != 0 && self.startCoordinate.longitude != 0) ? YES : NO;
+        pin.animatesDrop = (self.startingStop.coordinate.latitude != 0 && self.startingStop.coordinate.longitude != 0) ? YES : NO;
         pin.canShowCallout = YES;
         
         return pin;
@@ -210,14 +206,10 @@
 }
 
 - (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view {
-    if ([view.annotation isKindOfClass:[BusAnnotation class]]) {
-        if ([(BusAnnotation *)view.annotation arrival].id != self.activeArrival.id) {
-            self.activeArrival = [(BusAnnotation *)view.annotation arrival];
-            [self loadTraceRouteForArrivalID:self.activeArrival.id];
-            //[self loadStopAnnotationsForActiveArrival];
-        }
+    if ([view.annotation isKindOfClass:[BusAnnotation class]] && [(BusAnnotation *)view.annotation arrival].id != self.activeArrival.id) {
+        self.activeArrival = [(BusAnnotation *)view.annotation arrival];
+        [self loadTraceRouteForArrivalID:self.activeArrival.id];
     }
-
 }
 
 #pragma MKMapView

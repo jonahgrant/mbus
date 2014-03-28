@@ -254,7 +254,8 @@
         routeController.arrival = arrival;
     } else if ([segue.identifier isEqual:UMSegueMap]) {
         MapViewController *viewController = (MapViewController *)segue.destinationViewController;
-        viewController.startCoordinate = self.model.stop.coordinate;
+        viewController.startingStop = self.model.stop;
+        viewController.arrivalIDsServicingStop = self.model.arrivalIDsServicingStop;
     }
 }
 

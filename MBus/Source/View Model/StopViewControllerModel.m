@@ -42,7 +42,7 @@ NSString * NSStringForMiscCell(MiscCell cell) {
 @interface StopViewControllerModel ()
 
 @property (nonatomic, strong, readwrite) Stop *stop;
-@property (nonatomic, strong, readwrite) NSArray *arrivalsServicingStop, *arrivalsServicingStopCellModels, *miscCells;
+@property (nonatomic, strong, readwrite) NSArray *arrivalsServicingStop, *arrivalsServicingStopCellModels, *arrivalIDsServicingStop, *miscCells;
 @property (nonatomic, strong, readwrite) TTTTimeIntervalFormatter *timeIntervalFormatter;
 
 - (void)updateArrivals;
@@ -85,12 +85,17 @@ NSString * NSStringForMiscCell(MiscCell cell) {
 - (void)updateArrivals {
     NSArray *arrivals = [[DataStore sharedManager] arrivalsContainingStopName:self.stop.uniqueName];
     NSMutableArray *mutableArray = [NSMutableArray array];
+    NSMutableArray *IDsMutableArray = [NSMutableArray array];
+    
     for (Arrival *arrival in arrivals) {
         StopArrivalCellModel *arrivalCellModel = [[StopArrivalCellModel alloc] initWithArrival:arrival stop:self.stop];
         [mutableArray addObject:arrivalCellModel];
+        [IDsMutableArray addObject:arrival.id];
     }
+    
     self.arrivalsServicingStopCellModels = mutableArray;
     self.arrivalsServicingStop = arrivals;
+    self.arrivalIDsServicingStop = IDsMutableArray;
 }
 
 - (ArrivalStop *)arrivalStopForArrival:(Arrival *)arrival {
