@@ -11,6 +11,7 @@
 #import "DataStore.h"
 #import "Announcement.h"
 #import "Constants.h"
+#import "AppDelegate.h"
 
 @interface AnnouncementsViewControllerModel ()
 
@@ -25,6 +26,12 @@
         self.timeIntervalFormatter = [[TTTTimeIntervalFormatter alloc] init];
         
         [[RACObserve([DataStore sharedManager], announcements) filter:^BOOL(NSArray *announcements) {
+            return (announcements.count > 0 && self.dataUpdatedBlock);
+        }] subscribeNext:^(NSArray *announcements) {
+            self.dataUpdatedBlock();
+        }];
+        
+        [[RACObserve([AppDelegate sharedInstance], appAnnouncements) filter:^BOOL(NSArray *announcements) {
             return (announcements.count > 0 && self.dataUpdatedBlock);
         }] subscribeNext:^(NSArray *announcements) {
             self.dataUpdatedBlock();

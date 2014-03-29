@@ -13,6 +13,15 @@
 #import "DataStore.h"
 #import "Constants.h"
 #import "AddressCellMapView.h"
+#import "AFHTTPRequestOperationManager.h"
+#import "UMResponseSerializer.h"
+#import "AppAnnouncement.h"
+
+@interface AppDelegate ()
+
+@property (strong, nonatomic, readwrite) AFHTTPRequestOperationManager *manager;
+
+@end
 
 @implementation AppDelegate
 
@@ -25,6 +34,9 @@
     
     [GMSServices provideAPIKey:GOOGLE_MAPS_API_KEY];
 
+    self.manager = [AFHTTPRequestOperationManager manager];
+    [self fetchAppAnnouncements];
+    
     self.locationFormatter = [[TTTLocationFormatter alloc] init];
     [self.locationFormatter.numberFormatter setMaximumSignificantDigits:2];
     self.locationFormatter.bearingStyle = TTTBearingAbbreviationWordStyle;
@@ -60,6 +72,15 @@
 
 - (void)applicationDidReceiveMemoryWarning:(UIApplication *)application {
     SendEvent(ANALYTICS_APP_RECEIVED_MEMORY_WARNING);
+}
+
+- (void)fetchAppAnnouncements {
+    [[self.manager GET:@"http://jonahgrant.com/mbus/announcements/announcements.json"
+            parameters:nil
+               success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                   self.appAnnouncements = (NSArray *)responseObject;
+               } failure:NULL]
+        setResponseSerializer:[AppAnnouncement um_jsonArrayResponseSerializer]];
 }
 
 @end

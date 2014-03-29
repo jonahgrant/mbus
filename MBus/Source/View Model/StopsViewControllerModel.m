@@ -12,6 +12,7 @@
 #import "Stop.h"
 #import "StopCellModel.h"
 #import "Constants.h"
+#import "AppDelegate.h"
 
 @interface StopsViewControllerModel ()
 
@@ -103,9 +104,14 @@
         }] subscribeNext:^(NSArray *announcements) {
             NSUInteger announcementsCount = [DataStore sharedManager].announcements.count;
             self.announcements = (announcementsCount > 0);
-            self.announcementsCellText = [[NSString stringWithFormat:@"%lu", (unsigned long)[DataStore sharedManager].announcements.count]
-                                          stringByAppendingString:(announcementsCount > 1) ? @" announcements" : @" announcement"];
+            self.announcementsCellText = [self announcementsCellTextGenerator];
             self.dataUpdatedBlock();
+        }];
+        
+        [[RACObserve([AppDelegate sharedInstance], appAnnouncements) filter:^BOOL(NSArray *announcements) {
+            return (announcements.count > 0);
+        }] subscribeNext:^(NSArray *announcements) {
+            self.announcementsCellText = [self announcementsCellTextGenerator];
         }];
     }
     return self;
@@ -118,6 +124,11 @@
 - (void)reloadData {
     [self fetchData];
     [[DataStore sharedManager] fetchArrivalsWithErrorBlock:NULL];
+}
+
+- (NSString *)announcementsCellTextGenerator {
+    unsigned long announcementCount = (unsigned long)[DataStore sharedManager].announcements.count + (unsigned long)[AppDelegate sharedInstance].appAnnouncements.count;
+    return [[NSString stringWithFormat:@"%lu", announcementCount] stringByAppendingString:(announcementCount > 1) ? @" announcements" : @" announcement"];
 }
 
 - (NSArray *)sortedStopsByDistanceWithArray:(NSArray *)array location:(CLLocation *)location {

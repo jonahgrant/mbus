@@ -70,6 +70,7 @@
 		AB98129818BC510900EFDEE7 /* StopViewControllerTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = AB98129718BC510900EFDEE7 /* StopViewControllerTitleView.m */; };
 		AB98129B18BC511300EFDEE7 /* StopViewControllerTitleViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AB98129A18BC511300EFDEE7 /* StopViewControllerTitleViewModel.m */; };
 		AB98129E18BC516300EFDEE7 /* StopViewControllerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AB98129D18BC516300EFDEE7 /* StopViewControllerModel.m */; };
+		ABD1E0D118E62B87004A1D00 /* AppAnnouncement.m in Sources */ = {isa = PBXBuildFile; fileRef = ABD1E0D018E62B87004A1D00 /* AppAnnouncement.m */; };
 		ABDB5B4A18C0114A005AA38B /* MiscViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABDB5B4918C0114A005AA38B /* MiscViewController.m */; };
 		ABDB5B4D18C0120D005AA38B /* MiscViewControllerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ABDB5B4C18C0120D005AA38B /* MiscViewControllerModel.m */; };
 		ABDB5B4F18C013A1005AA38B /* Pods-MBus-acknowledgements.plist in Resources */ = {isa = PBXBuildFile; fileRef = ABDB5B4E18C013A1005AA38B /* Pods-MBus-acknowledgements.plist */; };
@@ -203,6 +204,8 @@
 		AB98129A18BC511300EFDEE7 /* StopViewControllerTitleViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StopViewControllerTitleViewModel.m; sourceTree = "<group>"; };
 		AB98129C18BC516300EFDEE7 /* StopViewControllerModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StopViewControllerModel.h; sourceTree = "<group>"; };
 		AB98129D18BC516300EFDEE7 /* StopViewControllerModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StopViewControllerModel.m; sourceTree = "<group>"; };
+		ABD1E0CF18E62B87004A1D00 /* AppAnnouncement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppAnnouncement.h; sourceTree = "<group>"; };
+		ABD1E0D018E62B87004A1D00 /* AppAnnouncement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppAnnouncement.m; sourceTree = "<group>"; };
 		ABDB5B4818C0114A005AA38B /* MiscViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MiscViewController.h; sourceTree = "<group>"; };
 		ABDB5B4918C0114A005AA38B /* MiscViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MiscViewController.m; sourceTree = "<group>"; };
 		ABDB5B4B18C0120D005AA38B /* MiscViewControllerModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MiscViewControllerModel.h; sourceTree = "<group>"; };
@@ -352,6 +355,8 @@
 				AB4C12B918C2EE5F00485234 /* StopAnnotation.m */,
 				AB4C128218C2D87600485234 /* BusAnnotation.h */,
 				AB4C128318C2D87600485234 /* BusAnnotation.m */,
+				ABD1E0CF18E62B87004A1D00 /* AppAnnouncement.h */,
+				ABD1E0D018E62B87004A1D00 /* AppAnnouncement.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -640,6 +645,7 @@
 				AB4C12A318C2EE0100485234 /* ArrivalRouteCell.m in Sources */,
 				AB4C129818C2E81300485234 /* StopArrivalCellModel.m in Sources */,
 				AB4C128E18C2E5FF00485234 /* StreetViewController.m in Sources */,
+				ABD1E0D118E62B87004A1D00 /* AppAnnouncement.m in Sources */,
 				AB98129E18BC516300EFDEE7 /* StopViewControllerModel.m in Sources */,
 				AB612DF518CA61D00074D6B7 /* NotificationManager.m in Sources */,
 				AB4C129318C2E7FF00485234 /* StopArrivalCell.m in Sources */,

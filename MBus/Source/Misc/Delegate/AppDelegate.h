@@ -12,7 +12,10 @@
 
 @property (strong, nonatomic) UIWindow *window;
 @property (strong, nonatomic) TTTLocationFormatter *locationFormatter;
+@property (strong, nonatomic) NSArray *appAnnouncements;
 
 + (instancetype)sharedInstance;
+
+- (void)fetchAppAnnouncements;
 
 @end
