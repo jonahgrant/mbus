@@ -15,17 +15,39 @@ static NSString * const USER_DEVICE_NAME = @"/device_name";
 @implementation AppAnnouncement
 
 + (NSString *)isolatedHumanNameForDeviceName:(NSString *)deviceName {
-    for (NSString *string in @[@"’s iPhone", @"’s iPad", @"’s iPod touch", @"’s iPod",
-                               @"'s iPhone", @"'s iPad", @"'s iPod touch", @"'s iPod",
-                               @"s iPhone", @"s iPad", @"s iPod touch", @"s iPod"]) {
+    deviceName = deviceName.lowercaseString;
+    
+    for (NSString *string in @[@"’s iphone", @"’s ipad", @"’s ipod touch", @"’s ipod",
+                               @"'s iphone", @"'s ipad", @"'s ipod touch", @"'s ipod",
+                               @"s iphone", @"s ipad", @"s ipod touch", @"s ipod"]) {
         NSRange ownershipRange = [deviceName rangeOfString:string];
         
         if (ownershipRange.location != NSNotFound) {
-            return [deviceName substringToIndex:ownershipRange.location];
+            return [[[deviceName substringToIndex:ownershipRange.location] componentsSeparatedByString:@" "][0]
+                    stringByReplacingCharactersInRange:NSMakeRange(0,1)
+                                            withString:[[deviceName substringToIndex:1] capitalizedString]];
         }
     }
     
     return nil;
+}
+
+- (BOOL)supported {
+    BOOL supportsMinimum;
+    if ([self.minimumVersion isEqualToString:@""]) {
+        supportsMinimum = YES;
+    } else {
+        supportsMinimum = (([[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"] compare:self.minimumVersion options:NSNumericSearch] == NSOrderedDescending) || ([[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"] compare:self.minimumVersion options:NSNumericSearch] == NSOrderedSame));
+    }
+
+    BOOL supportsMaximum;
+    if ([self.maximumVersion isEqualToString:@""]) {
+        supportsMaximum = YES;
+    } else {
+        supportsMaximum = (([self.maximumVersion compare:[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"] options:NSNumericSearch] == NSOrderedDescending) || ([self.maximumVersion compare:[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"] options:NSNumericSearch] == NSOrderedSame));
+    }
+    
+    return (supportsMinimum && supportsMaximum);
 }
 
 #pragma mark - NSValueTransformer
@@ -69,13 +91,24 @@ static NSString * const USER_DEVICE_NAME = @"/device_name";
 + (NSDictionary *)JSONKeyPathsByPropertyKey {
     return @{@"actionDestination": @"action_destination",
              @"actionBody": @"action_body",
-             @"backgroundColor": @"background_color"};
+             @"backgroundColor": @"background_color",
+             @"minimumVersion": @"minimum_version",
+             @"maximumVersion": @"maximum_version"};
 }
 
 #pragma mark - NSObject
 
 - (NSString *)debugDescription {
-    return [NSString stringWithFormat:@"Title: %@\nText: %@\nType: %@\nColor: %@\nAction: %@\nAction destination: %@\nAction body: %@", self.title, self.text, self.type, self.color, self.action, self.actionDestination, self.actionBody];
+    return [NSString stringWithFormat:@"Title: %@\nText: %@\nType: %@\nColor: %@\nAction: %@\nAction destination: %@\nAction body: %@\nMinimum version: %@\nTag: %@",
+            self.title,
+            self.text,
+            self.type,
+            self.color,
+            self.action,
+            self.actionDestination,
+            self.actionBody,
+            self.minimumVersion,
+            self.tag];
 }
 
 

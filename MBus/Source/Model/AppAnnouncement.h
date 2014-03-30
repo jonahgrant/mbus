@@ -15,8 +15,13 @@
 @property (nonatomic, copy, readonly) NSString *type;
 @property (nonatomic, strong, readonly) UIColor *color;
 @property (nonatomic, strong, readonly) UIColor *backgroundColor;
-@property (nonatomic, copy, readonly) NSString *action; // email, phone, sms, none
+@property (nonatomic, copy, readonly) NSString *action; // email, phone, sms, url, native_url, none
 @property (nonatomic, copy, readonly) NSString *actionDestination;
 @property (nonatomic, copy, readonly) NSString *actionBody;
+@property (nonatomic, copy, readonly) NSString *minimumVersion;
+@property (nonatomic, copy, readonly) NSString *maximumVersion;
+@property (nonatomic, copy, readonly) NSString *tag;
+
+- (BOOL)supported;
 
 @end

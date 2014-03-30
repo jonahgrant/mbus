@@ -75,12 +75,23 @@
 }
 
 - (void)fetchAppAnnouncements {
-    [[self.manager GET:@"http://jonahgrant.com/mbus/announcements/announcements.json"
-            parameters:nil
-               success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                   self.appAnnouncements = (NSArray *)responseObject;
-               } failure:NULL]
-        setResponseSerializer:[AppAnnouncement um_jsonArrayResponseSerializer]];
+    AFHTTPRequestOperation *operation = [self.manager GET:@"http://jonahgrant.com/mbus/announcements/announcements.json"
+                                               parameters:nil
+                                                  success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                                                      NSArray *announcements = (NSArray *)responseObject;
+                                                      NSMutableArray *mutableArray = [NSMutableArray array];
+                                                      for (AppAnnouncement *announcement in announcements) {
+                                                          if (announcement.supported) {
+                                                              [mutableArray addObject:announcement];
+                                                          }
+                                                      }
+                                                      self.appAnnouncements = mutableArray;
+                                                  } failure:NULL];
+    [operation setResponseSerializer:[AppAnnouncement um_jsonArrayResponseSerializer]];
+    [operation setCacheResponseBlock:^NSCachedURLResponse *(NSURLConnection *connection, NSCachedURLResponse *cachedResponse) {
+        return nil;
+    }];
+    [operation start];
 }
 
 @end

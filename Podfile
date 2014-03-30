@@ -16,6 +16,6 @@ target "MBus" do
     pod 'CGLMail', '~> 0.1'
     pod 'Google-Maps-iOS-SDK', '~> 1.6.0'
     pod 'SVPulsingAnnotationView', '~> 0.3.0'
-    pod 'GCBActionSheet', '~> 1.0.0'
     pod 'ObjectiveSugar'
+    pod 'GCBActionSheet', '~> 1.0.0'
 end

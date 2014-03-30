@@ -30,12 +30,14 @@
     if ([[DataStore sharedManager] hasPlacemarkForStopID:self.stopID]) {
         self.placemark = [[DataStore sharedManager] placemarkForStopID:self.stopID];
     } else {
-        [self.geocoder reverseGeocodeLocation:location completionHandler:^(NSArray *placemarks, NSError *error){
-            if (placemarks.count > 0) {
-                self.placemark = (CLPlacemark *)placemarks[0];
-                [[DataStore sharedManager] persistPlacemark:(CLPlacemark *)placemarks[0] forStopID:self.stopID];
-            }
-        }];
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            [self.geocoder reverseGeocodeLocation:location completionHandler:^(NSArray *placemarks, NSError *error){
+                if (placemarks.count > 0) {
+                    self.placemark = [(CLPlacemark *)placemarks[0] copy];
+                    [[DataStore sharedManager] persistPlacemark:(CLPlacemark *)placemarks[0] forStopID:self.stopID];
+                }
+            }];
+        });
     }
 }
 

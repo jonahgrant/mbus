@@ -17,10 +17,10 @@
 #import "StopArrivalCellModel.h"
 #import "RouteViewController.h"
 #import "UMAdditions+UIFont.h"
-#import "GCBActionSheet.h"
 #import "Arrival.h"
 #import "NotificationManager.h"
 #import "MapViewController.h"
+#import "GCBActionSheet.h"
 
 @interface StopViewController ()
 
@@ -51,6 +51,9 @@
     
     [refreshControl addTarget:self.model action:@selector(fetchData) forControlEvents:UIControlEventValueChanged];
     self.navigationItem.titleView = [[StopViewControllerTitleView alloc] initWithStop:self.model.stop];
+    
+    NSString *stop = [NSString stringWithFormat:@"%@ (%@)", self.model.stop.humanName, self.model.stop.uniqueName];
+    SendEventWithLabel(@"viewed_stop", stop);
 }
 
 - (void)viewWillAppear:(BOOL)animated {

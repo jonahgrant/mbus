@@ -32,7 +32,7 @@
         }];
         
         [[RACObserve([AppDelegate sharedInstance], appAnnouncements) filter:^BOOL(NSArray *announcements) {
-            return (announcements.count > 0 && self.dataUpdatedBlock);
+            return (self.dataUpdatedBlock != nil);
         }] subscribeNext:^(NSArray *announcements) {
             self.dataUpdatedBlock();
         }];

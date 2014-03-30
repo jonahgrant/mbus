@@ -39,6 +39,8 @@
         });
     };
     
+    SendEventWithLabel(@"viewed_route", self.model.arrival.name);
+
     self.informationCells = @[@"Map"];
     
     [self.refreshControl addTarget:self.model action:@selector(fetchData) forControlEvents:UIControlEventValueChanged];

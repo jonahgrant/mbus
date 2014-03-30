@@ -26,6 +26,8 @@
     #import "Constants.h"
 #endif
 
+#define SendEventWithLabel(event, eventLabel) [[[GAI sharedInstance] defaultTracker] send:[[GAIDictionaryBuilder createEventWithCategory:@"event" action:event label:eventLabel value:nil] build]];
+
 #define SendEvent(event) [[[GAI sharedInstance] defaultTracker] send:[[GAIDictionaryBuilder createEventWithCategory:@"event" action:event label:@"event" value:nil] build]];
 
 #define SendError(class, error) [[[GAI sharedInstance] defaultTracker] send:[[GAIDictionaryBuilder createEventWithCategory:@"application_error" action:NSStringFromClass(class) label:error value:nil] build]];

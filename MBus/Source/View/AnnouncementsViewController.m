@@ -16,6 +16,7 @@
 #import "AppDelegate.h"
 #import "Fare+UIColor.h"
 #import "CGLMailHelper.h"
+#import "WebViewController.h"
 
 @implementation AnnouncementsViewController
 
@@ -63,24 +64,25 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    switch (section) {
-        case 0:
-            return [AppDelegate sharedInstance].appAnnouncements.count;
-        case 1:
-            return [DataStore sharedManager].announcements.count;
+    if (section == 0 && [AppDelegate sharedInstance].appAnnouncements.count > 0) {
+        return [AppDelegate sharedInstance].appAnnouncements.count;
     }
     
+    else {
+        return [DataStore sharedManager].announcements.count;
+    }
+
     return 0;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.section == 0) {
+    if (indexPath.section == 0 && [AppDelegate sharedInstance].appAnnouncements.count > 0) {
         return [self.model heightForAnnouncement:[AppDelegate sharedInstance].appAnnouncements[indexPath.row]
                                            width:self.view.frame.size.width
                                             font:[UIFont helveticaNeueWithWeight:TypeWeightNormal size:14]];
     }
     
-    else if (indexPath.section == 1) {
+    else {
         return [self.model heightForAnnouncement:[DataStore sharedManager].announcements[indexPath.row]
                                            width:self.view.frame.size.width
                                             font:[UIFont helveticaNeueWithWeight:TypeWeightNormal size:14]];
@@ -91,7 +93,7 @@
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    if (section == 1) {
+    if ((section == 1 && [AppDelegate sharedInstance].appAnnouncements.count > 0) || (section == 0 && [AppDelegate sharedInstance].appAnnouncements.count == 0)) {
         return self.model.headerString;
     }
     
@@ -99,7 +101,7 @@
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section {
-    if (section == 1) {
+    if ((section == 1 && [AppDelegate sharedInstance].appAnnouncements.count > 0) || (section == 0 && [AppDelegate sharedInstance].appAnnouncements.count == 0)) {
         return self.model.footerString;
     }
     
@@ -107,10 +109,10 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *CellIdentifier = @"AnnouncementCell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    
-    if (indexPath.section == 0) {
+    if (indexPath.section == 0 && [AppDelegate sharedInstance].appAnnouncements.count > 0) {
+        static NSString *CellIdentifier = @"AppAnnouncementCell";
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+
         AppAnnouncement *announcement = [AppDelegate sharedInstance].appAnnouncements[indexPath.row];
     
         cell.textLabel.text = announcement.text;
@@ -123,9 +125,14 @@
         UIView *sidebarView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 3, CGRectGetHeight(cell.frame))];
         sidebarView.backgroundColor = announcement.color;
         [cell addSubview:sidebarView];
+        
+        return cell;
     }
     
-    else if (indexPath.section == 1) {
+    else {
+        static NSString *CellIdentifier = @"AnnouncementCell";
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+
         Announcement *announcement = [DataStore sharedManager].announcements[indexPath.row];
         
         cell.textLabel.text = announcement.text;
@@ -137,9 +144,11 @@
         UIView *sidebarView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 3, CGRectGetHeight(cell.frame))];
         sidebarView.backgroundColor = announcement.color;
         [cell addSubview:sidebarView];
+        
+        return cell;
     }
     
-    return cell;
+    return nil;
 }
 
 #pragma mark - UITableView delegate
@@ -147,20 +156,29 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
         AppAnnouncement *announcement = [AppDelegate sharedInstance].appAnnouncements[indexPath.row];
-
+        SendEventWithLabel(@"tapped_app_announcement", announcement.tag);
+        NSLog(@"tapped_app_announcement %@", announcement.tag);
+        
         if (![announcement.action isEqualToString:@"none"]) {
             if ([announcement.action isEqualToString:@"email"]) {
                 UIViewController *viewController = [CGLMailHelper mailViewControllerWithRecipients:@[announcement.actionDestination]
-                                                                                           subject:@"Jonah Grant"
+                                                                                           subject:@"A message sent from MBus"
                                                                                            message:announcement.actionBody
                                                                                             isHTML:NO
                                                                                     includeAppInfo:NO
-                                                                                        completion:NULL];
+                                                                                        completion:^(NSString *result, NSError *error) {
+                                                                                            SendEventWithLabel(@"completed_app_announcement_action_mail", announcement.tag);
+                                                                                        }];
                 [self presentViewController:viewController animated:YES completion:NULL];
             } else if ([announcement.action isEqualToString:@"phone"]) {
                 [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"tel://%@", announcement.actionDestination]]];
             } else if ([announcement.action isEqualToString:@"sms"]) {
                 [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"sms:%@", announcement.actionDestination]]];
+            } else if ([announcement.action isEqualToString:@"url"]) {
+                WebViewController *viewController = [[WebViewController alloc] initWithURL:[NSURL URLWithString:announcement.actionDestination]];
+                [self.navigationController pushViewController:viewController animated:YES];
+            } else if ([announcement.action isEqualToString:@"native_url"]) {
+                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:announcement.actionDestination]];
             }
         }
     }
