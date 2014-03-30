@@ -13,3 +13,4 @@ extern NSString * const UMSegueMap;
 extern NSString * const UMSegueRouteMap;
 extern NSString * const UMSegueRoute;
 extern NSString * const UMSegueAnnouncements;
+extern NSString * const UMSegueNotify;

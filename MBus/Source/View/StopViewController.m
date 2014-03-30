@@ -54,6 +54,8 @@
     
     NSString *stop = [NSString stringWithFormat:@"%@ (%@)", self.model.stop.humanName, self.model.stop.uniqueName];
     SendEventWithLabel(@"viewed_stop", stop);
+    
+    self.tableView.tableHeaderView.backgroundColor = [UIColor clearColor];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -91,6 +93,9 @@
     [actionSheet addButtonWithTitle:@"Notify before arrival" handler:^ {
         SendEvent(ANALYTICS_STOP_ARRIVAL_NOTIFY);
         
+        [self performSegueWithIdentifier:UMSegueNotify sender:self];
+        
+        /*
         NSString *message = [NSString stringWithFormat:@"The %@ bus is arriving at %@ soon", arrival.name, self.model.stop.humanName];
         
         NotificationManager *notificationManager = [[NotificationManager alloc] init];
@@ -101,7 +106,7 @@
                                                        delegate:nil
                                               cancelButtonTitle:nil
                                               otherButtonTitles:@"Dismiss", nil];
-        [alert show];
+        [alert show];*/
     }];
     
     [actionSheet addCancelButtonWithTitle:@"Dismiss" handler:^ {
@@ -204,7 +209,7 @@
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 
-    if (indexPath.section == SectionRoutes) {
+    if (indexPath.section == SectionRoutes && self.model.arrivalIDsServicingStop.count != 0) {
         [self presentRouteActionChooserForArrival:self.model.arrivalsServicingStop[self.activeIndexPath.row]];
     }
     

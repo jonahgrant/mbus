@@ -35,7 +35,6 @@ static NSInteger const ALL_STOPS_CELL = 5;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    
     UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
     [self.tableView addSubview:refreshControl];
     
@@ -69,7 +68,8 @@ static NSInteger const ALL_STOPS_CELL = 5;
     if (self.model.hasAnnouncements && section == 0) {
         return 1;
     } else {
-        return (self.model.stops.count > MAXIMUM_STOPS) ? MAXIMUM_STOPS + 1 : self.model.stops.count;
+        unsigned int stopsCount = self.model.stops.count;
+        return (stopsCount > MAXIMUM_STOPS) ? MAXIMUM_STOPS + 1 : stopsCount;
     }
 }
 

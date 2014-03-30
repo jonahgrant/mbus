@@ -72,6 +72,26 @@
 		AB98129818BC510900EFDEE7 /* StopViewControllerTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = AB98129718BC510900EFDEE7 /* StopViewControllerTitleView.m */; };
 		AB98129B18BC511300EFDEE7 /* StopViewControllerTitleViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AB98129A18BC511300EFDEE7 /* StopViewControllerTitleViewModel.m */; };
 		AB98129E18BC516300EFDEE7 /* StopViewControllerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AB98129D18BC516300EFDEE7 /* StopViewControllerModel.m */; };
+		ABBD924E18E8866C00FC4248 /* NotifyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABBD924D18E8866C00FC4248 /* NotifyViewController.m */; };
+		ABBD928F18E8875800FC4248 /* CALayer+ModalAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = ABBD926918E8875800FC4248 /* CALayer+ModalAlert.m */; };
+		ABBD929018E8875800FC4248 /* LMAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = ABBD926B18E8875800FC4248 /* LMAlertView.m */; };
+		ABBD929118E8875800FC4248 /* LMEmbeddedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABBD926D18E8875800FC4248 /* LMEmbeddedViewController.m */; };
+		ABBD929218E8875800FC4248 /* LMModalItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ABBD926F18E8875800FC4248 /* LMModalItemTableViewCell.m */; };
+		ABBD929318E8875800FC4248 /* LMModalSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = ABBD927118E8875800FC4248 /* LMModalSegue.m */; };
+		ABBD929418E8875800FC4248 /* LMNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = ABBD927318E8875800FC4248 /* LMNavigationBar.m */; };
+		ABBD929518E8875800FC4248 /* LMNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABBD927518E8875800FC4248 /* LMNavigationController.m */; };
+		ABBD929618E8875800FC4248 /* Radial.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBD927618E8875800FC4248 /* Radial.png */; };
+		ABBD929718E8875800FC4248 /* CAAnimation+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = ABBD927A18E8875800FC4248 /* CAAnimation+Blocks.m */; };
+		ABBD929818E8875800FC4248 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = ABBD927C18E8875800FC4248 /* LICENSE */; };
+		ABBD929918E8875800FC4248 /* RBBAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = ABBD927F18E8875800FC4248 /* RBBAnimation.m */; };
+		ABBD929A18E8875800FC4248 /* RBBBlockBasedArray.m in Sources */ = {isa = PBXBuildFile; fileRef = ABBD928118E8875800FC4248 /* RBBBlockBasedArray.m */; };
+		ABBD929B18E8875800FC4248 /* RBBCubicBezier.m in Sources */ = {isa = PBXBuildFile; fileRef = ABBD928318E8875800FC4248 /* RBBCubicBezier.m */; };
+		ABBD929C18E8875800FC4248 /* RBBCustomAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = ABBD928518E8875800FC4248 /* RBBCustomAnimation.m */; };
+		ABBD929D18E8875800FC4248 /* RBBEasingFunction.m in Sources */ = {isa = PBXBuildFile; fileRef = ABBD928718E8875800FC4248 /* RBBEasingFunction.m */; };
+		ABBD929E18E8875800FC4248 /* RBBLinearInterpolation.m in Sources */ = {isa = PBXBuildFile; fileRef = ABBD928918E8875800FC4248 /* RBBLinearInterpolation.m */; };
+		ABBD929F18E8875800FC4248 /* RBBSpringAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = ABBD928B18E8875800FC4248 /* RBBSpringAnimation.m */; };
+		ABBD92A018E8875800FC4248 /* RBBTweenAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = ABBD928D18E8875800FC4248 /* RBBTweenAnimation.m */; };
+		ABBD92A118E8875800FC4248 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = ABBD928E18E8875800FC4248 /* README.md */; };
 		ABD1E0D118E62B87004A1D00 /* AppAnnouncement.m in Sources */ = {isa = PBXBuildFile; fileRef = ABD1E0D018E62B87004A1D00 /* AppAnnouncement.m */; };
 		ABDB5B4A18C0114A005AA38B /* MiscViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABDB5B4918C0114A005AA38B /* MiscViewController.m */; };
 		ABDB5B4D18C0120D005AA38B /* MiscViewControllerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ABDB5B4C18C0120D005AA38B /* MiscViewControllerModel.m */; };
@@ -210,6 +230,43 @@
 		AB98129A18BC511300EFDEE7 /* StopViewControllerTitleViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StopViewControllerTitleViewModel.m; sourceTree = "<group>"; };
 		AB98129C18BC516300EFDEE7 /* StopViewControllerModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StopViewControllerModel.h; sourceTree = "<group>"; };
 		AB98129D18BC516300EFDEE7 /* StopViewControllerModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StopViewControllerModel.m; sourceTree = "<group>"; };
+		ABBD924C18E8866C00FC4248 /* NotifyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NotifyViewController.h; path = "MBus/Source/View Model/NotifyViewController.h"; sourceTree = SOURCE_ROOT; };
+		ABBD924D18E8866C00FC4248 /* NotifyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NotifyViewController.m; path = "MBus/Source/View Model/NotifyViewController.m"; sourceTree = SOURCE_ROOT; };
+		ABBD926818E8875800FC4248 /* CALayer+ModalAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CALayer+ModalAlert.h"; sourceTree = "<group>"; };
+		ABBD926918E8875800FC4248 /* CALayer+ModalAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CALayer+ModalAlert.m"; sourceTree = "<group>"; };
+		ABBD926A18E8875800FC4248 /* LMAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMAlertView.h; sourceTree = "<group>"; };
+		ABBD926B18E8875800FC4248 /* LMAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMAlertView.m; sourceTree = "<group>"; };
+		ABBD926C18E8875800FC4248 /* LMEmbeddedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMEmbeddedViewController.h; sourceTree = "<group>"; };
+		ABBD926D18E8875800FC4248 /* LMEmbeddedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMEmbeddedViewController.m; sourceTree = "<group>"; };
+		ABBD926E18E8875800FC4248 /* LMModalItemTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMModalItemTableViewCell.h; sourceTree = "<group>"; };
+		ABBD926F18E8875800FC4248 /* LMModalItemTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMModalItemTableViewCell.m; sourceTree = "<group>"; };
+		ABBD927018E8875800FC4248 /* LMModalSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMModalSegue.h; sourceTree = "<group>"; };
+		ABBD927118E8875800FC4248 /* LMModalSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMModalSegue.m; sourceTree = "<group>"; };
+		ABBD927218E8875800FC4248 /* LMNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMNavigationBar.h; sourceTree = "<group>"; };
+		ABBD927318E8875800FC4248 /* LMNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMNavigationBar.m; sourceTree = "<group>"; };
+		ABBD927418E8875800FC4248 /* LMNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMNavigationController.h; sourceTree = "<group>"; };
+		ABBD927518E8875800FC4248 /* LMNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMNavigationController.m; sourceTree = "<group>"; };
+		ABBD927618E8875800FC4248 /* Radial.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Radial.png; sourceTree = "<group>"; };
+		ABBD927918E8875800FC4248 /* CAAnimation+Blocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CAAnimation+Blocks.h"; sourceTree = "<group>"; };
+		ABBD927A18E8875800FC4248 /* CAAnimation+Blocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CAAnimation+Blocks.m"; sourceTree = "<group>"; };
+		ABBD927C18E8875800FC4248 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		ABBD927E18E8875800FC4248 /* RBBAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBBAnimation.h; sourceTree = "<group>"; };
+		ABBD927F18E8875800FC4248 /* RBBAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBBAnimation.m; sourceTree = "<group>"; };
+		ABBD928018E8875800FC4248 /* RBBBlockBasedArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBBBlockBasedArray.h; sourceTree = "<group>"; };
+		ABBD928118E8875800FC4248 /* RBBBlockBasedArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBBBlockBasedArray.m; sourceTree = "<group>"; };
+		ABBD928218E8875800FC4248 /* RBBCubicBezier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBBCubicBezier.h; sourceTree = "<group>"; };
+		ABBD928318E8875800FC4248 /* RBBCubicBezier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBBCubicBezier.m; sourceTree = "<group>"; };
+		ABBD928418E8875800FC4248 /* RBBCustomAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBBCustomAnimation.h; sourceTree = "<group>"; };
+		ABBD928518E8875800FC4248 /* RBBCustomAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBBCustomAnimation.m; sourceTree = "<group>"; };
+		ABBD928618E8875800FC4248 /* RBBEasingFunction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBBEasingFunction.h; sourceTree = "<group>"; };
+		ABBD928718E8875800FC4248 /* RBBEasingFunction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBBEasingFunction.m; sourceTree = "<group>"; };
+		ABBD928818E8875800FC4248 /* RBBLinearInterpolation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBBLinearInterpolation.h; sourceTree = "<group>"; };
+		ABBD928918E8875800FC4248 /* RBBLinearInterpolation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBBLinearInterpolation.m; sourceTree = "<group>"; };
+		ABBD928A18E8875800FC4248 /* RBBSpringAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBBSpringAnimation.h; sourceTree = "<group>"; };
+		ABBD928B18E8875800FC4248 /* RBBSpringAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBBSpringAnimation.m; sourceTree = "<group>"; };
+		ABBD928C18E8875800FC4248 /* RBBTweenAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBBTweenAnimation.h; sourceTree = "<group>"; };
+		ABBD928D18E8875800FC4248 /* RBBTweenAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBBTweenAnimation.m; sourceTree = "<group>"; };
+		ABBD928E18E8875800FC4248 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		ABD1E0CF18E62B87004A1D00 /* AppAnnouncement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppAnnouncement.h; sourceTree = "<group>"; };
 		ABD1E0D018E62B87004A1D00 /* AppAnnouncement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppAnnouncement.m; sourceTree = "<group>"; };
 		ABDB5B4818C0114A005AA38B /* MiscViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MiscViewController.h; sourceTree = "<group>"; };
@@ -405,6 +462,8 @@
 				AB4C12CF18C2FC3800485234 /* AnnouncementsViewController.m */,
 				AB4C128C18C2E5FF00485234 /* StreetViewController.h */,
 				AB4C128D18C2E5FF00485234 /* StreetViewController.m */,
+				ABBD924C18E8866C00FC4248 /* NotifyViewController.h */,
+				ABBD924D18E8866C00FC4248 /* NotifyViewController.m */,
 				AB98129618BC510900EFDEE7 /* StopViewControllerTitleView.h */,
 				AB98129718BC510900EFDEE7 /* StopViewControllerTitleView.m */,
 				AB4C12C218C2EEB100485234 /* StopTray.h */,
@@ -462,6 +521,7 @@
 		AB467E0C18B44D5D00AF1076 /* 3rdParty */ = {
 			isa = PBXGroup;
 			children = (
+				ABBD926718E8875800FC4248 /* LMAlertView */,
 				AB40A14418E7AEA3001D8D50 /* SUPGridWindow */,
 				AB467E0D18B44D5D00AF1076 /* Google Analytics */,
 			);
@@ -552,6 +612,80 @@
 			name = ArrivalCell;
 			sourceTree = "<group>";
 		};
+		ABBD926718E8875800FC4248 /* LMAlertView */ = {
+			isa = PBXGroup;
+			children = (
+				ABBD926818E8875800FC4248 /* CALayer+ModalAlert.h */,
+				ABBD926918E8875800FC4248 /* CALayer+ModalAlert.m */,
+				ABBD926A18E8875800FC4248 /* LMAlertView.h */,
+				ABBD926B18E8875800FC4248 /* LMAlertView.m */,
+				ABBD926C18E8875800FC4248 /* LMEmbeddedViewController.h */,
+				ABBD926D18E8875800FC4248 /* LMEmbeddedViewController.m */,
+				ABBD926E18E8875800FC4248 /* LMModalItemTableViewCell.h */,
+				ABBD926F18E8875800FC4248 /* LMModalItemTableViewCell.m */,
+				ABBD927018E8875800FC4248 /* LMModalSegue.h */,
+				ABBD927118E8875800FC4248 /* LMModalSegue.m */,
+				ABBD927218E8875800FC4248 /* LMNavigationBar.h */,
+				ABBD927318E8875800FC4248 /* LMNavigationBar.m */,
+				ABBD927418E8875800FC4248 /* LMNavigationController.h */,
+				ABBD927518E8875800FC4248 /* LMNavigationController.m */,
+				ABBD927618E8875800FC4248 /* Radial.png */,
+				ABBD927718E8875800FC4248 /* Vendor */,
+			);
+			path = LMAlertView;
+			sourceTree = "<group>";
+		};
+		ABBD927718E8875800FC4248 /* Vendor */ = {
+			isa = PBXGroup;
+			children = (
+				ABBD927818E8875800FC4248 /* CAAnimationBlocks */,
+				ABBD927B18E8875800FC4248 /* RBBAnimation */,
+			);
+			path = Vendor;
+			sourceTree = "<group>";
+		};
+		ABBD927818E8875800FC4248 /* CAAnimationBlocks */ = {
+			isa = PBXGroup;
+			children = (
+				ABBD927918E8875800FC4248 /* CAAnimation+Blocks.h */,
+				ABBD927A18E8875800FC4248 /* CAAnimation+Blocks.m */,
+			);
+			path = CAAnimationBlocks;
+			sourceTree = "<group>";
+		};
+		ABBD927B18E8875800FC4248 /* RBBAnimation */ = {
+			isa = PBXGroup;
+			children = (
+				ABBD927C18E8875800FC4248 /* LICENSE */,
+				ABBD927D18E8875800FC4248 /* RBBAnimation */,
+				ABBD928E18E8875800FC4248 /* README.md */,
+			);
+			path = RBBAnimation;
+			sourceTree = "<group>";
+		};
+		ABBD927D18E8875800FC4248 /* RBBAnimation */ = {
+			isa = PBXGroup;
+			children = (
+				ABBD927E18E8875800FC4248 /* RBBAnimation.h */,
+				ABBD927F18E8875800FC4248 /* RBBAnimation.m */,
+				ABBD928018E8875800FC4248 /* RBBBlockBasedArray.h */,
+				ABBD928118E8875800FC4248 /* RBBBlockBasedArray.m */,
+				ABBD928218E8875800FC4248 /* RBBCubicBezier.h */,
+				ABBD928318E8875800FC4248 /* RBBCubicBezier.m */,
+				ABBD928418E8875800FC4248 /* RBBCustomAnimation.h */,
+				ABBD928518E8875800FC4248 /* RBBCustomAnimation.m */,
+				ABBD928618E8875800FC4248 /* RBBEasingFunction.h */,
+				ABBD928718E8875800FC4248 /* RBBEasingFunction.m */,
+				ABBD928818E8875800FC4248 /* RBBLinearInterpolation.h */,
+				ABBD928918E8875800FC4248 /* RBBLinearInterpolation.m */,
+				ABBD928A18E8875800FC4248 /* RBBSpringAnimation.h */,
+				ABBD928B18E8875800FC4248 /* RBBSpringAnimation.m */,
+				ABBD928C18E8875800FC4248 /* RBBTweenAnimation.h */,
+				ABBD928D18E8875800FC4248 /* RBBTweenAnimation.m */,
+			);
+			path = RBBAnimation;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -611,10 +745,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ABBD929818E8875800FC4248 /* LICENSE in Resources */,
 				ABDB5B4F18C013A1005AA38B /* Pods-MBus-acknowledgements.plist in Resources */,
 				AB467DFA18B44A1C00AF1076 /* Main.storyboard in Resources */,
+				ABBD92A118E8875800FC4248 /* README.md in Resources */,
 				AB467DF918B44A1C00AF1076 /* Images.xcassets in Resources */,
 				AB98129518BC446F00EFDEE7 /* AnnArbor.gpx in Resources */,
+				ABBD929618E8875800FC4248 /* Radial.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -658,15 +795,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ABBD929F18E8875800FC4248 /* RBBSpringAnimation.m in Sources */,
+				ABBD924E18E8866C00FC4248 /* NotifyViewController.m in Sources */,
 				AB98129B18BC511300EFDEE7 /* StopViewControllerTitleViewModel.m in Sources */,
+				ABBD929518E8875800FC4248 /* LMNavigationController.m in Sources */,
 				AB3A741A18C9287900A2891E /* CircleAnnotationView.m in Sources */,
 				AB4C12A318C2EE0100485234 /* ArrivalRouteCell.m in Sources */,
+				ABBD929A18E8875800FC4248 /* RBBBlockBasedArray.m in Sources */,
 				AB4C129818C2E81300485234 /* StopArrivalCellModel.m in Sources */,
 				AB4C128E18C2E5FF00485234 /* StreetViewController.m in Sources */,
 				ABD1E0D118E62B87004A1D00 /* AppAnnouncement.m in Sources */,
 				AB98129E18BC516300EFDEE7 /* StopViewControllerModel.m in Sources */,
 				AB612DF518CA61D00074D6B7 /* NotificationManager.m in Sources */,
 				AB4C129318C2E7FF00485234 /* StopArrivalCell.m in Sources */,
+				ABBD929C18E8875800FC4248 /* RBBCustomAnimation.m in Sources */,
 				AB467E0B18B44CF900AF1076 /* LocationManager.m in Sources */,
 				AB4C12A818C2EE1100485234 /* ArrivalRouteCellModel.m in Sources */,
 				AB40A14A18E7AEA3001D8D50 /* SUPGridWindow.m in Sources */,
@@ -674,6 +816,8 @@
 				AB467E7118B47F6300AF1076 /* UMAdditions+UIColor.m in Sources */,
 				AB4C128718C2DFCD00485234 /* AddressCell.m in Sources */,
 				AB4C12C418C2EEB100485234 /* StopTray.m in Sources */,
+				ABBD929B18E8875800FC4248 /* RBBCubicBezier.m in Sources */,
+				ABBD929018E8875800FC4248 /* LMAlertView.m in Sources */,
 				AB467E0818B44CEB00AF1076 /* DataStore.m in Sources */,
 				AB4C127318C2C07300485234 /* Constants.m in Sources */,
 				AB4C12AE18C2EE2C00485234 /* RouteViewControllerModel.m in Sources */,
@@ -684,8 +828,11 @@
 				AB467DFD18B44A1C00AF1076 /* main.m in Sources */,
 				AB4C12A418C2EE0100485234 /* ArrivalRouteCellView.m in Sources */,
 				AB467E6A18B472A800AF1076 /* StopCellModel.m in Sources */,
+				ABBD92A018E8875800FC4248 /* RBBTweenAnimation.m in Sources */,
+				ABBD928F18E8875800FC4248 /* CALayer+ModalAlert.m in Sources */,
 				AB40A14918E7AEA3001D8D50 /* SUPGridView.m in Sources */,
 				AB4C129E18C2EDF100485234 /* RoutesViewController.m in Sources */,
+				ABBD929E18E8875800FC4248 /* RBBLinearInterpolation.m in Sources */,
 				AB467E6618B4729100AF1076 /* StopCell.m in Sources */,
 				AB467E0218B44B0700AF1076 /* StopsViewController.m in Sources */,
 				ABDB5B4A18C0114A005AA38B /* MiscViewController.m in Sources */,
@@ -693,10 +840,13 @@
 				AB4C129B18C2EDE500485234 /* RoutesViewControllerModel.m in Sources */,
 				AB4C127618C2C3FE00485234 /* UMViewController.m in Sources */,
 				AB4C128418C2D87600485234 /* BusAnnotation.m in Sources */,
+				ABBD929118E8875800FC4248 /* LMEmbeddedViewController.m in Sources */,
+				ABBD929318E8875800FC4248 /* LMModalSegue.m in Sources */,
 				AB4C12B118C2EE3400485234 /* RouteViewController.m in Sources */,
 				AB8C7C5818BD5E88007806C3 /* AllStopsViewController.m in Sources */,
 				AB467DFC18B44A1C00AF1076 /* AppDelegate.m in Sources */,
 				AB467E6718B4729100AF1076 /* StopCellView.m in Sources */,
+				ABBD929D18E8875800FC4248 /* RBBEasingFunction.m in Sources */,
 				AB467E5A18B4510F00AF1076 /* ViewControllerModelBase.m in Sources */,
 				AB4C127E18C2D5E300485234 /* WebViewController.m in Sources */,
 				AB467E7718B4814500AF1076 /* UMSegueIdentifiers.m in Sources */,
@@ -706,11 +856,15 @@
 				AB4C12D018C2FC3800485234 /* AnnouncementsViewController.m in Sources */,
 				AB467E6E18B4779700AF1076 /* UMAdditions+UIFont.m in Sources */,
 				AB4C127918C2C69D00485234 /* MapViewController.m in Sources */,
+				ABBD929718E8875800FC4248 /* CAAnimation+Blocks.m in Sources */,
+				ABBD929218E8875800FC4248 /* LMModalItemTableViewCell.m in Sources */,
 				AB98129318BC37E700EFDEE7 /* DistanceTagView.m in Sources */,
 				AB6A1FD118CFA7E00036F88D /* AddressCellMapView.m in Sources */,
 				AB4C12C018C2EE6C00485234 /* ArrivalCellView.m in Sources */,
+				ABBD929418E8875800FC4248 /* LMNavigationBar.m in Sources */,
 				AB4C129418C2E7FF00485234 /* StopArrivalCellView.m in Sources */,
 				AB4C128B18C2DFDE00485234 /* AddressCellModel.m in Sources */,
+				ABBD929918E8875800FC4248 /* RBBAnimation.m in Sources */,
 				AB4C12C718C2EEBA00485234 /* StopTrayModel.m in Sources */,
 				AB98129018BC015000EFDEE7 /* InitialedCircleView.m in Sources */,
 				AB4C12CD18C2FC2200485234 /* AnnouncementsViewControllerModel.m in Sources */,

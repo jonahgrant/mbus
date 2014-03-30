@@ -6,8 +6,6 @@
 //  Copyright (c) 2014 Jonah Grant. All rights reserved.
 //
 
-
-
 NSString * const UMSegueStop          = @"UMSegueStop";
 NSString * const UMSegueAllStops      = @"UMSegueAllStops";
 NSString * const UMSegueMisc          = @"UMSegueMisc";
@@ -15,3 +13,4 @@ NSString * const UMSegueMap           = @"UMSegueMap";
 NSString * const UMSegueRouteMap      = @"UMSegueRouteMap";
 NSString * const UMSegueRoute         = @"UMSegueRoute";
 NSString * const UMSegueAnnouncements = @"UMSegueAnnouncements";
+NSString * const UMSegueNotify        = @"UMSegueNotify";

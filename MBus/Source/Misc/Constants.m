@@ -107,6 +107,8 @@ extern NSString * NSStringForUIViewController(UIViewController *viewController) 
         return @"Announcements";
     } else if ([class isEqualToString:@"StreetViewController"]) {
         return nil; // handles it's own title
+    } else if ([class isEqualToString:@"NotificationViewController"]) {
+        return @"Notify me";
     }
     
     return @"ERROR: UNMAPPED VC";
