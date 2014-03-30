@@ -12,6 +12,7 @@
 #import "Stop.h"
 #import "ArrivalStop.h"
 #import "DataStore.h"
+#import "UMAdditions+UIFont.h"
 
 @interface NotifyViewController ()
 
@@ -26,7 +27,7 @@
 - (void)viewDidLoad {
     self.title = @"Notify me...";
     
-    self.seconds = [self firstBusArrival];
+    self.seconds = /*[self firstBusArrival]*/ 600;
     
     UIBarButtonItem *closeBarButton = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStyleDone target:self action:@selector(dismiss)];
     self.navigationItem.leftBarButtonItem = closeBarButton;
@@ -97,7 +98,7 @@
     }
     
 	cell.textLabel.text = [NSString stringWithFormat:@"%@ %@ before arrival", minutesText, minutesLabel];
-    cell.detailTextLabel.text = [self timeOfArrivalForTimeInterval:seconds];
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"(%@)", [self timeOfArrivalForTimeInterval:seconds]];
 	cell.backgroundColor = [UIColor clearColor];
     
     return cell;
@@ -115,9 +116,14 @@
         seconds = (indexPath.row + 1) * 30;
     }
     
+    int minutesTextInt = (minutes > 5) ? indexPath.row + 1 : (30.0 * (indexPath.row + 1));
+    NSString *minutesText = [NSString stringWithFormat:@"%i", minutesTextInt];
+    NSString *minutesLabel = (minutes > 5) ? ([minutesText isEqualToString:@"1"]) ? @"minute" : @"minutes" :  ([minutesText isEqualToString:@"1"]) ? @"second" : @"seconds";
+
+    NSString *message = [NSString stringWithFormat:@"The %@ bus is arriving at %@ in %@ %@.", self.arrival.name, self.stop.humanName, minutesText, minutesLabel];
     NotificationManager *notificationManager = [[NotificationManager alloc] init];
-    [notificationManager scheduleNotificationWithFireDate:[NSDate dateWithTimeIntervalSinceNow:seconds] message:@"Your bus is arriving!"];
-    NSLog(@"notify in %i seconds", seconds);
+    [notificationManager scheduleNotificationWithFireDate:[NSDate dateWithTimeIntervalSinceNow:self.seconds - seconds] message:message];
+    NSLog(@"notifying in %f seconds", self.seconds - seconds);
     
     [self dismiss];
 }

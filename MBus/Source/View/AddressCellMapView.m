@@ -52,9 +52,9 @@
 #pragma mark - MKMapView
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
-    MKPinAnnotationView *pin = (MKPinAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier: @"annotation_ID"];
+    MKPinAnnotationView *pin = (MKPinAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:@"annotation_ID"];
     if (pin == nil) {
-        pin = [[MKPinAnnotationView alloc] initWithAnnotation: annotation reuseIdentifier: @"annotation_ID"];
+        pin = [[MKPinAnnotationView alloc] initWithAnnotation: annotation reuseIdentifier:@"annotation_ID"];
     } else {
         pin.annotation = annotation;
     }
@@ -64,6 +64,5 @@
     
     return pin;
 }
-
 
 @end

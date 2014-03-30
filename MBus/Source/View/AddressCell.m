@@ -52,17 +52,18 @@ static CGFloat const TINT_ALPHA = 0.69; // lol
         [self insertSubview:_tintView atIndex:0];
         
         [self insertSubview:[AddressCellMapView sharedInstance] atIndex:0];
-        
+       
         _activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
         _activityIndicator.center = CGPointMake(CGRectGetWidth(self.frame) / 2, CGRectGetHeight(self.frame) / 2);
         _activityIndicator.hidesWhenStopped = YES;
         [self addSubview:_activityIndicator];
         [_activityIndicator startAnimating];
         
+         
         for (UIInterpolatingMotionEffect *motionEffect in [AddressCellMapView sharedInstance].mapView.motionEffects) {
             [[AddressCellMapView sharedInstance].mapView removeMotionEffect:motionEffect];
         }
-        
+         
         UIInterpolatingMotionEffect *mapHorizontalEffect = [[UIInterpolatingMotionEffect alloc] initWithKeyPath:@"center.x" type:UIInterpolatingMotionEffectTypeTiltAlongHorizontalAxis];
         mapHorizontalEffect.minimumRelativeValue = @(-PARALLAX_LEEWAY_VALUE);
         mapHorizontalEffect.maximumRelativeValue = @(PARALLAX_LEEWAY_VALUE);

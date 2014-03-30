@@ -209,7 +209,7 @@
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 
-    if (indexPath.section == SectionRoutes && self.model.arrivalIDsServicingStop.count != 0) {
+    if (indexPath.section == SectionRoutes /*&& self.model.arrivalIDsServicingStop.count != 0*/) {
         [self presentRouteActionChooserForArrival:self.model.arrivalsServicingStop[self.activeIndexPath.row]];
     }
     

@@ -9,6 +9,7 @@
 #import "CALayer+ModalAlert.h"
 #import "LMEmbeddedViewController.h"
 #import <objc/runtime.h>
+#import "AppDelegate.h"
 
 @implementation CALayer (ModalAlert)
 
@@ -23,24 +24,9 @@
 	method_exchangeImplementations(originalMethod, overrideMethod);
 }
 
-- (UIWindow *)windowForView:(UIView *)view
-{
-	UIView *tempView = view;
-	
-	while (tempView.superview != nil) {
-		tempView = tempView.superview;
-		
-		if ([tempView isKindOfClass:[UIWindow class]]) {
-			return (UIWindow *)tempView;
-		}
-	}
-	
-	return nil;
-}
-
 - (void)_addAnimation:(CAAnimation *)anim forKey:(NSString *)key {
 	UIView *view = [self delegate];
-	UIWindow *window = [self windowForView:view];
+	UIWindow *window = [[AppDelegate sharedInstance] window];
 	
 	if ([window.rootViewController isKindOfClass:[LMEmbeddedViewController class]]) {
 		CABasicAnimation *basicAnim = (CABasicAnimation *)anim;
@@ -58,6 +44,7 @@
 			}
 		}
 		
+        
 		if (view.frame.origin.x == (-0.3 * modalWidth)) {
 			CGRect frame = view.frame;
 			frame.origin.x = -modalWidth;

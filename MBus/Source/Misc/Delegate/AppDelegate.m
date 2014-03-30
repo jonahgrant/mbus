@@ -72,7 +72,7 @@
     
     [[LocationManager sharedManager] fetchLocation];
     
-    [AddressCellMapView sharedInstance];
+    //[AddressCellMapView sharedInstance];
     
     return YES;
 }
