@@ -27,7 +27,7 @@
 - (void)viewDidLoad {
     self.title = @"Notify me...";
     
-    self.seconds = /*[self firstBusArrival]*/ 600;
+    self.seconds = [self firstBusArrival];
     
     UIBarButtonItem *closeBarButton = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStyleDone target:self action:@selector(dismiss)];
     self.navigationItem.leftBarButtonItem = closeBarButton;

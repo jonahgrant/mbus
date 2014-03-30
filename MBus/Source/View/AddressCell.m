@@ -82,32 +82,45 @@ static CGFloat const TINT_ALPHA = 0.69; // lol
             [self.model reverseGeocodeLocation:self.model.location];
         }];
         
-        [[RACObserve(self, model.placemark) filter:^BOOL(CLPlacemark *placemark) {
-            return (placemark != nil);
-        }] subscribeNext:^(CLPlacemark *placemark) {
-            [self endLoading];
-            
-            [_activityIndicator stopAnimating];
-            
-            [UIView animateWithDuration:0.5
-                             animations:^ {
-                                 _tintView.alpha = TINT_ALPHA;
-                                 self.textLabel.alpha = 1;
-                             }];
-            
-            self.loaded = YES;
-            
-            _coordinate = placemark.location.coordinate;
-            
-            [self zoomToCoordinate:_coordinate];
-            [self dropPinWithCoordinate:_coordinate];
-            
-            self.textLabel.text = [NSString stringWithFormat:FORMATTED_ADDRESS,
-                                   placemark.subThoroughfare,
-                                   placemark.thoroughfare,
-                                   placemark.locality,
-                                   placemark.administrativeArea,
-                                   placemark.postalCode];
+        [RACObserve(self, model.placemark) subscribeNext:^(CLPlacemark *placemark) {
+            if (placemark) {
+                [self endLoading];
+                
+                [_activityIndicator stopAnimating];
+                
+                [UIView animateWithDuration:0.5
+                                 animations:^ {
+                                     _tintView.alpha = TINT_ALPHA;
+                                     self.textLabel.alpha = 1;
+                                 }];
+                
+                self.loaded = YES;
+                
+                _coordinate = placemark.location.coordinate;
+                
+                [self zoomToCoordinate:_coordinate];
+                [self dropPinWithCoordinate:_coordinate];
+                
+                self.textLabel.text = [NSString stringWithFormat:FORMATTED_ADDRESS,
+                                       placemark.subThoroughfare,
+                                       placemark.thoroughfare,
+                                       placemark.locality,
+                                       placemark.administrativeArea,
+                                       placemark.postalCode];
+            } else {
+                [self endLoading];
+                
+                [_activityIndicator stopAnimating];
+                
+                [UIView animateWithDuration:0.5
+                                 animations:^ {
+                                     _tintView.alpha = TINT_ALPHA;
+                                     self.textLabel.alpha = 1;
+                                 }];
+
+                self.textLabel.text = @"Couldn't find address.";
+                self.textLabel.textAlignment = NSTextAlignmentCenter;
+            }
         }];
     }
     return self;

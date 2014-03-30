@@ -36,6 +36,10 @@
                     self.placemark = [(CLPlacemark *)placemarks[0] copy];
                     [[DataStore sharedManager] persistPlacemark:(CLPlacemark *)placemarks[0] forStopID:self.stopID];
                 }
+                
+                if (error) {
+                    self.placemark = nil;
+                }
             }];
         });
     }

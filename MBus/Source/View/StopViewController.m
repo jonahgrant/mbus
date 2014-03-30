@@ -94,19 +94,6 @@
         SendEvent(ANALYTICS_STOP_ARRIVAL_NOTIFY);
         
         [self performSegueWithIdentifier:UMSegueNotify sender:self];
-        
-        /*
-        NSString *message = [NSString stringWithFormat:@"The %@ bus is arriving at %@ soon", arrival.name, self.model.stop.humanName];
-        
-        NotificationManager *notificationManager = [[NotificationManager alloc] init];
-        [notificationManager scheduleNotificationWithFireDate:[self.model firstArrivalDateForArrival:arrival] message:message];
-        
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Success!"
-                                                        message:[NSString stringWithFormat:@"You'll be notified when the %@ bus is almost at %@", arrival.name, self.model.stop.humanName]
-                                                       delegate:nil
-                                              cancelButtonTitle:nil
-                                              otherButtonTitles:@"Dismiss", nil];
-        [alert show];*/
     }];
     
     [actionSheet addCancelButtonWithTitle:@"Dismiss" handler:^ {
@@ -209,7 +196,7 @@
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 
-    if (indexPath.section == SectionRoutes /*&& self.model.arrivalIDsServicingStop.count != 0*/) {
+    if (indexPath.section == SectionRoutes && self.model.arrivalIDsServicingStop.count != 0) {
         [self presentRouteActionChooserForArrival:self.model.arrivalsServicingStop[self.activeIndexPath.row]];
     }
     
