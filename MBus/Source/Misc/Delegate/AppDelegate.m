@@ -16,6 +16,7 @@
 #import "AFHTTPRequestOperationManager.h"
 #import "UMResponseSerializer.h"
 #import "AppAnnouncement.h"
+#import "SUPGridWindow.h"
 
 @interface AppDelegate ()
 
@@ -37,6 +38,21 @@
     self.manager = [AFHTTPRequestOperationManager manager];
     [self fetchAppAnnouncements];
     
+#if DEBUG
+    /*
+    SUPGridWindow *grid = [SUPGridWindow sharedGridWindow];
+    [grid setGridColor:[UIColor redColor]];
+    [grid setMajorGridSize:CGSizeMake(40, 40)];
+     */
+#endif
+    
+#ifndef DEBUG
+    // analytics
+    [[GAI sharedInstance] trackerWithTrackingId:@"UA-46248477-1"];
+    [GAI sharedInstance].trackUncaughtExceptions = YES;
+    [GAI sharedInstance].dispatchInterval = 20;
+#endif
+    
     self.locationFormatter = [[TTTLocationFormatter alloc] init];
     [self.locationFormatter.numberFormatter setMaximumSignificantDigits:2];
     self.locationFormatter.bearingStyle = TTTBearingAbbreviationWordStyle;
@@ -55,11 +71,6 @@
     }];
     
     [[LocationManager sharedManager] fetchLocation];
-    
-    // analytics
-    [[GAI sharedInstance] trackerWithTrackingId:@"UA-46248477-1"];
-    [GAI sharedInstance].trackUncaughtExceptions = YES;
-    [GAI sharedInstance].dispatchInterval = 20;
     
     [AddressCellMapView sharedInstance];
     
