@@ -48,7 +48,7 @@ Run the project
 ## Interface
 ![Stop2](/Screenshots/Device/device-1.png "Stops")
 ![Stop](/Screenshots/Device/device-3.png "Stop")
-![Route](Stop](/Screenshots/Device/device-4.png "Route")
+![Route](/Screenshots/Device/device-4.png "Route")
 ![Map](/Screenshots/Device/device-5.png "Map")
 
 ## License
