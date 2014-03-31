@@ -17,6 +17,8 @@
 #import "UMResponseSerializer.h"
 #import "AppAnnouncement.h"
 #import "SUPGridWindow.h"
+#import "FBSettings.h"
+#import "FBAppEvents.h"
 
 @interface AppDelegate ()
 
@@ -46,7 +48,11 @@
      */
 #endif
     
+    [FBSettings setDefaultAppID:@"695910573780679"];
+    [FBAppEvents activateApp];
+    
 #ifndef DEBUG
+    
     // analytics
     [[GAI sharedInstance] trackerWithTrackingId:@"UA-46248477-1"];
     [GAI sharedInstance].trackUncaughtExceptions = YES;

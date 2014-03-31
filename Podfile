@@ -18,4 +18,5 @@ target "MBus" do
     pod 'SVPulsingAnnotationView', '~> 0.3.0'
     pod 'ObjectiveSugar'
     pod 'GCBActionSheet', '~> 1.0.0'
+    pod 'Facebook-iOS-SDK', '~> 3.13'
 end
