@@ -92,11 +92,17 @@
         [self performSegueWithIdentifier:UMSegueRoute sender:self];
     }];
     
-    [actionSheet addButtonWithTitle:@"Notify before arrival" handler:^ {
-        SendEvent(ANALYTICS_STOP_ARRIVAL_NOTIFY);
-        
-        [self performSegueWithIdentifier:UMSegueNotify sender:self];
-    }];
+    StopArrivalCellModel *arrivalCellModel = self.model.arrivalsServicingStopCellModels[self.activeIndexPath.row];
+    
+    if (![arrivalCellModel.firstArrivalString isEqualToString:@"Arriving Now"] &&
+        ![arrivalCellModel.firstArrivalString isEqualToString:@"01"] &&
+        ![arrivalCellModel.firstArrivalString isEqualToString:@"--"]) {
+        [actionSheet addButtonWithTitle:@"Notify before arrival" handler:^ {
+            SendEvent(ANALYTICS_STOP_ARRIVAL_NOTIFY);
+            
+            [self performSegueWithIdentifier:UMSegueNotify sender:self];
+        }];
+    }
     
     [actionSheet addCancelButtonWithTitle:@"Dismiss" handler:^ {
         SendEvent(ANALYTICS_STOP_ARRIVAL_DISMISS);
