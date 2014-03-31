@@ -1,7 +1,6 @@
 <img align="center" src="/Icons/header.png">
 
 # MBus
-[![githalytics.com alpha](https://cruel-carlota.pagodabox.com/0fe6bae62d6859d30f7f447fb3b2b188 "githalytics.com")](http://githalytics.com/jonahgrant/um-magic-bus)
 The University of Michigan has an awesome [live bus tracking system](http://mbus.pts.umich.edu/) for students.  This is an iOS implementation of it.
 
 This project runs on the [MVVM](http://en.wikipedia.org/wiki/Model_View_ViewModel) architecture, allowing abstraction of data-heavy code that would typically live in the view controller.
@@ -47,12 +46,10 @@ Run the project
 		Run
 
 ## Interface
-![Stop](https://dl.dropboxusercontent.com/u/2177718/Screen%20Shot%202013-12-23%20at%2011.42.24%20AM.png "Stop")
-![Routes](https://dl.dropboxusercontent.com/u/2177718/Screen%20Shot%202013-12-23%20at%2011.42.29%20AM.png "Routes")
-![Route](https://dl.dropboxusercontent.com/u/2177718/Screen%20Shot%202013-12-23%20at%2011.50.19%20AM.png "Route")
-![Route map](https://dl.dropboxusercontent.com/u/2177718/Screen%20Shot%202013-12-23%20at%2011.50.27%20AM.png "Route map")
-![Live bus](https://dl.dropboxusercontent.com/u/2177718/Screen%20Shot%202013-12-23%20at%2011.50.38%20AM.png "Live bus")
-![Announcmenets](https://dl.dropboxusercontent.com/u/2177718/Screen%20Shot%202013-12-23%20at%2011.50.40%20AM.png "Announcements")
+![Stop2](/Screenshots/Device/device-1.png "Stops")
+![Stop](/Screenshots/Device/device-3.png "Stop")
+![Route](Stop](/Screenshots/Device/device-4.png "Route")
+![Map](/Screenshots/Device/device-5.png "Map")
 
 ## License
 Copyright 2014 Jonah Grant
