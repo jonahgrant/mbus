@@ -107,7 +107,9 @@ static CGFloat const TINT_ALPHA = 0.69; // lol
                                        placemark.locality,
                                        placemark.administrativeArea,
                                        placemark.postalCode];
-            } else {
+            }
+            
+            /*else {
                 [self endLoading];
                 
                 [_activityIndicator stopAnimating];
@@ -120,7 +122,7 @@ static CGFloat const TINT_ALPHA = 0.69; // lol
 
                 self.textLabel.text = @"Couldn't find address.";
                 self.textLabel.textAlignment = NSTextAlignmentCenter;
-            }
+            }*/
         }];
     }
     return self;

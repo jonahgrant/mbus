@@ -21,6 +21,7 @@
 #import "NotificationManager.h"
 #import "MapViewController.h"
 #import "GCBActionSheet.h"
+#import "NotifyViewController.h"
 
 @interface StopViewController ()
 
@@ -87,6 +88,7 @@
     
     [actionSheet addButtonWithTitle:@"View route" handler:^ {
         SendEvent(ANALYTICS_STOP_ARRIVAL_VIEW_ROUTE);
+    
         [self performSegueWithIdentifier:UMSegueRoute sender:self];
     }];
     
@@ -196,6 +198,7 @@
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 
+    
     if (indexPath.section == SectionRoutes && self.model.arrivalIDsServicingStop.count != 0) {
         [self presentRouteActionChooserForArrival:self.model.arrivalsServicingStop[self.activeIndexPath.row]];
     }
@@ -252,6 +255,11 @@
         MapViewController *viewController = (MapViewController *)segue.destinationViewController;
         viewController.startingStop = self.model.stop;
         viewController.arrivalIDsServicingStop = self.model.arrivalIDsServicingStop;
+    } else if ([segue.identifier isEqual:UMSegueNotify]) {
+        UINavigationController *navController = (UINavigationController *)segue.destinationViewController;
+        NotifyViewController *viewController = (NotifyViewController *)navController.viewControllers[0];
+        viewController.stop = self.model.stop;
+        viewController.arrival = self.model.arrivalsServicingStop[self.activeIndexPath.row];
     }
 }
 

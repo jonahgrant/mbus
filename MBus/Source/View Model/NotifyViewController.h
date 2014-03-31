@@ -12,7 +12,7 @@
 
 @interface NotifyViewController : UMTableViewController
 
-@property (strong, nonatomic, readwrite) Arrival *arrival;
-@property (strong, nonatomic, readwrite) Stop *stop;
+@property (strong, nonatomic) Arrival *arrival;
+@property (strong, nonatomic) Stop *stop;
 
 @end

@@ -73,27 +73,27 @@
 		AB98129B18BC511300EFDEE7 /* StopViewControllerTitleViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AB98129A18BC511300EFDEE7 /* StopViewControllerTitleViewModel.m */; };
 		AB98129E18BC516300EFDEE7 /* StopViewControllerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AB98129D18BC516300EFDEE7 /* StopViewControllerModel.m */; };
 		ABBD924E18E8866C00FC4248 /* NotifyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABBD924D18E8866C00FC4248 /* NotifyViewController.m */; };
-		ABBD92DA18E88EA400FC4248 /* CALayer+ModalAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = ABBD92B118E88EA400FC4248 /* CALayer+ModalAlert.m */; };
-		ABBD92DB18E88EA400FC4248 /* LMAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = ABBD92B318E88EA400FC4248 /* LMAlertView.m */; };
-		ABBD92DC18E88EA400FC4248 /* LMEmbeddedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABBD92B518E88EA400FC4248 /* LMEmbeddedViewController.m */; };
-		ABBD92DD18E88EA400FC4248 /* LMModalItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ABBD92B718E88EA400FC4248 /* LMModalItemTableViewCell.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		ABBD92DE18E88EA400FC4248 /* LMModalSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = ABBD92B918E88EA400FC4248 /* LMModalSegue.m */; };
-		ABBD92DF18E88EA400FC4248 /* LMNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = ABBD92BB18E88EA400FC4248 /* LMNavigationBar.m */; };
-		ABBD92E018E88EA400FC4248 /* LMNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABBD92BD18E88EA400FC4248 /* LMNavigationController.m */; };
-		ABBD92E118E88EA400FC4248 /* Radial.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBD92BE18E88EA400FC4248 /* Radial.png */; };
-		ABBD92E218E88EA400FC4248 /* CAAnimation+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = ABBD92C318E88EA400FC4248 /* CAAnimation+Blocks.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		ABBD92E318E88EA400FC4248 /* COPYRIGHT.txt in Resources */ = {isa = PBXBuildFile; fileRef = ABBD92C418E88EA400FC4248 /* COPYRIGHT.txt */; };
-		ABBD92E418E88EA400FC4248 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = ABBD92C518E88EA400FC4248 /* README.md */; };
-		ABBD92E518E88EA400FC4248 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = ABBD92C718E88EA400FC4248 /* LICENSE */; };
-		ABBD92E618E88EA400FC4248 /* RBBAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = ABBD92CA18E88EA400FC4248 /* RBBAnimation.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		ABBD92E718E88EA400FC4248 /* RBBBlockBasedArray.m in Sources */ = {isa = PBXBuildFile; fileRef = ABBD92CC18E88EA400FC4248 /* RBBBlockBasedArray.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		ABBD92E818E88EA400FC4248 /* RBBCubicBezier.m in Sources */ = {isa = PBXBuildFile; fileRef = ABBD92CE18E88EA400FC4248 /* RBBCubicBezier.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		ABBD92E918E88EA400FC4248 /* RBBCustomAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = ABBD92D018E88EA400FC4248 /* RBBCustomAnimation.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		ABBD92EA18E88EA400FC4248 /* RBBEasingFunction.m in Sources */ = {isa = PBXBuildFile; fileRef = ABBD92D218E88EA400FC4248 /* RBBEasingFunction.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		ABBD92EB18E88EA400FC4248 /* RBBLinearInterpolation.m in Sources */ = {isa = PBXBuildFile; fileRef = ABBD92D418E88EA400FC4248 /* RBBLinearInterpolation.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		ABBD92EC18E88EA400FC4248 /* RBBSpringAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = ABBD92D618E88EA400FC4248 /* RBBSpringAnimation.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		ABBD92ED18E88EA400FC4248 /* RBBTweenAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = ABBD92D818E88EA400FC4248 /* RBBTweenAnimation.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		ABBD92EE18E88EA400FC4248 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = ABBD92D918E88EA400FC4248 /* README.md */; };
+		ABBD931A18E9C17D00FC4248 /* CALayer+ModalAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = ABBD92F118E9C17D00FC4248 /* CALayer+ModalAlert.m */; };
+		ABBD931B18E9C17D00FC4248 /* LMAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = ABBD92F318E9C17D00FC4248 /* LMAlertView.m */; };
+		ABBD931C18E9C17D00FC4248 /* LMEmbeddedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABBD92F518E9C17D00FC4248 /* LMEmbeddedViewController.m */; };
+		ABBD931D18E9C17D00FC4248 /* LMModalItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ABBD92F718E9C17D00FC4248 /* LMModalItemTableViewCell.m */; };
+		ABBD931E18E9C17D00FC4248 /* LMModalSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = ABBD92F918E9C17D00FC4248 /* LMModalSegue.m */; };
+		ABBD931F18E9C17D00FC4248 /* LMNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = ABBD92FB18E9C17D00FC4248 /* LMNavigationBar.m */; };
+		ABBD932018E9C17D00FC4248 /* LMNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABBD92FD18E9C17D00FC4248 /* LMNavigationController.m */; };
+		ABBD932118E9C17D00FC4248 /* Radial.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBD92FE18E9C17D00FC4248 /* Radial.png */; };
+		ABBD932218E9C17D00FC4248 /* CAAnimation+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = ABBD930318E9C17D00FC4248 /* CAAnimation+Blocks.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		ABBD932318E9C17D00FC4248 /* COPYRIGHT.txt in Resources */ = {isa = PBXBuildFile; fileRef = ABBD930418E9C17D00FC4248 /* COPYRIGHT.txt */; };
+		ABBD932418E9C17D00FC4248 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = ABBD930518E9C17D00FC4248 /* README.md */; };
+		ABBD932518E9C17D00FC4248 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = ABBD930718E9C17D00FC4248 /* LICENSE */; };
+		ABBD932618E9C17D00FC4248 /* RBBAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = ABBD930A18E9C17D00FC4248 /* RBBAnimation.m */; };
+		ABBD932718E9C17D00FC4248 /* RBBBlockBasedArray.m in Sources */ = {isa = PBXBuildFile; fileRef = ABBD930C18E9C17D00FC4248 /* RBBBlockBasedArray.m */; };
+		ABBD932818E9C17D00FC4248 /* RBBCubicBezier.m in Sources */ = {isa = PBXBuildFile; fileRef = ABBD930E18E9C17D00FC4248 /* RBBCubicBezier.m */; };
+		ABBD932918E9C17D00FC4248 /* RBBCustomAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = ABBD931018E9C17D00FC4248 /* RBBCustomAnimation.m */; };
+		ABBD932A18E9C17D00FC4248 /* RBBEasingFunction.m in Sources */ = {isa = PBXBuildFile; fileRef = ABBD931218E9C17D00FC4248 /* RBBEasingFunction.m */; };
+		ABBD932B18E9C17D00FC4248 /* RBBLinearInterpolation.m in Sources */ = {isa = PBXBuildFile; fileRef = ABBD931418E9C17D00FC4248 /* RBBLinearInterpolation.m */; };
+		ABBD932C18E9C17D00FC4248 /* RBBSpringAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = ABBD931618E9C17D00FC4248 /* RBBSpringAnimation.m */; };
+		ABBD932D18E9C17D00FC4248 /* RBBTweenAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = ABBD931818E9C17D00FC4248 /* RBBTweenAnimation.m */; };
+		ABBD932E18E9C17D00FC4248 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = ABBD931918E9C17D00FC4248 /* README.md */; };
 		ABD1E0D118E62B87004A1D00 /* AppAnnouncement.m in Sources */ = {isa = PBXBuildFile; fileRef = ABD1E0D018E62B87004A1D00 /* AppAnnouncement.m */; };
 		ABDB5B4A18C0114A005AA38B /* MiscViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABDB5B4918C0114A005AA38B /* MiscViewController.m */; };
 		ABDB5B4D18C0120D005AA38B /* MiscViewControllerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ABDB5B4C18C0120D005AA38B /* MiscViewControllerModel.m */; };
@@ -234,43 +234,43 @@
 		AB98129D18BC516300EFDEE7 /* StopViewControllerModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StopViewControllerModel.m; sourceTree = "<group>"; };
 		ABBD924C18E8866C00FC4248 /* NotifyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NotifyViewController.h; path = "MBus/Source/View Model/NotifyViewController.h"; sourceTree = SOURCE_ROOT; };
 		ABBD924D18E8866C00FC4248 /* NotifyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NotifyViewController.m; path = "MBus/Source/View Model/NotifyViewController.m"; sourceTree = SOURCE_ROOT; };
-		ABBD92B018E88EA400FC4248 /* CALayer+ModalAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CALayer+ModalAlert.h"; sourceTree = "<group>"; };
-		ABBD92B118E88EA400FC4248 /* CALayer+ModalAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CALayer+ModalAlert.m"; sourceTree = "<group>"; };
-		ABBD92B218E88EA400FC4248 /* LMAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMAlertView.h; sourceTree = "<group>"; };
-		ABBD92B318E88EA400FC4248 /* LMAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMAlertView.m; sourceTree = "<group>"; };
-		ABBD92B418E88EA400FC4248 /* LMEmbeddedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMEmbeddedViewController.h; sourceTree = "<group>"; };
-		ABBD92B518E88EA400FC4248 /* LMEmbeddedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMEmbeddedViewController.m; sourceTree = "<group>"; };
-		ABBD92B618E88EA400FC4248 /* LMModalItemTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMModalItemTableViewCell.h; sourceTree = "<group>"; };
-		ABBD92B718E88EA400FC4248 /* LMModalItemTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMModalItemTableViewCell.m; sourceTree = "<group>"; };
-		ABBD92B818E88EA400FC4248 /* LMModalSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMModalSegue.h; sourceTree = "<group>"; };
-		ABBD92B918E88EA400FC4248 /* LMModalSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMModalSegue.m; sourceTree = "<group>"; };
-		ABBD92BA18E88EA400FC4248 /* LMNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMNavigationBar.h; sourceTree = "<group>"; };
-		ABBD92BB18E88EA400FC4248 /* LMNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMNavigationBar.m; sourceTree = "<group>"; };
-		ABBD92BC18E88EA400FC4248 /* LMNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMNavigationController.h; sourceTree = "<group>"; };
-		ABBD92BD18E88EA400FC4248 /* LMNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMNavigationController.m; sourceTree = "<group>"; };
-		ABBD92BE18E88EA400FC4248 /* Radial.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Radial.png; sourceTree = "<group>"; };
-		ABBD92C218E88EA400FC4248 /* CAAnimation+Blocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CAAnimation+Blocks.h"; sourceTree = "<group>"; };
-		ABBD92C318E88EA400FC4248 /* CAAnimation+Blocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CAAnimation+Blocks.m"; sourceTree = "<group>"; };
-		ABBD92C418E88EA400FC4248 /* COPYRIGHT.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = COPYRIGHT.txt; sourceTree = "<group>"; };
-		ABBD92C518E88EA400FC4248 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
-		ABBD92C718E88EA400FC4248 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
-		ABBD92C918E88EA400FC4248 /* RBBAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBBAnimation.h; sourceTree = "<group>"; };
-		ABBD92CA18E88EA400FC4248 /* RBBAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBBAnimation.m; sourceTree = "<group>"; };
-		ABBD92CB18E88EA400FC4248 /* RBBBlockBasedArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBBBlockBasedArray.h; sourceTree = "<group>"; };
-		ABBD92CC18E88EA400FC4248 /* RBBBlockBasedArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBBBlockBasedArray.m; sourceTree = "<group>"; };
-		ABBD92CD18E88EA400FC4248 /* RBBCubicBezier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBBCubicBezier.h; sourceTree = "<group>"; };
-		ABBD92CE18E88EA400FC4248 /* RBBCubicBezier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBBCubicBezier.m; sourceTree = "<group>"; };
-		ABBD92CF18E88EA400FC4248 /* RBBCustomAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBBCustomAnimation.h; sourceTree = "<group>"; };
-		ABBD92D018E88EA400FC4248 /* RBBCustomAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBBCustomAnimation.m; sourceTree = "<group>"; };
-		ABBD92D118E88EA400FC4248 /* RBBEasingFunction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBBEasingFunction.h; sourceTree = "<group>"; };
-		ABBD92D218E88EA400FC4248 /* RBBEasingFunction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBBEasingFunction.m; sourceTree = "<group>"; };
-		ABBD92D318E88EA400FC4248 /* RBBLinearInterpolation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBBLinearInterpolation.h; sourceTree = "<group>"; };
-		ABBD92D418E88EA400FC4248 /* RBBLinearInterpolation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBBLinearInterpolation.m; sourceTree = "<group>"; };
-		ABBD92D518E88EA400FC4248 /* RBBSpringAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBBSpringAnimation.h; sourceTree = "<group>"; };
-		ABBD92D618E88EA400FC4248 /* RBBSpringAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBBSpringAnimation.m; sourceTree = "<group>"; };
-		ABBD92D718E88EA400FC4248 /* RBBTweenAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBBTweenAnimation.h; sourceTree = "<group>"; };
-		ABBD92D818E88EA400FC4248 /* RBBTweenAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBBTweenAnimation.m; sourceTree = "<group>"; };
-		ABBD92D918E88EA400FC4248 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+		ABBD92F018E9C17D00FC4248 /* CALayer+ModalAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CALayer+ModalAlert.h"; sourceTree = "<group>"; };
+		ABBD92F118E9C17D00FC4248 /* CALayer+ModalAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CALayer+ModalAlert.m"; sourceTree = "<group>"; };
+		ABBD92F218E9C17D00FC4248 /* LMAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMAlertView.h; sourceTree = "<group>"; };
+		ABBD92F318E9C17D00FC4248 /* LMAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMAlertView.m; sourceTree = "<group>"; };
+		ABBD92F418E9C17D00FC4248 /* LMEmbeddedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMEmbeddedViewController.h; sourceTree = "<group>"; };
+		ABBD92F518E9C17D00FC4248 /* LMEmbeddedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMEmbeddedViewController.m; sourceTree = "<group>"; };
+		ABBD92F618E9C17D00FC4248 /* LMModalItemTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMModalItemTableViewCell.h; sourceTree = "<group>"; };
+		ABBD92F718E9C17D00FC4248 /* LMModalItemTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMModalItemTableViewCell.m; sourceTree = "<group>"; };
+		ABBD92F818E9C17D00FC4248 /* LMModalSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMModalSegue.h; sourceTree = "<group>"; };
+		ABBD92F918E9C17D00FC4248 /* LMModalSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMModalSegue.m; sourceTree = "<group>"; };
+		ABBD92FA18E9C17D00FC4248 /* LMNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMNavigationBar.h; sourceTree = "<group>"; };
+		ABBD92FB18E9C17D00FC4248 /* LMNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMNavigationBar.m; sourceTree = "<group>"; };
+		ABBD92FC18E9C17D00FC4248 /* LMNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMNavigationController.h; sourceTree = "<group>"; };
+		ABBD92FD18E9C17D00FC4248 /* LMNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMNavigationController.m; sourceTree = "<group>"; };
+		ABBD92FE18E9C17D00FC4248 /* Radial.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Radial.png; sourceTree = "<group>"; };
+		ABBD930218E9C17D00FC4248 /* CAAnimation+Blocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CAAnimation+Blocks.h"; sourceTree = "<group>"; };
+		ABBD930318E9C17D00FC4248 /* CAAnimation+Blocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CAAnimation+Blocks.m"; sourceTree = "<group>"; };
+		ABBD930418E9C17D00FC4248 /* COPYRIGHT.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = COPYRIGHT.txt; sourceTree = "<group>"; };
+		ABBD930518E9C17D00FC4248 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+		ABBD930718E9C17D00FC4248 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		ABBD930918E9C17D00FC4248 /* RBBAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBBAnimation.h; sourceTree = "<group>"; };
+		ABBD930A18E9C17D00FC4248 /* RBBAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBBAnimation.m; sourceTree = "<group>"; };
+		ABBD930B18E9C17D00FC4248 /* RBBBlockBasedArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBBBlockBasedArray.h; sourceTree = "<group>"; };
+		ABBD930C18E9C17D00FC4248 /* RBBBlockBasedArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBBBlockBasedArray.m; sourceTree = "<group>"; };
+		ABBD930D18E9C17D00FC4248 /* RBBCubicBezier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBBCubicBezier.h; sourceTree = "<group>"; };
+		ABBD930E18E9C17D00FC4248 /* RBBCubicBezier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBBCubicBezier.m; sourceTree = "<group>"; };
+		ABBD930F18E9C17D00FC4248 /* RBBCustomAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBBCustomAnimation.h; sourceTree = "<group>"; };
+		ABBD931018E9C17D00FC4248 /* RBBCustomAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBBCustomAnimation.m; sourceTree = "<group>"; };
+		ABBD931118E9C17D00FC4248 /* RBBEasingFunction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBBEasingFunction.h; sourceTree = "<group>"; };
+		ABBD931218E9C17D00FC4248 /* RBBEasingFunction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBBEasingFunction.m; sourceTree = "<group>"; };
+		ABBD931318E9C17D00FC4248 /* RBBLinearInterpolation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBBLinearInterpolation.h; sourceTree = "<group>"; };
+		ABBD931418E9C17D00FC4248 /* RBBLinearInterpolation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBBLinearInterpolation.m; sourceTree = "<group>"; };
+		ABBD931518E9C17D00FC4248 /* RBBSpringAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBBSpringAnimation.h; sourceTree = "<group>"; };
+		ABBD931618E9C17D00FC4248 /* RBBSpringAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBBSpringAnimation.m; sourceTree = "<group>"; };
+		ABBD931718E9C17D00FC4248 /* RBBTweenAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBBTweenAnimation.h; sourceTree = "<group>"; };
+		ABBD931818E9C17D00FC4248 /* RBBTweenAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBBTweenAnimation.m; sourceTree = "<group>"; };
+		ABBD931918E9C17D00FC4248 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		ABD1E0CF18E62B87004A1D00 /* AppAnnouncement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppAnnouncement.h; sourceTree = "<group>"; };
 		ABD1E0D018E62B87004A1D00 /* AppAnnouncement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppAnnouncement.m; sourceTree = "<group>"; };
 		ABDB5B4818C0114A005AA38B /* MiscViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MiscViewController.h; sourceTree = "<group>"; };
@@ -525,7 +525,7 @@
 		AB467E0C18B44D5D00AF1076 /* 3rdParty */ = {
 			isa = PBXGroup;
 			children = (
-				ABBD92AF18E88EA400FC4248 /* LMAlertView */,
+				ABBD92EF18E9C17D00FC4248 /* LMAlertView */,
 				AB40A14418E7AEA3001D8D50 /* SUPGridWindow */,
 				AB467E0D18B44D5D00AF1076 /* Google Analytics */,
 			);
@@ -616,86 +616,86 @@
 			name = ArrivalCell;
 			sourceTree = "<group>";
 		};
-		ABBD92AF18E88EA400FC4248 /* LMAlertView */ = {
+		ABBD92EF18E9C17D00FC4248 /* LMAlertView */ = {
 			isa = PBXGroup;
 			children = (
-				ABBD92B018E88EA400FC4248 /* CALayer+ModalAlert.h */,
-				ABBD92B118E88EA400FC4248 /* CALayer+ModalAlert.m */,
-				ABBD92B218E88EA400FC4248 /* LMAlertView.h */,
-				ABBD92B318E88EA400FC4248 /* LMAlertView.m */,
-				ABBD92B418E88EA400FC4248 /* LMEmbeddedViewController.h */,
-				ABBD92B518E88EA400FC4248 /* LMEmbeddedViewController.m */,
-				ABBD92B618E88EA400FC4248 /* LMModalItemTableViewCell.h */,
-				ABBD92B718E88EA400FC4248 /* LMModalItemTableViewCell.m */,
-				ABBD92B818E88EA400FC4248 /* LMModalSegue.h */,
-				ABBD92B918E88EA400FC4248 /* LMModalSegue.m */,
-				ABBD92BA18E88EA400FC4248 /* LMNavigationBar.h */,
-				ABBD92BB18E88EA400FC4248 /* LMNavigationBar.m */,
-				ABBD92BC18E88EA400FC4248 /* LMNavigationController.h */,
-				ABBD92BD18E88EA400FC4248 /* LMNavigationController.m */,
-				ABBD92BE18E88EA400FC4248 /* Radial.png */,
-				ABBD92BF18E88EA400FC4248 /* Vendor */,
+				ABBD92F018E9C17D00FC4248 /* CALayer+ModalAlert.h */,
+				ABBD92F118E9C17D00FC4248 /* CALayer+ModalAlert.m */,
+				ABBD92F218E9C17D00FC4248 /* LMAlertView.h */,
+				ABBD92F318E9C17D00FC4248 /* LMAlertView.m */,
+				ABBD92F418E9C17D00FC4248 /* LMEmbeddedViewController.h */,
+				ABBD92F518E9C17D00FC4248 /* LMEmbeddedViewController.m */,
+				ABBD92F618E9C17D00FC4248 /* LMModalItemTableViewCell.h */,
+				ABBD92F718E9C17D00FC4248 /* LMModalItemTableViewCell.m */,
+				ABBD92F818E9C17D00FC4248 /* LMModalSegue.h */,
+				ABBD92F918E9C17D00FC4248 /* LMModalSegue.m */,
+				ABBD92FA18E9C17D00FC4248 /* LMNavigationBar.h */,
+				ABBD92FB18E9C17D00FC4248 /* LMNavigationBar.m */,
+				ABBD92FC18E9C17D00FC4248 /* LMNavigationController.h */,
+				ABBD92FD18E9C17D00FC4248 /* LMNavigationController.m */,
+				ABBD92FE18E9C17D00FC4248 /* Radial.png */,
+				ABBD92FF18E9C17D00FC4248 /* Vendor */,
 			);
 			path = LMAlertView;
 			sourceTree = "<group>";
 		};
-		ABBD92BF18E88EA400FC4248 /* Vendor */ = {
+		ABBD92FF18E9C17D00FC4248 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
-				ABBD92C018E88EA400FC4248 /* CAAnimationBlocks */,
-				ABBD92C618E88EA400FC4248 /* RBBAnimation */,
+				ABBD930018E9C17D00FC4248 /* CAAnimationBlocks */,
+				ABBD930618E9C17D00FC4248 /* RBBAnimation */,
 			);
 			path = Vendor;
 			sourceTree = "<group>";
 		};
-		ABBD92C018E88EA400FC4248 /* CAAnimationBlocks */ = {
+		ABBD930018E9C17D00FC4248 /* CAAnimationBlocks */ = {
 			isa = PBXGroup;
 			children = (
-				ABBD92C118E88EA400FC4248 /* CAAnimationBlocks */,
-				ABBD92C418E88EA400FC4248 /* COPYRIGHT.txt */,
-				ABBD92C518E88EA400FC4248 /* README.md */,
+				ABBD930118E9C17D00FC4248 /* CAAnimationBlocks */,
+				ABBD930418E9C17D00FC4248 /* COPYRIGHT.txt */,
+				ABBD930518E9C17D00FC4248 /* README.md */,
 			);
 			path = CAAnimationBlocks;
 			sourceTree = "<group>";
 		};
-		ABBD92C118E88EA400FC4248 /* CAAnimationBlocks */ = {
+		ABBD930118E9C17D00FC4248 /* CAAnimationBlocks */ = {
 			isa = PBXGroup;
 			children = (
-				ABBD92C218E88EA400FC4248 /* CAAnimation+Blocks.h */,
-				ABBD92C318E88EA400FC4248 /* CAAnimation+Blocks.m */,
+				ABBD930218E9C17D00FC4248 /* CAAnimation+Blocks.h */,
+				ABBD930318E9C17D00FC4248 /* CAAnimation+Blocks.m */,
 			);
 			path = CAAnimationBlocks;
 			sourceTree = "<group>";
 		};
-		ABBD92C618E88EA400FC4248 /* RBBAnimation */ = {
+		ABBD930618E9C17D00FC4248 /* RBBAnimation */ = {
 			isa = PBXGroup;
 			children = (
-				ABBD92C718E88EA400FC4248 /* LICENSE */,
-				ABBD92C818E88EA400FC4248 /* RBBAnimation */,
-				ABBD92D918E88EA400FC4248 /* README.md */,
+				ABBD930718E9C17D00FC4248 /* LICENSE */,
+				ABBD930818E9C17D00FC4248 /* RBBAnimation */,
+				ABBD931918E9C17D00FC4248 /* README.md */,
 			);
 			path = RBBAnimation;
 			sourceTree = "<group>";
 		};
-		ABBD92C818E88EA400FC4248 /* RBBAnimation */ = {
+		ABBD930818E9C17D00FC4248 /* RBBAnimation */ = {
 			isa = PBXGroup;
 			children = (
-				ABBD92C918E88EA400FC4248 /* RBBAnimation.h */,
-				ABBD92CA18E88EA400FC4248 /* RBBAnimation.m */,
-				ABBD92CB18E88EA400FC4248 /* RBBBlockBasedArray.h */,
-				ABBD92CC18E88EA400FC4248 /* RBBBlockBasedArray.m */,
-				ABBD92CD18E88EA400FC4248 /* RBBCubicBezier.h */,
-				ABBD92CE18E88EA400FC4248 /* RBBCubicBezier.m */,
-				ABBD92CF18E88EA400FC4248 /* RBBCustomAnimation.h */,
-				ABBD92D018E88EA400FC4248 /* RBBCustomAnimation.m */,
-				ABBD92D118E88EA400FC4248 /* RBBEasingFunction.h */,
-				ABBD92D218E88EA400FC4248 /* RBBEasingFunction.m */,
-				ABBD92D318E88EA400FC4248 /* RBBLinearInterpolation.h */,
-				ABBD92D418E88EA400FC4248 /* RBBLinearInterpolation.m */,
-				ABBD92D518E88EA400FC4248 /* RBBSpringAnimation.h */,
-				ABBD92D618E88EA400FC4248 /* RBBSpringAnimation.m */,
-				ABBD92D718E88EA400FC4248 /* RBBTweenAnimation.h */,
-				ABBD92D818E88EA400FC4248 /* RBBTweenAnimation.m */,
+				ABBD930918E9C17D00FC4248 /* RBBAnimation.h */,
+				ABBD930A18E9C17D00FC4248 /* RBBAnimation.m */,
+				ABBD930B18E9C17D00FC4248 /* RBBBlockBasedArray.h */,
+				ABBD930C18E9C17D00FC4248 /* RBBBlockBasedArray.m */,
+				ABBD930D18E9C17D00FC4248 /* RBBCubicBezier.h */,
+				ABBD930E18E9C17D00FC4248 /* RBBCubicBezier.m */,
+				ABBD930F18E9C17D00FC4248 /* RBBCustomAnimation.h */,
+				ABBD931018E9C17D00FC4248 /* RBBCustomAnimation.m */,
+				ABBD931118E9C17D00FC4248 /* RBBEasingFunction.h */,
+				ABBD931218E9C17D00FC4248 /* RBBEasingFunction.m */,
+				ABBD931318E9C17D00FC4248 /* RBBLinearInterpolation.h */,
+				ABBD931418E9C17D00FC4248 /* RBBLinearInterpolation.m */,
+				ABBD931518E9C17D00FC4248 /* RBBSpringAnimation.h */,
+				ABBD931618E9C17D00FC4248 /* RBBSpringAnimation.m */,
+				ABBD931718E9C17D00FC4248 /* RBBTweenAnimation.h */,
+				ABBD931818E9C17D00FC4248 /* RBBTweenAnimation.m */,
 			);
 			path = RBBAnimation;
 			sourceTree = "<group>";
@@ -761,13 +761,13 @@
 			files = (
 				ABDB5B4F18C013A1005AA38B /* Pods-MBus-acknowledgements.plist in Resources */,
 				AB467DFA18B44A1C00AF1076 /* Main.storyboard in Resources */,
-				ABBD92E518E88EA400FC4248 /* LICENSE in Resources */,
-				ABBD92E318E88EA400FC4248 /* COPYRIGHT.txt in Resources */,
-				ABBD92E418E88EA400FC4248 /* README.md in Resources */,
+				ABBD932518E9C17D00FC4248 /* LICENSE in Resources */,
+				ABBD932318E9C17D00FC4248 /* COPYRIGHT.txt in Resources */,
+				ABBD932418E9C17D00FC4248 /* README.md in Resources */,
 				AB467DF918B44A1C00AF1076 /* Images.xcassets in Resources */,
-				ABBD92EE18E88EA400FC4248 /* README.md in Resources */,
+				ABBD932E18E9C17D00FC4248 /* README.md in Resources */,
 				AB98129518BC446F00EFDEE7 /* AnnArbor.gpx in Resources */,
-				ABBD92E118E88EA400FC4248 /* Radial.png in Resources */,
+				ABBD932118E9C17D00FC4248 /* Radial.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -813,7 +813,7 @@
 			files = (
 				ABBD924E18E8866C00FC4248 /* NotifyViewController.m in Sources */,
 				AB98129B18BC511300EFDEE7 /* StopViewControllerTitleViewModel.m in Sources */,
-				ABBD92DA18E88EA400FC4248 /* CALayer+ModalAlert.m in Sources */,
+				ABBD931A18E9C17D00FC4248 /* CALayer+ModalAlert.m in Sources */,
 				AB3A741A18C9287900A2891E /* CircleAnnotationView.m in Sources */,
 				AB4C12A318C2EE0100485234 /* ArrivalRouteCell.m in Sources */,
 				AB4C129818C2E81300485234 /* StopArrivalCellModel.m in Sources */,
@@ -823,7 +823,7 @@
 				AB612DF518CA61D00074D6B7 /* NotificationManager.m in Sources */,
 				AB4C129318C2E7FF00485234 /* StopArrivalCell.m in Sources */,
 				AB467E0B18B44CF900AF1076 /* LocationManager.m in Sources */,
-				ABBD92DE18E88EA400FC4248 /* LMModalSegue.m in Sources */,
+				ABBD931E18E9C17D00FC4248 /* LMModalSegue.m in Sources */,
 				AB4C12A818C2EE1100485234 /* ArrivalRouteCellModel.m in Sources */,
 				AB40A14A18E7AEA3001D8D50 /* SUPGridWindow.m in Sources */,
 				AB4C12BA18C2EE5F00485234 /* StopAnnotation.m in Sources */,
@@ -839,16 +839,16 @@
 				AB4C12BF18C2EE6C00485234 /* ArrivalCell.m in Sources */,
 				AB467DFD18B44A1C00AF1076 /* main.m in Sources */,
 				AB4C12A418C2EE0100485234 /* ArrivalRouteCellView.m in Sources */,
-				ABBD92EB18E88EA400FC4248 /* RBBLinearInterpolation.m in Sources */,
+				ABBD932B18E9C17D00FC4248 /* RBBLinearInterpolation.m in Sources */,
 				AB467E6A18B472A800AF1076 /* StopCellModel.m in Sources */,
 				AB40A14918E7AEA3001D8D50 /* SUPGridView.m in Sources */,
 				AB4C129E18C2EDF100485234 /* RoutesViewController.m in Sources */,
 				AB467E6618B4729100AF1076 /* StopCell.m in Sources */,
-				ABBD92DD18E88EA400FC4248 /* LMModalItemTableViewCell.m in Sources */,
+				ABBD931D18E9C17D00FC4248 /* LMModalItemTableViewCell.m in Sources */,
 				AB467E0218B44B0700AF1076 /* StopsViewController.m in Sources */,
-				ABBD92E918E88EA400FC4248 /* RBBCustomAnimation.m in Sources */,
-				ABBD92DB18E88EA400FC4248 /* LMAlertView.m in Sources */,
-				ABBD92ED18E88EA400FC4248 /* RBBTweenAnimation.m in Sources */,
+				ABBD932918E9C17D00FC4248 /* RBBCustomAnimation.m in Sources */,
+				ABBD931B18E9C17D00FC4248 /* LMAlertView.m in Sources */,
+				ABBD932D18E9C17D00FC4248 /* RBBTweenAnimation.m in Sources */,
 				ABDB5B4A18C0114A005AA38B /* MiscViewController.m in Sources */,
 				AB467E0518B44B1100AF1076 /* StopsViewControllerModel.m in Sources */,
 				AB4C129B18C2EDE500485234 /* RoutesViewControllerModel.m in Sources */,
@@ -856,33 +856,33 @@
 				AB4C128418C2D87600485234 /* BusAnnotation.m in Sources */,
 				AB4C12B118C2EE3400485234 /* RouteViewController.m in Sources */,
 				AB8C7C5818BD5E88007806C3 /* AllStopsViewController.m in Sources */,
-				ABBD92EA18E88EA400FC4248 /* RBBEasingFunction.m in Sources */,
-				ABBD92EC18E88EA400FC4248 /* RBBSpringAnimation.m in Sources */,
-				ABBD92E618E88EA400FC4248 /* RBBAnimation.m in Sources */,
-				ABBD92DF18E88EA400FC4248 /* LMNavigationBar.m in Sources */,
+				ABBD932A18E9C17D00FC4248 /* RBBEasingFunction.m in Sources */,
+				ABBD932C18E9C17D00FC4248 /* RBBSpringAnimation.m in Sources */,
+				ABBD932618E9C17D00FC4248 /* RBBAnimation.m in Sources */,
+				ABBD931F18E9C17D00FC4248 /* LMNavigationBar.m in Sources */,
 				AB467DFC18B44A1C00AF1076 /* AppDelegate.m in Sources */,
 				AB467E6718B4729100AF1076 /* StopCellView.m in Sources */,
-				ABBD92E818E88EA400FC4248 /* RBBCubicBezier.m in Sources */,
+				ABBD932818E9C17D00FC4248 /* RBBCubicBezier.m in Sources */,
 				AB467E5A18B4510F00AF1076 /* ViewControllerModelBase.m in Sources */,
 				AB4C127E18C2D5E300485234 /* WebViewController.m in Sources */,
 				AB467E7718B4814500AF1076 /* UMSegueIdentifiers.m in Sources */,
 				AB4C12B418C2EE4800485234 /* RouteMapViewController.m in Sources */,
 				AB4C128118C2D76600485234 /* MapViewControllerModel.m in Sources */,
 				ABDB5B4D18C0120D005AA38B /* MiscViewControllerModel.m in Sources */,
-				ABBD92E018E88EA400FC4248 /* LMNavigationController.m in Sources */,
+				ABBD932018E9C17D00FC4248 /* LMNavigationController.m in Sources */,
 				AB4C12D018C2FC3800485234 /* AnnouncementsViewController.m in Sources */,
 				AB467E6E18B4779700AF1076 /* UMAdditions+UIFont.m in Sources */,
 				AB4C127918C2C69D00485234 /* MapViewController.m in Sources */,
 				AB98129318BC37E700EFDEE7 /* DistanceTagView.m in Sources */,
-				ABBD92E218E88EA400FC4248 /* CAAnimation+Blocks.m in Sources */,
-				ABBD92E718E88EA400FC4248 /* RBBBlockBasedArray.m in Sources */,
+				ABBD932218E9C17D00FC4248 /* CAAnimation+Blocks.m in Sources */,
+				ABBD932718E9C17D00FC4248 /* RBBBlockBasedArray.m in Sources */,
 				AB6A1FD118CFA7E00036F88D /* AddressCellMapView.m in Sources */,
 				AB4C12C018C2EE6C00485234 /* ArrivalCellView.m in Sources */,
 				AB4C129418C2E7FF00485234 /* StopArrivalCellView.m in Sources */,
 				AB4C128B18C2DFDE00485234 /* AddressCellModel.m in Sources */,
 				AB4C12C718C2EEBA00485234 /* StopTrayModel.m in Sources */,
 				AB98129018BC015000EFDEE7 /* InitialedCircleView.m in Sources */,
-				ABBD92DC18E88EA400FC4248 /* LMEmbeddedViewController.m in Sources */,
+				ABBD931C18E9C17D00FC4248 /* LMEmbeddedViewController.m in Sources */,
 				AB4C12CD18C2FC2200485234 /* AnnouncementsViewControllerModel.m in Sources */,
 				AB4C12AB18C2EE1C00485234 /* ArrivalCellModel.m in Sources */,
 			);

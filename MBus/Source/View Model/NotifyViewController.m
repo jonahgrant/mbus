@@ -31,6 +31,8 @@
     
     UIBarButtonItem *closeBarButton = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStyleDone target:self action:@selector(dismiss)];
     self.navigationItem.leftBarButtonItem = closeBarButton;
+    
+    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"Cell"];
 }
 
 #pragma mark -
@@ -120,10 +122,14 @@
     NSString *minutesText = [NSString stringWithFormat:@"%i", minutesTextInt];
     NSString *minutesLabel = (minutes > 5) ? ([minutesText isEqualToString:@"1"]) ? @"minute" : @"minutes" :  ([minutesText isEqualToString:@"1"]) ? @"second" : @"seconds";
 
-    NSString *message = [NSString stringWithFormat:@"The %@ bus is arriving at %@ in %@ %@.", self.arrival.name, self.stop.humanName, minutesText, minutesLabel];
+    NSString *message = [NSString stringWithFormat:@"The %@ bus is arriving at %@ in about %@ %@.", self.arrival.name, self.stop.humanName, minutesText, minutesLabel];
     NotificationManager *notificationManager = [[NotificationManager alloc] init];
-    [notificationManager scheduleNotificationWithFireDate:[NSDate dateWithTimeIntervalSinceNow:self.seconds - seconds] message:message];
-    NSLog(@"notifying in %f seconds", self.seconds - seconds);
+    [notificationManager scheduleNotificationWithFireDate:[NSDate dateWithTimeInterval:self.seconds - seconds
+                                                                             sinceDate:[DataStore sharedManager].arrivalsTimestamp]
+                                                  message:message];
+    
+    NSString *analyticsLabel = [NSString stringWithFormat:@"%@ %@", minutesText, minutesLabel];
+    SendEventWithLabel(@"schedule_notification", analyticsLabel);
     
     [self dismiss];
 }
