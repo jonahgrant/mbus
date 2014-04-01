@@ -68,7 +68,7 @@ static NSInteger const ALL_STOPS_CELL = 5;
     if (self.model.hasAnnouncements && section == 0) {
         return 1;
     } else {
-        unsigned int stopsCount = self.model.stops.count;
+        NSUInteger stopsCount = self.model.stops.count;
         return (stopsCount > MAXIMUM_STOPS) ? MAXIMUM_STOPS + 1 : stopsCount;
     }
 }
