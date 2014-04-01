@@ -30,7 +30,6 @@ extern NSString * NSStringForSection(Section section);
 
 - (instancetype)initWithStop:(Stop *)stop;
 
-- (NSDate *)firstArrivalDateForArrival:(Arrival *)arrival;
 - (NSString *)timeSinceRoutesRefresh;
 
 @end

@@ -51,7 +51,7 @@
 #pragma mark - ViewControllerModelBase
 
 - (void)fetchData {
-    [[DataStore sharedManager] fetchBusesWithErrorBlock:NULL];
+    [[DataStore sharedManager] fetchBusesWithErrorBlock:NULL requester:self];
 }
 
 #pragma mark - Private

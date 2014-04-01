@@ -40,7 +40,15 @@
     self.manager = [AFHTTPRequestOperationManager manager];
     [self fetchAppAnnouncements];
     
+    // analytics
+    [[GAI sharedInstance] trackerWithTrackingId:@"UA-46248477-1"];
+    [GAI sharedInstance].trackUncaughtExceptions = YES;
+    [GAI sharedInstance].dispatchInterval = 20;
+    
 #if DEBUG
+    [[GAI sharedInstance] setDryRun:YES];
+    [[GAI sharedInstance].logger setLogLevel:kGAILogLevelVerbose];
+
     /*
     SUPGridWindow *grid = [SUPGridWindow sharedGridWindow];
     [grid setGridColor:[UIColor redColor]];
@@ -48,15 +56,9 @@
      */
 #endif
     
+#ifndef DEBUG
     [FBSettings setDefaultAppID:@"695910573780679"];
     [FBAppEvents activateApp];
-    
-#ifndef DEBUG
-    
-    // analytics
-    [[GAI sharedInstance] trackerWithTrackingId:@"UA-46248477-1"];
-    [GAI sharedInstance].trackUncaughtExceptions = YES;
-    [GAI sharedInstance].dispatchInterval = 20;
 #endif
     
     self.locationFormatter = [[TTTLocationFormatter alloc] init];
@@ -64,21 +66,21 @@
     self.locationFormatter.bearingStyle = TTTBearingAbbreviationWordStyle;
     self.locationFormatter.unitSystem = TTTImperialSystem;
 
-    [[DataStore sharedManager] fetchArrivalsWithErrorBlock:NULL];
-    [[DataStore sharedManager] fetchAnnouncementsWithErrorBlock:NULL];
+    [[DataStore sharedManager] fetchArrivalsWithErrorBlock:NULL requester:self];
+    [[DataStore sharedManager] fetchAnnouncementsWithErrorBlock:NULL requester:self];
     
     // as long as we have stops, we don't need to reload them until the user requests it
     if (![[DataStore sharedManager] persistedStops]) {
-        [[DataStore sharedManager] fetchStopsWithErrorBlock:^(NSError *error) {}];
+        [[DataStore sharedManager] fetchStopsWithErrorBlock:NULL requester:self];
     }
     
     [[RACSignal interval:ARRIVALS_REFRESH_INTERVAL onScheduler:[RACScheduler mainThreadScheduler]] subscribeNext:^(id x) {
-        [[DataStore sharedManager] fetchArrivalsWithErrorBlock:NULL];
+        [[DataStore sharedManager] fetchArrivalsWithErrorBlock:NULL requester:self];
     }];
     
     [[LocationManager sharedManager] fetchLocation];
     
-    //[AddressCellMapView sharedInstance];
+    [AddressCellMapView sharedInstance];
     
     return YES;
 }

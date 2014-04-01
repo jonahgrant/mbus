@@ -77,7 +77,7 @@ NSString * NSStringForMiscCell(MiscCell cell) {
 - (void)fetchData {
     [[DataStore sharedManager] fetchArrivalsWithErrorBlock:^(NSError *error) {
         self.dataUpdatedBlock();
-    }];
+    } requester:self];
 }
 
 #pragma mark - Private
@@ -123,17 +123,6 @@ NSString * NSStringForMiscCell(MiscCell cell) {
 }
 
 #pragma mark - Public
-
-- (NSDate *)firstArrivalDateForArrival:(Arrival *)arrival {
-    NSTimeInterval timeInterval = [self firstArrivalTimeIntervalForArrival:arrival];
-    if (timeInterval == -1) {
-        return nil;
-    }
-    
-    // notify two minutes before the bus arrives, if over five minutes remaining
-    return [NSDate dateWithTimeInterval:(timeInterval > 300) ? timeInterval - 120 : timeInterval
-                              sinceDate:[[DataStore sharedManager] arrivalsTimestamp]];
-}
 
 - (NSString *)timeSinceRoutesRefresh {
     return (![[DataStore sharedManager] arrivalsTimestamp]) ?

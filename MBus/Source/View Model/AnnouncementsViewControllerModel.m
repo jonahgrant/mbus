@@ -43,7 +43,7 @@
 - (void)fetchData {
     [[DataStore sharedManager] fetchAnnouncementsWithErrorBlock:^(NSError *error) {
         self.dataUpdatedBlock();
-    }];
+    } requester:self];
 }
 
 - (NSString *)timeSinceLastRefresh {

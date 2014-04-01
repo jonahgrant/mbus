@@ -20,10 +20,10 @@ typedef void (^DataStoreErrorBlock)(NSError *error);
 
 + (instancetype)sharedManager;
 
-- (void)fetchArrivalsWithErrorBlock:(DataStoreErrorBlock)errorBlock;
-- (void)fetchBusesWithErrorBlock:(DataStoreErrorBlock)errorBlock;
-- (void)fetchStopsWithErrorBlock:(DataStoreErrorBlock)errorBlock;
-- (void)fetchAnnouncementsWithErrorBlock:(DataStoreErrorBlock)errorBlock;
+- (void)fetchArrivalsWithErrorBlock:(DataStoreErrorBlock)errorBlock requester:(id)requester;
+- (void)fetchBusesWithErrorBlock:(DataStoreErrorBlock)errorBlock requester:(id)requester;
+- (void)fetchStopsWithErrorBlock:(DataStoreErrorBlock)errorBlock requester:(id)requester;
+- (void)fetchAnnouncementsWithErrorBlock:(DataStoreErrorBlock)errorBlock requester:(id)requester;
 
 - (NSArray *)persistedArrivals;
 - (NSArray *)persistedBuses;

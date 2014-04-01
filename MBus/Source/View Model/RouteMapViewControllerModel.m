@@ -81,7 +81,7 @@
 }
 
 - (void)fetchBuses {
-    [[DataStore sharedManager] fetchBusesWithErrorBlock:NULL];
+    [[DataStore sharedManager] fetchBusesWithErrorBlock:NULL requester:self];
 }
 
 - (void)fetchTraceRoute {
@@ -101,16 +101,14 @@
 }
 
 - (void)createPolylineFromTraceRoute:(NSArray *)traceRoute {
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
-        CLLocationCoordinate2D coordinates[traceRoute.count];
-        
-        for (int i = 0, n = (int)traceRoute.count; i < n; i++) {
-            TraceRoute *route = traceRoute[i];
-            coordinates[i] = route.coordinate;
-        }
-        
-        self.polyline = [MKPolyline polylineWithCoordinates:coordinates count:traceRoute.count];
-    });
+    CLLocationCoordinate2D coordinates[traceRoute.count];
+    
+    for (int i = 0, n = (int)traceRoute.count; i < n; i++) {
+        TraceRoute *route = traceRoute[i];
+        coordinates[i] = route.coordinate;
+    }
+    
+    self.polyline = [MKPolyline polylineWithCoordinates:coordinates count:traceRoute.count];
 }
 
 @end

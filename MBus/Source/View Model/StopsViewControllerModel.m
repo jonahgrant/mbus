@@ -118,12 +118,12 @@
 }
 
 - (void)fetchData {
-    [[DataStore sharedManager] fetchStopsWithErrorBlock:NULL];
+    [[DataStore sharedManager] fetchStopsWithErrorBlock:NULL requester:self];
 }
 
 - (void)reloadData {
     [self fetchData];
-    [[DataStore sharedManager] fetchArrivalsWithErrorBlock:NULL];
+    [[DataStore sharedManager] fetchArrivalsWithErrorBlock:NULL requester:self];
 }
 
 - (NSString *)announcementsCellTextGenerator {

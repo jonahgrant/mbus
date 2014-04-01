@@ -175,8 +175,8 @@ static NSString * const kPlacemarksFile         = @"placemarks.txt";
 
 #pragma Fetch
 
-- (void)fetchArrivalsWithErrorBlock:(DataStoreErrorBlock)errorBlock {
-    SendEvent(ANALYTICS_FETCH_ARRIVALS);
+- (void)fetchArrivalsWithErrorBlock:(DataStoreErrorBlock)errorBlock requester:(id)requester {
+    SendEventWithLabel(ANALYTICS_FETCH_ARRIVALS, NSStringFromClass([requester class]));
     [self.networkingSession fetchArrivalsWithSuccessBlock:^(NSArray *arrivals) {
         self.arrivalsTimestamp = [NSDate date];
         [self persistObject:arrivals withFileName:kArrivalsFile];
@@ -200,7 +200,8 @@ static NSString * const kPlacemarksFile         = @"placemarks.txt";
     }];
 }
 
-- (void)fetchBusesWithErrorBlock:(DataStoreErrorBlock)errorBlock {
+- (void)fetchBusesWithErrorBlock:(DataStoreErrorBlock)errorBlock requester:(id)requester {
+    SendEventWithLabel(ANALYTICS_FETCH_BUSES, NSStringFromClass([requester class]));
     SendEvent(ANALYTICS_FETCH_BUSES);
     [self.networkingSession fetchBusesWithSuccessBlock:^(NSArray *buses) {
         self.busesTimestamp = [NSDate date];
@@ -218,8 +219,8 @@ static NSString * const kPlacemarksFile         = @"placemarks.txt";
     }];
 }
 
-- (void)fetchStopsWithErrorBlock:(DataStoreErrorBlock)errorBlock {
-    SendEvent(ANALYTICS_FETCH_STOPS);
+- (void)fetchStopsWithErrorBlock:(DataStoreErrorBlock)errorBlock requester:(id)requester {
+    SendEventWithLabel(ANALYTICS_FETCH_STOPS, NSStringFromClass([requester class]));
     [self.networkingSession fetchStopsWithSuccessBlock:^(NSArray *stops) {
         self.stopsTimestamp = [NSDate date];
         
@@ -241,8 +242,8 @@ static NSString * const kPlacemarksFile         = @"placemarks.txt";
     }];
 }
 
-- (void)fetchAnnouncementsWithErrorBlock:(DataStoreErrorBlock)errorBlock {
-    SendEvent(ANALYTICS_FETCH_ANNOUNCEMENTS);
+- (void)fetchAnnouncementsWithErrorBlock:(DataStoreErrorBlock)errorBlock requester:(id)requester {
+    SendEventWithLabel(ANALYTICS_FETCH_ANNOUNCEMENTS, NSStringFromClass([requester class]));
     [self.networkingSession fetchAnnouncementsWithSuccessBlock:^(NSArray *announcements) {
         self.announcementsTimestamp = [NSDate date];
         self.announcements = announcements;

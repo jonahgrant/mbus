@@ -35,7 +35,7 @@
 - (void)fetchData {
     [[DataStore sharedManager] fetchArrivalsWithErrorBlock:^(NSError *error) {
         self.dataUpdatedBlock();
-    }];
+    } requester:self];
 }
 
 - (NSString *)timeSinceLastRefresh {
