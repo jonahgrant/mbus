@@ -46,8 +46,8 @@ Run the project
 		Run
 
 ## Interface
-![Screenshots1](/Screenshots/MBUS1.png "Screenshots1")
-![Screenshots2](/Screenshots/MBUS2.png "Screenshots2")
+![Screenshots1](/Screenshots/MBUS-1.png "Screenshots1")
+![Screenshots2](/Screenshots/MBUS-2.png "Screenshots2")
 
 ## License
 
