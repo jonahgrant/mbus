@@ -46,7 +46,7 @@ Run the project
 		Run
 
 ## Interface
-![Stop2](/Screenshots/MBUS1.png "Stops")
+![Stop2](/Screenshots/PDF/test/MBUSPDF1.png "Stops")
 ![Stop](/Screenshots/MBUS2.png "Stop")
 ![Route](/Screenshots/Device/device-4.png "Route")
 ![Map](/Screenshots/Device/device-5.png "Map")
