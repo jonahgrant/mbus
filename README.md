@@ -46,10 +46,8 @@ Run the project
 		Run
 
 ## Interface
-![Stop2](/Screenshots/PDF/test/MBUSPDF1.png "Stops")
-![Stop](/Screenshots/MBUS2.png "Stop")
-![Route](/Screenshots/Device/device-4.png "Route")
-![Map](/Screenshots/Device/device-5.png "Map")
+![Screenshots1](/Screenshots/MBUS1.png "Screenshots1")
+![Screenshots2](/Screenshots/MBUS2.png "Screenshots2")
 
 ## License
 
