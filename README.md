@@ -3,17 +3,21 @@
 # MBus
 The University of Michigan has an awesome [live bus tracking system](http://mbus.pts.umich.edu/) for students.  This is an iOS implementation of it.
 
-This project runs on the [MVVM](http://en.wikipedia.org/wiki/Model_View_ViewModel) architecture, allowing abstraction of data-heavy code that would typically live in the view controller.
+This project operates on the [MVVM](http://en.wikipedia.org/wiki/Model_View_ViewModel) architecture, allowing abstraction of data-heavy code that would typically live in the view controller.
 
-Additionally, this project runs using [ReactiveCocoa](https://github.com/blog/1107-reactivecocoa-for-a-better-world).  ReactiveCocoa allows us to, among other things, manage constantly updating values with an abstracted version of [KVO](https://developer.apple.com/library/Mac/documentation/Cocoa/Conceptual/KeyValueObserving/KeyValueObserving.html).
+MBus runs using [ReactiveCocoa](https://github.com/blog/1107-reactivecocoa-for-a-better-world).  ReactiveCocoa allows us to, among other things, manage constantly updating values with an abstracted version of [KVO](https://developer.apple.com/library/Mac/documentation/Cocoa/Conceptual/KeyValueObserving/KeyValueObserving.html).
+
+Additionally, it is powered by [Fare](http://github.com/jonahgrant/fare), a networking library built around [AFNetworking](https://github.com/AFNetworking/AFNetworking) that interfaces with the University of Michigan's Parking and Transportation Service's API.
 
 MBus is available for free on the [App Store](https://itunes.apple.com/us/app/mbus-bus-info-for-university/id777435172?mt=8).
+
 ## Features
 
-+  See nearby stops in service
-+ See when the routes that are servicing a specific stop will arrive
-+ Get a notification before your bus arrives
-+ See a map of all buses moving in realtime
++ See nearby stops in service sorted by distance
++ See what routes are servicing a specific stop at any given time
++ See the estimated time of arrival for different routes at a stop
++ Schedule a notification to notify you before your bus arrives
++ See a map of all buses moving in real-time
 + See all routes that are in service
 + See the stops that a route services and when the bus will arrive at each
 + See a map of a route with the buses that are servicing it
@@ -38,11 +42,12 @@ Install it's dependencies
 
 Open the workspace (not the project)
 
-		open UMBus.xcworkspace
+		open MBus.xcworkspace
 
 Run the project
 
-		Select 'UMBus' target
+		Select 'MBus' target
+    Select 'Debug' build scheme
 		Run
 
 ## Interface
@@ -50,6 +55,8 @@ Run the project
 ![Screenshots2](/Screenshots/MBUS-2.png "Screenshots2")
 
 ## License
+
+MBus is available under the MIT License.
 
 ```
 The MIT License (MIT)
